@@ -1,0 +1,1 @@
+/Users/scc/workspace/dotfiles/bashrc.symlink
