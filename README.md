@@ -1,11 +1,14 @@
-# kdotFiles
+# kdotfiles
 My bash profile
 
-To use this profile, clone the repo then create symbolic links for .bash_profile and .bashrc
-git clone https://github.com/keven-pogrzeba/kdotFiles.git
-cd ~
-ln -s ~/path/to/cloned_repo/.bashrc .bashrc
-ln -s ~/path/to/cloned_repo/.bash_profile .bash_profile
+To use this bash profile, clone the repo then create symbolic links for .bash_profile and .bashrc
 
-Then run the source command/ restart the terminal for the changes to take effect
-source .bashrc
+example for a mac:
+- cd ~
+- git clone https://github.com/keven-pogrzeba/kdotfiles.git
+- cd kdotfiles
+- ln -s ~/kdotfiles/.bashrc ~/.bashrc
+- ln -s ~/kdotfiles/.bash_profile ~/.bash_profile
+- cd ~
+- source .bashrc #or restart the terminal
+
