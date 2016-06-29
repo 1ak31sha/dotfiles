@@ -36,6 +36,15 @@ export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
 export PATH=/bin:/usr/bin:"$PATH"
+export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
+export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH=~/bin:$PATH
+export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
+export EDITOR=~/bin/subl
+
 #export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
 #export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
 #export PATH="$HOME/.rbenv/shims:$PATH"
