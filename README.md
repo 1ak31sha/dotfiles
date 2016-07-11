@@ -12,3 +12,8 @@ example for a mac:
 - cd ~
 - source .bashrc #or restart the terminal
 
+Sublime setup:
+ln -s  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ ~/workspace/kdotFiles/sublime-snip
+
+...
+

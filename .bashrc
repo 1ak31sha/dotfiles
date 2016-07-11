@@ -26,6 +26,8 @@ myfunction() {
 
 export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
 
+#export -n PS1="$$$ "
+
 # Exports #
 
 export CLICOLOR=1
@@ -43,6 +45,7 @@ export PATH=~/bin:$PATH
 export PATH="$PATH:/usr/local/bin"
 export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
+export PATH="~/Library/Android/sdk/platform-tools:$PATH"
 export EDITOR=~/bin/subl
 
 #export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
