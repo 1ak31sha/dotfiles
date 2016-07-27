@@ -44,8 +44,9 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH=~/bin:$PATH
 export PATH="$PATH:/usr/local/bin"
 export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
+#export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
 export PATH="~/Library/Android/sdk/platform-tools:$PATH"
+export PATH="~/.gem/bin:$PATH"
 export EDITOR=~/bin/subl
 
 #export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
@@ -63,16 +64,18 @@ export EDITOR=~/bin/subl
 
 
 export GEM_HOME=$HOME/.gem
-export ANDROID_SDK=/"$HOME/Library/Android/sdk"
+export ANDROID_SDK="$HOME/Library/Android/sdk"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
 
 
 # Aliases #
 
-alias gs='git status'
+alias gs='git status -s'
 alias gf='git fetch'
 alias gd='git diff'
 alias gco='git checkout'
-alias gl='git log'
+alias gl='git log --oneline --decorate --all --graph'
 alias gb='git branch'
 alias kdot='cd ~/workspace/kdotFiles'
 #alias sublpackages = 'open ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
