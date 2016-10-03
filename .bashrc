@@ -40,7 +40,7 @@ myfunction() {
  }
 
 #export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
-export -n PS1="\033[1;35m\W \033[1;36m\$(parse_git_branch)\$ \033[1;32m\n"
+export -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32m\]"
 
 #export -n PS1="$$$ "
 
