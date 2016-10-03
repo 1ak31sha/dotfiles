@@ -12,6 +12,21 @@
 
 [ -z "$PS2" ] && return
 
+function git_branch {
+  local git_status="$(git status 2> /dev/null)"
+  local on_branch="On branch ([^${IFS}]*)"
+  local on_commit="HEAD detached at ([^${IFS}]*)"
+
+  if [[ $git_status =~ $on_branch ]]; then
+    local branch=${BASH_REMATCH[1]}
+    echo "($branch)"
+  elif [[ $git_status =~ $on_commit ]]; then
+    local commit=${BASH_REMATCH[1]}
+    echo "($commit)"
+  fi
+}
+
+
 function parse_git_dirty {
   git diff --no-ext-diff --quiet --exit-code &> /dev/null || echo "*"
 }
@@ -24,13 +39,14 @@ myfunction() {
  git status --porcelain | sed -n '${1} s/^...//p' | xargs git diff
  }
 
-export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
+#export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
+export -n PS1="\033[1;35m\W \033[1;36m\$(parse_git_branch)\$ \033[1;32m\n"
 
 #export -n PS1="$$$ "
 
 # Exports #
 
-export CLICOLOR=1
+export CLICOLOR=2
 export EDITOR=~/bin/subl
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -74,6 +90,7 @@ export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
 alias gs='git status -s'
 alias gf='git fetch'
 alias gd='git diff'
+alias ga='git add .'
 alias gco='git checkout'
 alias gl='git log --oneline --decorate --all --graph'
 alias gb='git branch'
@@ -82,7 +99,7 @@ alias kdot='cd ~/workspace/kdotFiles'
 
 
 alias ..='cd ..'
-alias ll='ls -FGlAhp'
+alias ls='ls -FGlAhp'
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 alias memHogsTop='top -l 1 -o rsize | head -20'
 alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
@@ -100,9 +117,10 @@ ii() {
         #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
         echo
     }
-function cl(){ cd "$@" && ll; }
-function k(){ cd ~ "$@" && ll; }
+function cdd(){ cd "$@" && ls; }
+#function ga() { gadd && ls; }
 
+#function k(){ cd ~ "$@" & ls; }
 
 #  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -119,15 +137,8 @@ eval "$(rbenv init -)"
 
 HISTFILESIZE=10000000
 
-
-
-
-
-
-
 # Installations
 # brew install pidof
-
 
 source ~/.xsh
 
