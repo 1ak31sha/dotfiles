@@ -133,12 +133,12 @@ HISTFILESIZE=10000000
 HISTSIZE=1000000000
 PROMPT_COMMAND='history -a'
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 HISTFILESIZE=10000000
 
 # Installations
 # brew install pidof
 
-source ~/.xsh
+# source ~/.xsh
 
