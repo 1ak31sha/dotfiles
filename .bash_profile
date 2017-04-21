@@ -6,3 +6,6 @@ fi
 
 source ~/.xsh
 
+
+export PATH="$HOME/.fastlane/bin:$PATH"
+

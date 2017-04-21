@@ -41,7 +41,6 @@ myfunction() {
 
 #export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
 export -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32m\]"
-
 #export -n PS1="$$$ "
 
 # Exports #
@@ -56,6 +55,8 @@ export LC_CTYPE=UTF-8
 export PATH=/bin:/usr/bin:"$PATH"
 export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
 export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
+export PATH=/Users/"YOURUSER"/Library/Android/sdk/emulator:$PATH
+export PATH=/Users/"YOURUSER"/Library/Android/sdk/tools/bin:$PATH
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH=~/bin:$PATH
 export PATH="$PATH:/usr/local/bin"
@@ -78,15 +79,24 @@ export EDITOR=~/bin/subl
 #export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
 #export PATH=$GEM_HOME/bin:$PATH
 
-
-export GEM_HOME=$HOME/.gem
+#Android
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
 
+#iOS
+export GEM_HOME=$HOME/.gem
 
-# Aliases #
+#ReactNative
+alias rnios='react-native run-ios --simulator="iPhone 7"'
 
+
+
+
+
+
+
+# Git
 alias gs='git status -s'
 alias gf='git fetch'
 alias gd='git diff'
@@ -94,10 +104,12 @@ alias ga='git add .'
 alias gco='git checkout'
 alias gl='git log --oneline --decorate --all --graph'
 alias gb='git branch'
+
+
 alias kdot='cd ~/workspace/kdotFiles'
-#alias sublpackages = 'open ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
+#alias lines='find . -name '*.php' | xargs wc -l'
 
-
+#Random
 alias ..='cd ..'
 alias ls='ls -FGlAhp'
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
@@ -118,11 +130,6 @@ ii() {
         echo
     }
 function cdd(){ cd "$@" && ls; }
-#function ga() { gadd && ls; }
-
-#function k(){ cd ~ "$@" & ls; }
-
-#  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 set -o vi
 set -o emacs
@@ -133,12 +140,15 @@ HISTFILESIZE=10000000
 HISTSIZE=1000000000
 PROMPT_COMMAND='history -a'
 
-eval "$(rbenv init -)"
+
 
 HISTFILESIZE=10000000
 
-# Installations
-# brew install pidof
-
-source ~/.xsh
-
+### NOT USED
+#eval "$(rbenv init -)"
+#source ~/.xsh
+#alias sublpackages = 'open ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
+#function ga() { gadd && ls; }
+#function k(){ cd ~ "$@" & ls; }
+#  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+###
