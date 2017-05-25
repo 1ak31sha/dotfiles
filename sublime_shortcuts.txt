@@ -1,9 +1,39 @@
 ~~~~~~~~~~~~~~~~~~~~~
  SHORTCUT / FUNCTION
 ~~~~~~~~~~~~~~~~~~~~~
- CMD + M                - select next matching highlighted text
- CMD + CTRL + UP/DOWN   - move line UP/DOWN         
- CMD + K                - toggle sidebar
+
+GENERAL                                   SELECTING TEXT 
+-------                                   --------------
+Command Pallete         CTRL + SHIFT + P  Line                          CTRL + L
+Show/hide console       CTRL + `          Word                          CTRL + D
+Show/hide sidebar       CTRL + K, BOL     Quick select next iteration   CTRL + D
+Redo last shortcut      CTRL + Y          Unslection next iteration     CTRL + K, D
+select auto suggestion  CTRL + SPACE      parenthesis content           CTRL + SHIFT + M
+                                          indentation content           CTRL + SHIFT + J
+                                          column selection up           CTRL + ALT + UP
+                                          column selection down         CTRL + ALT + DOWN
+                                          multi-select editing          CTRL + CLICK
+
+EDITING                                   LAYOUT
+--------------                            ------
+Delete line             CTRL + L          2,3,4 Column                  ALT + SHIFT 1/4
+Delete from cursor to EOL
+Delete from cursor to BOL
+Delete Word Forwards
+
+Window Manipulation
+Fullscreen
+Distract free
+new window
+new tab
+select tab
+close tab
+move tab to pane
+switch pane
+
+
+
+
 
 
  
