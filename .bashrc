@@ -79,6 +79,9 @@ export EDITOR=~/bin/subl
 #export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
 #export PATH=$GEM_HOME/bin:$PATH
 
+#Web
+alias port='lsof -n -i4TCP:'
+
 #Android
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -105,8 +108,11 @@ alias gco='git checkout'
 alias gl='git log --oneline --decorate --all --graph'
 alias gb='git branch'
 
-
+#This directory
 alias kdot='cd ~/workspace/kdotFiles'
+
+# Sublime shortcuts - SS
+alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
 #alias lines='find . -name '*.php' | xargs wc -l'
 
 #Random

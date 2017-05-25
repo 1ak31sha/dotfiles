@@ -1,0 +1,3 @@
+[submodule "sublimesnips"]
+	path = sublimesnips
+	url = https://github.com/kpogz/sublimesnips

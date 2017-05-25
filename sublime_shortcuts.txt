@@ -1,0 +1,9 @@
+~~~~~~~~~~~~~~~~~~~~~
+ SHORTCUT / FUNCTION
+~~~~~~~~~~~~~~~~~~~~~
+ CMD + M                - select next matching highlighted text
+ CMD + CTRL + UP/DOWN   - move line UP/DOWN         
+ CMD + K                - toggle sidebar
+
+
+ 
