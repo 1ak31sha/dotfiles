@@ -92,7 +92,7 @@ export GEM_HOME=$HOME/.gem
 
 #ReactNative
 alias rnios='react-native run-ios --simulator="iPhone 7"'
-
+alias ra='react-native run-android'
 
 
 
@@ -111,8 +111,13 @@ alias gb='git branch'
 #This directory
 alias kdot='cd ~/workspace/kdotFiles'
 
-# Sublime shortcuts - SS
+# Shortcuts
+
+#sublime
 alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
+#rails
+alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
+
 #alias lines='find . -name '*.php' | xargs wc -l'
 
 #Random
