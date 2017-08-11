@@ -86,7 +86,8 @@ alias port='lsof -n -i4TCP:'
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
-
+#export JAVA_HOME="/usr/bin/java"
+# export PATH="$JAVA_HOME/bin:$PATH"
 #iOS
 export GEM_HOME=$HOME/.gem
 
