@@ -115,6 +115,7 @@ alias kdot='cd ~/workspace/kdotFiles'
 # Shortcuts
 
 #sublime
+alias subl='sublime'
 alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
 #rails
 alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'

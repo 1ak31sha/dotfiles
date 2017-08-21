@@ -16,4 +16,5 @@ Sublime setup:
 ln -s  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ ~/workspace/kdotFiles/sublime-snip
 
 ...
-
+install this:
+https://github.com/mrmartineau/SetiUI-Icons-Sublime
