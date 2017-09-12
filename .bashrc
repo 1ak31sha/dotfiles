@@ -1,5 +1,5 @@
 #####################
-# Keven's Dot Files #
+# Lakeisha's Dot Files #
 #####################
 
 # Run these ‘defaults’ commands in terminal # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -45,12 +45,13 @@ export -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32
 
 # Exports #
 
-export CLICOLOR=2
+export CLICOLOR=1
 export EDITOR=~/bin/subl
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=UTF-8
+
 
 export PATH=/bin:/usr/bin:"$PATH"
 export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
@@ -65,6 +66,7 @@ export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbi
 export PATH="~/Library/Android/sdk/platform-tools:$PATH"
 export PATH="~/.gem/bin:$PATH"
 export EDITOR=~/bin/subl
+# export PATH="/usr/bin/java:$PATH"
 
 #export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
 #export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
@@ -86,7 +88,9 @@ alias port='lsof -n -i4TCP:'
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
-#export JAVA_HOME="/usr/bin/java"
+# export JAVA_HOME="/usr/bin/java"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home"
+export NODE_PATH="/usr/local/lib/node_modules"
 # export PATH="$JAVA_HOME/bin:$PATH"
 #iOS
 export GEM_HOME=$HOME/.gem
@@ -162,3 +166,8 @@ HISTFILESIZE=10000000
 #function k(){ cd ~ "$@" & ls; }
 #  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 ###
+
+export NVM_DIR="/Users/u6064854/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export LS_COLORS='di=0;36:'
