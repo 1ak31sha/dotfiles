@@ -39,19 +39,19 @@ myfunction() {
  git status --porcelain | sed -n '${1} s/^...//p' | xargs git diff
  }
 
-#export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
 export -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32m\]"
 #export -n PS1="$$$ "
+#export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
 
 # Exports #
 
 export CLICOLOR=1
-export EDITOR=~/bin/subl
+# export EDITOR=~/bin/subl
+export EDITOR=/usr/local/bin/sublime
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=UTF-8
-
 
 export PATH=/bin:/usr/bin:"$PATH"
 export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
@@ -66,20 +66,8 @@ export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbi
 export PATH="~/Library/Android/sdk/platform-tools:$PATH"
 export PATH="~/.gem/bin:$PATH"
 export EDITOR=~/bin/subl
-# export PATH="/usr/bin/java:$PATH"
-
-#export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
-#export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
-#export PATH="$HOME/.rbenv/shims:$PATH"
-#export PATH=“$HOME/bin:$PATH”
-#export PATH="$PATH:/usr/local/bin:$PATH"
-#export PATH="/usr/local/git/bin:$PATH"
-#export PATH="/sw/bin:/usr/local/bin:$PATH"
-#export PATH="/usr/local:$PATH"
-#export PATH="/usr/local/sbin:$PATH"
-#export PATH= "/usr/local/mysql/bin:$PATH"
-#export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
-#export PATH=$GEM_HOME/bin:$PATH
+export EDITOR=/usr/local/bin/sublime
+export GIT_EDITOR=/usr/bin/vim
 
 #Web
 alias port='lsof -n -i4TCP:'
@@ -102,16 +90,42 @@ alias ra='react-native run-android'
 
 
 
-
-
 # Git
+source ~/git-completion.bash
 alias gs='git status -s'
 alias gf='git fetch'
+alias gfii='git fetch integration:integration'
 alias gd='git diff'
 alias ga='git add .'
 alias gco='git checkout'
-alias gl='git log --oneline --decorate --all --graph'
+alias gl='git log --oneline --decorate --graph'
+alias gla='git log --oneline --decorate --all --graph'
 alias gb='git branch'
+alias gcop='git checkout @{-1}'
+
+
+# alias latest="git checkout integration / 
+# git pull grc integration /
+# git checkout @{-1}"
+
+#TR
+alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java"
+alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
+ ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"
+# alias debuglocal='gco debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java'
+alias debug_off='gco mediaCheck -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
+# alias debugr='git fetch grc integration && git checkout integration && git pull' - how to remember current branch?
+
+alias gcoi='git checkout integration'
+alias gpgi='git pull grc integration'
+alias sb='source ~/.bashrc'
+alias gri='git rebase integration'
+alias gfi='git fetch grc integration'
+
+
+# based on https://developer.atlassian.com/blog/2015/01/a-better-pull-request/#comment-1811819137
+# $1 is the merge target, $2 the source
+# alias md="!f() { git merge-tree $(git merge-base $1 $2) $1 $2 | colordiff | less -RF; }; f"
 
 #This directory
 alias kdot='cd ~/workspace/kdotFiles'
@@ -121,14 +135,21 @@ alias kdot='cd ~/workspace/kdotFiles'
 #sublime
 alias subl='sublime'
 alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
+alias ijs='cat ~/workspace/kdotfiles/intelliJ_shortcuts.txt'
 #rails
 alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
 
 #alias lines='find . -name '*.php' | xargs wc -l'
 
 #Random
+
 alias ..='cd ..'
 alias ls='ls -FGlAhp'
+function cdd(){ cd "$@" && ls; }
+alias cd='cdd'
+
+
+
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 alias memHogsTop='top -l 1 -o rsize | head -20'
 alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
@@ -146,7 +167,6 @@ ii() {
         #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
         echo
     }
-function cdd(){ cd "$@" && ls; }
 
 set -o vi
 set -o emacs

@@ -1,0 +1,16 @@
+
+IJ
+--
+
+CMD + D
+CMD+SHIFT+[ 		Change tab
+CMD+SHIFT+up		move line
+CMD + 1
+CMD + 2
+CMD+F8 					breakpoint
+CMD + / 				comment
+CTRL + D 			debug
+SHIFT+F6			refactor
+CMD+OPT+/     block comment
+CMD+SHIFT+up  set case upper
+

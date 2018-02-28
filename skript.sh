@@ -1,0 +1,3 @@
+#grep -R lakeisha ~/workspace/accelus-wc1-test-framework/.idea
+sed -i '' 's#<option name="VM_PARAMETERS" value="-Dplatform= -Duser=uatuser1234 -Dhost=uat -Dbrowser=&quot;chrome&quot; -Dcucumber.options=&quot; --tags @lakeisha&quot;" />#<option name="VM_PARAMETERS" value="-Dplatform= -Duser=uatuser1234 -Dhost=uat -Dbrowser=&quot;chrome&quot; -Dcucumber.options=&quot; --tags @lakeishaTEST&quot;" />#' ~/workspace/accelus-wc1-test-framework/.idea  
+#sed -i '' 's/foo/bar/' lakeisha.txt
