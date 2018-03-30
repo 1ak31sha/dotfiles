@@ -2,6 +2,9 @@
 IJ
 --
 
+CMD+ [					back
+
+CMD + b 				jump to function definitions
 CMD + D
 CMD+SHIFT+[ 		Change tab
 CMD+SHIFT+up		move line

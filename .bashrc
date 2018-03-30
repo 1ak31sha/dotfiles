@@ -10,6 +10,8 @@
 
 # This will set the terminal to show working directory and git diff dirty status
 
+# fish
+
 [ -z "$PS2" ] && return
 
 function git_branch {
@@ -96,7 +98,7 @@ alias gs='git status -s'
 alias gf='git fetch'
 alias gfii='git fetch integration:integration'
 alias gd='git diff'
-alias ga='git add .'
+alias ga='git add . && git status -s'
 alias gco='git checkout'
 alias gl='git log --oneline --decorate --graph'
 alias gla='git log --oneline --decorate --all --graph'
@@ -109,7 +111,11 @@ alias gcop='git checkout @{-1}'
 # git checkout @{-1}"
 
 #TR
-alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java"
+alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"
+alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc2/ui/setup/UISetup.java"
 alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
  ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"
 # alias debuglocal='gco debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java'
@@ -121,6 +127,7 @@ alias gpgi='git pull grc integration'
 alias sb='source ~/.bashrc'
 alias gri='git rebase integration'
 alias gfi='git fetch grc integration'
+alias bashr='subl ~/.bashrc'
 
 
 # based on https://developer.atlassian.com/blog/2015/01/a-better-pull-request/#comment-1811819137
@@ -132,6 +139,8 @@ alias kdot='cd ~/workspace/kdotFiles'
 
 # Shortcuts
 
+#vim
+alias vims='cat ~/workspace/kdotFiles/vim_shortcuts.txt'
 #sublime
 alias subl='sublime'
 alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
@@ -191,3 +200,6 @@ export NVM_DIR="/Users/u6064854/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export LS_COLORS='di=0;36:'
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
