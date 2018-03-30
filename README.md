@@ -1,19 +1,19 @@
-# kdotfiles
-My bash profile
+Lakei$ha'$ bash config
 
-To use this bash profile, clone the repo then create symbolic links for .bash_profile and .bashrc
+```
+cd ~
+git clone https://github.com/1ak31sha/config.git
+cd config
+ln -s ~/config/.bashrc ~/.bashrc
+ln -s ~/config/.bash_profile ~/.bash_profile
+cd ~
+source .bashrc #or restart the terminal
+```
 
-example for a mac:
-- cd ~
-- git clone https://github.com/keven-pogrzeba/kdotfiles.git
-- cd kdotfiles
-- ln -s ~/kdotfiles/.bashrc ~/.bashrc
-- ln -s ~/kdotfiles/.bash_profile ~/.bash_profile
-- cd ~
-- source .bashrc #or restart the terminal
-
-Sublime setup:
-ln -s  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ ~/workspace/kdotFiles/sublime-snip
+Sublime snips symlink
+```
+ln -s  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ ~/config/sublime-snip
+```
 
 ...
 install this:
