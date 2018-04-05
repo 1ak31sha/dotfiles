@@ -8,17 +8,46 @@
 # defaults write com.apple.screencapture location ~/Documents/Screenshots
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+alias test1="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
+-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
+--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @case_summary_wrt_rescreening '"
+
+alias test11983="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
+-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
+--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @media_check_results_navigation6 '"
+
+
+#####################################################
+# enter fish once per terminal start
+# if we don't have a file, start at zero
+#if [ ! -f "~/workspace/1ak31sha/value.dat" ] ; then
+#  value=0
+# otherwise read the value from the file
+#else
+  value=`cat ~/workspace/1ak31sha/value.dat`
+#fi
+# increment the value(number of sessions created)
+value=`expr ${value} + 1`
+# show it to the user
+echo " (number of sessions created): ${value}"
+echo $1
+
+#if $1="yo" ; then
+#	echo "yay"
+#else
+#	fish
+#fi
+# and save it for next time
+echo "${value}" > ~/workspace/1ak31sha/value.dat
+######################################################
+
+
 # This will set the terminal to show working directory and git diff dirty status
-
-# fish
-
 [ -z "$PS2" ] && return
-
 function git_branch {
   local git_status="$(git status 2> /dev/null)"
   local on_branch="On branch ([^${IFS}]*)"
   local on_commit="HEAD detached at ([^${IFS}]*)"
-
   if [[ $git_status =~ $on_branch ]]; then
     local branch=${BASH_REMATCH[1]}
     echo "($branch)"
@@ -27,8 +56,6 @@ function git_branch {
     echo "($commit)"
   fi
 }
-
-
 function parse_git_dirty {
   git diff --no-ext-diff --quiet --exit-code &> /dev/null || echo "*"
 }
@@ -36,16 +63,18 @@ function parse_git_dirty {
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
 }
-
 myfunction() {
  git status --porcelain | sed -n '${1} s/^...//p' | xargs git diff
  }
-
 export -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32m\]"
 #export -n PS1="$$$ "
 #export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
 
 # Exports #
+
+#clean exports
+#PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+
 
 export CLICOLOR=1
 # export EDITOR=~/bin/subl
@@ -70,7 +99,9 @@ export PATH="~/.gem/bin:$PATH"
 export EDITOR=~/bin/subl
 export EDITOR=/usr/local/bin/sublime
 export GIT_EDITOR=/usr/bin/vim
-
+export PYENV_ROOT=$HOME/.pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 #Web
 alias port='lsof -n -i4TCP:'
 
@@ -109,17 +140,23 @@ alias gcop='git checkout @{-1}'
 # alias latest="git checkout integration / 
 # git pull grc integration /
 # git checkout @{-1}"
+alias srcfish="source ~/.bashrc"
+alias fishrc="nvim ~/.bashrc"
+alias srcbash="source ~/.bashrc"
+#-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
+#--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @case_summary_wrt_rescreening '"
 
 #TR
+#alias clean verify -P !gather-scm-details -pl acceptance-tests-common,ui-acceptance-tests  -Duser=lci.mainUser  -Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser="firefox" -Dosversion="WINDOWS" -Dcucumber.options=" --format json:C:/Jenkins/workspace/workspace/accelus-wc1-bdd-CI-UI-MediaCheck-Firefox-Results/target/cucumber.json --tags @media_check_results "
 alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
 alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"
 alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
 alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
-alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc2/ui/setup/UISetup.java"
+alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java"
 alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
  ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"
 # alias debuglocal='gco debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java'
-alias debug_off='gco mediaCheck -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
+alias debugOff='gco mediaCheck -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
 # alias debugr='git fetch grc integration && git checkout integration && git pull' - how to remember current branch?
 
 alias gcoi='git checkout integration'
@@ -127,7 +164,8 @@ alias gpgi='git pull grc integration'
 alias sb='source ~/.bashrc'
 alias gri='git rebase integration'
 alias gfi='git fetch grc integration'
-alias bashr='subl ~/.bashrc'
+alias bashrc='nvim ~/.bashrc'
+alias vimrc='nvim ~/.config/nvim/init.vim'
 
 
 # based on https://developer.atlassian.com/blog/2015/01/a-better-pull-request/#comment-1811819137
@@ -195,11 +233,7 @@ HISTFILESIZE=10000000
 #function k(){ cd ~ "$@" & ls; }
 #  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 ###
+#"~ $ sudo chown -R u6064854 /Users/u6064854/Library/Logs/pip
+#"~ $ sudo chown -R u6064854 /Users/u6064854/Library/Caches/pip
 
-export NVM_DIR="/Users/u6064854/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export LS_COLORS='di=0;36:'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+#export LS_COLORS='di=0;36:'
