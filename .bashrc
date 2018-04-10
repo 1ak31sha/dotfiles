@@ -7,30 +7,16 @@
 # defaults write com.apple.finder AppleShowAllFiles YES
 # defaults write com.apple.screencapture location ~/Documents/Screenshots
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-alias test1="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
--Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
---format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @case_summary_wrt_rescreening '"
-
-alias test11983="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
--Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
---format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @media_check_results_navigation6 '"
-
-
-#####################################################
-# enter fish once per terminal start
-# if we don't have a file, start at zero
-#if [ ! -f "~/workspace/1ak31sha/value.dat" ] ; then
-#  value=0
-# otherwise read the value from the file
-#else
+. ~/workspace/1ak31sha/.sharedrc
   value=`cat ~/workspace/1ak31sha/value.dat`
-#fi
-# increment the value(number of sessions created)
 value=`expr ${value} + 1`
-# show it to the user
-echo " (number of sessions created): ${value}"
-echo $1
+# show it to the userj
+echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
+echo "    <3: Hi Lakeisha! <3    "
+echo "    <3:                   "
+echo "    <3: `date`           " 
+echo "    <3: #sources: ${value}"#since april 1st 2018
+echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 
 #if $1="yo" ; then
 #	echo "yay"
@@ -66,7 +52,8 @@ function parse_git_branch {
 myfunction() {
  git status --porcelain | sed -n '${1} s/^...//p' | xargs git diff
  }
-export -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32m\]"
+#oexport -n PS1="\[\033[1;35m\]\W \[\033[1;36m\]\$(parse_git_branch)\$ \[\033[1;32m\]"
+export -n PS1="Lakeisha<3:\$(parse_git_branch)"
 #export -n PS1="$$$ "
 #export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)\\n$ "
 
@@ -123,86 +110,86 @@ alias ra='react-native run-android'
 
 
 
-# Git
-source ~/git-completion.bash
-alias gs='git status -s'
-alias gf='git fetch'
-alias gfii='git fetch integration:integration'
-alias gd='git diff'
-alias ga='git add . && git status -s'
-alias gco='git checkout'
-alias gl='git log --oneline --decorate --graph'
-alias gla='git log --oneline --decorate --all --graph'
-alias gb='git branch'
-alias gcop='git checkout @{-1}'
+# # Git
+# source ~/git-completion.bash
+# alias gs='git status -s'
+# alias gf='git fetch'
+# alias gfii='git fetch integration:integration'
+# alias gd='git diff'
+# alias ga='git add . && git status -s'
+# alias gco='git checkout'
+# alias gl='git log --oneline --decorate --graph'
+# alias gla='git log --oneline --decorate --all --graph'
+# alias gb='git branch'
+# alias gcop='git checkout @{-1}'
 
 
-# alias latest="git checkout integration / 
-# git pull grc integration /
-# git checkout @{-1}"
-alias srcfish="source ~/.bashrc"
-alias fishrc="nvim ~/.bashrc"
-alias srcbash="source ~/.bashrc"
+# # alias latest="git checkout integration / 
+# # git pull grc integration /
+# # git checkout @{-1}"
+# alias srcfish="source ~/.bashrc"
+# alias fishrc="nvim ~/.bashrc"
+# alias srcbash="source ~/.bashrc"
 #-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
 #--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @case_summary_wrt_rescreening '"
 
 #TR
 #alias clean verify -P !gather-scm-details -pl acceptance-tests-common,ui-acceptance-tests  -Duser=lci.mainUser  -Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser="firefox" -Dosversion="WINDOWS" -Dcucumber.options=" --format json:C:/Jenkins/workspace/workspace/accelus-wc1-bdd-CI-UI-MediaCheck-Firefox-Results/target/cucumber.json --tags @media_check_results "
-alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
-alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"
-alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
-alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
-alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java"
-alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"
-# alias debuglocal='gco debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java'
-alias debugOff='gco mediaCheck -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
-# alias debugr='git fetch grc integration && git checkout integration && git pull' - how to remember current branch?
+# alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+# alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"
+# alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+# alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+# alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java"
+# alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
+#  ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"
+# # alias debuglocal='gco debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java'
+# alias debugOff='gco mediaCheck -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
+# # alias debugr='git fetch grc integration && git checkout integration && git pull' - how to remember current branch?
 
-alias gcoi='git checkout integration'
-alias gpgi='git pull grc integration'
-alias sb='source ~/.bashrc'
-alias gri='git rebase integration'
-alias gfi='git fetch grc integration'
-alias bashrc='nvim ~/.bashrc'
-alias vimrc='nvim ~/.config/nvim/init.vim'
+# alias gcoi='git checkout integration'
+# alias gpgi='git pull grc integration'
+# alias sb='source ~/.bashrc'
+# alias gri='git rebase integration'
+# alias gfi='git fetch grc integration'
+# alias bashrc='nvim ~/.bashrc'
+# alias vimrc='nvim ~/.config/nvim/init.vim'
 
 
 # based on https://developer.atlassian.com/blog/2015/01/a-better-pull-request/#comment-1811819137
 # $1 is the merge target, $2 the source
 # alias md="!f() { git merge-tree $(git merge-base $1 $2) $1 $2 | colordiff | less -RF; }; f"
 
-#This directory
-alias kdot='cd ~/workspace/kdotFiles'
+# #This directory
+# alias kdot='cd ~/workspace/kdotFiles'
 
-# Shortcuts
+# # Shortcuts
 
-#vim
-alias vims='cat ~/workspace/kdotFiles/vim_shortcuts.txt'
-#sublime
-alias subl='sublime'
-alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
-alias ijs='cat ~/workspace/kdotfiles/intelliJ_shortcuts.txt'
-#rails
-alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
+# #vim
+# alias vims='cat ~/workspace/kdotFiles/vim_shortcuts.txt'
+# #sublime
+# alias subl='sublime'
+# alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
+# alias ijs='cat ~/workspace/kdotfiles/intelliJ_shortcuts.txt'
+# #rails
+# alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
 
 #alias lines='find . -name '*.php' | xargs wc -l'
 
 #Random
 
-alias ..='cd ..'
-alias ls='ls -FGlAhp'
-function cdd(){ cd "$@" && ls; }
-alias cd='cdd'
+# alias ..='cd ..'
+# alias ls='ls -FGlAhp'
+# function cdd(){ cd "$@" && ls; }
+# alias cd='cdd'
 
 
 
-alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
-alias memHogsTop='top -l 1 -o rsize | head -20'
-alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
-alias topForever='top -l 9999999 -s 10 -o cpu'
-alias ttop="top -R -F -s 10 -o rsize"
-alias openPorts='sudo lsof -i | grep LISTEN'
+# alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
+# alias memHogsTop='top -l 1 -o rsize | head -20'
+# alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
+# alias topForever='top -l 9999999 -s 10 -o cpu'
+# alias ttop="top -R -F -s 10 -o rsize"
+# alias openPorts='sudo lsof -i | grep LISTEN'
 ii() {
         echo -e "\nYou are logged on ${RED}$HOST"
         echo -e "\nAdditionnal information:$NC " ; uname -a

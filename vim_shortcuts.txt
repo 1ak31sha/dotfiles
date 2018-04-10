@@ -3,6 +3,9 @@ VIM CHEATS
 sublimes's cntl +d :::::::
 :%s/your_word_in_regex/replacement/gc
 
+copy all lines in the file:
+:%y+
+
 --replace text
 cntrl -v
 vi arros to select
