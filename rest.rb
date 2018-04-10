@@ -4,23 +4,33 @@ dir="~/workspace/accelus-wc1-test-framework/ui-acceptance-tests/src/test/resourc
 #Get all the file locations
 files = `find #{dir} -name "*.feature"`
 
-	arr = Array.new
+arr = Array.new
 files.each_line do |value, index|
 	value.delete!("\n")
 	file = File.open("#{value}", "r")
 	firstline = file.readline
 	match_array = firstline.scan(/@[^\s]+/)
 	match_array.each do |tag|
-		#puts tag
 	  if arr.include? tag
 		else
-		#	alltag[tag] = value
       arr << tag
+      file.each_line do |line|
+        match = line.scan(/@[^\s]+\d/)
+        if match.length > 0
+          match.each do |m|
+            arr << m 
+          end
+        end
+      end
 		end
 	end
 end
 
-	puts arr
+puts arr.length
+puts "choose a test"
+  arr.each_with_index {|value,index|
+    puts "#{index}: #{value}"
+  }
 #get the list of featurefiles
 #check the fist line of each feature file and take the first @pattern match
 # ->for each of those, check that file for enumerated @patterns
