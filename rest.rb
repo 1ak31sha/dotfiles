@@ -31,6 +31,63 @@ puts "choose a test"
   arr.each_with_index {|value,index|
     puts "#{index}: #{value}"
   }
+test_selection = gets.chomp
+test_selected = ""
+arr.each_with_index {|v,i|
+  if i == test_selection.to_i
+    test_selected = v
+  else
+  end
+}
+puts "test selected: #{test_selected}"
+puts "---------------------------------------"
+browArr = Array.new
+browArr << "firefox" 
+browArr << "chrome"
+browArr << "ie"
+browArr << "safari"
+browArr << "edge?"
+
+browArr.each_with_index {|v,i|
+  puts "#{i}: #{v}"
+}
+selection = gets.chomp
+brow_selected = ""
+browArr.each_with_index {|v,i|
+  if i == selection.to_i
+    brow_selected = v
+  elsif selection.length == 0
+    brow_selected = "firefox"
+    
+    break
+  end
+}
+#selection = gets.chomp
+puts brow_selected
+
+puts "---------------------------------------"
+envArr = Array.new
+envArr << "ci" 
+envArr << "uat"
+
+envArr.each_with_index {|v,i|
+  puts "#{i}: #{v}"
+}
+selection = gets.chomp
+env_selected = ""
+envArr.each_with_index {|v,i|
+  if i == selection.to_i
+    env_selected = v
+  elsif selection.length == 0
+    env_selected = "ci" 
+    break
+  end
+}
+#selection = gets.chomp
+puts env_selected
+
+puts `mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests -Duser=ci.mainUser -Dpassword=LowerEnvUser_2 -Dhost=#{env_selected} -Dbrowser='#{brow_selected}' -Dcucumber.options=' --tags #{test_selected} '`
+
 #get the list of featurefiles
 #check the fist line of each feature file and take the first @pattern match
 # ->for each of those, check that file for enumerated @patterns
