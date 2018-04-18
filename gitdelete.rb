@@ -15,7 +15,7 @@ arr.each_with_index {|b, i|
     branch_selected = b
   end
 }
-puts 'you selected #{branch_selected}. press y to Delete branch'
+puts "you selected #{branch_selected}. press y to Delete branch"
 selection = gets.chomp
 if selection == 'y'
 puts `git branch -D #{branch_selected}`
