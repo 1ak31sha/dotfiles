@@ -1,4 +1,4 @@
-Lakei$ha'$ bash config
+dotfiles
 
 ```
 cd ~
@@ -18,3 +18,9 @@ ln -s  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ ~/config/s
 ...
 install this:
 https://github.com/mrmartineau/SetiUI-Icons-Sublime
+
+'links
+ln -s ~/workspace/1ak31sha/init.vim ~/.config/nvim/init.vim
+ln -s ~/.config/fish/fish.config ~/workspace/1ak31sha/init.vim
+
+

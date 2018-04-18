@@ -9,6 +9,7 @@ arr.each_with_index {|b, i|
   puts "#{i}: #{b}"
 }
 branch_selected = ""
+puts "select an integer for the branch to delete: "
 selection = gets.chomp
 arr.each_with_index {|b, i|
   if i == selection.to_i
