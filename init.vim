@@ -52,7 +52,7 @@ let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Neomake
-"call neomake#configure#automake('n')
+call neomake#configure#automake('n')
 autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
 "let g:neomake_autolint_enabled
 
@@ -77,7 +77,7 @@ autocmd BufEnter * colorscheme default
 "autocmd BufEnter *.js colorscheme Tomorrow-Night
 "autocmd BufEnter *.json colorscheme Tomorrow
 
-"autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter * Neomake
 
 " Jump to the main window.
 autocmd VimEnter * wincmd p
