@@ -23,4 +23,4 @@ https://github.com/mrmartineau/SetiUI-Icons-Sublime
 ln -s ~/workspace/1ak31sha/init.vim ~/.config/nvim/init.vim
 ln -s ~/.config/fish/fish.config ~/workspace/1ak31sha/init.vim
 
-
+fyoocoolol kjlkj lkjlkj

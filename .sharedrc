@@ -1,4 +1,4 @@
-stty -ixon
+#stty -ixon
 
 alias fza="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
 
@@ -47,7 +47,7 @@ alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
 alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"
 alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
 alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
-alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java"
+alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.javaq"
 alias pretty="git checkout makeSDsPretty -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/Admin/Groups/GroupDetails/MediaCheckSettings/MediaCheckGroupSettings_sd.java"
 alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
  ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"

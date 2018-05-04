@@ -1,5 +1,44 @@
 VIM CHEATS
 
+q: - bring up recent commands
+:vimgrep, :vim -> /pattern/g
+
+#vim language
+verb + noun:
+d+w - celete word
+
+#verbs
+c - change. delete and insert
+y - yank - copy
+d - delete
+> - indent
+v - visiually select
+
+# nouns
+w - word
+b - back word
+2j - down 2 lines
+iw - inner word
+it - inner tag
+i" - inner quotes
+ip - inner paragraph
+as - a sentance
+s - sentance
+
+# nouns that require param
+f, F - find
+t, T - find, upto not including
+/ - search
+
+
+set relativenumber
+
+#reformat all lines
+gg (go to top of file0
+SHIFT+V (visual line mode)
+SHIFT+g (go to bottom of file)
+
+
 sublimes's cntl +d :::::::
 :%s/your_word_in_regex/replacement/gc
 
