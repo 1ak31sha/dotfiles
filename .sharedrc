@@ -2,7 +2,7 @@
 
 alias fza="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
 
-alias runner="ruby ~/workspace/1ak31sha/rest.rb"
+alias runner="ruby ~/workspace/1ak31sha/ruby/rest.rb"
 
 
 alias test2="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
@@ -24,14 +24,14 @@ alias gs='git status -s'
 alias gf='git fetch'
 alias gfii='git fetch integration:integration'
 alias gd='git diff'
-alias gc="ruby ~/workspace/1ak31sha/gitbranch.rb"
+alias gc="ruby ~/workspace/1ak31sha/git/gitbranch.rb"
 # alias ga='git add . && git status -s'
 alias gco='git checkout'
 alias gl='git log --oneline --decorate --graph'
 alias gla='git log --oneline --decorate --all --graph'
 alias gcop='git checkout @{-1}'
 alias gb='git branch'
-alias gbd='ruby ~/workspace/1ak31sha/gitdelete.rb'
+alias gbd='ruby ~/workspace/1ak31sha/git/gitdelete.rb'
 
 
 # alias latest="git checkout integration / 
