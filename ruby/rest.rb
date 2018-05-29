@@ -1,5 +1,5 @@
-
 dir="~/workspace/accelus-wc1-test-framework/ui-acceptance-tests/src/test/resources/features/media_check"
+
 
 #Get all the file locations
 files = `find #{dir} -name "*.feature"`

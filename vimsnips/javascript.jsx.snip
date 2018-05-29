@@ -1,0 +1,7 @@
+snippet     mstp
+abbr        <`2mapStateToProps`>
+options     head
+        const mapStateToProps = (state, {$1}) => {
+          const {$2}= state.select === {$1}.library.id;
+          return {expanded};
+        }

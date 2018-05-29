@@ -13,24 +13,52 @@ let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
 " ----
 " Set
 " ----
+"set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
+if has("autocmd") 
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
+endif 
+setlocal omnifunc=javacomplete#Complete
+setlocal completefunc=javacomplete#CompleteParamsInfo
+set nowrap
 set nocursorline
 set encoding=utf8
 set nocp   " 'compatible' is not set
 set number
+set relativenumber
 set shiftwidth=2
 set expandtab
+set autoread                    "Reload files changed outside vim
+set path+=**
+set wildmenu
 autocmd Filetype ruby setlocal tabstop=2
 autocmd Filetype rb setlocal tabstop=2
+"au FocusGained,BufEnter * :silent! ! " auto reload any chan ges when focus gained or buf enter
+"au FocusLost,WinLeave * :silent! noautocmd w " files always saved when leaving a buffer
 "let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " -------
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'terryma/vim-smooth-scroll'
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+"let g:deoplete#enable_at_startup = 1
 
-  Plug 'vim-airline/vim-airline'  
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
+
+  Plug 'rking/ag.vim'
+  "Plug 'vim-airline/vim-airline' - uses too much functions of other plugins, which should be done by users in .vimrc  
+  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+  Plug 'artur-shaik/vim-javacomplete2'
   Plug 'w0rp/ale'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'mxw/vim-jsx'
@@ -41,7 +69,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mhartington/oceanic-next'
   Plug 'ervandew/supertab'  
   Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'SirVer/ultisnips'
+"  Plug 'SirVer/ultisnips'
   Plug 'tpope/vim-cucumber'  
   Plug 'tpope/vim-fugitive'
   " Plug 'ryanoasis/vim-devicons'
@@ -58,6 +86,35 @@ call plug#end()
 " PLUGIN CONFIGURATIONS
 " ----------------------
 
+"smooth scroll
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-w>     <Plug>(neosnippet_expand_or_jump)
+smap <C-w>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-w>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#snippets_directory='~/workspace/1ak31sha/vimsnips/'
+
+" ----------------------
+" AG - the silver surfer
+" ----------------------
+let g:ag_working_path_mode="r"
+
 " ---------
 " DevIcons
 " ---------
@@ -72,7 +129,7 @@ let g:webdevicons_gui_glyph_fix = 1
 " ---------
 " Deoplete
 " ---------
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = [
   \ 'tern#Complete',
@@ -95,11 +152,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " -----------
 " UltiSnips
 " -----------
-let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+
+let g:UltiSnipsExpandTrigger='<leader>e'
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
-
+let g:UltiSnipsSnippetsDir="~/workspace/1ak31sha/vimsnips"
 " ---------
 " AUTOCMD
 " ---------
@@ -114,8 +173,25 @@ autocmd VimEnter * wincmd p
 nnoremap <C-p> :FuzzyOpen<CR>
 let mapleader = ","
 noremap <Leader>s :w<CR>
-
+vnoremap <C-c> "*y
+nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
 filetype plugin indent on
+if has("nvim")
+  " Make escape work in the Neovim terminal.
+  tnoremap <Esc> <C-\><C-n>
+
+  " Make navigation into and out of Neovim terminal splits nicer.
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+
+  " I like relative numbering when in normal mode.
+  autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 relativenumber modifiable
+
+  " Prefer Neovim terminal insert mode to normal mode.
+  autocmd BufEnter term://* startinsert
+endif
 
 " --------
 "  Airline
@@ -184,4 +260,168 @@ syntax enable
 "autocmd BufEnter *.js colorscheme Tomorrow-Night
 "autocmd BufEnter *.json colorscheme Tomorrow
 "set cursorline
+" If you are using a console version of Vim, or dealing
+" with a file that changes externally (e.g. a web server log)
+" then Vim does not always check to see if the file has been changed.
+" The GUI version of Vim will check more often (for example on Focus change),
+" and prompt you if you want to reload the file.
+"
+" There can be cases where you can be working away, and Vim does not
+" realize the file has changed. This command will force Vim to check
+" more often.
+"
+" Calling this command sets up autocommands that check to see if the
+" current buffer has been modified outside of vim (using checktime)
+" and, if it has, reload it for you.
+"
+" This check is done whenever any of the following events are triggered:
+" * BufEnter
+" * CursorMoved
+" * CursorMovedI
+" * CursorHold
+" * CursorHoldI
+"
+" In other words, this check occurs whenever you enter a buffer, move the cursor,
+" or just wait without doing anything for 'updatetime' milliseconds.
+"
+" Normally it will ask you if you want to load the file, even if you haven't made
+" any changes in vim. This can get annoying, however, if you frequently need to reload
+" the file, so if you would rather have it to reload the buffer *without*
+" prompting you, add a bang (!) after the command (WatchForChanges!).
+" This will set the autoread option for that buffer in addition to setting up the
+" autocommands.
+"
+" If you want to turn *off* watching for the buffer, just call the command again while
+" in the same buffer. Each time you call the command it will toggle between on and off.
+"
+" WatchForChanges sets autocommands that are triggered while in *any* buffer.
+" If you want vim to only check for changes to that buffer while editing the buffer
+" that is being watched, use WatchForChangesWhileInThisBuffer instead.
+"
+command! -bang WatchForChanges                  :call WatchForChanges(@%,  {'toggle': 1, 'autoread': <bang>0})
+command! -bang WatchForChangesWhileInThisBuffer :call WatchForChanges(@%,  {'toggle': 1, 'autoread': <bang>0, 'while_in_this_buffer_only': 1})
+command! -bang WatchForChangesAllFile           :call WatchForChanges('*', {'toggle': 1, 'autoread': <bang>0})
+" WatchForChanges function
+"
+" This is used by the WatchForChanges* commands, but it can also be
+" useful to call this from scripts. For example, if your script executes a
+" long-running process, you can have your script run that long-running process
+" in the background so that you can continue editing other files, redirects its
+" output to a file, and open the file in another buffer that keeps reloading itself
+" as more output from the long-running command becomes available.
+"
+" Arguments:
+" * bufname: The name of the buffer/file to watch for changes.
+"     Use '*' to watch all files.
+" * options (optional): A Dict object with any of the following keys:
+"   * autoread: If set to 1, causes autoread option to be turned on for the buffer in
+"     addition to setting up the autocommands.
+"   * toggle: If set to 1, causes this behavior to toggle between on and off.
+"     Mostly useful for mappings and commands. In scripts, you probably want to
+"     explicitly enable or disable it.
+"   * disable: If set to 1, turns off this behavior (removes the autocommand group).
+"   * while_in_this_buffer_only: If set to 0 (default), the events will be triggered no matter which
+"     buffer you are editing. (Only the specified buffer will be checked for changes,
+"     though, still.) If set to 1, the events will only be triggered while
+"     editing the specified buffer.
+"   * more_events: If set to 1 (the default), creates autocommands for the events
+"     listed above. Set to 0 to not create autocommands for CursorMoved, CursorMovedI,
+"     (Presumably, having too much going on for those events could slow things down,
+"     since they are triggered so frequently...)
+function! WatchForChanges(bufname, ...)
+  " Figure out which options are in effect
+  if a:bufname == '*'
+    let id = 'WatchForChanges'.'AnyBuffer'
+    " If you try to do checktime *, you'll get E93: More than one match for * is given
+    let bufspec = ''
+  else
+    if bufnr(a:bufname) == -1
+      echoerr "Buffer " . a:bufname . " doesn't exist"
+      return
+    end
+    let id = 'WatchForChanges'.bufnr(a:bufname)
+    let bufspec = a:bufname
+  end
+  if len(a:000) == 0
+    let options = {}
+  else
+    if type(a:1) == type({})
+      let options = a:1
+    else
+      echoerr "Argument must be a Dict"
+    end
+  end
+  let autoread    = has_key(options, 'autoread')    ? options['autoread']    : 0
+  let toggle      = has_key(options, 'toggle')      ? options['toggle']      : 0
+  let disable     = has_key(options, 'disable')     ? options['disable']     : 0
+  let more_events = has_key(options, 'more_events') ? options['more_events'] : 1
+  let while_in_this_buffer_only = has_key(options, 'while_in_this_buffer_only') ? options['while_in_this_buffer_only'] : 0
+  if while_in_this_buffer_only
+    let event_bufspec = a:bufname
+  else
+    let event_bufspec = '*'
+  end
+  let reg_saved = @"
+  "let autoread_saved = &autoread
+  let msg = "\n"
+  " Check to see if the autocommand already exists
+  redir @"
+    silent! exec 'au '.id
+  redir END
+  let l:defined = (@" !~ 'E216: No such group or event:')
+  " If not yet defined...
+  if !l:defined
+    if l:autoread
+      let msg = msg . 'Autoread enabled - '
+      if a:bufname == '*'
+        set autoread
+      else
+        setlocal autoread
+      end
+    end
+    silent! exec 'augroup '.id
+      if a:bufname != '*'
+        "exec "au BufDelete    ".a:bufname . " :silent! au! ".id . " | silent! augroup! ".id
+        "exec "au BufDelete    ".a:bufname . " :echomsg 'Removing autocommands for ".id."' | au! ".id . " | augroup! ".id
+        exec "au BufDelete    ".a:bufname . " execute 'au! ".id."' | execute 'augroup! ".id."'"
+      end
+        exec "au BufEnter     ".event_bufspec . " :checktime ".bufspec
+        exec "au CursorHold   ".event_bufspec . " :checktime ".bufspec
+        exec "au CursorHoldI  ".event_bufspec . " :checktime ".bufspec
+      " The following events might slow things down so we provide a way to disable them...
+      " vim docs warn:
+      "   Careful: Don't do anything that the user does
+      "   not expect or that is slow.
+      if more_events
+        exec "au CursorMoved  ".event_bufspec . " :checktime ".bufspec
+        exec "au CursorMovedI ".event_bufspec . " :checktime ".bufspec
+      end
+    augroup END
+    let msg = msg . 'Now watching ' . bufspec . ' for external updates...'
+  end
+  " If they want to disable it, or it is defined and they want to toggle it,
+  if l:disable || (l:toggle && l:defined)
+    if l:autoread
+      let msg = msg . 'Autoread disabled - '
+      if a:bufname == '*'
+        set noautoread
+      else
+        setlocal noautoread
+      end
+    end
+    " Using an autogroup allows us to remove it easily with the following
+    " command. If we do not use an autogroup, we cannot remove this
+    " single :checktime command
+    " augroup! checkforupdates
+    silent! exec 'au! '.id
+    silent! exec 'augroup! '.id
+    let msg = msg . 'No longer watching ' . bufspec . ' for external updates.'
+  elseif l:defined
+    let msg = msg . 'Already watching ' . bufspec . ' for external updates'
+  end
+  echo msg
+  let @"=reg_saved
+endfunction
 
+let autoreadargs={'autoread':1} 
+execute WatchForChanges("*",autoreadargs) 

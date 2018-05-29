@@ -1,5 +1,16 @@
 VIM CHEATS
 
+# show the changes since last write
+:w !diff % -
+
+
+c-] - jump to definition (ctags too)
+c-t - jump back
+We can visually select all 3 lines and then run command :normal A;  that will execute A; (append ;) for each line. Alternatively, we can run same on the whole content of the file with  :%normal A;.
+
+. - repeat last command
+
+:sort while in visual mode with lines selected
 q: - bring up recent commands
 :vimgrep, :vim -> /pattern/g
 
