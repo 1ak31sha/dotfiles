@@ -15,3 +15,5 @@
 	tool = nvimdiff
 [mergetool]
 	path = nvim
+[core]
+    editor = 'nvim' --wait
