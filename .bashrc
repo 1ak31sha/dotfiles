@@ -64,44 +64,43 @@ export -n PS1="Lakeisha<3:\$(parse_git_branch)"
 
 
 export CLICOLOR=1
-# export EDITOR=~/bin/subl
 export EDITOR=/usr/local/bin/sublime
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
-export PATH=/bin:/usr/bin:"$PATH"
-export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
-export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
-export PATH=/Users/"YOURUSER"/Library/Android/sdk/emulator:$PATH
-export PATH=/Users/"YOURUSER"/Library/Android/sdk/tools/bin:$PATH
-export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH=~/bin:$PATH
-export PATH="$PATH:/usr/local/bin"
-export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-#export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
-export PATH="~/Library/Android/sdk/platform-tools:$PATH"
-export PATH="~/.gem/bin:$PATH"
-export EDITOR=~/bin/subl
-export EDITOR=/usr/local/bin/sublime
-export GIT_EDITOR=/usr/bin/vim
-export PYENV_ROOT=$HOME/.pyenv
+#export PATH=/bin:/usr/bin:"$PATH"
+#export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
+#export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
+#export PATH=/Users/"YOURUSER"/Library/Android/sdk/emulator:$PATH
+#export PATH=/Users/"YOURUSER"/Library/Android/sdk/tools/bin:$PATH
+#export PATH="$HOME/.rbenv/shims:$PATH"
+#export PATH=~/bin:$PATH
+#export PATH="$PATH:/usr/local/bin"
+#export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+##export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
+#export PATH="~/Library/Android/sdk/platform-tools:$PATH"
+#export PATH="~/.gem/bin:$PATH"
+#export EDITOR=~/bin/subl
+#export EDITOR=/usr/local/bin/sublime
+#export GIT_EDITOR=/usr/bin/vim
+#export PYENV_ROOT=$HOME/.pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 #Web
 alias port='lsof -n -i4TCP:'
 
-#Android
-export ANDROID_SDK="$HOME/Library/Android/sdk"
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
-# export JAVA_HOME="/usr/bin/java"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home"
-export NODE_PATH="/usr/local/lib/node_modules"
-# export PATH="$JAVA_HOME/bin:$PATH"
-#iOS
-export GEM_HOME=$HOME/.gem
+##Android
+#export ANDROID_SDK="$HOME/Library/Android/sdk"
+#export ANDROID_HOME="$HOME/Library/Android/sdk"
+#export PATH="/Users/scc/Library/gradle-2.14/bin:$PATH"
+## export JAVA_HOME="/usr/bin/java"
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home"
+#export NODE_PATH="/usr/local/lib/node_modules"
+## export PATH="$JAVA_HOME/bin:$PATH"
+##iOS
+#export GEM_HOME=$HOME/.gem
 
 #ReactNative
 alias rnios='react-native run-ios --simulator="iPhone 7"'
