@@ -30,6 +30,9 @@ set expandtab
 set autoread                    "Reload files changed outside vim
 set path+=**
 set wildmenu
+set gdefault
+"supposed to tunoff auto-comment, but this actually happens in the after-directory
+autocmd FileType * setlocal formatoptions=jql
 autocmd Filetype ruby setlocal tabstop=2
 autocmd Filetype rb setlocal tabstop=2
 "au FocusGained,BufEnter * :silent! ! " auto reload any chan ges when focus gained or buf enter
@@ -40,6 +43,8 @@ autocmd Filetype rb setlocal tabstop=2
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
+    "Plug 'Chiel92/vim-autoformat'
+    Plug 'sbdchd/neoformat'
     Plug 'terryma/vim-smooth-scroll'
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -62,6 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'mxw/vim-jsx'
+  Plug 'pangloss/vim-javascript' 
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -115,6 +121,22 @@ let g:neosnippet#snippets_directory='~/workspace/1ak31sha/vimsnips/'
 " ----------------------
 let g:ag_working_path_mode="r"
 
+
+" ----------------------
+" ALE
+" ----------------------
+let b:ale_linters = ['eslint']
+
+" ----------------------
+" Autoformat
+" ----------------------
+"noremap <F3> :Autoformat<CR>
+"let g:autoformat_autoindent = 0
+"let g:autoformat_retab = 0
+"let g:autoformat_remove_trailing_spaces = 0
+"au BufWrite * :Autoformat
+
+
 " ---------
 " DevIcons
 " ---------
@@ -139,10 +161,15 @@ let g:deoplete#omni#functions.javascript = [
 " ---------
 " Nerd Tree
 " ---------
+"  m    - menu
+"  C-b  - open sidebar
+"  C-ww - sidebar focus toggle
+"
 nnoremap <C-b> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree "// Open the tree by default
 let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeMapOpenInTab='t'
 
 " ---------
 " Neomake
@@ -167,6 +194,13 @@ autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
 " Jump to the main window.
 autocmd VimEnter * wincmd p
 
+" Code Folding (i didnt like it)
+"augroup javascript_folding
+"    au!
+"    au FileType javascript setlocal foldmethod=syntax
+"  augroup END
+
+
 " ----------
 "  REMAPS
 " ----------
@@ -175,7 +209,7 @@ let mapleader = ","
 noremap <Leader>s :w<CR>
 vnoremap <C-c> "*y
 nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
-filetype plugin indent on
+"filetype plugin indent on
 if has("nvim")
   " Make escape work in the Neovim terminal.
   tnoremap <Esc> <C-\><C-n>
