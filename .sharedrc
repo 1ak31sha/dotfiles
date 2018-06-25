@@ -1,0 +1,145 @@
+#stty -ixon
+
+# macos only
+alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
+
+alias fza="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
+
+alias runner="ruby ~/workspace/1ak31sha/ruby/rest.rb"
+
+
+alias test2="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
+-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
+--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @application_media_check_settings '"
+
+
+alias test1="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
+-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
+--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @media_check_attach_results2 '"
+
+alias test11983="mvn clean verify -pl acceptance-tests-common,ui-acceptance-tests  -Duser=ci.mainUser \
+-Dpassword=LowerEnvUser_2 -Dhost=ci -Dbrowser='firefox' -Dcucumber.options=' \
+--format json:C:/Jenkins/workspace/lakeisha-UI-CI-FF3/target/cucumber.json --tags @media_check_results_navigation6 '"
+
+# Git
+# source ~/git-completion.bash
+alias gs='git status -s'
+alias gf='git fetch'
+alias gfii='git fetch integration:integration'
+alias gd='git difftool'
+alias gc="ruby ~/workspace/1ak31sha/git/gitbranch.rb"
+# alias ga='git add . && git status -s'
+alias gco='git checkout'
+alias gl='git log --oneline --decorate --graph'
+alias gla='git log --oneline --decorate --all --graph'
+alias gcop='git checkout @{-1}'
+alias gb='git branch'
+alias gbd='ruby ~/workspace/1ak31sha/git/gitdelete.rb'
+
+
+# alias latest="git checkout integration / 
+# git pull grc integration /
+# git checkout @{-1}"
+alias srcfish="source ~/.bashrc"
+alias fishrc="nvim ~/.bashrc"
+alias srcbash="source ~/.bashrc"
+alias sharedrc="nvim ~/workspace/1ak31sha/.sharedrc"
+
+
+alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"
+alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+alias unit1="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
+alias debug="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.javaq"
+alias pretty="git checkout makeSDsPretty -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/Admin/Groups/GroupDetails/MediaCheckSettings/MediaCheckGroupSettings_sd.java"
+alias debuglocal="git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java \
+ ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java"
+# alias debuglocal='gco debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/pages/CaseMatchMediaCheckPage.java ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/stepdefinitions/CaseMatchMediaCheckPage_sd.java'
+alias debugOff='gco mediaCheck -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
+# alias debugr='git fetch grc integration && git checkout integration && git pull' - how to remember current branch?
+
+alias gcoi='git checkout integration'
+alias gpgi='git pull grc integration'
+alias sb='source ~/.bashrc'
+alias gri='git rebase integration'
+alias gfi='git fetch grc integration'
+alias bashrc='nvim ~/.bashrc'
+alias vimrc='nvim ~/.config/nvim/init.vim'
+
+#This directory
+alias dot='cd ~/workspace/1ak31sha'
+
+# Shortcuts
+
+#vim
+alias vims='cat ~/workspace/kdotFiles/vim_shortcuts.txt'
+#sublime
+alias subl='sublime'
+alias ss='cat ~/workspace/1ak31sha/sublime_shortcuts.txt'
+alias ijs='cat ~/workspace/1ak31sha/intelliJ_shortcuts.txt'
+#rails
+alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
+
+alias ..='cd ..'
+alias ls='ls -FGlAhp'
+# function cdd(){ cd "$@" && ls; }
+# alias cd='cdd'
+
+
+
+alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
+alias memHogsTop='top -l 1 -o rsize | head -20'
+alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
+alias topForever='top -l 9999999 -s 10 -o cpu'
+alias ttop="top -R -F -s 10 -o rsize"
+alias openPorts='sudo lsof -i | grep LISTEN'
+
+
+
+
+
+#----------------------------------FISH below
+
+alias lspath='source ~/.config/fish/path.sh'
+alias vim='nvim'
+alias vimrc='vim ~/.config/nvim/init.vim'
+#alias gpgm = 'git pull grc mediaCheck'
+alias subl='sublime'
+alias fishrc='vim ~/.config/fish/config.fish'
+alias srcfish='source ~/.config/fish/config.fish'
+alias srctmux='tmux source-file ~/.tmux.conf'
+
+alias debug='git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
+
+alias tmuxs='cat ~/workspace/kdotfiles/tmux_shortcuts.txt'
+
+alias gs='git status -s'
+alias gf='git fetch'
+alias gfii='git fetch integration:integration'
+alias ga='git add . ;and git status -s'
+alias gco='git checkout'
+alias gl='git log --oneline --decorate --graph'
+alias gla='git log --oneline --decorate --all --graph'
+alias gb='git branch'
+alias gcop='git checkout -'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

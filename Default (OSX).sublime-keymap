@@ -1,0 +1,3 @@
+[
+	{ "keys": ["shift+space"], "command": "move", "args": {"by": "characters", "forward": true} }
+]

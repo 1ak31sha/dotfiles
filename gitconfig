@@ -1,0 +1,19 @@
+[url "https://"]
+	insteadOf = git://
+[user]
+	name = lakeisha-pogrzeba
+	email = lakeisha.pogrzeba@tr.com
+[core]
+	excludesfile = /Users/u6064854/.gitignore_global
+[difftool]
+    prompt = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d -u ~/workspace/1ak31sha/init.vim \"$LOCAL\" \"$REMOTE\""        
+[diff]
+    tool = nvimdiff
+[merge]
+	tool = nvimdiff
+[mergetool]
+	path = nvim
+[core]
+    editor = 'nvim' --wait
