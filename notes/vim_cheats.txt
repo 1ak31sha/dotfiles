@@ -1,5 +1,19 @@
 VIM CHEATS
 
+### view scripts that have been sourced for the file
+:scriptnames
+
+Replace All:
+
+:%s/foo/bar/g
+Find each occurrence of 'foo' (in all lines), and replace it with 'bar'.
+
+For specific lines:
+
+:6,10s/foo/bar/g
+Change each 'foo' to 'bar' for all lines from line 6 to line 10 inclusive.
+
+
 # show the changes since last write
 :w !diff % -
 
@@ -47,7 +61,7 @@ set relativenumber
 #reformat all lines
 gg (go to top of file0
 SHIFT+V (visual line mode)
-SHIFT+g (go to bottom of file)
+G (go to bottom of file)
 
 
 sublimes's cntl +d :::::::
@@ -55,6 +69,9 @@ sublimes's cntl +d :::::::
 
 copy all lines in the file:
 :%y+
+
+yank to macos clipboard
+"*y
 
 --replace text
 cntrl -v
