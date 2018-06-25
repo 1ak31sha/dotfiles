@@ -1,0 +1,50 @@
+- [ ] turn off auto comments
+- [ ] https://stackoverflow.com/questions/45955912/how-to-sort-comma-separated-words-in-vim
+- [ ] https://www.vim.org/scripts/script.php?script_id=1785 - JAVAJAVAJAVA
+- [ ] http://jessicadeen.com/tech/macos-ohmyzsh-tmux-vim-iterm2-powerlevel9k-badass-terminal/
+- [ ] https://github.com/Caleb1994/gmusicclient
+- [ ] Git gutter
+- [ ] Ask SO about IJ code fragment focus issue
+- [ ] Ask SO about autocomplete quirk
+- [ ] https://github.com/wokalski/autocomplete-flow
+- [ ] https://github.com/Refefer/hf
+- [ ] Java debugger
+- [ ] https://linux.101hacks.com/cd-command/cdpath/
+- [ ] Find text in file integrated with vim
+- [ ] Show unused variables
+- [ ] Cucumber syntax and lint
+- [ ] Learn v mode - CMD_SHIT+8 replacement
+- [ ] https://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim
+- [ ] Analyze tests using files from Jenkins
+- [ ] https://superuser.com/questions/627636/better-syntax-highlighting-for-java-in-vim
+- [ ] :chdir your/project/root
+- [ ] if strftime("%H") < 12  set background=lightj  set background=dark
+- [ ] https://github.com/luan/vimfiles
+- [ ] https://github.com/apple/foundationdb/
+- [ ] http://eclim.org/
+- [ ] `nvim -V9performance.log`
+- [ ] https://stackoverflow.com/questions/3025615/is-there-a-vim-runtime-log#3026029
+- [ ] https://gist.github.com/tkhren/9fbc7227c2e9d2f4319c
+- [x] Find text in file fuzzy - 
+- [x] Devicons - set in terminal
+- [x] https://github.com/qvacua/vimr/wiki/SwiftNeoVim-Framework
+- [x] git blame for line number of file
+- [x] https://spin.atomicobject.com/2018/04/05/fuzzy-find-git-add/
+- [x] create shared vimrc 
+- [x] https://github.com/tpope/vim-fugitive
+- [x] https://github.com/ryanoasis/vim-devicons/issues/158
+- [x] https://github.com/fisherman/fzy
+- [x] :set path=** 
+- [x] Setup eslint vim
+- [x] Set vim as difftool
+- [x] Fuzzy searching command line
+- [x] Snippets for vim
+- [x] Color scheme nvim
+- [x] Disable arrow keys
+- [x] http://www.catonmat.net/blog/vim-plugins-nerdtree-vim/
+- [x] https://stackshare.io/stackups/vim-pathogen-vs-vim-plug-vs-vundle
+- [x] noremap ww :w<CR>
+- [x] http://sourabhbajaj.com/mac-setup/iTerm/fzf.html
+- [x] https://gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
+
+
