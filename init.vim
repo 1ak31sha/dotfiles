@@ -453,7 +453,8 @@ function! WatchForChanges(bufname, ...)
   elseif l:defined
     let msg = msg . 'Already watching ' . bufspec . ' for external updates'
   end
-  echo msg
+  " this is the annoying message that was appearing when opening vim
+  " echo msg
   let @"=reg_saved
 endfunction
 
