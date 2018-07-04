@@ -35,6 +35,9 @@ set gdefault
 autocmd FileType * setlocal formatoptions=jql
 autocmd Filetype ruby setlocal tabstop=2
 autocmd Filetype rb setlocal tabstop=2
+autocmd Filetype json setlocal tabstop=2
+autocmd Filetype * setlocal tabstop=2
+
 "au FocusGained,BufEnter * :silent! ! " auto reload any chan ges when focus gained or buf enter
 "au FocusLost,WinLeave * :silent! noautocmd w " files always saved when leaving a buffer
 "let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -74,7 +77,8 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'neomake/neomake' "| Plug 'dojoteef/neomake-autolint'
   Plug 'mhartington/oceanic-next'
   Plug 'ervandew/supertab'  
-  Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+  " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
+  "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 "  Plug 'SirVer/ultisnips'
   Plug 'tpope/vim-cucumber'  
   Plug 'tpope/vim-fugitive'
@@ -87,6 +91,24 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 "
+
+" -----------
+" MAPPINGS
+" -----------
+
+let mapleader = " "
+
+" VISUAL
+
+xnoremap K :move '<-2<CR>gv=gv
+xnoremap J :move '>+1<CR>gv=gv
+
+" NORMAL MODE
+nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>
+nnoremap <C-p> :FuzzyOpen<CR>
+noremap <Leader>s :w<CR>
+vnoremap <C-c> "*y
+nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
@@ -165,6 +187,7 @@ let g:deoplete#omni#functions.javascript = [
 "  C-b  - open sidebar
 "  C-ww - sidebar focus toggle
 "
+nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree "// Open the tree by default
 let NERDTreeShowHidden=1
@@ -201,14 +224,6 @@ autocmd VimEnter * wincmd p
 "  augroup END
 
 
-" ----------
-"  REMAPS
-" ----------
-nnoremap <C-p> :FuzzyOpen<CR>
-let mapleader = ","
-noremap <Leader>s :w<CR>
-vnoremap <C-c> "*y
-nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
 "filetype plugin indent on
 if has("nvim")
   " Make escape work in the Neovim terminal.
@@ -258,6 +273,21 @@ autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
 colorscheme monokai
 syntax enable
   "let g:neomake_autolint_enabled
+
+
+  " Cycle through relativenumber + number, number (only), and no numbering.
+function! Cycle_numbering() abort
+  if exists('+relativenumber')
+    execute {
+          \ '00': 'set relativenumber   | set number',
+          \ '01': 'set norelativenumber | set number',
+          \ '10': 'set norelativenumber | set nonumber',
+          \ '11': 'set norelativenumber | set number' }[&number . &relativenumber]
+  else
+    " No relative numbering, just toggle numbers on and off.
+    set number!<CR>
+  endif
+endfunction
 
 "let g:neomake_javascript_jscs_maker = {
 "    \ 'exe': 'jscs',
