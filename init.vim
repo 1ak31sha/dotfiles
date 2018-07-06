@@ -104,6 +104,9 @@ xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 
 " NORMAL MODE
+nnoremap <Leader>q :q<CR>
+nnoremap <silent> <Leader>z :call Zap()<CR>
+nnoremap <Leader>f :Neoformat<CR>
 nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>
 nnoremap <C-p> :FuzzyOpen<CR>
 noremap <Leader>s :w<CR>
@@ -289,6 +292,15 @@ function! Cycle_numbering() abort
   endif
 endfunction
 
+" Zap trailing whitespace.
+function! Zap() abort
+  let l:pos=getcurpos()
+  let l:search=@/
+  keepjumps %substitute/\s\+$//e
+  let @/=l:search
+  nohlsearch
+  call setpos('.', l:pos)
+endfunction
 "let g:neomake_javascript_jscs_maker = {
 "    \ 'exe': 'jscs',
 "    \ 'args': ['--no-color', '--preset', 'airbnb', '--reporter', 'inline', '--esnext'],
