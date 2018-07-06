@@ -17,3 +17,5 @@
 	path = nvim
 [core]
     editor = 'nvim' --wait
+[commit]
+  template = /Users/u6064854/workspace/1ak31sha/git/commit_template
