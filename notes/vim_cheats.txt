@@ -1,5 +1,12 @@
 VIM CHEATS
 
+### splits
+:sp - horizontal
+:vs - vertical split
+C-w + hjkl - move to a split
+
+
+
 ### view scripts that have been sourced for the file
 :scriptnames
 
