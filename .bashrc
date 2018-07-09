@@ -64,7 +64,7 @@ export -n PS1="Lakeisha<3:\$(parse_git_branch)"
 
 
 export CLICOLOR=1
-export EDITOR=/usr/local/bin/sublime
+export EDITOR= nvim mutt
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
