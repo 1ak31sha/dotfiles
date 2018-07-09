@@ -3,21 +3,19 @@
 #~- FISH CONFIG -~#
 #-----------------#
 #
-#
-#"function fish_prompt
-#"    set -l textcol  62A
-#    set -l bgcol   FFC0CB
-#    set -l arrowcol FFC0CB
-#    set_color $textcol -b $bgcol
-#    echo -n " "(basename $PWD)" "
-#    set_color $arrowcol -b normal
-#    echo -n "⮀ "
-#end
-#
 source ~/workspace/1ak31sha/.sharedrc
 status --is-interactive; and source (pyenv init -|psub)
 fish_vi_key_bindings
 
+#alias emu = 'ruby ~/workspace/1ak31sha/ruby/emulator.rb'
+#alias emukill = 'ruby ~/workspace/1ak31sha/ruby/killemu.rb'
+function startemu
+   ruby ~/workspace/1ak31sha/ruby/emulator.rb 
+end
+
+function killemu 
+   ruby ~/workspace/1ak31sha/ruby/killemu.rb 
+end
 
 #set -x GEM_HOME         $HOME/.gem
 #
@@ -30,6 +28,7 @@ set -x ANDROID_HOME     $HOME/Library/Android/sdk
 set -x PATH $PATH            $ANDROID_HOME/tools
 set -x PATH $PATH            $ANDROID_HOME/tools/bin
 set -x PATH $PATH            $ANDROID_HOME/platform-tools
+set -x EDITOR           nvim
 #
 #function path(){
 #    old=$IFS
