@@ -16,6 +16,6 @@
 [mergetool]
 	path = nvim
 [core]
-    editor = 'nvim' --wait
+    editor = 'nvim' 
 [commit]
   template = /Users/u6064854/workspace/1ak31sha/git/commit_template
