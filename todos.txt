@@ -1,3 +1,4 @@
+- [ ] tmux initization script
 - [ ] https://github.com/evilstreak/markdown-js
 - [ ] https://github.com/google/gif-for-cli
 - [ ] https://gitlab.com/muttmua/mutt/issues/54
