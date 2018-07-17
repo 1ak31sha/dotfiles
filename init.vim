@@ -31,12 +31,15 @@ set autoread                    "Reload files changed outside vim
 set path+=**
 set wildmenu
 set gdefault
+" Status line
+set statusline+=%F
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
 autocmd FileType * setlocal formatoptions=jql
 autocmd Filetype ruby setlocal tabstop=2
 autocmd Filetype rb setlocal tabstop=2
 autocmd Filetype json setlocal tabstop=2
 autocmd Filetype * setlocal tabstop=2
+autocmd FileType java set tags=~/.tags
 
 "au FocusGained,BufEnter * :silent! ! " auto reload any chan ges when focus gained or buf enter
 "au FocusLost,WinLeave * :silent! noautocmd w " files always saved when leaving a buffer
@@ -46,7 +49,8 @@ autocmd Filetype * setlocal tabstop=2
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
-    "Plug 'Chiel92/vim-autoformat'
+    Plug 'jvenant/vim-java-imports'
+    Plug 'prettier/vim-prettier'
     Plug 'sbdchd/neoformat'
     Plug 'terryma/vim-smooth-scroll'
   if has('nvim')
@@ -56,17 +60,15 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
-"let g:deoplete#enable_at_startup = 1
+  "let g:deoplete#enable_at_startup = 1
 
   Plug 'Shougo/neosnippet.vim'
   Plug 'Shougo/neosnippet-snippets'
 
   Plug 'rking/ag.vim'
-  "Plug 'vim-airline/vim-airline' - uses too much functions of other plugins, which should be done by users in .vimrc  
   Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
   Plug 'artur-shaik/vim-javacomplete2'
   Plug 'w0rp/ale'
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'mxw/vim-jsx'
@@ -74,20 +76,21 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  " Plug 'neomake/neomake' "| Plug 'dojoteef/neomake-autolint'
   Plug 'mhartington/oceanic-next'
   Plug 'ervandew/supertab'  
-  " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
-  "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-"  Plug 'SirVer/ultisnips'
   Plug 'tpope/vim-cucumber'  
   Plug 'tpope/vim-fugitive'
-  " Plug 'ryanoasis/vim-devicons'
   Plug 'tpope/vim-surround'
   Plug 'honza/vim-snippets'
   Plug 'benmills/vimux'
+    "Plug 'Chiel92/vim-autoformat'
 "  Plug 'terryma/vim-multiple-cursors'
 " Plug '~/.config/nvim/scripts/ColDevicons'
+  " Plug 'ryanoasis/vim-devicons'
+  " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
+  "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+"  Plug 'SirVer/ultisnips'
+  " Plug 'neomake/neomake' "| Plug 'dojoteef/neomake-autolint'
 
 call plug#end()
 "
@@ -95,7 +98,8 @@ call plug#end()
 " -----------
 " MAPPINGS
 " -----------
-
+"<Bs> BACK
+"<Del> DELETE
 let mapleader = " "
 
 " VISUAL
@@ -103,6 +107,8 @@ let mapleader = " "
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 
+" INSERT MODE
+"inoremap <ctrl> <esc>
 " NORMAL MODE
 nnoremap <Leader>q :q<CR>
 nnoremap <silent> <Leader>z :call Zap()<CR>
@@ -112,10 +118,26 @@ nnoremap <C-p> :FuzzyOpen<CR>
 noremap <Leader>s :w<CR>
 vnoremap <C-c> "*y
 nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
+nnoremap <Leader>d <S-v>yp 
+nnoremap <Leader>/ I// 
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
 " ----------------------
+
+" PRETTIER
+" print semicolons
+" Prettier default: true
+let g:prettier#config#semi = 'false'
+" print spaces between brackets
+" Prettier default: true
+let g:prettier#config#bracket_spacing = 'true'
+" put > on the last line instead of new line
+" Prettier default: false
+"let g:prettier#config#jsx_bracket_same_line = 'true'
+" none|es5|all
+" Prettier default: none
+"let g:prettier#config#trailing_comma = 'all'
 
 "smooth scroll
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
