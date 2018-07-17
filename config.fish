@@ -17,6 +17,18 @@ function killemu
    ruby ~/workspace/1ak31sha/ruby/killemu.rb 
 end
 
+function gif
+  ruby ~/workspace/1ak31sha/ruby/gif.rb
+end
+
+function setup_d
+  sh ~/workspace/1ak31sha/tmux/setup_dotfiles.sh
+end
+
+function setup_rn
+  sh ~/workspace/1ak31sha/tmux/setup_rn.sh
+end
+
 #set -x GEM_HOME         $HOME/.gem
 #
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
@@ -29,6 +41,8 @@ set -x PATH $PATH            $ANDROID_HOME/tools
 set -x PATH $PATH            $ANDROID_HOME/tools/bin
 set -x PATH $PATH            $ANDROID_HOME/platform-tools
 set -x EDITOR           nvim
+set -x PATH $PATH      $HOME/.local/bin
+set -x JAVA_HOME        /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home 
 #
 #function path(){
 #    old=$IFS
@@ -106,5 +120,4 @@ end
 
 
 
-
-
+#command ruby ruby/drake.rb
