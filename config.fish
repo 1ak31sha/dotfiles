@@ -28,7 +28,18 @@ end
 function setup_rn
   sh ~/workspace/1ak31sha/tmux/setup_rn.sh
 end
+function  ecp_runTest
+#  gradle clean --info allE2ETests -Dkarate.env=preprod -Dkarate.properties=https://mkazgdah0l.execute-api.us-east-1.amazonaws.com/u0056119 -PtestProfile=a-corporate-preprod -PprojectName=ecpregistry -PtopicARN=a204121-control-ecpmeta-u0056119-use1 -PRegistryQueue=a204121-registryqueue-ecpmeta-u0056119-use1 -Ptestprefix=foo -PSSM_PASSWORD_PARAMETER=a204121-kms-ecpmeta-registry -PBUCKETNAME=a204121-content-ecpmeta-u0056119-use1 -PTABLENAME=a204121-s3indextable-ecpmeta-u0056119-use1 -Dcucumber.options="--tags @Graph"
+   ruby ~/workspace/1ak31sha/ruby/run_if_more_than_60s.rb
+end
 
+function  ecp_runAll
+  gradle clean --info allE2ETests -Dkarate.env=preprod -Dkarate.properties=https://mkazgdah0l.execute-api.us-east-1.amazonaws.com/u0056119 -PtestProfile=a-corporate-preprod -PprojectName=ecpregistry -PtopicARN=a204121-control-ecpmeta-u0056119-use1 -PRegistryQueue=a204121-registryqueue-ecpmeta-u0056119-use1 -Ptestprefix=foo -PSSM_PASSWORD_PARAMETER=a204121-kms-ecpmeta-registry -PBUCKETNAME=a204121-content-ecpmeta-u0056119-use1 -PTABLENAME=a204121-s3indextable-ecpmeta-u0056119-use1 -Dcucumber.options="--tags ~@Graph"
+end
+
+function debug_ecp
+  git checkout debug -- src/main/java/com/tr/ecp/awsregistryutils/RegistryHelperUtils.java
+end
 #set -x GEM_HOME         $HOME/.gem
 #
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
@@ -36,13 +47,15 @@ end
 #eval $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')
 
 #set -x PYENV_ROOT       $HOME/.pyenv
-set -x ANDROID_HOME     $HOME/Library/Android/sdk
-set -x PATH $PATH            $ANDROID_HOME/tools
-set -x PATH $PATH            $ANDROID_HOME/tools/bin
-set -x PATH $PATH            $ANDROID_HOME/platform-tools
-set -x EDITOR           nvim
+set -x ANDROID_HOME    $HOME/Library/Android/sdk
+set -x PATH $PATH      $ANDROID_HOME/tools
+set -x PATH $PATH      $ANDROID_HOME/tools/bin
+set -x PATH $PATH      $ANDROID_HOME/platform-tools
+set -x EDITOR          nvim
 set -x PATH $PATH      $HOME/.local/bin
-set -x JAVA_HOME        /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home 
+set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home 
+set -x GEM_HOME        ~/.gem
+set -x GEM_PATH        ~/.gem
 #
 #function path(){
 #    old=$IFS
