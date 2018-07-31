@@ -49,6 +49,14 @@ autocmd FileType java set tags=~/.tags
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
+
+  " Syntax
+   Plug 'vim-scripts/groovy.vim'
+   Plug 'mxw/vim-jsx'
+
+   "Linting
+
+
     Plug 'jvenant/vim-java-imports'
     Plug 'prettier/vim-prettier'
     Plug 'sbdchd/neoformat'
@@ -71,7 +79,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'w0rp/ale'
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'mxw/vim-jsx'
   Plug 'pangloss/vim-javascript' 
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -83,6 +90,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'honza/vim-snippets'
   Plug 'benmills/vimux'
+
+  "COLORS
+  Plug 'altercation/vim-colors-solarized'
     "Plug 'Chiel92/vim-autoformat'
 "  Plug 'terryma/vim-multiple-cursors'
 " Plug '~/.config/nvim/scripts/ColDevicons'
@@ -102,24 +112,47 @@ call plug#end()
 "<Del> DELETE
 let mapleader = " "
 
+" ------
 " VISUAL
+" ------
 
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 
+" -----------
 " INSERT MODE
+" -----------
+
 "inoremap <ctrl> <esc>
+" type an opening brace and it auto does the closing, putting you inside the braces
+imap ( ()<C-[>i
+
+" -----------
 " NORMAL MODE
+" -----------
+
+nnoremap <Leader>r :source ~/workspace/1ak31sha/init.vim<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <silent> <Leader>z :call Zap()<CR>
-nnoremap <Leader>f :Neoformat<CR>
-nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>
+"nnoremap <Leader>f :Neoformat<CR> -> removed in favour of prettier
+nnoremap <silent> <Leader>c :call Cycle_numbering()<CR>
 nnoremap <C-p> :FuzzyOpen<CR>
 noremap <Leader>s :w<CR>
-vnoremap <C-c> "*y
 nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
 nnoremap <Leader>d <S-v>yp 
-nnoremap <Leader>/ I// 
+nnoremap <Leader>t :tabnew<CR> 
+nnoremap <leader>f :NERDTreeFind<CR>
+
+" TODO return the cursor position back to where it was
+nnoremap <Leader>/ I//<esc>j
+nnoremap <Leader>" I"<esc>j
+nnoremap <Leader>3 I#<esc>j 
+
+" -----------
+" VISUAL MODE
+" -----------
+vnoremap <C-c> "*y
+
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
@@ -241,6 +274,8 @@ let g:UltiSnipsSnippetsDir="~/workspace/1ak31sha/vimsnips"
 autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
 " Jump to the main window.
 autocmd VimEnter * wincmd p
+"au Bufread,BufNewFile *.feature set filetype=gherkin
+"au! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
 " Code Folding (i didnt like it)
 "augroup javascript_folding
@@ -277,26 +312,33 @@ syntax on
 set termguicolors
 
 
+" GUI MODE ONLY
+"" Visual Mode Orange Background, Black Text
+"hi Visual          guifg=#000000 guibg=#FD971F
+"
+"" Default Colors for CursorLine
+"highlight CursorLine guibg=#3E3D32
+"highlight Cursor guibg=#A6E22E;
+"
+"" Change Color when entering Insert Mode
+"autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
+"autocmd InsertEnter * highlight  Cursor guibg=#00AAFF;
+"
+"" Revert Color to default when leaving Insert Mode
+"autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
+"autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
 
-" Visual Mode Orange Background, Black Text
-hi Visual          guifg=#000000 guibg=#FD971F
-
-" Default Colors for CursorLine
-highlight CursorLine guibg=#3E3D32
-highlight Cursor guibg=#A6E22E;
-
-" Change Color when entering Insert Mode
-autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
-autocmd InsertEnter * highlight  Cursor guibg=#00AAFF;
-
-" Revert Color to default when leaving Insert Mode
-autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
-autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
-
-
+" -------------
+" COLOR SCHEMES
+" -------------
 "autocmd BufEnter * colorscheme default
 colorscheme monokai
+"colorscheme blue
+
+"colorscheme molokai
 syntax enable
+" set background=light
+"colorscheme solarized
   "let g:neomake_autolint_enabled
 
 
