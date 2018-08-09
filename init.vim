@@ -118,6 +118,8 @@ let mapleader = " "
 
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
+xnoremap <Leader>d y`>p
+
 
 " -----------
 " INSERT MODE
@@ -125,7 +127,7 @@ xnoremap J :move '>+1<CR>gv=gv
 
 "inoremap <ctrl> <esc>
 " type an opening brace and it auto does the closing, putting you inside the braces
-imap ( ()<C-[>i
+"imap ( ()<C-[>i
 
 " -----------
 " NORMAL MODE
@@ -566,3 +568,8 @@ endfunction
 
 let autoreadargs={'autoread':1} 
 execute WatchForChanges("*",autoreadargs) 
+
+" this shit doesnt work. i want my tab color brighter and more apparent
+hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+hi TabLine ctermfg=Blue ctermbg=Yellow
+hi TabLineSel ctermfg=Red ctermbg=Yellow
