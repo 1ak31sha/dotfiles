@@ -1,3 +1,4 @@
+- [ ] - https://pexpect.readthedocs.io/en/stable/overview.html<Paste>
 - [ ] mechanize, phantomJS
 - [ ] git diff HEAD^..HEAD --name-only | uniq -> use for below?
 - [ ] i want a vim function that opens up a list of files that have changes according to git, and lets me choose one to open
