@@ -3,50 +3,50 @@
 #~- FISH CONFIG -~#
 #-----------------#
 #
-source ~/workspace/1ak31sha/.sharedrc
-status --is-interactive; and source (pyenv init -|psub)
+source $DOTFILES/.sharedrc
+#status --is-interactive; and source (pyenv init -|psub)
 fish_vi_key_bindings
 #alias emu = 'ruby ~/workspace/1ak31sha/ruby/emulator.rb'
 #alias emukill = 'ruby ~/workspace/1ak31sha/ruby/killemu.rb'
 function startemu
-   ruby ~/workspace/1ak31sha/ruby/emulator.rb 
+   ruby $DOTFILES/ruby/emulator.rb 
 end
 
 function killemu 
-   ruby ~/workspace/1ak31sha/ruby/killemu.rb 
+   ruby $DOTFILES/ruby/killemu.rb 
 end
 
 function gif
-  ruby ~/workspace/1ak31sha/ruby/gif.rb
+  ruby $DOTFILES/ruby/gif.rb
 end
 
 function setup_d
-  sh ~/workspace/1ak31sha/tmux/setup_dotfiles.sh
+  sh $DOTFILES/tmux/setup_dotfiles.sh
 end
 
 function setup_rn
-  sh ~/workspace/1ak31sha/tmux/setup_rn.sh
+  sh $DOTFILES/tmux/setup_rn.sh
 end
 function awslog 
-  sh ~/workspace/1ak31sha/tmux/login.sh
+  sh $DOTFILES/tmux/login.sh
 end
 
 function co
-	ruby ~/workspace/1ak31sha/git/gitbranch.rb 
+	ruby $DOTFILES/git/gitbranch.rb 
 	end
 
 function  ecp_runTest
 #  gradle clean --info allE2ETests -Dkarate.env=preprod -Dkarate.properties=https://mkazgdah0l.execute-api.us-east-1.amazonaws.com/u0056119 -PtestProfile=a-corporate-preprod -PprojectName=ecpregistry -PtopicARN=a204121-control-ecpmeta-u0056119-use1 -PRegistryQueue=a204121-registryqueue-ecpmeta-u0056119-use1 -Ptestprefix=foo -PSSM_PASSWORD_PARAMETER=a204121-kms-ecpmeta-registry -PBUCKETNAME=a204121-content-ecpmeta-u0056119-use1 -PTABLENAME=a204121-s3indextable-ecpmeta-u0056119-use1 -Dcucumber.options="--tags @Graph"
   echo "fish got args " 
   echo $argv
-   ruby ~/workspace/1ak31sha/ruby/run_if_more_than_60s.rb $argv
+   ruby $DOTFILES/ruby/run_if_more_than_60s.rb $argv
 end
 
 function testargs
 
   echo "hello moto"
   echo $argv
-  ruby ~/workspace/1ak31sha/ruby/testargs.rb $argv
+  ruby $DOTFILES/ruby/testargs.rb $argv
 end
 
 function  ecp_runAll
@@ -69,9 +69,11 @@ set -x PATH $PATH      $ANDROID_HOME/tools/bin
 set -x PATH $PATH      $ANDROID_HOME/platform-tools
 set -x EDITOR          nvim
 set -x PATH $PATH      $HOME/.local/bin
-set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home 
+set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home 
 set -x GEM_HOME        ~/.gem
 set -x GEM_PATH        ~/.gem
+set -x DOTFILES        ~/workspace/dotfiles
+
 
 function edit_command_buffer --description 'Edit the command buffer in an external editor'
     set -l f (mktemp)
