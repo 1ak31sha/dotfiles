@@ -133,7 +133,7 @@ xnoremap <Leader>d y`>p
 " NORMAL MODE
 " -----------
 
-nnoremap <Leader>r :source ~/workspace/1ak31sha/init.vim<CR>
+nnoremap <Leader>r :source $DOTFILES/init.vim<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <silent> <Leader>z :call Zap()<CR>
 "nnoremap <Leader>f :Neoformat<CR> -> removed in favour of prettier
@@ -154,7 +154,7 @@ nnoremap <Leader>3 I#<esc>j
 " VISUAL MODE
 " -----------
 vnoremap <C-c> "*y
-
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
@@ -258,6 +258,11 @@ let NERDTreeMapOpenInTab='t'
 " Neomake
 " ---------
 "jcall neomake#configure#automake('n')
+
+" -------
+" CTRL-P
+"--------
+let g:ctrlp_show_hidden = 1
 
 " -----------
 " UltiSnips
