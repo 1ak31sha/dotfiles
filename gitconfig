@@ -8,7 +8,7 @@
 [difftool]
     prompt = true
 [difftool "nvimdiff"]
-    cmd = "nvim -d -u ~/workspace/1ak31sha/init.vim \"$LOCAL\" \"$REMOTE\""        
+    cmd = "nvim -d -u $DOTFILES/init.vim \"$LOCAL\" \"$REMOTE\""        
 [diff]
     tool = nvimdiff
 [merge]
@@ -18,4 +18,4 @@
 [core]
     editor = 'nvim' 
 [commit]
-  template = /Users/u6064854/workspace/1ak31sha/git/commit_template
+  template = $DOTFILES/git/commit_template
