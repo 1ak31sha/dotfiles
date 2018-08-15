@@ -1,0 +1,84 @@
+!Switch every number key N with Shift-N and vice-versa, for Croatian layout
+
+!keycode 10 = exclam 1 1 exclam asciitilde dead_tilde asciitilde
+!keycode 11 = quotedbl 2 2 quotedbl dead_caron caron dead_caron
+!keycode 12 = numbersign 3 3 numbersign asciicircum dead_circumflex asciicircum
+!keycode 13 = dollar 4 4 dollar dead_breve breve dead_breve
+!keycode 14 = percent 5 5 percent degree dead_abovering degree
+!keycode 15 = ampersand 6 6 ampersand dead_ogonek ogonek dead_ogonek
+!keycode 16 = slash 7 7 slash grave dead_grave grave
+!keycode 17 = parenleft 8 8 parenleft dead_abovedot abovedot dead_abovedot
+!keycode 18 = parenright 9 9 parenright dead_acute apostrophe dead_acute
+!keycode 19 = equal 0 0 equal dead_doubleacute doubleacute dead_doubleacute
+
+! default keycodes (the code sent when this physical key is pressed
+!keycode  50 = Shift_L NoSymbol Shift_L
+!keycode  37 = Control_L NoSymbol Control_L
+!The important thing in xmodmap is to distinguish between keycodes (raw numbers from the keyboard), keysyms (what the keys end up meaning), and modifier flags, which are flags on keys (not keysyms), say "this thing that I said was a shift key should modify other keys as a shift key"
+
+!Let's annotate your example with these "types"
+
+!keycode (keycode)66 = (keysym)Control_L
+!clear (modifier)Lock
+!add (modifier)Control = (keysym)Control_L
+!keycode (keycode)117 = (keysym)Caps_Lock
+!add (modifier)Lock = (keysym)Caps_Lock
+!now we can get a better idea of what each line does:
+
+!keycode 66 = Control_L
+!associates the capslock key with the meaning of control key (but not as a modifier)
+
+!clear Lock
+!will remove the modifier flag of any key that previously had the Lock modifier (as the caps lock key represented by code 66 most likely has)
+
+!add Control = Control_L
+!Add the control modifier to keys that are associate with keysym Control_L (probably keycode 66 and original left control key)
+
+!keycode 117 = Caps_Lock Assign the key with keycode 117 to act as a caps-lock (I'm not sure what 117 is, my keyboard doesn't have one.)
+
+!add Lock = Caps_Lock Add the Lock modifier back onto the Caps_Lock keysym, with its shiny new-bound 117 keycode.
+
+! RESET MODIFIERS IF YOU FUCKED UP
+!setxkbmap -option
+
+!Add Left, Down, Up, Right as a third item to the h,j,k,l key entries in /usr/share/X11/xkb/symbols/us (the first section):
+
+!key { [ h, H, Left, Left ] }; 
+!key { [ j, J, Down, Down ] };
+!key { [ k, K, Up, Up ] }; 
+!key { [ l, L, Right, Right ] };
+
+! 66 is the physical caps key
+! 9 is the physical esc key
+! 50 is phy shift_l
+! 37 is phys CTRL-L
+!
+clear lock
+keycode 66 = Escape 
+!clear control
+!add Control = Caps_Lock
+!ISO_Level3_Shift
+clear shift
+keycode 50 = ISO_Level3_Shift
+add Shift = Shift_R
+!keycode 37 = Shift_L
+!keycode 50 = ISO_Level3_Shift 
+!add Control = Control_L
+
+
+!clear control
+!clear mod4
+
+!keycode 105 =
+!keycode 206 =
+
+!keycode 133 = Control_L NoSymbol Control_L
+!keycode 134 = Control_R NoSymbol Control_R
+!keycode 37 = Super_L NoSymbol Super_L
+
+!add control = Control_L
+!add control = Control_R
+!add mod4 = Super_L
+!remove lock = Caps_Lock
+!keysym Caps_Lock = BackSpace
+
