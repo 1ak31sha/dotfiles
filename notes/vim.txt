@@ -8,6 +8,17 @@ VIM CHEATS
   if *x>3 {                 ysW(        if ( x>3 ) {
   my $str = *whee!;         vllllS'     my $str = 'whee!';
 
+
+TEXT_OBEJCTS
+
+### delete everything between quotes including the quotes
+da"
+
+### delete just everything bewteen the quotes
+di"
+da[
+di(
+
 # delete inside quotes
 di'
 #delelte inside word

@@ -11,7 +11,9 @@ diff= now-old.to_i
 diff = TimeDifference.between(now, old).in_seconds
 
 puts ARGV[0]
-if diff < 60 
+override = ARGV[1] == 'force' ? true : false
+puts "override": override
+if diff < 60  && !override 
 	puts "Please wait #{60 - diff} seconds before running the test"
 else
   Dir.chdir("/Users/u6064854/workspace/aws-registry-apitesting") do
