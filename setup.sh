@@ -5,6 +5,7 @@ install chrome
 isntall java jdk
 install mvn?
 login to github
+-install homebrew
 brew install ag
 brew install fzy
 brew install prettier
@@ -13,6 +14,8 @@ brew isntall gradle
  defaults write NSGlobalDomain KeyRepeat -int 1
 
 
+ gem install neovim
+npm install -g neovim
 -install python
 -brew link python
 - sudo chown -R $(whoami) $(brew --prefix)/*
@@ -26,7 +29,6 @@ instal karabiner elemenets
 - install xcode
 
 
--install homebrew
 -brew install tmux
 - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
