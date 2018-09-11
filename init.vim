@@ -1,28 +1,34 @@
-"~_~_~_~_~_~_~_~_~_~_~"
-"                     "
+"~_~_~_~_~_~_~_~_~_~_~"   ^  ^
 "        VIMRC        "
-"                     "
 "~_~_~_~_~_~_~_~_~_~_~"
 
-" -------
+" --------------
+" Health Checks:
+"
 " Python
 " -------
-
 let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
 
+
 " ----
-" Set
+" General Settings
 " ----
 "set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
-if has("autocmd") 
-  autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
-endif 
+if has("autocmd")
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+endif
 setlocal omnifunc=javacomplete#Complete
 setlocal completefunc=javacomplete#CompleteParamsInfo
+"set autochdir "automatically change directory if file opened is not in current dir
 set nowrap
 set nocursorline
 set encoding=utf8
 set nocp   " 'compatible' is not set
+set noswapfile
+set nopaste
+
+set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
+
 set number
 set relativenumber
 set shiftwidth=2
@@ -50,24 +56,26 @@ autocmd FileType java set tags=~/.tags
 " -------
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'crusoexia/vim-monokai'
+  Plug 'dracula/vim', { 'as': 'dracula' }
   " Syntax
    Plug 'vim-scripts/groovy.vim'
    Plug 'mxw/vim-jsx'
+   Plug 'dag/vim-fish'
+   Plug 'darthmall/vim-vue'
 
    "Linting
-
-
     Plug 'jvenant/vim-java-imports'
     Plug 'prettier/vim-prettier'
-    Plug 'sbdchd/neoformat'
+"    Plug 'sbdchd/neoformat'
     Plug 'terryma/vim-smooth-scroll'
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  "if has('nvim')
+  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "else
+  "  Plug 'Shougo/deoplete.nvim'
+"    Plug 'roxma/nvim-yarp'
+"    Plug 'roxma/vim-hug-neovim-rpc'
+"  endif
   "let g:deoplete#enable_at_startup = 1
 
   Plug 'Shougo/neosnippet.vim'
@@ -80,21 +88,26 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'pangloss/vim-javascript' 
-  Plug 'cloudhead/neovim-fuzzy'
+
+  " Navigation
+  "Plug 'cloudhead/neovim-fuzzy'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'mhartington/oceanic-next'
   Plug 'ervandew/supertab'  
+
   Plug 'tpope/vim-cucumber'  
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
-  Plug 'honza/vim-snippets'
+
   Plug 'benmills/vimux'
+  Plug 'honza/vim-snippets'
 
   "COLORS
   Plug 'altercation/vim-colors-solarized'
     "Plug 'Chiel92/vim-autoformat'
-"  Plug 'terryma/vim-multiple-cursors'
+  Plug 'terryma/vim-multiple-cursors'
 " Plug '~/.config/nvim/scripts/ColDevicons'
   " Plug 'ryanoasis/vim-devicons'
   " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
@@ -112,16 +125,12 @@ call plug#end()
 "<Del> DELETE
 let mapleader = " "
 
-" ------
 " VISUAL
 " ------
-
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 xnoremap <Leader>d y`>p
 
-
-" -----------
 " INSERT MODE
 " -----------
 
@@ -129,28 +138,28 @@ xnoremap <Leader>d y`>p
 " type an opening brace and it auto does the closing, putting you inside the braces
 "imap ( ()<C-[>i
 
-" -----------
 " NORMAL MODE
 " -----------
-
-nnoremap <Leader>r :source $DOTFILES/init.vim<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <silent> <Leader>z :call Zap()<CR>
 "nnoremap <Leader>f :Neoformat<CR> -> removed in favour of prettier
-nnoremap <silent> <Leader>c :call Cycle_numbering()<CR>
-nnoremap <C-p> :FuzzyOpen<CR>
-noremap <Leader>s :w<CR>
-nnoremap <Leader>html :-1read ~/workspace/1ak31sha/testhtml.html<CR>1jf>a
-nnoremap <Leader>d <S-v>yp 
-nnoremap <Leader>t :tabnew<CR> 
-nnoremap <leader>f :NERDTreeFind<CR>
+"nnoremap <C-p> :FuzzyOpen<CR>
+nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
+nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
+nnoremap <Leader>q    :q<CR>
+nnoremap <Leader>s    :w<CR>
+nnoremap <Leader>d    <S-v>yp
+nnoremap <Leader>t    :tabnew<CR>
+nnoremap <leader>f    :NERDTreeFind<CR>
+nnoremap <silent>     <Leader>z :call Zap()<CR>
+nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
+nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
+nnoremap <C-p>        :FZF<CR>
 
 " TODO return the cursor position back to where it was
 nnoremap <Leader>/ I//<esc>j
 nnoremap <Leader>" I"<esc>j
-nnoremap <Leader>3 I#<esc>j 
+nnoremap <Leader>3 I#<esc>j
+nnoremap <Leader>8 :call Smart_commenting()<CR>
 
-" -----------
 " VISUAL MODE
 " -----------
 vnoremap <C-c> "*y
@@ -160,21 +169,31 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " PLUGIN CONFIGURATIONS
 " ----------------------
 
-" PRETTIER
+" FZF " 
+" -----
+" Default fzf layout
+" - down / up / left / right
+"    let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'up': '~40%' }
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+
+" PRETTIER "
+" ----------
 " print semicolons
 " Prettier default: true
-let g:prettier#config#semi = 'false'
 " print spaces between brackets
 " Prettier default: true
-let g:prettier#config#bracket_spacing = 'true'
 " put > on the last line instead of new line
 " Prettier default: false
-"let g:prettier#config#jsx_bracket_same_line = 'true'
+" let g:prettier#config#jsx_bracket_same_line = 'true'
 " none|es5|all
 " Prettier default: none
-"let g:prettier#config#trailing_comma = 'all'
+" let g:prettier#config#trailing_comma = 'all'
+"let g:prettier#config#semi = 'false'
+"let g:prettier#config#bracket_spacing = 'true'
 
-"smooth scroll
+"Smooth Scroll "
+"---------------
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Plugin key-mappings.
@@ -198,15 +217,13 @@ if has('conceal')
 endif
 let g:neosnippet#snippets_directory='~/workspace/1ak31sha/vimsnips/'
 
-" ----------------------
-" AG - the silver surfer
-" ----------------------
+" AG - the silver surfer "
+" ------------------------
 let g:ag_working_path_mode="r"
 
 
-" ----------------------
-" ALE
-" ----------------------
+" ALE "
+" -----
 let b:ale_linters = ['eslint']
 
 " ----------------------
@@ -233,12 +250,12 @@ let g:webdevicons_gui_glyph_fix = 1
 " ---------
 " Deoplete
 " ---------
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#omni#functions = {}
+"let g:deoplete#omni#functions.javascript = [
+"  \ 'tern#Complete',
+"  \ 'jspc#omni'
+"\]
 
 " ---------
 " Nerd Tree
@@ -340,14 +357,21 @@ set termguicolors
 " -------------
 "autocmd BufEnter * colorscheme default
 colorscheme monokai
+"colorscheme inkpot
+"color dracula
 "colorscheme blue
 
 "colorscheme molokai
 syntax enable
 " set background=light
-"colorscheme solarized
-  "let g:neomake_autolint_enabled
+" colorscheme solarized
+"let g:neomake_autolint_enabled
 
+" Trailing whitespace and tabs are forbidden, so highlight them.
+highlight ForbiddenWhitespace ctermbg=red guibg=red
+match ForbiddenWhitespace /\s\+$\|\t/
+" Do not highlight spaces at the end of line while typing on that line.
+autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@<!$/
 
   " Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_numbering() abort
@@ -361,6 +385,41 @@ function! Cycle_numbering() abort
     " No relative numbering, just toggle numbers on and off.
     set number!<CR>
   endif
+endfunction
+
+  " Cycle through relativenumber + number, number (only), and no numbering.
+function! Cycle_colors() abort
+  let schemes = ['monokai' , 'dracula' ]
+  let cur_scheme = eval("g:colors_name")
+  let i = index(schemes,cur_scheme)
+  let j = (i+1)%len(schemes)
+  let next_color = schemes[j]
+  execute ("colorscheme " . next_color)
+endfunction
+
+function! Smart_commenting() abort
+  let slash_comments = ['javascript', 'java']
+  let pound_comments = ['tmux', 'bash']
+  let quote_comments = ['vim']
+
+  let curr_line = getline('.')
+  echo curr_line
+  let type = &filetype
+  if(type == 'vim')
+    call feedkeys("I\"\<esc>j")
+  elseif (type == 'vue')
+    if curr_line =~ '//'
+      echo "its a comment"
+    else
+      call feedkeys("I\/\/\<esc>j")
+    endif
+  elseif (type == 'tmux')
+    call feedkeys("I#\<esc>j")
+  endif
+"nnoremap <Leader>/ I//<esc>j
+"nnoremap <Leader>" I"<esc>j
+"nnoremap <Leader>3 I#<esc>j
+
 endfunction
 
 " Zap trailing whitespace.
@@ -579,3 +638,7 @@ hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
 hi TabLine ctermfg=Blue ctermbg=Yellow
 hi TabLineSel ctermfg=Red ctermbg=Yellow
 hi Title ctermfg=LightBlue ctermbg=Magenta
+
+
+"let k = 5
+"echo
