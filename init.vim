@@ -2,13 +2,12 @@
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 
-" --------------
+"--------------
 " Health Checks:
 "
 " Python
 " -------
 let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
-
 
 " ----
 " General Settings
@@ -57,6 +56,7 @@ autocmd FileType java set tags=~/.tags
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'crusoexia/vim-monokai'
+  Plug 'lambdalisue/suda.vim'
   Plug 'dracula/vim', { 'as': 'dracula' }
   " Syntax
    Plug 'vim-scripts/groovy.vim'
@@ -125,11 +125,18 @@ call plug#end()
 "<Del> DELETE
 let mapleader = " "
 
+" COMMAND MODE
+" ------------
+" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+" -> use this instead :w suda://%
+
 " VISUAL
 " ------
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 xnoremap <Leader>d y`>p
+vnoremap <C-c> "*y
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " INSERT MODE
 " -----------
@@ -140,8 +147,6 @@ xnoremap <Leader>d y`>p
 
 " NORMAL MODE
 " -----------
-"nnoremap <Leader>f :Neoformat<CR> -> removed in favour of prettier
-"nnoremap <C-p> :FuzzyOpen<CR>
 nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
 nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
 nnoremap <Leader>q    :q<CR>
@@ -154,16 +159,10 @@ nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
 nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
 nnoremap <C-p>        :FZF<CR>
 
-" TODO return the cursor position back to where it was
 nnoremap <Leader>/ I//<esc>j
 nnoremap <Leader>" I"<esc>j
 nnoremap <Leader>3 I#<esc>j
 nnoremap <Leader>8 :call Smart_commenting()<CR>
-
-" VISUAL MODE
-" -----------
-vnoremap <C-c> "*y
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
@@ -398,28 +397,38 @@ function! Cycle_colors() abort
 endfunction
 
 function! Smart_commenting() abort
-  let slash_comments = ['javascript', 'java']
-  let pound_comments = ['tmux', 'bash']
-  let quote_comments = ['vim']
-
+  let commentDict= {
+        \  'javascript': '//',
+        \ 'java': '//',
+        \ 'tmux': '#',
+        \ 'bash': '#',
+        \ 'vim': '"',
+        \ 'vue': '//',
+        \   }
+echo commentDict
   let curr_line = getline('.')
   echo curr_line
   let type = &filetype
-  if(type == 'vim')
-    call feedkeys("I\"\<esc>j")
-  elseif (type == 'vue')
-    if curr_line =~ '//'
-      echo "its a comment"
+  if( has_key(commentDict, type))
+    let commentChar = commentDict[type]
+    let checkForExistingComment = matchstrpos(curr_line, commentChar)
+    let checkForExistingComment2 = matchstr(curr_line, commentChar)
+    if (checkForExistingComment[1] > -1)
+    "if (checkForExistingComment[1] == 0)
+      echo "whoa there"
+      call feedkeys("0")
+      let j = 0;
+      while j < checkForExistingComment[1])
+        call feedkeys("l")
+      endwhile
+      for  i in range(1,len(commentChar))
+        call feedkeys("x")
+      endfor
     else
-      call feedkeys("I\/\/\<esc>j")
+      call feedkeys("I" . commentChar . "\<esc>j")
     endif
-  elseif (type == 'tmux')
-    call feedkeys("I#\<esc>j")
   endif
-"nnoremap <Leader>/ I//<esc>j
-"nnoremap <Leader>" I"<esc>j
-"nnoremap <Leader>3 I#<esc>j
-
+  echo checkForExistingComment
 endfunction
 
 " Zap trailing whitespace.
