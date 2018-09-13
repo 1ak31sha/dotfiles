@@ -1,0 +1,12 @@
+  s:name    varibalr locallll to script
+	b:name		variable local to a buffer
+	w:name		variable local to a window
+	g:name		global variable (also in a function)
+	v:name		variable predefined by Vim
+
+	:let s:count = 1
+	:while s:count < 5
+	:  source other.vim
+	:  let s:count += 1
+	:endwhile
+
