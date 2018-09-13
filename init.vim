@@ -2,19 +2,15 @@
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 
-
 "--------------
 " Health Checks:
 "
 " Python
 " -------
 "let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
-
-" ----
 " General Settings
 " ----
 "set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
-let g:solarized_termcolors=256
 
 if has("autocmd")
   autocmd Filetype java setlocal omnifunc=javacomplete#Complete
@@ -23,6 +19,7 @@ setlocal omnifunc=javacomplete#Complete
 setlocal completefunc=javacomplete#CompleteParamsInfo
 "set autochdir "automatically change directory if file opened is not in current dir
 set nowrap
+
 set nocursorline
 set encoding=utf8
 set nocp   " 'compatible' is not set
@@ -57,6 +54,7 @@ autocmd FileType java set tags=~/.tags
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'airblade/vim-gitgutter'
   Plug 'altercation/solarized'
   Plug 'crusoexia/vim-monokai'
   Plug 'joshdick/onedark.vim' 
@@ -659,4 +657,3 @@ hi Title ctermfg=LightBlue ctermbg=Magenta
 "let k = 5
 "echo
 
-let g:solarized_termcolors=256
