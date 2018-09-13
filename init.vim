@@ -53,6 +53,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Syntax
    Plug 'vim-scripts/groovy.vim'
    Plug 'mxw/vim-jsx'
+   Plug 'posva/vim-vue'
 
    "Linting
 
