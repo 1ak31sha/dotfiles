@@ -7,15 +7,15 @@
 # defaults write com.apple.finder AppleShowAllFiles YES
 # defaults write com.apple.screencapture location ~/Documents/Screenshots
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-. ~/workspace/1ak31sha/.sharedrc
-  value=`cat ~/workspace/1ak31sha/value.dat`
-value=`expr ${value} + 1`
+#. $DOTFILES/.sharedrc
+  #value=`cat $DOTFILES/value.dat`
+#value=`expr ${value} + 1`
 # show it to the userj
 echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 echo "    <3: Hi Lakeisha! <3    "
 echo "    <3:                   "
 echo "    <3: `date`           " 
-echo "    <3: #sources: ${value}"#since april 1st 2018
+#echo "    <3: #sources: ${value}"#since april 1st 2018
 echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 
 #if $1="yo" ; then
@@ -24,7 +24,7 @@ echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 #	fish
 #fi
 # and save it for next time
-echo "${value}" > ~/workspace/1ak31sha/value.dat
+#echo "${value}" > ~/workspace/1ak31sha/value.dat
 ######################################################
 
 
@@ -70,22 +70,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
-#export PATH=/bin:/usr/bin:"$PATH"
-#export PATH=/Users/scc/Library/Android/sdk/tools:$PATH
-#export PATH=/Users/"YOURUSER"/Library/Android/sdk/platform-tools:$PATH
-#export PATH=/Users/"YOURUSER"/Library/Android/sdk/emulator:$PATH
-#export PATH=/Users/"YOURUSER"/Library/Android/sdk/tools/bin:$PATH
-#export PATH="$HOME/.rbenv/shims:$PATH"
-#export PATH=~/bin:$PATH
-#export PATH="$PATH:/usr/local/bin"
-#export PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-##export PATH="/Users/scc/Library/gradle-2.9/bin:$PATH"
-#export PATH="~/Library/Android/sdk/platform-tools:$PATH"
-#export PATH="~/.gem/bin:$PATH"
-#export EDITOR=~/bin/subl
-#export EDITOR=/usr/local/bin/sublime
-#export GIT_EDITOR=/usr/bin/vim
-#export PYENV_ROOT=$HOME/.pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 #Web
@@ -105,9 +89,6 @@ alias port='lsof -n -i4TCP:'
 #ReactNative
 alias rnios='react-native run-ios --simulator="iPhone 7"'
 alias ra='react-native run-android'
-
-
-
 
 
 # based on https://developer.atlassian.com/blog/2015/01/a-better-pull-request/#comment-1811819137
@@ -177,5 +158,6 @@ HISTFILESIZE=10000000
 ###
 #"~ $ sudo chown -R u6064854 /Users/u6064854/Library/Logs/pip
 #"~ $ sudo chown -R u6064854 /Users/u6064854/Library/Caches/pip
-
 #export LS_COLORS='di=0;36:'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
