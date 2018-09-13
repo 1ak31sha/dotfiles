@@ -2,17 +2,20 @@
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 
+
 "--------------
 " Health Checks:
 "
 " Python
 " -------
-let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
+"let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
 
 " ----
 " General Settings
 " ----
 "set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
+let g:solarized_termcolors=256
+
 if has("autocmd")
   autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 endif
@@ -54,21 +57,22 @@ autocmd FileType java set tags=~/.tags
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
-
-Plug 'crusoexia/vim-monokai'
+  Plug 'altercation/solarized'
+  Plug 'crusoexia/vim-monokai'
+  Plug 'joshdick/onedark.vim' 
   Plug 'lambdalisue/suda.vim'
   Plug 'dracula/vim', { 'as': 'dracula' }
   " Syntax
-   Plug 'vim-scripts/groovy.vim'
-   Plug 'mxw/vim-jsx'
-   Plug 'dag/vim-fish'
-   Plug 'darthmall/vim-vue'
+  Plug 'vim-scripts/groovy.vim'
+  Plug 'mxw/vim-jsx'
+  Plug 'dag/vim-fish'
+  Plug 'darthmall/vim-vue'
 
    "Linting
-    Plug 'jvenant/vim-java-imports'
-    Plug 'prettier/vim-prettier'
+   Plug 'jvenant/vim-java-imports'
+   Plug 'prettier/vim-prettier'
 "    Plug 'sbdchd/neoformat'
-    Plug 'terryma/vim-smooth-scroll'
+   Plug 'terryma/vim-smooth-scroll'
   "if has('nvim')
   "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   "else
@@ -148,6 +152,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " NORMAL MODE
 " -----------
 nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
+nnoremap <leader>pi   :PlugInstall
 nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
 nnoremap <Leader>q    :q<CR>
 nnoremap <Leader>s    :w<CR>
@@ -388,12 +393,13 @@ endfunction
 
   " Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_colors() abort
-  let schemes = ['monokai' , 'dracula' ]
+  let schemes = ['monokai' , 'dracula', 'solarized', 'onedark' ]
   let cur_scheme = eval("g:colors_name")
   let i = index(schemes,cur_scheme)
   let j = (i+1)%len(schemes)
   let next_color = schemes[j]
   execute ("colorscheme " . next_color)
+  echo next_color
 endfunction
 
 function! Smart_commenting() abort
@@ -413,16 +419,17 @@ echo commentDict
     let commentChar = commentDict[type]
     let checkForExistingComment = matchstrpos(curr_line, commentChar)
     let checkForExistingComment2 = matchstr(curr_line, commentChar)
+    "let res = curr_line 
+    "let indexOfFirstCommentChar = checkForExistingComment 
     if (checkForExistingComment[1] > -1)
-    "if (checkForExistingComment[1] == 0)
-      echo "whoa there"
       call feedkeys("0")
-      let j = 0;
-      while j < checkForExistingComment[1])
+      let i = 0
+      while i < checkForExistingComment[1]
         call feedkeys("l")
+        let i += 1
       endwhile
       for  i in range(1,len(commentChar))
-        call feedkeys("x")
+        call feedkeys("xj")
       endfor
     else
       call feedkeys("I" . commentChar . "\<esc>j")
@@ -651,3 +658,5 @@ hi Title ctermfg=LightBlue ctermbg=Magenta
 
 "let k = 5
 "echo
+
+let g:solarized_termcolors=256
