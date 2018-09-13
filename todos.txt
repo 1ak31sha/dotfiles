@@ -1,3 +1,15 @@
+  #dr alfa  razack 416-519-0744
+#715 pape avenue.
+
+# support pin - 4334
+
+- [ ] suggest a type for jekyll recipe site
+ i [ ] Error detected while processing function <SNR>35_fuzzy_open:
+line    2:
+E344: Can't find directory "^[Ptmux;^[^[]1337;CursorShape=0^G^[/Users/u6064854/workspace/aws-registry-apitesting" in cdpath
+E472: Command failed
+Press ENTER or type command to continue
+- [ ] - use external ip 198.179.137.240 to create website/webapp   curl ifconfig.me
 - [ ] move line up and down, on oposite side of equals only??? >_<
 - [ ] - https://pexpect.readthedocs.io/en/stable/overview.html<Paste>
 - [ ] mechanize, phantomJS

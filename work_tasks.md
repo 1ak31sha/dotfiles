@@ -1,5 +1,6 @@
--get removed from DL -  http://orderit.int.thomsonreuters.com/ITSRP/Requests/71A7C822DFF564F1E0531E4ECD0A6DF2
-100601364618 case # 530pm 
+[ ] - karate set is makeing old vars change too!
+[ ] -  get removed from DL -  http://orderit.int.thomsonreuters.com/ITSRP/Requests/71A7C822DFF564F1E0531E4ECD0A6DF2
+[ ] - 100601364618 case # 530pm 
 
 
 
@@ -11,17 +12,6 @@ ECP Notes:
 inc1120176
 registry test-util
 
-TestDataGenerator
-
-RDF Format Jar being used in the gradle
-
-repos:
-e1e
--
--
--
-
-dev: aws-registry
 
 generateProjectInfo
 put metadata/project/ecp:7/

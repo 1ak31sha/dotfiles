@@ -19,3 +19,4 @@
     editor = 'nvim' 
 [commit]
   template = $DOTFILES/git/commit_template
+  #git config --global -e
