@@ -138,6 +138,7 @@ xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 xnoremap <Leader>d y`>p
 vnoremap <C-c> "*y
+vnoremap <Leader>c "+y
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " INSERT MODE
@@ -157,42 +158,11 @@ nnoremap <Leader>s    :w<CR>
 nnoremap <Leader>d    <S-v>yp
 nnoremap <Leader>t    :tabnew<CR>
 nnoremap <leader>f    :NERDTreeFind<CR>
+nnoremap <C-p>        :FZF<CR>
 nnoremap <silent>     <Leader>z :call Zap()<CR>
 nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
 nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
-nnoremap <C-p>        :FZF<CR>
-
-<<<<<<< HEAD
-nnoremap <Leader>/ I//<esc>j
-nnoremap <Leader>" I"<esc>j
-nnoremap <Leader>3 I#<esc>j
-nnoremap <Leader>8 :call Smart_commenting()<CR>
-=======
-nnoremap <Leader>r :source ~/workspace/dotfiles/init.vim<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <silent> <Leader>z :call Zap()<CR>
-"nnoremap <Leader>f :Neoformat<CR> -> removed in favour of prettier
-nnoremap <silent> <Leader>c :call Cycle_numbering()<CR>
-nnoremap <C-p> :FuzzyOpen<CR>
-noremap <Leader>s :w<CR>
-nnoremap <Leader>html :-1read ~/workspace/dotfiles/testhtml.html<CR>1jf>a
-nnoremap <Leader>d <S-v>yp 
-nnoremap <Leader>t :tabnew<CR> 
-nnoremap <leader>f :NERDTreeFind<CR>
-
-" TODO return the cursor position back to where it was
-nnoremap <Leader>/ I//<esc>j
-nnoremap <Leader>" I"<esc>j
-nnoremap <Leader>3 I#<esc>j 
-
-" -----------
-" VISUAL MODE
-" -----------
-"vnoremap <C-c> "*y
-vnoremap <C-c> "+y
-vnoremap <Leader>c "+y
-
->>>>>>> ubuntu
+nnoremap <Leader>8    :call Smart_commenting()<CR>
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
