@@ -405,6 +405,7 @@ function! Smart_commenting() abort
         \ 'bash': '#',
         \ 'vim': '"',
         \ 'vue': '//',
+        \ 'fish': '#',
         \   }
 echo commentDict
   let curr_line = getline('.')

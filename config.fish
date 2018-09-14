@@ -14,43 +14,43 @@ set -x PATH $PATH      $ANDROID_HOME/tools/bin
 set -x PATH $PATH      $ANDROID_HOME/platform-tools
 set -x EDITOR          nvim
 set -x PATH $PATH      $HOME/.local/bin
-#set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home 
-set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home 
-#set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home 
-#set -x JAVA_HOME       /usr/bin/java
+set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
 set -x GEM_PATH        ~/.gem
 set -x GEM_HOME        ~/.gem
 
 source $DOTFILES/.sharedrc
 
-function  startemu 
-  ruby $DOTFILES/ruby/emulator.rb 
+function  startemu
+  ruby $DOTFILES/ruby/emulator.rb
 end
 
 function  killemu
-  ruby $DOTFILES/ruby/killemu.rb 
+  ruby $DOTFILES/ruby/killemu.rb
 end
 
 function  gif
-  ruby $DOTFILES/ruby/gif.rb 
+  ruby $DOTFILES/ruby/gif.rb
 end
 
-function setup_d 
-  sh $DOTFILES/tmux/setup_dotfiles.sh 
+function setup_d
+  sh $DOTFILES/tmux/setup_dotfiles.sh
 end
 
-function setup_rn 
-  sh $DOTFILES/tmux/setup_rn.sh 
+function setup_rn
+  sh $DOTFILES/tmux/setup_rn.sh
 end
 
-function awslog  
-  sh $DOTFILES/tmux/login.sh 
+function awslog
+  sh $DOTFILES/tmux/login.sh
 end
   #dr alfa  razack 416-519-0744
 #715 pape avenue.
 
 # support pin - 4334
+#function gitclone 
 
+#"git clone https://github.com/1ak31sha/"
+alias gf "git status -s"
 function  ecp_runAll
   gradle clean --info allE2ETests -Dkarate.env=preprod -Dkarate.properties=https://39u3st4qhj.execute-api.us-east-1.amazonaws.com/e2e -PtestProfile=a-corporate-preprod -PprojectName=ecpregistry -PtopicARN=a204121-control-ecpmeta-e2e-use1 -PRegistryQueue=a204121-registryqueue-ecpmeta-e2e-use1 -Ptestprefix=foo -PSSM_PASSWORD_PARAMETER=a204121-kms-ecpmeta-registry -PBUCKETNAME=a204121-content-ecpmeta-e2e-use1 -PTABLENAME=a204121-s3indextable-ecpmeta-e2e-use1 -Dcucumber.options="--tags @Graph"
 end
@@ -60,8 +60,8 @@ function debug_ecp
   git reset src/main/java/com/tr/ecp/awsregistryutils/RegistryHelperUtils.java
 end
 
-function cloud-login 
-  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;!2345   
+function cloud-login
+  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;!2345
 end
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
 #echo $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')
