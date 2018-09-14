@@ -46,14 +46,6 @@ end
 function awslog  
   sh $DOTFILES/tmux/login.sh 
 end
-
-function ruby 
-  $DOTFILES/git/gitbranch.rb 	
-end
-
-function  ecp_runTest  
-  ruby $DOTFILES/ruby/run_if_more_than_60s.rb $argv 
-end
   #dr alfa  razack 416-519-0744
 #715 pape avenue.
 
