@@ -1,3 +1,4 @@
+Unicode Character 'GREEK QUESTION MARK' (U+037E)
 Wednesday, August 08, 2007
 Vim Tips for Java #2: Using exuberant-ctags
 ctags is a great tool for programmers. It creates an index to your source code to allow you to trawl through them for cross referencing. While the way it works doesn't look as snazzy as nicely formatted javadoc output like Netbeans, it does its job well enough for you to read up a field or method definition whenever you need it. You'll need to install exuberant-ctags separately, which you can find on its website.

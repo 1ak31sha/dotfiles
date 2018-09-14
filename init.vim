@@ -12,8 +12,8 @@
 " ----
 "set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
 
-if has("autocmd")
-  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+  if has("autocmd")
+  "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 endif
 setlocal omnifunc=javacomplete#Complete
 setlocal completefunc=javacomplete#CompleteParamsInfo
@@ -57,7 +57,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'altercation/solarized'
   Plug 'crusoexia/vim-monokai'
-  Plug 'joshdick/onedark.vim' 
+  Plug 'joshdick/onedark.vim'
   Plug 'lambdalisue/suda.vim'
   Plug 'dracula/vim', { 'as': 'dracula' }
   " Syntax
@@ -89,7 +89,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'w0rp/ale'
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'pangloss/vim-javascript' 
+  Plug 'pangloss/vim-javascript'
 
   " Navigation
   "Plug 'cloudhead/neovim-fuzzy'
@@ -97,9 +97,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'mhartington/oceanic-next'
-  Plug 'ervandew/supertab'  
+  Plug 'ervandew/supertab'
 
-  Plug 'tpope/vim-cucumber'  
+  Plug 'tpope/vim-cucumber'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
 
@@ -171,7 +171,7 @@ nnoremap <Leader>8 :call Smart_commenting()<CR>
 " PLUGIN CONFIGURATIONS
 " ----------------------
 
-" FZF " 
+" FZF "
 " -----
 " Default fzf layout
 " - down / up / left / right
@@ -330,7 +330,7 @@ endif
 
 " --------
 "  Airline
-" -------- 
+" --------
 let g:airline_powerline_fonts = 1
 
 
@@ -416,10 +416,8 @@ echo commentDict
   if( has_key(commentDict, type))
     let commentChar = commentDict[type]
     let checkForExistingComment = matchstrpos(curr_line, commentChar)
-    let checkForExistingComment2 = matchstr(curr_line, commentChar)
-    "let res = curr_line 
-    "let indexOfFirstCommentChar = checkForExistingComment 
-    if (checkForExistingComment[1] > -1)
+    let res = matchstr(curr_line, '^\s*' . commentChar)
+    if (checkForExistingComment[1] > -1 && res != '')
       call feedkeys("0")
       let i = 0
       while i < checkForExistingComment[1]
@@ -433,7 +431,6 @@ echo commentDict
       call feedkeys("I" . commentChar . "\<esc>j")
     endif
   endif
-  echo checkForExistingComment
 endfunction
 
 " Zap trailing whitespace.
@@ -453,7 +450,7 @@ endfunction
 
 "let g:neomake_javascript_enabled_makers = ['eslint']
 "let g:neomake_javascript_enabled_makers = ['jscs']
-""Olet g:neomake_javascript_enabled_makers = ['eslint'] 
+""Olet g:neomake_javascript_enabled_makers = ['eslint']
 "let g:ale_completion_enabled = 1
 
 "  let g:NERDDTreeGitStatusNodeColorization = 1
@@ -644,8 +641,8 @@ function! WatchForChanges(bufname, ...)
   let @"=reg_saved
 endfunction
 
-let autoreadargs={'autoread':1} 
-execute WatchForChanges("*",autoreadargs) 
+let autoreadargs={'autoread':1}
+execute WatchForChanges("*",autoreadargs)
 
 " this shit doesnt work. i want my tab color brighter and more apparent
 hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen

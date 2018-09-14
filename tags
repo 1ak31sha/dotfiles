@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'$/;"	v
+<C-b>	init.vim	/^nnoremap <C-b> :NERDTreeToggle<CR>$/;"	m
+<C-c>	init.vim	/^vnoremap <C-c> "*y$/;"	m
+<C-p>	init.vim	/^nnoremap <C-p>        :FZF<CR>$/;"	m
+<C-q>	init.vim	/^nnoremap <C-q> :NERDTreeFocus<CR>$/;"	m
+<C-r>	init.vim	/^vnoremap <C-r> "hy:%s\/<C-r>h\/\/gc<left><left><left>$/;"	m
+<C-w>	init.vim	/^imap <C-w>     <Plug>(neosnippet_expand_or_jump)$/;"	m
+<Leader>"	init.vim	/^nnoremap <Leader>" I"<esc>j$/;"	m
+<Leader>/	init.vim	/^nnoremap <Leader>\/ I\/\/<esc>j$/;"	m
+<Leader>3	init.vim	/^nnoremap <Leader>3 I#<esc>j$/;"	m
+<Leader>8	init.vim	/^nnoremap <Leader>8 :call Smart_commenting()<CR>$/;"	m
+<Leader>9	init.vim	/^nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>$/;"	m
+<Leader>c	init.vim	/^nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>$/;"	m
+<Leader>d	init.vim	/^nnoremap <Leader>d    <S-v>yp$/;"	m
+<Leader>html	init.vim	/^nnoremap <Leader>html :-1read $DOTFILES\/testhtml.html<CR>1jf>a$/;"	m
+<Leader>q	init.vim	/^nnoremap <Leader>q    :q<CR>$/;"	m
+<Leader>r	init.vim	/^nnoremap <Leader>r    :source $DOTFILES\/init.vim<CR>$/;"	m
+<Leader>s	init.vim	/^nnoremap <Leader>s    :w<CR>$/;"	m
+<Leader>t	init.vim	/^nnoremap <Leader>t    :tabnew<CR>$/;"	m
+<Leader>z	init.vim	/^nnoremap <silent>     <Leader>z :call Zap()<CR>$/;"	m
+<c-d>	init.vim	/^noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>$/;"	m
+<leader>f	init.vim	/^nnoremap <leader>f    :NERDTreeFind<CR>$/;"	m
+<leader>pi	init.vim	/^nnoremap <leader>pi   :PlugInstall$/;"	m
+Cycle_colors	init.vim	/^function! Cycle_colors() abort$/;"	f
+Cycle_numbering	init.vim	/^function! Cycle_numbering() abort$/;"	f
+HelloWorldApp	hello_world/java/lamduh.java	/^class HelloWorldApp {$/;"	c
+NERDTreeMapOpenInTab	init.vim	/^let NERDTreeMapOpenInTab='t'$/;"	v
+NERDTreeShowHidden	init.vim	/^let NERDTreeShowHidden=1$/;"	v
+Smart_commenting	init.vim	/^function! Smart_commenting() abort$/;"	f
+WatchForChanges	init.vim	/^command! -bang WatchForChanges                  :call WatchForChanges(@%,  {'toggle': 1, 'autoread': <bang>0})$/;"	c
+WatchForChanges	init.vim	/^function! WatchForChanges(bufname, ...)$/;"	f
+WatchForChangesAllFile	init.vim	/^command! -bang WatchForChangesAllFile           :call WatchForChanges('*', {'toggle': 1, 'autoread': <bang>0})$/;"	c
+WatchForChangesWhileInThisBuffer	init.vim	/^command! -bang WatchForChangesWhileInThisBuffer :call WatchForChanges(@%,  {'toggle': 1, 'autoread': <bang>0, 'while_in_this_buffer_only': 1})$/;"	c
+Zap	init.vim	/^function! Zap() abort$/;"	f
+autoreadargs	init.vim	/^let autoreadargs={'autoread':1} $/;"	v
+b:ale_linters	init.vim	/^let b:ale_linters = ['eslint']$/;"	v
+child	snakeoil/expect_demo.py	/^child = pexpect.spawn('cloud-tool-fr login')$/;"	v
+const	learning/es.js	/^const magic = function() {$/;"	f
+const.name	learning/es.js	/^const apple = { name: 'apple' };$/;"	p
+const.name	learning/es.js	/^const orange = { name: 'orange' };$/;"	p
+g:DevIconsEnableFoldersOpenClose	init.vim	/^let g:DevIconsEnableFoldersOpenClose = 1$/;"	v
+g:UltiSnipsEditSplit	init.vim	/^let g:UltiSnipsEditSplit="vertical"$/;"	v
+g:UltiSnipsExpandTrigger	init.vim	/^let g:UltiSnipsExpandTrigger='<leader>e'$/;"	v
+g:UltiSnipsJumpBackwardTrigger	init.vim	/^let g:UltiSnipsJumpBackwardTrigger="<c-z>"$/;"	v
+g:UltiSnipsJumpForwardTrigger	init.vim	/^let g:UltiSnipsJumpForwardTrigger="<c-b>"$/;"	v
+g:UltiSnipsSnippetsDir	init.vim	/^let g:UltiSnipsSnippetsDir="~\/workspace\/1ak31sha\/vimsnips"$/;"	v
+g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol	init.vim	/^let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol='👩 '$/;"	v
+g:WebDevIconsUnicodeDecorateFolderNodes	init.vim	/^let g:WebDevIconsUnicodeDecorateFolderNodes = 1$/;"	v
+g:ag_working_path_mode	init.vim	/^let g:ag_working_path_mode="r"$/;"	v
+g:airline_powerline_fonts	init.vim	/^let g:airline_powerline_fonts = 1$/;"	v
+g:ctrlp_show_hidden	init.vim	/^let g:ctrlp_show_hidden = 1$/;"	v
+g:fzf_layout	init.vim	/^let g:fzf_layout = { 'up': '~40%' }$/;"	v
+g:neosnippet#snippets_directory	init.vim	/^let g:neosnippet#snippets_directory='~\/workspace\/1ak31sha\/vimsnips\/'$/;"	v
+g:solarized_termcolors	init.vim	/^let g:solarized_termcolors=256$/;"	v
+g:webdevicons_gui_glyph_fix	init.vim	/^let g:webdevicons_gui_glyph_fix = 1$/;"	v
+main	hello_world/java/lamduh.java	/^    public static void main(String[] args) {$/;"	m	class:HelloWorldApp
+mapleader	init.vim	/^let mapleader = " "$/;"	v
+max_so_far	algorithms/largest_contiguous_sum.js	/^    var max_so_far = 0$/;"	v
+pexpect	snakeoil/expect_demo.py	/^import pexpect$/;"	i
