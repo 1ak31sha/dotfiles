@@ -14,45 +14,50 @@ set -x PATH $PATH      $ANDROID_HOME/tools/bin
 set -x PATH $PATH      $ANDROID_HOME/platform-tools
 set -x EDITOR          nvim
 set -x PATH $PATH      $HOME/.local/bin
-#set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home 
-set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home 
-#set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home 
+#set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+#set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
 #set -x JAVA_HOME       /usr/bin/java
 set -x GEM_PATH        ~/.gem
 set -x GEM_HOME        ~/.gem
 
 source $DOTFILES/.sharedrc
 
-function  startemu 
-  ruby $DOTFILES/ruby/emulator.rb 
+function  startemu
+  ruby $DOTFILES/ruby/emulator.rb
 end
 
+function  givelight
+  ruby $DOTFILES/ruby/maclight.rb
+end
+
+
 function  killemu
-  ruby $DOTFILES/ruby/killemu.rb 
+  ruby $DOTFILES/ruby/killemu.rb
 end
 
 function  gif
-  ruby $DOTFILES/ruby/gif.rb 
+  ruby $DOTFILES/ruby/gif.rb
 end
 
-function setup_d 
-  sh $DOTFILES/tmux/setup_dotfiles.sh 
+function setup_d
+  sh $DOTFILES/tmux/setup_dotfiles.sh
 end
 
-function setup_rn 
-  sh $DOTFILES/tmux/setup_rn.sh 
+function setup_rn
+  sh $DOTFILES/tmux/setup_rn.sh
 end
 
-function awslog  
-  sh $DOTFILES/tmux/login.sh 
+function awslog
+  sh $DOTFILES/tmux/login.sh
 end
 
-function ruby 
-  $DOTFILES/git/gitbranch.rb 	
+function ruby
+  $DOTFILES/git/gitbranch.rb
 end
 
-function  ecp_runTest  
-  ruby $DOTFILES/ruby/run_if_more_than_60s.rb $argv 
+function  ecp_runTest
+  ruby $DOTFILES/ruby/run_if_more_than_60s.rb $argv
 end
   #dr alfa  razack 416-519-0744
 #715 pape avenue.
@@ -68,8 +73,8 @@ function debug_ecp
   git reset src/main/java/com/tr/ecp/awsregistryutils/RegistryHelperUtils.java
 end
 
-function cloud-login 
-  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;!2345   
+function cloud-login
+  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;!2345
 end
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
 #echo $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')

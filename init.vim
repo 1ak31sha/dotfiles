@@ -57,66 +57,71 @@ autocmd FileType java set tags=~/.tags
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
+
+  " Color Schemes
   Plug 'altercation/solarized'
   Plug 'crusoexia/vim-monokai'
   Plug 'joshdick/onedark.vim'
-  Plug 'lambdalisue/suda.vim'
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'mhartington/oceanic-next'
+  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+
   " Syntax
   Plug 'vim-scripts/groovy.vim'
   Plug 'mxw/vim-jsx'
   Plug 'dag/vim-fish'
   Plug 'darthmall/vim-vue'
-
-   "Linting
-   Plug 'jvenant/vim-java-imports'
-   Plug 'prettier/vim-prettier'
-"    Plug 'sbdchd/neoformat'
-   Plug 'terryma/vim-smooth-scroll'
-  "if has('nvim')
-  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  "else
-  "  Plug 'Shougo/deoplete.nvim'
-"    Plug 'roxma/nvim-yarp'
-"    Plug 'roxma/vim-hug-neovim-rpc'
-"  endif
-  "let g:deoplete#enable_at_startup = 1
-
-  Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
-
-  Plug 'rking/ag.vim'
-  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+  Plug 'tpope/vim-cucumber'
   Plug 'artur-shaik/vim-javacomplete2'
   Plug 'w0rp/ale'
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'pangloss/vim-javascript'
 
-  " Navigation
-  "Plug 'cloudhead/neovim-fuzzy'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  Plug 'mhartington/oceanic-next'
-  Plug 'ervandew/supertab'
+   "Linting
+   Plug 'jvenant/vim-java-imports'
+   Plug 'prettier/vim-prettier'
 
-  Plug 'tpope/vim-cucumber'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
+   " Navigation
+   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+   Plug 'Xuyuanp/nerdtree-git-plugin'
+   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+   Plug 'benmills/vimux'
+   Plug 'ervandew/supertab'
 
-  Plug 'benmills/vimux'
-  Plug 'honza/vim-snippets'
+   "Git
+   Plug 'tpope/vim-fugitive'
 
-  "COLORS
-  Plug 'altercation/vim-colors-solarized'
-    "Plug 'Chiel92/vim-autoformat'
+  " Tools
+  Plug 'rking/ag.vim'   " silver searcher
+  Plug 'lambdalisue/suda.vim' " get sudo on the file
+  Plug 'terryma/vim-smooth-scroll'
+
+  " Text maniulation
   Plug 'terryma/vim-multiple-cursors'
-" Plug '~/.config/nvim/scripts/ColDevicons'
+  Plug 'tpope/vim-surround'
+  Plug 'honza/vim-snippets'
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
+
+  " Unused ATM
+  "
+  "    Plug 'sbdchd/neoformat'
+  "if has('nvim')
+  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "else
+  "  Plug 'Shougo/deoplete.nvim'
+  "    Plug 'roxma/nvim-yarp'
+  "    Plug 'roxma/vim-hug-neovim-rpc'
+  "  endif
+  "let g:deoplete#enable_at_startup = 1
+  "Plug 'Chiel92/vim-autoformat'
+  " Plug '~/.config/nvim/scripts/ColDevicons'
   " Plug 'ryanoasis/vim-devicons'
   " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
   "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-"  Plug 'SirVer/ultisnips'
+  "  Plug 'SirVer/ultisnips'
   " Plug 'neomake/neomake' "| Plug 'dojoteef/neomake-autolint'
 
 call plug#end()
@@ -125,22 +130,42 @@ call plug#end()
 " -----------
 " MAPPINGS
 " -----------
-"<Bs> BACK
-"<Del> DELETE
-let mapleader = " "
 
-" COMMAND MODE
-" ------------
-" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-" -> use this instead :w suda://%
+let mapleader = " "
+" NORMAL MODE
+" -----------
+nnoremap <C-p>        :FZF<CR>
+nnoremap <leader>f    :NERDTreeFind<CR>
+nnoremap <Leader>d    <S-v>yp
+nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
+nnoremap <leader>pi   :PlugInstall
+nnoremap <Leader>q    :q<CR>
+nnoremap <Leader>s    :w<CR>
+nnoremap <Leader>h    :sp<CR><C-w><Down>
+nnoremap <Leader>v    :vsp<CR><C-w><Right>
+nnoremap <Leader>t    :tabnew<CR>
+nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
+
+"surround
+nmap <leader>'        viwS'<CR> 
+nmap <leader>"        viwS"<CR>
+nmap <leader>(        viwS(<CR>
+nmap <leader>[        viwS[<CR>
+nmap <leader>{        viwS{<CR>
+
+"funtions
+nnoremap <silent>     <Leader>z :call Zap()<CR>
+nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
+nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
+nnoremap <Leader>8    :call Smart_commenting()<CR>
 
 " VISUAL
 " ------
-xnoremap K :move '<-2<CR>gv=gv
-xnoremap J :move '>+1<CR>gv=gv
-xnoremap <Leader>d y`>p
-vnoremap <C-c> "*y
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+xnoremap K            :move '<-2<CR>gv=gv
+xnoremap J            :move '>+1<CR>gv=gv
+xnoremap <Leader>d    y`>p
+vnoremap <C-c>        "*y
+vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
 
 " INSERT MODE
 " -----------
@@ -149,25 +174,13 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " type an opening brace and it auto does the closing, putting you inside the braces
 "imap ( ()<C-[>i
 
-" NORMAL MODE
-" -----------
-nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
-nnoremap <leader>pi   :PlugInstall
-nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
-nnoremap <Leader>q    :q<CR>
-nnoremap <Leader>s    :w<CR>
-nnoremap <Leader>d    <S-v>yp
-nnoremap <Leader>t    :tabnew<CR>
-nnoremap <leader>f    :NERDTreeFind<CR>
-nnoremap <silent>     <Leader>z :call Zap()<CR>
-nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
-nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
-nnoremap <C-p>        :FZF<CR>
+" COMMAND MODE
+" ------------
+" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+" -> use this instead :w suda://%
 
-nnoremap <Leader>/ I//<esc>j
-nnoremap <Leader>" I"<esc>j
-nnoremap <Leader>3 I#<esc>j
-nnoremap <Leader>8 :call Smart_commenting()<CR>
+"<Bs> BACK
+"<Del> DELETE
 
 " ----------------------
 " PLUGIN CONFIGURATIONS
@@ -180,6 +193,34 @@ nnoremap <Leader>8 :call Smart_commenting()<CR>
 "    let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_layout = { 'up': '~40%' }
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+    "let g:fzf_colors =
+    "\ { 'fg':      ['fg', 'Normal'],
+      "\ 'bg':      ['bg', 'Normal'],
+      "\ 'hl':      ['fg', 'Comment'],
+      "\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      "\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      "\ 'hl+':     ['fg', 'Statement'],
+      "\ 'info':    ['fg', 'PreProc'],
+      ""\ 'border':  ['fg', 'Ignore'],
+      "\ 'prompt':  ['fg', 'Conditional'],
+      "\ 'pointer': ['fg', 'Exception'],
+      "\ 'marker':  ['fg', 'Keyword'],
+      "\ 'spinner': ['fg', 'Label'],
+      "\ 'header':  ['fg', 'Comment'] }
+    let g:fzf_colors =
+    \ { 'fg':      ['fg', 'monokai'],
+      \ 'bg':      ['bg', 'monokai'],
+      \ 'hl':      ['fg', 'monokai'],
+      \ 'fg+':     ['fg', 'monokai', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'monokai', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'monokai'],
+      \ 'info':    ['fg', 'monokai'],
+      \ 'border':  ['fg', 'monokai'],
+      \ 'prompt':  ['fg', 'green'],
+      \ 'pointer': ['fg', 'monokai'],
+      \ 'marker':  ['fg', 'monokai'],
+      \ 'spinner': ['fg', 'monokai'],
+      \ 'header':  ['fg', 'monokai'] }
 
 " PRETTIER "
 " ----------
@@ -361,18 +402,10 @@ set termguicolors
 " -------------
 "autocmd BufEnter * colorscheme default
 colorscheme monokai
-"colorscheme inkpot
-"color dracula
-"colorscheme blue
-
-"colorscheme molokai
 syntax enable
-" set background=light
-" colorscheme solarized
-"let g:neomake_autolint_enabled
 
 " Trailing whitespace and tabs are forbidden, so highlight them.
-highlight ForbiddenWhitespace ctermbg=red guibg=red
+highlight ForbiddenWhitespace ctermbg=yellow guibg=yellow
 match ForbiddenWhitespace /\s\+$\|\t/
 " Do not highlight spaces at the end of line while typing on that line.
 autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@<!$/
@@ -393,7 +426,7 @@ endfunction
 
   " Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_colors() abort
-  let schemes = ['monokai' , 'dracula', 'solarized', 'onedark' ]
+  let schemes = ['monokai', 'dracula', 'solarized', 'onedark', 'OceanicNext' ]
   let cur_scheme = eval("g:colors_name")
   let i = index(schemes,cur_scheme)
   let j = (i+1)%len(schemes)
@@ -404,16 +437,19 @@ endfunction
 
 function! Smart_commenting() abort
   let commentDict= {
-        \  'javascript': '//',
-        \ 'java': '//',
-        \ 'tmux': '#',
-        \ 'bash': '#',
+        \ 'javascript': '//',
+        \ 'javascript.jsx': '//',
         \ 'vim': '"',
+        \ 'tmux': '#',
+        \ 'fish': '#',
+        \ 'bash': '#',
+        \ 'ruby': '#',
+        \ 'perl': '#',
         \ 'vue': '//',
+        \ 'java': '//',
         \   }
 echo commentDict
   let curr_line = getline('.')
-  echo curr_line
   let type = &filetype
   if( has_key(commentDict, type))
     let commentChar = commentDict[type]
@@ -432,6 +468,8 @@ echo commentDict
     else
       call feedkeys("I" . commentChar . "\<esc>j")
     endif
+  else
+    echo "filetype '" . &filetype . "' is not configured"
   endif
 endfunction
 
