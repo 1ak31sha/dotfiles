@@ -25,11 +25,15 @@ preferences->General>chrome default
 
 instal karabiner elemenets
 -brew install cmake
+# if c ompiler not found,  xcode-select --reset
 - install boost
 - install xcode
 
 
 -brew install tmux
+# install neovim
+# brew install neovim
+# install vim-plug:
 - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 https://github.com/sickill/vim-monokai.gIT
