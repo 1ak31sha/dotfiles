@@ -1,8 +1,9 @@
-install git
-install iterm2
-install spectacle
-install chrome
-isntall java jdk
+## Settingup a new mac
+- install git
+- install iterm2
+- install spectacle
+- install chrome
+- isntall java jdk
 install mvn?
 login to github
 -install homebrew
@@ -13,6 +14,12 @@ brew isntall gradle
  defaults write NSGlobalDomain InitialKeyRepeat -int 12
  defaults write NSGlobalDomain KeyRepeat -int 1
 
+set fish to default:
+sudo vim /etc/shells
+add this:
+/usr/local/bin/fish
+chsh -s `which fish`
+log out and in
 
  gem install neovim
 npm install -g neovim
