@@ -52,8 +52,8 @@ function awslog
   sh $DOTFILES/tmux/login.sh
 end
 
-function ruby
-  $DOTFILES/git/gitbranch.rb
+function gitb
+  ruby $DOTFILES/git/gitbranch.rb
 end
 
 function  ecp_runTest
