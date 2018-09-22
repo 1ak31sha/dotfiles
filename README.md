@@ -3,7 +3,7 @@
 everything i need to setup my dotfiles and a new computer in general
 
 # Table of Contents
-  * [MacOS setup ](#macos)
+  * [MacOS setup](#macos)
   * [Brew](#brew)
   * [Fish](#fish)
   * [Karabiner-Elements](#karabiner)
@@ -34,6 +34,12 @@ install brew:
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 then run the `setup_brews.sh` to install softwares
+
+```
+pip install requests urllib3 pyOpenSSL --force --upgrade
+
+ 👍 58 😄 1 🎉 2 ❤️ 4  
+ ``` 
 
 ## Fish 
 <a id="fish"></a>
