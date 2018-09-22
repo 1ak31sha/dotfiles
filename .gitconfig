@@ -1,2 +1,21 @@
-[alias]
-	unstage = reset --
+[url "https://"]
+  insteadOf = git://
+[user]
+  name = lakeisha-pogrzeba
+  email = lakeisha.pogrzeba@gmail.com
+[core]
+  excludesfile = /Users/u6064854/.gitignore_global
+  editor = 'nvim'
+[difftool]
+  prompt = true
+[difftool "nvimdiff"]
+  cmd = "nvim -d -u $DOTFILES/init.vim \"$LOCAL\" \"$REMOTE\""
+[diff]
+  tool = nvimdiff
+[merge]
+  tool = nvimdiff
+[mergetool]
+  path = nvim
+[commit]
+  template = $DOTFILES/git/commit_template
+  #git config --global -e

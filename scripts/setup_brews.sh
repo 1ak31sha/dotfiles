@@ -8,3 +8,5 @@ brew install tree
 brew install cmake
 brew install neovim
 brew install tmux
+brew install reattach-to-user-namespace
+
