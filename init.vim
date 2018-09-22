@@ -2,7 +2,6 @@
 " `c  PLUGIN CONFIGURATIONS
 " `f  FUNCTIONS
 " `s  SET OPTIONS
-" `j  JAVA
 " `y  PYTHON
 " `m  MAPPINGS
 "~_~_~_~_~_~_~_~_~_~_~"   ^  ^
@@ -114,6 +113,17 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-surround'
   Plug 'honza/vim-snippets'
+  "Plug 'Shougo/neosnippet.vim'
+  "Plug 'Shougo/neosnippet-snippets'
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+  let g:deoplete#enable_at_startup = 1
+
   Plug 'Shougo/neosnippet.vim'
   Plug 'Shougo/neosnippet-snippets'
 

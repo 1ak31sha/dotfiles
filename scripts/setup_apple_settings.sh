@@ -10,3 +10,6 @@ defaults write com.apple.finder AppleShowAllFiles YES
 defaults delete com.apple.dock persistent-apps
 defaults delete com.apple.dock persistent-others
 sudo xcode-select --install
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
+defaults write NSGlobalDomain KeyRepeat -int 1
+
