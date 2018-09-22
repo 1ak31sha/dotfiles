@@ -1,156 +1,36 @@
+" `p  PLUGINS
+" `c  PLUGIN CONFIGURATIONS
+" `f  FUNCTIONS
+" `s  SET OPTIONS
+" `j  JAVA
+" `y  PYTHON
+" `m  MAPPINGS
 "~_~_~_~_~_~_~_~_~_~_~"   ^  ^
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/workspace/dotfiles/init.vim
-endif
-
-"--------------
-" Health Checks:
 "
-" Python
-" -------
-"let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
-
-" ----
-" General Settings
-" ----
-"set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
-let g:solarized_termcolors=256
-
-  if has("autocmd")
-  "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-endif
-setlocal omnifunc=javacomplete#Complete
-setlocal completefunc=javacomplete#CompleteParamsInfo
-"set autochdir "automatically change directory if file opened is not in current dir
-set nowrap
-set nocursorline
-set encoding=utf8
-set nocp   " 'compatible' is not set
-set noswapfile
-set nopaste
-
-set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
-
-set number
-set relativenumber
-set shiftwidth=2
-set expandtab
-set autoread                    "Reload files changed outside vim
-set path+=**
-set wildmenu
-set gdefault
-" Status line
-set statusline+=%F
-"supposed to tunoff auto-comment, but this actually happens in the after-directory
-autocmd FileType * setlocal formatoptions=jql
-autocmd Filetype ruby setlocal tabstop=2
-autocmd Filetype rb setlocal tabstop=2
-autocmd Filetype json setlocal tabstop=2
-autocmd Filetype * setlocal tabstop=2
-autocmd FileType java set tags=~/.tags
-
-"au FocusGained,BufEnter * :silent! ! " auto reload any chan ges when focus gained or buf enter
-"au FocusLost,WinLeave * :silent! noautocmd w " files always saved when leaving a buffer
-"let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" -------
-" PLUGINS
-" -------
-call plug#begin('~/.config/nvim/plugged')
-
-  " Color Schemes
-  Plug 'altercation/solarized'
-  Plug 'crusoexia/vim-monokai'
-  Plug 'joshdick/onedark.vim'
-  Plug 'dracula/vim', { 'as': 'dracula' }
-  Plug 'altercation/vim-colors-solarized'
-  Plug 'mhartington/oceanic-next'
-  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
-
-  " Syntax
-  Plug 'vim-scripts/groovy.vim'
-  Plug 'mxw/vim-jsx'
-  Plug 'dag/vim-fish'
-  Plug 'darthmall/vim-vue'
-  Plug 'tpope/vim-cucumber'
-  Plug 'artur-shaik/vim-javacomplete2'
-  Plug 'w0rp/ale'
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'pangloss/vim-javascript'
-
-   "Linting
-   Plug 'jvenant/vim-java-imports'
-   Plug 'prettier/vim-prettier'
-
-   " Navigation
-   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-   Plug 'Xuyuanp/nerdtree-git-plugin'
-   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-   Plug 'benmills/vimux'
-   Plug 'ervandew/supertab'
-
-   "Git
-   Plug 'tpope/vim-fugitive'
-
-  " Tools
-  Plug 'rking/ag.vim'   " silver searcher
-  Plug 'lambdalisue/suda.vim' " get sudo on the file
-  Plug 'terryma/vim-smooth-scroll'
-
-  " Text maniulation
-  Plug 'terryma/vim-multiple-cursors'
-  Plug 'tpope/vim-surround'
-  Plug 'honza/vim-snippets'
-  Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
-
-  " Unused ATM
-  "
-  "    Plug 'sbdchd/neoformat'
-  "if has('nvim')
-  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  "else
-  "  Plug 'Shougo/deoplete.nvim'
-  "    Plug 'roxma/nvim-yarp'
-  "    Plug 'roxma/vim-hug-neovim-rpc'
-  "  endif
-  "let g:deoplete#enable_at_startup = 1
-  "Plug 'Chiel92/vim-autoformat'
-  " Plug '~/.config/nvim/scripts/ColDevicons'
-  " Plug 'ryanoasis/vim-devicons'
-  " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
-  "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-  "  Plug 'SirVer/ultisnips'
-  " Plug 'neomake/neomake' "| Plug 'dojoteef/neomake-autolint'
-
-call plug#end()
-"
-
 " -----------
 " MAPPINGS
 " -----------
 
 let mapleader = " "
-" NORMAL MODE
-" -----------
+
+" normal mode
 nnoremap <C-p>        :FZF<CR>
-nnoremap <leader>f    :NERDTreeFind<CR>
-nnoremap <Leader>d    <S-v>yp
-nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
-nnoremap <leader>pi   :PlugInstall
 nnoremap <Leader>q    :q<CR>
 nnoremap <Leader>s    :w<CR>
+nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
+nnoremap <leader>pi   :PlugInstall
+nnoremap <Leader>d    <S-v>yp
 nnoremap <Leader>h    :sp<CR><C-w><Down>
 nnoremap <Leader>v    :vsp<CR><C-w><Right>
+nnoremap <leader>f    :NERDTreeFind<CR>
 nnoremap <Leader>t    :tabnew<CR>
 nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR> 
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR> 
 
-"surround
+" surround
 nmap <leader>'        viwS'<CR> 
 nmap <leader>"        viwS"<CR>
 nmap <leader>(        viwS(<CR>
@@ -164,7 +44,6 @@ nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
 nnoremap <Leader>8    :call Smart_commenting()<CR>
 
 " VISUAL
-" ------
 xnoremap K            :move '<-2<CR>gv=gv
 xnoremap J            :move '>+1<CR>gv=gv
 xnoremap <Leader>d    y`>p
@@ -186,90 +65,72 @@ vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
 "<Bs> BACK
 "<Del> DELETE
 
+" -------
+" PLUGINS
+" -------
+call plug#begin('~/.config/nvim/plugged')
+
+  " Color Schemes
+  Plug 'altercation/solarized'
+  Plug 'crusoexia/vim-monokai'
+  Plug 'joshdick/onedark.vim'
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'mhartington/oceanic-next'
+  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  " Syntax
+  "Plug 'w0rp/ale'
+  Plug 'vim-scripts/groovy.vim'
+  Plug 'mxw/vim-jsx'
+  Plug 'dag/vim-fish'
+  Plug 'darthmall/vim-vue'
+  Plug 'tpope/vim-cucumber'
+  Plug 'artur-shaik/vim-javacomplete2'
+  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'pangloss/vim-javascript'
+
+   "Linting
+   Plug 'jvenant/vim-java-imports'
+   Plug 'prettier/vim-prettier'
+
+   " Navigation
+   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+   Plug 'benmills/vimux'
+   Plug 'ervandew/supertab'
+
+   "Git
+   Plug 'tpope/vim-fugitive'
+   "Plug 'Xuyuanp/nerdtree-git-plugin'
+
+  " Tools
+  Plug 'rking/ag.vim'   " silver searcher
+  Plug 'lambdalisue/suda.vim' " get sudo on the file
+  Plug 'terryma/vim-smooth-scroll'
+
+  " Text maniulation
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'tpope/vim-surround'
+  Plug 'honza/vim-snippets'
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
+
+  Plug 'ryanoasis/vim-devicons'
+call plug#end()
+"
 " ----------------------
 " PLUGIN CONFIGURATIONS
 " ----------------------
 
-" FZF "
-" -----
-" Default fzf layout
-" - down / up / left / right
-"    let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_layout = { 'up': '~40%' }
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-    "let g:fzf_colors =
-    "\ { 'fg':      ['fg', 'Normal'],
-      "\ 'bg':      ['bg', 'Normal'],
-      "\ 'hl':      ['fg', 'Comment'],
-      "\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      "\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      "\ 'hl+':     ['fg', 'Statement'],
-      "\ 'info':    ['fg', 'PreProc'],
-      ""\ 'border':  ['fg', 'Ignore'],
-      "\ 'prompt':  ['fg', 'Conditional'],
-      "\ 'pointer': ['fg', 'Exception'],
-      "\ 'marker':  ['fg', 'Keyword'],
-      "\ 'spinner': ['fg', 'Label'],
-      "\ 'header':  ['fg', 'Comment'] }
-    let g:fzf_colors =
-    \ { 'fg':      ['fg', 'monokai'],
-      \ 'bg':      ['bg', 'monokai'],
-      \ 'hl':      ['fg', 'monokai'],
-      \ 'fg+':     ['fg', 'monokai', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'monokai', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'monokai'],
-      \ 'info':    ['fg', 'monokai'],
-      \ 'border':  ['fg', 'monokai'],
-      \ 'prompt':  ['fg', 'green'],
-      \ 'pointer': ['fg', 'monokai'],
-      \ 'marker':  ['fg', 'monokai'],
-      \ 'spinner': ['fg', 'monokai'],
-      \ 'header':  ['fg', 'monokai'] }
-
-" PRETTIER "
-" ----------
-" print semicolons
-" Prettier default: true
-" print spaces between brackets
-" Prettier default: true
-" put > on the last line instead of new line
-" Prettier default: false
-" let g:prettier#config#jsx_bracket_same_line = 'true'
-" none|es5|all
-" Prettier default: none
-" let g:prettier#config#trailing_comma = 'all'
-"let g:prettier#config#semi = 'false'
-"let g:prettier#config#bracket_spacing = 'true'
-
-"Smooth Scroll "
-"---------------
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-w>     <Plug>(neosnippet_expand_or_jump)
-smap <C-w>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-w>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-let g:neosnippet#snippets_directory='~/workspace/1ak31sha/vimsnips/'
-
-" AG - the silver surfer "
-" ------------------------
+" AG - the silver surfer
+" ----------------------
 let g:ag_working_path_mode="r"
 
+" Airline
+" --------
+let g:airline_powerline_fonts = 1
 
 " ALE "
 " -----
@@ -284,14 +145,13 @@ let b:ale_linters = ['eslint']
 "let g:autoformat_remove_trailing_spaces = 0
 "au BufWrite * :Autoformat
 
+" CTRL-P
+"--------
+let g:ctrlp_show_hidden = 1
 
 " ---------
 " DevIcons
 " ---------
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol='👩 '
-if exists('g:loaded_webdevicons')
-"""  call webdevicons#refresh()
-endif
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_gui_glyph_fix = 1
@@ -306,40 +166,126 @@ let g:webdevicons_gui_glyph_fix = 1
 "  \ 'jspc#omni'
 "\]
 
-" ---------
+" FZF
+" ---
+let g:fzf_layout = { 'up': '~40%' }
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+let g:fzf_colors =
+      \ { 'fg':      ['fg', 'monokai'],
+      \ 'bg':      ['bg', 'monokai'],
+      \ 'hl':      ['fg', 'monokai'],
+      \ 'fg+':     ['fg', 'monokai', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'monokai', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'monokai'],
+      \ 'info':    ['fg', 'monokai'],
+      \ 'border':  ['fg', 'monokai'],
+      \ 'prompt':  ['fg', 'green'],
+      \ 'pointer': ['fg', 'monokai'],
+      \ 'marker':  ['fg', 'monokai'],
+      \ 'spinner': ['fg', 'monokai'],
+      \ 'header':  ['fg', 'monokai'] }
+" Default fzf layout
+" - down / up / left / right
+"    let g:fzf_layout = { 'down': '~40%' }
+
 " Nerd Tree
 " ---------
-"  m    - menu
-"  C-b  - open sidebar
-"  C-ww - sidebar focus toggle
-"
 nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
-"autocmd vimenter * NERDTree "// Open the tree by default
 let NERDTreeShowHidden=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeMapOpenInTab='t'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd vimenter * NERDTree "// Open the tree by default
 
-" ---------
 " Neomake
 " ---------
 "jcall neomake#configure#automake('n')
 
-" -------
-" CTRL-P
-"--------
-let g:ctrlp_show_hidden = 1
+" Neosnippet
+" ----------
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-w>     <Plug>(neosnippet_expand_or_jump)
+smap <C-w>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-w>     <Plug>(neosnippet_expand_target)
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#snippets_directory='$DOTFILES/neosnips/'
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" -----------
+
+" Prettier
+" --------
+" print semicolons
+" Prettier default: true
+" print spaces between brackets
+" Prettier default: true
+" put > on the last line instead of new line
+" Prettier default: false
+" let g:prettier#config#jsx_bracket_same_line = 'true'
+" none|es5|all
+" Prettier default: none
+" let g:prettier#config#trailing_comma = 'all'
+"let g:prettier#config#semi = 'false'
+"let g:prettier#config#bracket_spacing = 'true'
+
 " UltiSnips
 " -----------
-"let g:UltiSnipsExpandTrigger="<tab>"
-
 let g:UltiSnipsExpandTrigger='<leader>e'
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/workspace/1ak31sha/vimsnips"
+"let g:UltiSnipsExpandTrigger="<tab>"
+
+" Vim-nerdtree-syntax-highlight
+" -----------------------------
+"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
+let g:NERDTreeLimitedSyntax = 1
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:rspec_red "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:lightGreen "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:purple "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
+"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+
+" ----------------------------
+" END OF PLUGIN CONFIGURATIONS
+" ----------------------------
+
 " ---------
 " AUTOCMD
 " ---------
@@ -375,36 +321,49 @@ if has("nvim")
   autocmd BufEnter term://* startinsert
 endif
 
-" --------
-"  Airline
-" --------
-let g:airline_powerline_fonts = 1
+" -----------
+" SET OPTIONS
+" -----------
+set nowrap
+set nocursorline
+set encoding=utf8
+set nocp   " 'compatible' is not set
+set noswapfile
+set nopaste
+set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
+set number
+set relativenumber
+set shiftwidth=2
+set expandtab
+set autoread                    "Reload files changed outside vim
+set path+=**
+set wildmenu
+set gdefault
+" Status line
+set statusline+=%F
+"supposed to tunoff auto-comment, but this actually happens in the after-directory
+
+set termguicolors
+
+autocmd FileType * setlocal formatoptions=jql
+autocmd Filetype ruby setlocal tabstop=2
+autocmd Filetype rb setlocal tabstop=2
+autocmd Filetype json setlocal tabstop=2
+autocmd Filetype * setlocal tabstop=2
+autocmd FileType java set tags=~/.tags
 
 
 syntax on
-set termguicolors
 
-
-" GUI MODE ONLY
-"" Visual Mode Orange Background, Black Text
-"hi Visual          guifg=#000000 guibg=#FD971F
-"
-"" Default Colors for CursorLine
-"highlight CursorLine guibg=#3E3D32
-"highlight Cursor guibg=#A6E22E;
-"
-"" Change Color when entering Insert Mode
-"autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
-"autocmd InsertEnter * highlight  Cursor guibg=#00AAFF;
-"
-"" Revert Color to default when leaving Insert Mode
-"autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
-"autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
+" ----
+" JAVA
+" ----
+setlocal omnifunc=javacomplete#Complete
+setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " -------------
-" COLOR SCHEMES
+" COLOR SCHEME
 " -------------
-"autocmd BufEnter * colorscheme default
 colorscheme monokai
 syntax enable
 
@@ -414,6 +373,27 @@ match ForbiddenWhitespace /\s\+$\|\t/
 " Do not highlight spaces at the end of line while typing on that line.
 autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@<!$/
 
+" ---------
+" FUNCTIONS
+" ---------
+function! SetGMark(mark, filename, line_nr)
+    let l:mybuf = bufnr(a:filename, 1)
+    call setpos("'".a:mark, [l:mybuf, a:line_nr, 1, 0])
+endf
+
+call SetGMark('A', '~/file.txt', 10)
+
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
   " Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_numbering() abort
   if exists('+relativenumber')

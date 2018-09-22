@@ -23,6 +23,11 @@ set -x GEM_HOME        ~/.gem
 
 source $DOTFILES/.sharedrc
 
+#todo
+function gclone
+  git clone 'https://github.com/1ak31sha/' + $argv
+end
+
 function  startemu
   ruby $DOTFILES/ruby/emulator.rb
 end
@@ -75,6 +80,9 @@ end
 
 function cloud-login
   cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;!2345
+end
+function cld
+  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;$5678'
 end
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
 #echo $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')

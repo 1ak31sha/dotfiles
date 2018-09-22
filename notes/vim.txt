@@ -1,5 +1,6 @@
 VIM CHEATS
 
+move to matching brace: %
 ### surround
   Old text                  Command     New text ~
   "Hello *world!"           ds"         Hello world!
