@@ -17,6 +17,7 @@ let mapleader = " "
 " normal mode
 nnoremap <C-p>        :FZF<CR>
 nnoremap <Leader>q    :q<CR>
+"nnoremap ?   :gt
 nnoremap <Leader>s    :w<CR>
 nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
 nnoremap <leader>pi   :PlugInstall
@@ -40,7 +41,7 @@ nmap <leader>{        viwS{<CR>
 nnoremap <silent>     <Leader>z :call Zap()<CR>
 nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
 nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
-nnoremap <Leader>8    :call Smart_commenting()<CR>
+nnoremap <Leader>\    :call Smart_commenting()<CR>
 
 " VISUAL
 xnoremap K            :move '<-2<CR>gv=gv
@@ -76,8 +77,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'altercation/vim-colors-solarized'
   Plug 'mhartington/oceanic-next'
-  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+  "Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'vim-scripts/AfterColors.vim'
+  Plug 'mkitt/tabline.vim'
+  "Plug 'NovaDev94/lightline-onedark'
   " Syntax
   "Plug 'w0rp/ale'
   Plug 'vim-scripts/groovy.vim'
@@ -115,14 +119,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'honza/vim-snippets'
   "Plug 'Shougo/neosnippet.vim'
   "Plug 'Shougo/neosnippet-snippets'
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
-  let g:deoplete#enable_at_startup = 1
+  "if has('nvim')
+  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "else
+  "  Plug 'Shougo/deoplete.nvim'
+  "  Plug 'roxma/nvim-yarp'
+  "  Plug 'roxma/vim-hug-neovim-rpc'
+  "endif
+  "let g:deoplete#enable_at_startup = 1
 
   Plug 'Shougo/neosnippet.vim'
   Plug 'Shougo/neosnippet-snippets'
@@ -197,6 +201,12 @@ let g:fzf_colors =
 " Default fzf layout
 " - down / up / left / right
 "    let g:fzf_layout = { 'down': '~40%' }
+
+" Lightline
+" ---------
+"let g:lightline = {
+"  \   'colorscheme': 'onedark'
+"  \}
 
 " Nerd Tree
 " ---------
@@ -351,6 +361,7 @@ set wildmenu
 set gdefault
 " Status line
 set statusline+=%F
+set showtabline=2
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
 
 set termguicolors
@@ -375,6 +386,9 @@ setlocal completefunc=javacomplete#CompleteParamsInfo
 " COLOR SCHEME
 " -------------
 colorscheme monokai
+" put this in the monokai plugin's monokai.vim file
+"call s:h("TabLineSel",    { "bg": s:orange})
+
 syntax enable
 
 " Trailing whitespace and tabs are forbidden, so highlight them.
@@ -678,14 +692,3 @@ endfunction
 let autoreadargs={'autoread':1}
 execute WatchForChanges("*",autoreadargs)
 
-" this shit doesnt work. i want my tab color brighter and more apparent
-hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-hi TabLine ctermfg=Blue ctermbg=Yellow
-hi TabLineSel ctermfg=Red ctermbg=Yellow
-hi Title ctermfg=LightBlue ctermbg=Magenta
-
-
-"let k = 5
-"echo
-
-let g:solarized_termcolors=256
