@@ -19,6 +19,8 @@ nnoremap <C-p>        :FZF<CR>
 nnoremap <Leader>q    :q<CR>
 "nnoremap ?   :gt
 nnoremap <Leader>s    :w<CR>
+nmap <Leader>m1       :mksession! $DOTFILES/learning.vim<CR>
+nmap <Leader>l1       :source $DOTFILES/learning.vim<CR>
 nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
 nnoremap <leader>pi   :PlugInstall
 nnoremap <Leader>d    <S-v>yp
@@ -167,6 +169,8 @@ let g:ctrlp_show_hidden = 1
 " DevIcons
 " ---------
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_gui_glyph_fix = 1
 
@@ -271,9 +275,14 @@ let g:UltiSnipsSnippetsDir="~/workspace/1ak31sha/vimsnips"
 " -----------------------------
 "Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
 let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
 let s:brown = "905532"
 let s:aqua =  "3AFFDB"
 let s:blue = "689FB6"
+let s:monokai_blue = "66D9EF"
+let s:monokai_green = "A6E22E"
 let s:darkBlue = "44788E"
 let s:purple = "834F79"
 let s:lightPurple = "834F79"
@@ -282,7 +291,7 @@ let s:beige = "F5C06F"
 let s:yellow = "F09F17"
 let s:orange = "D4843E"
 let s:darkOrange = "F16529"
-let s:pink = "CB6F6F"
+let s:pink = "F92672"
 let s:salmon = "EE6E73"
 let s:green = "8FAA54"
 let s:lightGreen = "31B53E"
@@ -290,17 +299,31 @@ let s:white = "FFFFFF"
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:rspec_red "
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
+let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
+let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
+"let g:NERDTreeExactMatchHighlightColor =
+ "     \{ '.gitignore': 's:rspec_red'
+  "    \} " this line is needed to avoid error
 "let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:lightGreen "
 "let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:purple "
 "let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
+"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 "let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 "let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
 "let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 " ----------------------------
 " END OF PLUGIN CONFIGURATIONS
@@ -518,7 +541,7 @@ endfunction
  " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
  " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
  " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+"  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
  " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
  "nmap <C-9> :call VimuxRunCommand("echo test")<cr>
 "However, if you want Deoplete to play nice with multiple omnifunctions provided by third-party plugins, you should use these Deoplete-specific settings:

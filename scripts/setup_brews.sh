@@ -10,3 +10,4 @@ brew install neovim
 brew install tmux
 brew install reattach-to-user-namespace
 brew install grip
+brew install awscli
