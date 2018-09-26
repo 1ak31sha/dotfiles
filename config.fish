@@ -82,7 +82,7 @@ function cloud-login
   cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;%4321
 end
 function cld
-  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;250918'
+  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;260918'
 end
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
 #echo $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')
