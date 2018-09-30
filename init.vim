@@ -8,6 +8,14 @@
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 "
+
+" --
+" ABREVIATIONS
+" --
+
+iabbrev div <div>
+iabbrev dv </div>
+
 " -----------
 " MAPPINGS
 " -----------
@@ -22,7 +30,8 @@ nnoremap <Leader>s    :w<CR>
 nmap <Leader>m1       :mksession! $DOTFILES/learning.vim<CR>
 nmap <Leader>l1       :source $DOTFILES/learning.vim<CR>
 nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
-nnoremap <leader>pi   :PlugInstall
+nnoremap <leader>pi   :PlugInstall<CR>
+nnoremap <leader>ch   :checkhealth<CR>
 nnoremap <Leader>d    <S-v>yp
 nnoremap <Leader>h    :sp<CR><C-w><Down>
 nnoremap <Leader>v    :vsp<CR><C-w><Right>
@@ -38,12 +47,21 @@ nmap <leader>"        viwS"<CR>
 nmap <leader>(        viwS(<CR>
 nmap <leader>[        viwS[<CR>
 nmap <leader>{        viwS{<CR>
+nmap <leader>1 1gt
+nmap <leader>2 2gt
+nmap <leader>3 3gt
+nmap <leader>4 4gt
+nmap <leader>5 5gt
+nmap <leader>6 6gt
+nmap <leader>7 7gt
+"nmap <leader>8 8gt
+"nmap <leader>9 9gt
 
 "funtions
 nnoremap <silent>     <Leader>z :call Zap()<CR>
 nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
 nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
-nnoremap <Leader>\    :call Smart_commenting()<CR>
+nmap <C-/>   :call Smart_commenting()<CR>
 
 " VISUAL
 xnoremap K            :move '<-2<CR>gv=gv
@@ -51,9 +69,11 @@ xnoremap J            :move '>+1<CR>gv=gv
 xnoremap <Leader>d    y`>p
 vnoremap <C-c>        "*y
 vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
-
+vmap <C-\>            di/*<CR><CR>*/<esc>kp
 " INSERT MODE
 " -----------
+
+
 
 "inoremap <ctrl> <esc>
 " type an opening brace and it auto does the closing, putting you inside the braces
@@ -84,6 +104,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-scripts/AfterColors.vim'
   Plug 'mkitt/tabline.vim'
   "Plug 'NovaDev94/lightline-onedark'
+
   " Syntax
   "Plug 'w0rp/ale'
   Plug 'vim-scripts/groovy.vim'
@@ -92,7 +113,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'darthmall/vim-vue'
   Plug 'tpope/vim-cucumber'
   Plug 'artur-shaik/vim-javacomplete2'
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+  "Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'pangloss/vim-javascript'
 
@@ -118,17 +139,24 @@ call plug#begin('~/.config/nvim/plugged')
   " Text maniulation
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-surround'
-  Plug 'honza/vim-snippets'
+  "Plug 'honza/vim-snippets'
   "Plug 'Shougo/neosnippet.vim'
   "Plug 'Shougo/neosnippet-snippets'
-  "if has('nvim')
-  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  "else
-  "  Plug 'Shougo/deoplete.nvim'
-  "  Plug 'roxma/nvim-yarp'
-  "  Plug 'roxma/vim-hug-neovim-rpc'
-  "endif
-  "let g:deoplete#enable_at_startup = 1
+
+  " :help deoplete-options
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+  let g:deoplete#enable_at_startup = 1
+
+  " this is the tern plugin that for sure is needed
+  Plug 'carlitux/deoplete-ternjs' , { 'do': 'npm install -g tern' }
+  " this tern didnt seem to work
+  " Plug 'ternjs/tern_for_vim'
 
   Plug 'Shougo/neosnippet.vim'
   Plug 'Shougo/neosnippet-snippets'

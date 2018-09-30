@@ -1,0 +1,3 @@
+selectp -t 0 # select the first (0) pane
+splitw -h -p 30
+
