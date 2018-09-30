@@ -8,7 +8,7 @@
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 "
-
+set runtimepath+=$DOTFILES/vimsnips
 " --
 " ABREVIATIONS
 " --
@@ -158,9 +158,10 @@ call plug#begin('~/.config/nvim/plugged')
   " this tern didnt seem to work
   " Plug 'ternjs/tern_for_vim'
 
-  Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
-
+  "Plug 'Shougo/neosnippet.vim'
+  "Plug 'Shougo/neosnippet-snippets'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
   Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "
@@ -255,6 +256,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Neosnippet
 " ----------
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-w>     <Plug>(neosnippet_expand_or_jump)
@@ -292,11 +297,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " UltiSnips
 " -----------
-let g:UltiSnipsExpandTrigger='<leader>e'
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsUsePythonVersion = 3
+
+let g:UltiSnipsExpandTrigger='<tab>'
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir="~/workspace/1ak31sha/vimsnips"
+" DONT USE THIS DIRECTORY CONFIG - doesnt work
+" must set runtimepath for snipets folder and name folder as UltiSnips
+"let g:UltiSnipsSnippetsDir="$DOTFILES/vimsnips"
+"let g:UltiSnipsSnippetDirectories=["$DOTFILES/vimsnips", "UltiSnips"]
 "let g:UltiSnipsExpandTrigger="<tab>"
 
 " Vim-nerdtree-syntax-highlight
