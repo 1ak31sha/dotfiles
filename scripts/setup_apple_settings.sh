@@ -1,5 +1,6 @@
 pmset sleep 0 #never sleep
 pmset displaysleep 0
+defaults write com.apple.screencapture location '~/Pictures/Screenshots'
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true

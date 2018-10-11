@@ -2,6 +2,10 @@ git diff --name-only 173d772fead6d508f84732913fe65d877ee1bb8b 29b6add509f82c9c94
 git add -p -> git add by chunks
 git ls-files
 
+
+### undo commit without losing changes 
+`git reset HEAD~1 --soft`
+
 # unstage chages without losing changes
 git reset HEAD <file>
 
