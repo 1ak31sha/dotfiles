@@ -1,6 +1,33 @@
-snippet mstp "mapStateToProps" i
-mapStateToProps ($1) {
-  ${VISUAL}$0
-}
+snippet mstp "mapStateToProps" b
+const mapStateToProps = state => {
+  const {$1} = state.$1;
+  return {$1};
+};
 endsnippet
+
+snippet mdtp "mapDispatchToProps" b
+const mapDispatchToProps = function(dispatch) {
+  return {
+    deleteAnnotation: type => {
+      dispatch(actionCreators.ActionCreators.deleteAnnotation(type));
+    },
+    annotationSizeChanged: (index, event) => {
+      dispatch(
+        actionCreators.ActionCreators.annotationSizeChanged(
+          index,
+          event.target.value,
+        ),
+      );
+    },
+  };
+};
+
+};
+endsnippet
+
+snippet type "export default const x='x'" b
+export default const $1 = "$1"
+endsnippet
+
+
 

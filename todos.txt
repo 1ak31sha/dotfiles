@@ -24,7 +24,7 @@
 - [ ] https://developers.google.com/owledge-graph/
 - [ ] https://www.kaggle.com/mdk7554/recipes
 - [ ] https://github.com/tmuxinator/tmuxinator/blob/master/lib/tmuxinator/pane.rb
-- [ ] https://ccoenraets.github.io/es6-tutorial/setup-babel/
+- [√] https://ccoenraets.github.io/es6-tutorial/setup-babel/
 - [ ] tmux initization script
 - [ ] https://github.com/evilstreak/markdown-js
 - [ ] https://github.com/google/gif-for-cli
@@ -44,7 +44,6 @@
 - [ ] Find text in file integrated with vim
 - [ ] Show unused variables
 - [ ] Cucumber syntax and lint
-- [ ] Learn v mode - CMD_SHIT+8 replacement
 - [ ] https://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim
 - [ ] Analyze tests using files from Jenkins
 - [ ] https://superuser.com/questions/627636/better-syntax-highlighting-for-java-in-vim
