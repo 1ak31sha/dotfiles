@@ -1,31 +1,3 @@
-"~_~_~_~_~_~_~_~_~_~_~"   ^  ^
-"        VIMRC        "
-"~_~_~_~_~_~_~_~_~_~_~"
-
-"--------------
-" Health Checks:
-"
-" Python
-" -------
-"let g:python_host_prog = '/Users/u6064854/.pyenv/versions/neovim2/bin/python'
-" General Settings
-" ----
-"set runtimepath=~/workspace/1ak31sha,$VIMRUNTIME
-
-  if has("autocmd")
-  "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-endif
-setlocal omnifunc=javacomplete#Complete
-setlocal completefunc=javacomplete#CompleteParamsInfo
-"set autochdir "automatically change directory if file opened is not in current dir
-set nowrap
-
-set nocursorline
-set encoding=utf8
-set nocp   " 'compatible' is not set
-set noswapfile
-set nopaste
-
 set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
 
 set number
@@ -111,7 +83,8 @@ call plug#begin('~/.config/nvim/plugged')
     "Plug 'Chiel92/vim-autoformat'
   Plug 'terryma/vim-multiple-cursors'
 " Plug '~/.config/nvim/scripts/ColDevicons'
-  " Plug 'ryanoasis/vim-devicons'
+" fc-cache -vf
+   Plug 'ryanoasis/vim-devicons'
   " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
   "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 "  Plug 'SirVer/ultisnips'
@@ -647,7 +620,7 @@ hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
 hi TabLine ctermfg=Blue ctermbg=Yellow
 hi TabLineSel ctermfg=Red ctermbg=Yellow
 hi Title ctermfg=LightBlue ctermbg=Magenta
-
+set encoding=UTF-8
 
 "let k = 5
 "echo
