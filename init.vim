@@ -1,109 +1,115 @@
-set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
+" `p  PLUGINS
+" `c  PLUGIN CONFIGURATIONS
+" `f  FUNCTIONS
+" `s  SET OPTIONS
+" `y  PYTHON
+" `m  MAPPINGS
 
-set number
-set relativenumber
-set shiftwidth=2
-set expandtab
-set autoread                    "Reload files changed outside vim
-set path+=**
-set wildmenu
-set gdefault
-" Status line
-set statusline+=%F
-"supposed to tunoff auto-comment, but this actually happens in the after-directory
-autocmd FileType * setlocal formatoptions=jql
-autocmd Filetype ruby setlocal tabstop=2
-autocmd Filetype rb setlocal tabstop=2
-autocmd Filetype json setlocal tabstop=2
-autocmd Filetype * setlocal tabstop=2
-autocmd FileType java set tags=~/.tags
 
-"au FocusGained,BufEnter * :silent! ! " auto reload any chan ges when focus gained or buf enter
-"au FocusLost,WinLeave * :silent! noautocmd w " files always saved when leaving a buffer
-"let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" -------
-" PLUGINS
-" -------
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'airblade/vim-gitgutter'
-  Plug 'altercation/solarized'
-  Plug 'crusoexia/vim-monokai'
-  Plug 'joshdick/onedark.vim'
-  Plug 'lambdalisue/suda.vim'
-  Plug 'dracula/vim', { 'as': 'dracula' }
-  " Syntax
-  Plug 'vim-scripts/groovy.vim'
-  Plug 'mxw/vim-jsx'
-  Plug 'dag/vim-fish'
-  Plug 'darthmall/vim-vue'
-
-   "Linting
-   Plug 'jvenant/vim-java-imports'
-   Plug 'prettier/vim-prettier'
-"    Plug 'sbdchd/neoformat'
-   Plug 'terryma/vim-smooth-scroll'
-  "if has('nvim')
-  "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  "else
-  "  Plug 'Shougo/deoplete.nvim'
-"    Plug 'roxma/nvim-yarp'
-"    Plug 'roxma/vim-hug-neovim-rpc'
-"  endif
-  "let g:deoplete#enable_at_startup = 1
-
-  Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
-
-  Plug 'rking/ag.vim'
-  Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
-  Plug 'artur-shaik/vim-javacomplete2'
-  Plug 'w0rp/ale'
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'pangloss/vim-javascript'
-
-  " Navigation
-  "Plug 'cloudhead/neovim-fuzzy'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  Plug 'mhartington/oceanic-next'
-  Plug 'ervandew/supertab'
-
-  Plug 'tpope/vim-cucumber'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
-
-  Plug 'benmills/vimux'
-  Plug 'honza/vim-snippets'
-
-  "COLORS
-  Plug 'altercation/vim-colors-solarized'
-    "Plug 'Chiel92/vim-autoformat'
-  Plug 'terryma/vim-multiple-cursors'
-" Plug '~/.config/nvim/scripts/ColDevicons'
-" fc-cache -vf
-   Plug 'ryanoasis/vim-devicons'
-  " Disbaled due to annoying errors, plus i dont htink it was doing anything atm
-  "Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-"  Plug 'SirVer/ultisnips'
-  " Plug 'neomake/neomake' "| Plug 'dojoteef/neomake-autolint'
-
-call plug#end()
+"~_~_~_~_~_~_~_~_~_~_~"   ^  ^
+"        VIMRC        "
+"~_~_~_~_~_~_~_~_~_~_~"
 "
+set runtimepath+=$DOTFILES/vimsnips
+" --
+" ABREVIATIONS
+" --
+
+iabbrev div <div>
+iabbrev dv </div>
 
 " -----------
 " MAPPINGS
 " -----------
-"<Bs> BACK
-"<Del> DELETE
+
 let mapleader = " "
 
-" COMMAND MODE
-" ------------
-" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-" -> use this instead :w suda://%
+" CTRL MAPPINGS
+" -------------
+
+" <C-a> // reserved by tmux prefix
+" <C-b> // toggle nerdTree
+" <C-c> copy to os clipboard
+nmap <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" <C-e> scroll without moving cursor
+" <C-f>
+" <C-g>
+" <C-h>
+" <C-i
+" <C-j
+" <C-k
+" <C-l
+" <C-m>
+" <C-n> multiple cursors
+" <C-o>
+nmap <C-p> :FZF<CR>
+" <C-q> nerdTree focus
+" <C-r> redo
+" <C-s>
+" <C-t>
+nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" <C-v
+" <C-w> with arrow key -> move buffers
+" <C-x
+" <C-y> scroll up without moving cursor
+" <C-z> quit without asking
+nmap <C-/> call Smart_commenting()<CR>
+
+
+" LEADER MAPPINGS
+" ---------------
+
+nmap <leader>a :Ag<space>
+"    <leader>b
+nmap <Leader>c :call Cycle_numbering()<CR>
+vnoremap <Leader>c "+y
+nmap <Leader>d <S-v>yp
+"    <leader>e
+nmap <leader>f :NERDTreeFind<CR>
+"    <leader>g
+nmap <Leader>h :sp<CR><C-w><Down>
+"    <leader>i
+"    <leader>j
+"    <leader>k
+"    <leader>l
+"    <leader>m
+"    <leader>n
+"    <leader>o
+"    <leader>p
+nmap <Leader>q :q<CR>
+nmap <Leader>r :source $DOTFILES/init.vim<CR>
+nmap <Leader>s :w<CR>
+nmap <Leader>t :tabnew<CR>
+"    <leader>u
+nmap <Leader>v :vsp<CR><C-w><Right>
+"    <leader>w
+"    <leader>x
+nmap <leader>y :YAMLFormat<CR>
+nmap <Leader>z :call Zap()<CR>
+nmap <leader>1 1gt
+nmap <leader>2 2gt
+nmap <leader>3 3gt
+nmap <leader>4 4gt
+nmap <leader>5 5gt
+nmap <leader>6 6gt
+nmap <leader>7 7gt
+"nmap <leader>8 smart commenting
+nmap <silent>     <Leader>9 :call Cycle_colors()<CR>
+
+nmap <Leader>m1       :mksession! $DOTFILES/learning.vim<CR>
+nmap <Leader>l1       :source $DOTFILES/learning.vim<CR>
+nmap <leader>pi   :PlugInstall<CR>
+nmap <leader>ch   :checkhealth<CR>
+nmap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
+
+" surround
+nmap <leader>'        viwS'<CR>
+nmap <leader>"        viwS"<CR>
+nmap <leader>(        viwS(<CR>
+nmap <leader>[        viwS[<CR>
+nmap <leader>{        viwS{<CR>
+
 
 " VISUAL
 " ------
@@ -111,88 +117,115 @@ xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 xnoremap <Leader>d y`>p
 vnoremap <C-c> "*y
-vnoremap <Leader>c "+y
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap <C-c>        "*y
+xnoremap <Leader>d    y`>p
+vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
+vmap <C-\>            di/*<CR><CR>*/<esc>kp
 
 " INSERT MODE
 " -----------
-
 "inoremap <ctrl> <esc>
 " type an opening brace and it auto does the closing, putting you inside the braces
 "imap ( ()<C-[>i
 
-" NORMAL MODE
-" -----------
-nnoremap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
-nnoremap <leader>pi   :PlugInstall
-nnoremap <Leader>r    :source $DOTFILES/init.vim<CR>
-nnoremap <Leader>q    :q<CR>
-nnoremap <Leader>s    :w<CR>
-nnoremap <Leader>d    <S-v>yp
-nnoremap <Leader>t    :tabnew<CR>
-nnoremap <leader>f    :NERDTreeFind<CR>
-nnoremap <C-p>        :FZF<CR>
-nnoremap <silent>     <Leader>z :call Zap()<CR>
-nnoremap <silent>     <Leader>c :call Cycle_numbering()<CR>
-nnoremap <silent>     <Leader>9 :call Cycle_colors()<CR>
-nnoremap <Leader>8    :call Smart_commenting()<CR>
+" COMMAND MODE
+" ------------
+" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+" -> use this instead :w suda://%
 
+"<Bs> BACK
+"<Del> DELETE
+
+" -------
+" PLUGINS
+" -------
+call plug#begin('~/.config/nvim/plugged')
+
+" Color Schemes
+Plug 'altercation/solarized'
+Plug 'crusoexia/vim-monokai'
+Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
+"Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'vim-scripts/AfterColors.vim'
+Plug 'mkitt/tabline.vim'
+"Plug 'NovaDev94/lightline-onedark'
+
+" Syntax
+"Plug 'w0rp/ale'
+Plug 'vim-scripts/groovy.vim'
+Plug 'mxw/vim-jsx'
+Plug 'dag/vim-fish'
+Plug 'darthmall/vim-vue'
+Plug 'tpope/vim-cucumber'
+Plug 'artur-shaik/vim-javacomplete2'
+"Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript'
+Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
+
+"Linting
+Plug 'jvenant/vim-java-imports'
+Plug 'prettier/vim-prettier'
+
+" Navigation
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'benmills/vimux'
+Plug 'ervandew/supertab'
+
+"Git
+Plug 'tpope/vim-fugitive'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Tools
+Plug 'rking/ag.vim'   " silver searcher
+Plug 'lambdalisue/suda.vim' " get sudo on the file
+Plug 'terryma/vim-smooth-scroll'
+
+" Text maniulation
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+"Plug 'honza/vim-snippets'
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
+
+" :help deoplete-options
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" this is the tern plugin that for sure is needed
+Plug 'carlitux/deoplete-ternjs' , { 'do': 'npm install -g tern' }
+" this tern didnt seem to work
+" Plug 'ternjs/tern_for_vim'
+
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
+"
 " ----------------------
 " PLUGIN CONFIGURATIONS
 " ----------------------
 
-" FZF "
-" -----
-" Default fzf layout
-" - down / up / left / right
-"    let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_layout = { 'up': '~40%' }
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-
-" PRETTIER "
-" ----------
-" print semicolons
-" Prettier default: true
-" print spaces between brackets
-" Prettier default: true
-" put > on the last line instead of new line
-" Prettier default: false
-" let g:prettier#config#jsx_bracket_same_line = 'true'
-" none|es5|all
-" Prettier default: none
-" let g:prettier#config#trailing_comma = 'all'
-"let g:prettier#config#semi = 'false'
-"let g:prettier#config#bracket_spacing = 'true'
-
-"Smooth Scroll "
-"---------------
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-w>     <Plug>(neosnippet_expand_or_jump)
-smap <C-w>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-w>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-let g:neosnippet#snippets_directory='~/workspace/1ak31sha/vimsnips/'
-
-" AG - the silver surfer "
-" ------------------------
+" AG - the silver surfer
+" ----------------------
 let g:ag_working_path_mode="r"
 
+" Airline
+" --------
+let g:airline_powerline_fonts = 1
 
 " ALE "
 " -----
@@ -207,15 +240,16 @@ let b:ale_linters = ['eslint']
 "let g:autoformat_remove_trailing_spaces = 0
 "au BufWrite * :Autoformat
 
+" CTRL-P
+"--------
+let g:ctrlp_show_hidden = 1
 
 " ---------
 " DevIcons
 " ---------
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol='👩 '
-if exists('g:loaded_webdevicons')
-"""  call webdevicons#refresh()
-endif
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_gui_glyph_fix = 1
 
@@ -229,40 +263,160 @@ let g:webdevicons_gui_glyph_fix = 1
 "  \ 'jspc#omni'
 "\]
 
+" FZF
+" ---
+let g:fzf_layout = { 'up': '~40%' }
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+let g:fzf_colors =
+      \ { 'fg':      ['fg', 'monokai'],
+      \ 'bg':      ['bg', 'monokai'],
+      \ 'hl':      ['fg', 'monokai'],
+      \ 'fg+':     ['fg', 'monokai', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'monokai', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'monokai'],
+      \ 'info':    ['fg', 'monokai'],
+      \ 'border':  ['fg', 'monokai'],
+      \ 'prompt':  ['fg', 'green'],
+      \ 'pointer': ['fg', 'monokai'],
+      \ 'marker':  ['fg', 'monokai'],
+      \ 'spinner': ['fg', 'monokai'],
+      \ 'header':  ['fg', 'monokai'] }
+" Default fzf layout
+" - down / up / left / right
+"    let g:fzf_layout = { 'down': '~40%' }
+
+" Lightline
 " ---------
+"let g:lightline = {
+"  \   'colorscheme': 'onedark'
+"  \}
+
 " Nerd Tree
 " ---------
-"  m    - menu
-"  C-b  - open sidebar
-"  C-ww - sidebar focus toggle
-"
 nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
-"autocmd vimenter * NERDTree "// Open the tree by default
 let NERDTreeShowHidden=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeMapOpenInTab='t'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd vimenter * NERDTree "// Open the tree by default
 
-" ---------
 " Neomake
 " ---------
 "jcall neomake#configure#automake('n')
 
-" -------
-" CTRL-P
-"--------
-let g:ctrlp_show_hidden = 1
+" Neosnippet
+" ----------
+let g:neosnippet#disable_runtime_snippets = {
+      \   '_' : 1,
+      \ }
 
-" -----------
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-w>     <Plug>(neosnippet_expand_or_jump)
+smap <C-w>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-w>     <Plug>(neosnippet_expand_target)
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#snippets_directory='$DOTFILES/neosnips/'
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+
+" Prettier
+" --------
+" print semicolons
+" Prettier default: true
+" print spaces between brackets
+" Prettier default: true
+" put > on the last line instead of new line
+" Prettier default: false
+" let g:prettier#config#jsx_bracket_same_line = 'true'
+" none|es5|all
+" Prettier default: none
+" let g:prettier#config#trailing_comma = 'all'
+"let g:prettier#config#semi = 'false'
+"let g:prettier#config#bracket_spacing = 'true'
+
 " UltiSnips
 " -----------
+let g:UltiSnipsUsePythonVersion = 3
+
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger="<leader-j>"
+let g:UltiSnipsJumpBackwardTrigger="<leader>k"
+let g:UltiSnipsEditSplit="vertical"
+" DONT USE THIS DIRECTORY CONFIG - doesnt work
+" must set runtimepath for snipets folder and name folder as UltiSnips
+"let g:UltiSnipsSnippetsDir="$DOTFILES/vimsnips"
+"let g:UltiSnipsSnippetDirectories=["$DOTFILES/vimsnips", "UltiSnips"]
 "let g:UltiSnipsExpandTrigger="<tab>"
 
-let g:UltiSnipsExpandTrigger='<leader>e'
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir="~/workspace/1ak31sha/vimsnips"
+" Vim-nerdtree-syntax-highlight
+" -----------------------------
+"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:monokai_blue = "66D9EF"
+let s:monokai_green = "A6E22E"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "F92672"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
+let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
+let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
+"let g:NERDTreeExactMatchHighlightColor =
+"     \{ '.gitignore': 's:rspec_red'
+"    \} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
+
+" ----------------------------
+" END OF PLUGIN CONFIGURATIONS
+" ----------------------------
+
 " ---------
 " AUTOCMD
 " ---------
@@ -298,54 +452,84 @@ if has("nvim")
   autocmd BufEnter term://* startinsert
 endif
 
-" --------
-"  Airline
-" --------
-let g:airline_powerline_fonts = 1
+" -----------
+" SET OPTIONS
+" -----------
+set nowrap
+set nocursorline
+set encoding=utf8
+set nocp   " 'compatible' is not set
+set noswapfile
+set nopaste
+set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
+set number
+set relativenumber
+set shiftwidth=2
+set expandtab
+set autoread                    "Reload files changed outside vim
+set path+=**
+set wildmenu
+set gdefault
+" Status line
+set statusline+=%F
+set showtabline=2
+"supposed to tunoff auto-comment, but this actually happens in the after-directory
+
+set termguicolors
+
+autocmd FileType * setlocal formatoptions=jql
+autocmd Filetype ruby setlocal tabstop=2
+autocmd Filetype rb setlocal tabstop=2
+autocmd Filetype json setlocal tabstop=2
+autocmd Filetype * setlocal tabstop=2
+autocmd FileType java set tags=~/.tags
 
 
 syntax on
-set termguicolors
 
-
-" GUI MODE ONLY
-"" Visual Mode Orange Background, Black Text
-"hi Visual          guifg=#000000 guibg=#FD971F
-"
-"" Default Colors for CursorLine
-"highlight CursorLine guibg=#3E3D32
-"highlight Cursor guibg=#A6E22E;
-"
-"" Change Color when entering Insert Mode
-"autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
-"autocmd InsertEnter * highlight  Cursor guibg=#00AAFF;
-"
-"" Revert Color to default when leaving Insert Mode
-"autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
-"autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
+" ----
+" JAVA
+" ----
+setlocal omnifunc=javacomplete#Complete
+setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " -------------
-" COLOR SCHEMES
+" COLOR SCHEME
 " -------------
-"autocmd BufEnter * colorscheme default
 colorscheme monokai
-"colorscheme inkpot
-"color dracula
-"colorscheme blue
+" put this in the monokai plugin's monokai.vim file
+"call s:h("TabLineSel",    { "bg": s:orange})
 
-"colorscheme molokai
 syntax enable
-" set background=light
-" colorscheme solarized
-"let g:neomake_autolint_enabled
 
 " Trailing whitespace and tabs are forbidden, so highlight them.
-highlight ForbiddenWhitespace ctermbg=red guibg=red
+highlight ForbiddenWhitespace ctermbg=yellow guibg=yellow
 match ForbiddenWhitespace /\s\+$\|\t/
 " Do not highlight spaces at the end of line while typing on that line.
 autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@<!$/
 
-  " Cycle through relativenumber + number, number (only), and no numbering.
+" ---------
+" FUNCTIONS
+" ---------
+function! SetGMark(mark, filename, line_nr)
+  let l:mybuf = bufnr(a:filename, 1)
+  call setpos("'".a:mark, [l:mybuf, a:line_nr, 1, 0])
+endf
+
+call SetGMark('A', '~/file.txt', 10)
+
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+" Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_numbering() abort
   if exists('+relativenumber')
     execute {
@@ -359,9 +543,9 @@ function! Cycle_numbering() abort
   endif
 endfunction
 
-  " Cycle through relativenumber + number, number (only), and no numbering.
+" Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_colors() abort
-  let schemes = ['monokai' , 'dracula', 'solarized', 'onedark' ]
+  let schemes = ['monokai', 'dracula', 'solarized', 'onedark', 'OceanicNext' ]
   let cur_scheme = eval("g:colors_name")
   let i = index(schemes,cur_scheme)
   let j = (i+1)%len(schemes)
@@ -372,17 +556,19 @@ endfunction
 
 function! Smart_commenting() abort
   let commentDict= {
-        \  'javascript': '//',
-        \ 'java': '//',
-        \ 'tmux': '#',
-        \ 'bash': '#',
+        \ 'javascript': '//',
+        \ 'javascript.jsx': '//',
         \ 'vim': '"',
-        \ 'vue': '//',
+        \ 'tmux': '#',
         \ 'fish': '#',
+        \ 'bash': '#',
+        \ 'ruby': '#',
+        \ 'perl': '#',
+        \ 'vue': '//',
+        \ 'java': '//',
         \   }
-echo commentDict
+  echo commentDict
   let curr_line = getline('.')
-  echo curr_line
   let type = &filetype
   if( has_key(commentDict, type))
     let commentChar = commentDict[type]
@@ -401,6 +587,8 @@ echo commentDict
     else
       call feedkeys("I" . commentChar . "\<esc>j")
     endif
+  else
+    echo "filetype '" . &filetype . "' is not configured"
   endif
 endfunction
 
@@ -425,25 +613,25 @@ endfunction
 "let g:ale_completion_enabled = 1
 
 "  let g:NERDDTreeGitStatusNodeColorization = 1
- "<BS>
+"<BS>
 " 
 "  let g:webdevicons_enable_denite = 0
- " " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
-  "kklet g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
- " let g:WebDevIconsOS = 'Darwin'
- " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
- " let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = ''
- " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
- " let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tsx'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
- " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
- "nmap <C-9> :call VimuxRunCommand("echo test")<cr>
+" " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
+"kklet g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+" let g:WebDevIconsOS = 'Darwin'
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = ''
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tsx'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
+"  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
+"nmap <C-9> :call VimuxRunCommand("echo test")<cr>
 "However, if you want Deoplete to play nice with multiple omnifunctions provided by third-party plugins, you should use these Deoplete-specific settings:
 "autocmd BufEnter *.js colorscheme Tomorrow-Night
 "autocmd BufEnter *.json colorscheme Tomorrow
@@ -554,7 +742,7 @@ function! WatchForChanges(bufname, ...)
   let msg = "\n"
   " Check to see if the autocommand already exists
   redir @"
-    silent! exec 'au '.id
+  silent! exec 'au '.id
   redir END
   let l:defined = (@" !~ 'E216: No such group or event:')
   " If not yet defined...
@@ -568,60 +756,50 @@ function! WatchForChanges(bufname, ...)
       end
     end
     silent! exec 'augroup '.id
-      if a:bufname != '*'
-        "exec "au BufDelete    ".a:bufname . " :silent! au! ".id . " | silent! augroup! ".id
-        "exec "au BufDelete    ".a:bufname . " :echomsg 'Removing autocommands for ".id."' | au! ".id . " | augroup! ".id
-        exec "au BufDelete    ".a:bufname . " execute 'au! ".id."' | execute 'augroup! ".id."'"
-      end
-        exec "au BufEnter     ".event_bufspec . " :checktime ".bufspec
-        exec "au CursorHold   ".event_bufspec . " :checktime ".bufspec
-        exec "au CursorHoldI  ".event_bufspec . " :checktime ".bufspec
-      " The following events might slow things down so we provide a way to disable them...
-      " vim docs warn:
-      "   Careful: Don't do anything that the user does
-      "   not expect or that is slow.
-      if more_events
-        exec "au CursorMoved  ".event_bufspec . " :checktime ".bufspec
-        exec "au CursorMovedI ".event_bufspec . " :checktime ".bufspec
-      end
-    augroup END
-    let msg = msg . 'Now watching ' . bufspec . ' for external updates...'
-  end
-  " If they want to disable it, or it is defined and they want to toggle it,
-  if l:disable || (l:toggle && l:defined)
-    if l:autoread
-      let msg = msg . 'Autoread disabled - '
-      if a:bufname == '*'
-        set noautoread
-      else
-        setlocal noautoread
-      end
+    if a:bufname != '*'
+      "exec "au BufDelete    ".a:bufname . " :silent! au! ".id . " | silent! augroup! ".id
+      "exec "au BufDelete    ".a:bufname . " :echomsg 'Removing autocommands for ".id."' | au! ".id . " | augroup! ".id
+      exec "au BufDelete    ".a:bufname . " execute 'au! ".id."' | execute 'augroup! ".id."'"
     end
-    " Using an autogroup allows us to remove it easily with the following
-    " command. If we do not use an autogroup, we cannot remove this
-    " single :checktime command
-    " augroup! checkforupdates
-    silent! exec 'au! '.id
-    silent! exec 'augroup! '.id
-    let msg = msg . 'No longer watching ' . bufspec . ' for external updates.'
-  elseif l:defined
-    let msg = msg . 'Already watching ' . bufspec . ' for external updates'
+    exec "au BufEnter     ".event_bufspec . " :checktime ".bufspec
+    exec "au CursorHold   ".event_bufspec . " :checktime ".bufspec
+    exec "au CursorHoldI  ".event_bufspec . " :checktime ".bufspec
+    " The following events might slow things down so we provide a way to disable them...
+    " vim docs warn:
+    "   Careful: Don't do anything that the user does
+    "   not expect or that is slow.
+    if more_events
+      exec "au CursorMoved  ".event_bufspec . " :checktime ".bufspec
+      exec "au CursorMovedI ".event_bufspec . " :checktime ".bufspec
+    end
+  augroup END
+  let msg = msg . 'Now watching ' . bufspec . ' for external updates...'
+end
+" If they want to disable it, or it is defined and they want to toggle it,
+if l:disable || (l:toggle && l:defined)
+  if l:autoread
+    let msg = msg . 'Autoread disabled - '
+    if a:bufname == '*'
+      set noautoread
+    else
+      setlocal noautoread
+    end
   end
-  " this is the annoying message that was appearing when opening vim
-  " echo msg
-  let @"=reg_saved
+  " Using an autogroup allows us to remove it easily with the following
+  " command. If we do not use an autogroup, we cannot remove this
+  " single :checktime command
+  " augroup! checkforupdates
+  silent! exec 'au! '.id
+  silent! exec 'augroup! '.id
+  let msg = msg . 'No longer watching ' . bufspec . ' for external updates.'
+elseif l:defined
+  let msg = msg . 'Already watching ' . bufspec . ' for external updates'
+end
+" this is the annoying message that was appearing when opening vim
+" echo msg
+let @"=reg_saved
 endfunction
 
 let autoreadargs={'autoread':1}
 execute WatchForChanges("*",autoreadargs)
-
-" this shit doesnt work. i want my tab color brighter and more apparent
-hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-hi TabLine ctermfg=Blue ctermbg=Yellow
-hi TabLineSel ctermfg=Red ctermbg=Yellow
-hi Title ctermfg=LightBlue ctermbg=Magenta
-set encoding=UTF-8
-
-"let k = 5
-"echo
 

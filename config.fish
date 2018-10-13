@@ -20,9 +20,19 @@ set -x GEM_HOME        ~/.gem
 
 source $DOTFILES/.sharedrc
 
+#todo
+function gclone
+  git clone 'https://github.com/1ak31sha/' + $argv
+end
+
 function  startemu
   ruby $DOTFILES/ruby/emulator.rb
 end
+
+function  givelight
+  ruby $DOTFILES/ruby/maclight.rb
+end
+
 
 function  killemu
   ruby $DOTFILES/ruby/killemu.rb
@@ -43,6 +53,14 @@ end
 function awslog
   sh $DOTFILES/tmux/login.sh
 end
+
+function gitb
+  ruby $DOTFILES/git/gitbranch.rb
+end
+
+function  ecp_runTest
+  ruby $DOTFILES/ruby/run_if_more_than_60s.rb $argv
+end
   #dr alfa  razack 416-519-0744
 #715 pape avenue.
 
@@ -61,8 +79,16 @@ function debug_ecp
 end
 
 function cloud-login
-  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;!2345
+  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;%4321
 end
+function cld
+  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;101018'
+end
+
+function cld2
+  cloud-tool login --username MGMT\\m6064854 --password 'GHfjdksla;101018'
+end
+
 #Clean Environment variables - dupes (run in bash - this is bash syntax)
 #echo $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')
 #eval $(perl -e 'printf qq{export %s="%s";}, $_, join(":", grep { -d $_ && !$seen{ $_ }++ } split /:/, $ENV{$_}), $_ for( qw(PATH MANPATH) );')

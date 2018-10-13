@@ -1,16 +1,11 @@
-let arr = [3,4,5]; 
-mapStateToProps () {
- 
-}
+snippet mstp "mapStateToProps" b
 const mapStateToProps = state => {
-  const {state_ting} = state.;
-  return {};
+  const {$1} = state.$1;
+  return {$1};
 };
-export default const ANNOTATE = "ANNOTATE"
-const mapStateToProps = state => {
-  const {adfj} = state.adfj;
-  return {adfj};
-};
+endsnippet
+
+snippet mdtp "mapDispatchToProps" b
 const mapDispatchToProps = function(dispatch) {
   return {
     deleteAnnotation: type => {
@@ -26,5 +21,13 @@ const mapDispatchToProps = function(dispatch) {
     },
   };
 };
+
+};
+endsnippet
+
+snippet type "export default const x='x'" b
+export default const $1 = "$1"
+endsnippet
+
 
 

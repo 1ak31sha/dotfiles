@@ -1,5 +1,6 @@
 VIM CHEATS
 
+move to matching brace: %
 ### surround
   Old text                  Command     New text ~
   "Hello *world!"           ds"         Hello world!
@@ -148,3 +149,11 @@ shift + g - bottom
 
 brew install reattach-to-user-namespace
 
+
+:mksession ~/mysession.vim
+Then later you can source that vim file and you'll have your old session back:
+
+:source ~/mysession.vim
+or open vim with the -S option:
+
+$ vim -S ~/mysession.vim

@@ -1,11 +1,12 @@
-Ctrl+b " — split pane horizontally.
-Ctrl+b % — split pane vertically.
-Ctrl+b arrow key — switch pane.
-Hold Ctrl+b, don’t release it and hold one of the arrow keys — resize pane.
-Ctrl+b c — (c)reate a new window.
-Ctrl+b n — move to the (n)ext window.
-Ctrl+b p — move to the (p)revious window.
-
+<Prefix>" — split pane horizontally.
+<Prefix>% — split pane vertically.
+<Prefix> arrow key — switch pane.
+Hold <Prefix>, don’t release it and hold one of the arrow keys — resize pane.
+<Prefix>c — (c)reate a new window.
+<Prefix>n — move to the (n)ext window.
+<Prefix>p — move to the (p)revious window.
+<Prefix>C-O cycle panes
+<Prefix>C-o cycle position in panes
 #!/bin/bash
 tmux split-window -v -p 30
 tmux split-window -h -p 66

@@ -3,12 +3,9 @@
 
 # support pin - 4334
 
+- [ ] https://github.com/mhartington/oceanic-next -> set true color 256...
 - [ ] suggest a type for jekyll recipe site
- i [ ] Error detected while processing function <SNR>35_fuzzy_open:
-line    2:
-E344: Can't find directory "^[Ptmux;^[^[]1337;CursorShape=0^G^[/Users/u6064854/workspace/aws-registry-apitesting" in cdpath
-E472: Command failed
-Press ENTER or type command to continue
+- [√] Error detected while processing function <SNR>35_fuzzy_open: E344: Can't find directory "^[Ptmux;^[^[]1337;CursorShape=0^G^[/Users/u6064854/workspace/aws-registry-apitesting" in cdpath
 - [ ] - use external ip 198.179.137.240 to create website/webapp   curl ifconfig.me
 - [ ] move line up and down, on oposite side of equals only??? >_<
 - [ ] - https://pexpect.readthedocs.io/en/stable/overview.html<Paste>
@@ -17,9 +14,7 @@ Press ENTER or type command to continue
 - [ ] i want a vim function that opens up a list of files that have changes according to git, and lets me choose one to open
 - [ ] https://github.com/tomtom/tcomment_vim check for ideas to improve my commenting mapping
 - [ ] Yeh Jawaani Hai Deewani - bollywood movie to watch
-- TMUX: https://github.com/sei40kr/tmux-airline-dracula. Install using TPM
-iTerm2: https://draculatheme.com/iterm/ Just download and set it in the preferences
-vi: https://draculatheme.com/vim/ Install using Plug
+- [ ] TMUX: https://github.com/sei40kr/tmux-airline-dracula. Install using TPM
 - [ ] https://stackoverflow.com/questions/12213597/how-to-see-which-plugins-are-making-vim-slow/12216578#12216578
 - [√] go to next occurance of current word = *
 - [ ] https://stackoverflow.com/a/12216578 - perf log pklkugin cleanup
@@ -29,7 +24,7 @@ vi: https://draculatheme.com/vim/ Install using Plug
 - [ ] https://developers.google.com/owledge-graph/
 - [ ] https://www.kaggle.com/mdk7554/recipes
 - [ ] https://github.com/tmuxinator/tmuxinator/blob/master/lib/tmuxinator/pane.rb
-- [ ] https://ccoenraets.github.io/es6-tutorial/setup-babel/
+- [√] https://ccoenraets.github.io/es6-tutorial/setup-babel/
 - [ ] tmux initization script
 - [ ] https://github.com/evilstreak/markdown-js
 - [ ] https://github.com/google/gif-for-cli
@@ -49,7 +44,6 @@ vi: https://draculatheme.com/vim/ Install using Plug
 - [ ] Find text in file integrated with vim
 - [ ] Show unused variables
 - [ ] Cucumber syntax and lint
-- [ ] Learn v mode - CMD_SHIT+8 replacement
 - [ ] https://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim
 - [ ] Analyze tests using files from Jenkins
 - [ ] https://superuser.com/questions/627636/better-syntax-highlighting-for-java-in-vim
