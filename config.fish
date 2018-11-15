@@ -82,11 +82,12 @@ function cloud-login
   cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;%4321
 end
 function cld
-  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;101018'
+  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;051118'
+  
 end
 
 function cld2
-  cloud-tool login --username MGMT\\m6064854 --password 'GHfjdksla;101018'
+  cloud-tool login --username MGMT\\m6064854 --password 'GHfjdksla;051118'
 end
 
 #Clean Environment variables - dupes (run in bash - this is bash syntax)

@@ -1,5 +1,10 @@
 VIM CHEATS
 
+### spelling
+:h spell
+z= to get suggestions
+zg to add word under cursor to dictionary
+
 move to matching brace: %
 ### surround
   Old text                  Command     New text ~

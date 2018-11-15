@@ -1,11 +1,5 @@
-" `p  PLUGINS
-" `c  PLUGIN CONFIGURATIONS
-" `f  FUNCTIONS
-" `s  SET OPTIONS
-" `y  PYTHON
-" `m  MAPPINGS
-
-
+"webpack
+":set backupcopy=yes
 
 "~_~_~_~_~_~_~_~_~_~_~"   ^  ^
 "        VIMRC        "
@@ -116,7 +110,8 @@ xnoremap <Leader>d    y`>p
 xnoremap J            :move '>+1<CR>gv=gv
 xnoremap K            :move '<-2<CR>gv=gv
 vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
-vmap <C-\>            di/*<CR><CR>*/<esc>kp
+vmap <C-\>            di/*<CR>*/<CR><esc>kkp
+"vmap <C-j>            :call Block_comment()<CR>
 
 " INSERT MODE
 " -----------
@@ -152,8 +147,11 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'mkitt/tabline.vim'
 "Plug 'NovaDev94/lightline-onedark'
+"Plug 'https://github.com/gko/vim-coloresque'
+Plug 'https://github.com/ap/vim-css-color'
 
 " Syntax
+Plug 'junegunn/vim-emoji'
 "Plug 'w0rp/ale'
 Plug 'vim-scripts/groovy.vim'
 Plug 'mxw/vim-jsx'
@@ -165,6 +163,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
+Plug 'vim-syntastic/syntastic'
 
 "Linting
 Plug 'jvenant/vim-java-imports'
@@ -184,7 +183,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'   " silver searcher
 Plug 'lambdalisue/suda.vim' " get sudo on the file
 Plug 'terryma/vim-smooth-scroll'
-
+Plug 'ashisha/image.vim'
 " Text maniulation
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
@@ -284,6 +283,13 @@ let g:fzf_colors =
 " - down / up / left / right
 "    let g:fzf_layout = { 'down': '~40%' }
 
+" Git Gutter
+"-----------
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
+set completefunc=emoji#complete
 " Lightline
 " ---------
 "let g:lightline = {
@@ -421,6 +427,7 @@ let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
 " ---------
 "autocmd! BufWritePost,BufEnter * Neomake
 autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
+au BufNewFile,BufRead *.ejs set filetype=html
 " Jump to the main window.
 autocmd VimEnter * wincmd p
 "au Bufread,BufNewFile *.feature set filetype=gherkin
@@ -464,7 +471,7 @@ set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
 set number
 set relativenumber
 set shiftwidth=2
-set expandtab
+set expandtab "puts spaces for tabs
 set autoread                    "Reload files changed outside vim
 set path+=**
 set wildmenu
@@ -473,7 +480,7 @@ set gdefault
 set statusline+=%F
 set showtabline=2
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
-
+set conceallevel=0
 set termguicolors
 
 autocmd FileType * setlocal formatoptions=jql
@@ -482,6 +489,7 @@ autocmd Filetype rb setlocal tabstop=2
 autocmd Filetype json setlocal tabstop=2
 autocmd Filetype * setlocal tabstop=2
 autocmd FileType java set tags=~/.tags
+autocmd FileType markdown set spell spelllang=en_us
 
 
 syntax on
@@ -551,6 +559,25 @@ function! Cycle_colors() abort
   let next_color = schemes[j]
   execute ("colorscheme " . next_color)
   echo next_color
+endfunction
+
+function! s:get_visual_selection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+
+
+function! Block_comment() abort
+  call feedkeys("dO\/*\<esc>pi*\\")
 endfunction
 
 function! Smart_commenting() abort
