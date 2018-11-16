@@ -6,6 +6,7 @@
 "~_~_~_~_~_~_~_~_~_~_~"
 "
 set runtimepath+=$DOTFILES/vimsnips
+set cuc cul"
 " --
 " ABREVIATIONS
 " --
@@ -29,11 +30,11 @@ nmap <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 " <C-e> scroll without moving cursor
 " <C-f>
 " <C-g>
-" <C-h>
+nmap <S-h> zH
 " <C-i
 " <C-j
 " <C-k
-" <C-l
+nmap <S-l> zL
 " <C-m>
 " <C-n> multiple cursors
 " <C-o>
@@ -150,6 +151,9 @@ Plug 'mkitt/tabline.vim'
 "Plug 'https://github.com/gko/vim-coloresque'
 Plug 'https://github.com/ap/vim-css-color'
 
+" Ruby
+" ----
+Plug 'vim-ruby/vim-ruby'
 " Syntax
 Plug 'junegunn/vim-emoji'
 "Plug 'w0rp/ale'
