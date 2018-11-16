@@ -1,7 +1,6 @@
 #!/bin/bash
-#pre req 
 
-########
+#pre req 
 # - install fish
 
 # - 
