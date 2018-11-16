@@ -1,6 +1,7 @@
-# Lakei$ha's dotfiles
+# Lakei$ha's WIP dotfiles
 
 everything i need to setup my dotfiles and a new computer in general
+
 
 # Table of Contents
   * [MacOS setup](#macos)
@@ -100,7 +101,7 @@ Sublime snips symlink
 ```
 ln -s  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ $DOTFILES/sublime
 ```
-install this:
+install this if using sublime:
 https://github.com/mrmartineau/SetiUI-Icons-Sublime
 
 ## MacOS setup <a id="macos"></a>
@@ -109,6 +110,10 @@ https://github.com/mrmartineau/SetiUI-Icons-Sublime
 - install spectacle
 - install java
 - install xcode
+
+## NeoVim
+
+TODO
 
 
 

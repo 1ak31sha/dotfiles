@@ -1,12 +1,8 @@
-"webpack
-":set backupcopy=yes
-
-"~_~_~_~_~_~_~_~_~_~_~"   ^  ^
+"~_~_~_~_~_~_~_~_~_~_~"
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 "
 set runtimepath+=$DOTFILES/vimsnips
-set cuc cul"
 " --
 " ABREVIATIONS
 " --
@@ -137,6 +133,7 @@ vmap <C-\>            di/*<CR>*/<CR><esc>kkp
 call plug#begin('~/.config/nvim/plugged')
 
 " Color Schemes
+" -------------
 Plug 'altercation/solarized'
 Plug 'crusoexia/vim-monokai'
 Plug 'joshdick/onedark.vim'
@@ -154,7 +151,9 @@ Plug 'https://github.com/ap/vim-css-color'
 " Ruby
 " ----
 Plug 'vim-ruby/vim-ruby'
+
 " Syntax
+" ------
 Plug 'junegunn/vim-emoji'
 "Plug 'w0rp/ale'
 Plug 'vim-scripts/groovy.vim'
@@ -169,26 +168,32 @@ Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
 Plug 'vim-syntastic/syntastic'
 
-"Linting
+" Linting
+" ------
 Plug 'jvenant/vim-java-imports'
 Plug 'prettier/vim-prettier'
 
 " Navigation
+" ----------
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'benmills/vimux'
 Plug 'ervandew/supertab'
 
-"Git
+" Git
+" ---
 Plug 'tpope/vim-fugitive'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Tools
+" -----
 Plug 'rking/ag.vim'   " silver searcher
 Plug 'lambdalisue/suda.vim' " get sudo on the file
 Plug 'terryma/vim-smooth-scroll'
 Plug 'ashisha/image.vim'
+
 " Text maniulation
+" ----------------
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 "Plug 'honza/vim-snippets'
@@ -486,6 +491,7 @@ set showtabline=2
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
 set conceallevel=0
 set termguicolors
+set cuc cul"
 
 autocmd FileType * setlocal formatoptions=jql
 autocmd Filetype ruby setlocal tabstop=2
