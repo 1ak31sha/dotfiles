@@ -140,7 +140,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'mhartington/oceanic-next'
-"Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'mkitt/tabline.vim'
@@ -304,6 +304,11 @@ set completefunc=emoji#complete
 "let g:lightline = {
 "  \   'colorscheme': 'onedark'
 "  \}
+let g:lightline = {
+      \ 'enable': {
+      \   'tabline': 0
+      \ }
+      \ }
 
 " Nerd Tree
 " ---------
