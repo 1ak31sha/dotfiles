@@ -2,8 +2,11 @@
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
 
-" Table of Contents
-" -----------------
+"  ~ Table of Contents ~
+" -----------------------
+"
+" Use <Shift>* on a word to follow it.
+"
 " MAPPINGS
 " ..CTRL_MAPPINGS
 " ..LEADER_MAPPINGS
@@ -14,7 +17,6 @@
 " PLUGINS
 " PLUGIN_CONFIGURATIONS
 " ..AG
-" ..Airline
 " ..ALE
 " ..CTRL-P
 " ..DevIcons
@@ -28,10 +30,9 @@
 " ..UltiSnips
 " ..vim_javascript
 " FUNCTIONS
+" TERMINAL_MODE
 "
-" -------------------- "
-"
-" -------------------- "
+" ~------------------~ "
 
 
 " --
@@ -261,10 +262,6 @@ call plug#end()
 " ----------------------
 let g:ag_working_path_mode="r"
 
-" Airline
-" --------
-let g:airline_powerline_fonts = 1
-
 " ALE
 " -----
 let b:ale_linters = ['eslint']
@@ -476,11 +473,26 @@ let g:javascript_conceal_arrow_function       = "⇒"
 " ---------
 " AUTOCMD
 " ---------
+" Jump to the main window.
+autocmd VimEnter * wincmd p
+
+autocmd FileType * setlocal formatoptions=jql
+autocmd Filetype ruby setlocal tabstop=2
+autocmd Filetype rb setlocal tabstop=2
+autocmd Filetype json setlocal tabstop=2
+autocmd Filetype * setlocal tabstop=2
+autocmd FileType java set tags=~/.tags
+autocmd FileType markdown set spell spelllang=en_us
+
+" I like relative numbering when in normal mode.
+autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 relativenumber modifiable
+
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
+
 "autocmd! BufWritePost,BufEnter * Neomake
 autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
 au BufNewFile,BufRead *.ejs set filetype=html
-" Jump to the main window.
-autocmd VimEnter * wincmd p
 "au Bufread,BufNewFile *.feature set filetype=gherkin
 "au! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
@@ -490,7 +502,9 @@ autocmd VimEnter * wincmd p
 "    au FileType javascript setlocal foldmethod=syntax
 "  augroup END
 
-
+" -------------
+" TERMINAL_MODE
+"--------------
 "filetype plugin indent on
 if has("nvim")
   " Make escape work in the Neovim terminal.
@@ -502,11 +516,6 @@ if has("nvim")
   tnoremap <C-k> <C-\><C-N><C-w>k
   tnoremap <C-l> <C-\><C-N><C-w>l
 
-  " I like relative numbering when in normal mode.
-  autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 relativenumber modifiable
-
-  " Prefer Neovim terminal insert mode to normal mode.
-  autocmd BufEnter term://* startinsert
 endif
 
 " -----------
@@ -536,13 +545,6 @@ set conceallevel=0
 set termguicolors
 set cuc cul"
 
-autocmd FileType * setlocal formatoptions=jql
-autocmd Filetype ruby setlocal tabstop=2
-autocmd Filetype rb setlocal tabstop=2
-autocmd Filetype json setlocal tabstop=2
-autocmd Filetype * setlocal tabstop=2
-autocmd FileType java set tags=~/.tags
-autocmd FileType markdown set spell spelllang=en_us
 
 
 syntax on
