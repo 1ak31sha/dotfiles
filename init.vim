@@ -1,8 +1,39 @@
 "~_~_~_~_~_~_~_~_~_~_~"
 "        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
+
+" Table of Contents
+" -----------------
+" MAPPINGS
+" ..CTRL_MAPPINGS
+" ..LEADER_MAPPINGS
+" AUTOCMD
+" SET_OPTIONS
+" JAVA
+" COLOR_SCHEME
+" PLUGINS
+" PLUGIN_CONFIGURATIONS
+" ..AG
+" ..Airline
+" ..ALE
+" ..CTRL-P
+" ..DevIcons
+" ..Deoplete
+" ..FZF_config
+" ..Git_Gutter
+" ..Lightline
+" ..Nerd_Tree
+" ..Neosnippet
+" ..Prettier
+" ..UltiSnips
+" ..vim_javascript
+" FUNCTIONS
 "
-set runtimepath+=$DOTFILES/vimsnips
+" -------------------- "
+"
+" -------------------- "
+
+
 " --
 " ABREVIATIONS
 " --
@@ -16,7 +47,7 @@ iabbrev dv </div>
 
 let mapleader = " "
 
-" CTRL MAPPINGS
+" CTRL_MAPPINGS
 " -------------
 
 " <C-a> // reserved by tmux prefix
@@ -48,7 +79,7 @@ nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nmap <C-/> call Smart_commenting()<CR>
 
 
-" LEADER MAPPINGS
+" LEADER_MAPPINGS
 " ---------------
 
 nmap <leader>a :Ag<space>
@@ -155,7 +186,7 @@ Plug 'vim-ruby/vim-ruby'
 " Syntax
 " ------
 Plug 'junegunn/vim-emoji'
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 Plug 'vim-scripts/groovy.vim'
 Plug 'mxw/vim-jsx'
 Plug 'dag/vim-fish'
@@ -163,13 +194,13 @@ Plug 'darthmall/vim-vue'
 Plug 'tpope/vim-cucumber'
 Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+"Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
-Plug 'vim-syntastic/syntastic'
 
 " Linting
 " ------
+"Plug 'vim-syntastic/syntastic'
 Plug 'jvenant/vim-java-imports'
 Plug 'prettier/vim-prettier'
 
@@ -223,7 +254,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "
 " ----------------------
-" PLUGIN CONFIGURATIONS
+" PLUGIN_CONFIGURATIONS
 " ----------------------
 
 " AG - the silver surfer
@@ -234,9 +265,10 @@ let g:ag_working_path_mode="r"
 " --------
 let g:airline_powerline_fonts = 1
 
-" ALE "
+" ALE
 " -----
 let b:ale_linters = ['eslint']
+let b:ale_fixers = ['prettier', 'eslint']
 
 " ----------------------
 " Autoformat
@@ -270,7 +302,7 @@ let g:webdevicons_gui_glyph_fix = 1
 "  \ 'jspc#omni'
 "\]
 
-" FZF
+" FZF_config
 " ---
 let g:fzf_layout = { 'up': '~40%' }
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
@@ -292,13 +324,14 @@ let g:fzf_colors =
 " - down / up / left / right
 "    let g:fzf_layout = { 'down': '~40%' }
 
-" Git Gutter
+" Git_Gutter
 "-----------
 let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 let g:gitgutter_sign_modified_removed = emoji#for('collision')
 set completefunc=emoji#complete
+
 " Lightline
 " ---------
 "let g:lightline = {
@@ -310,7 +343,7 @@ let g:lightline = {
       \ }
       \ }
 
-" Nerd Tree
+" Nerd_Tree
 " ---------
 nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
@@ -318,6 +351,59 @@ let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='t'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "autocmd vimenter * NERDTree "// Open the tree by default
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:monokai_blue = "66D9EF"
+let s:monokai_green = "A6E22E"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "F92672"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+" Vim-nerdtree-syntax-highlight
+let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
+let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
+let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
+" -----------------------------
+"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
+"let g:NERDTreeExactMatchHighlightColor =
+"     \{ '.gitignore': 's:rspec_red'
+"    \} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 " Neomake
 " ---------
@@ -378,59 +464,10 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsSnippetDirectories=["$DOTFILES/vimsnips", "UltiSnips"]
 "let g:UltiSnipsExpandTrigger="<tab>"
 
-" Vim-nerdtree-syntax-highlight
-" -----------------------------
-"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
-let g:NERDTreeLimitedSyntax = 1
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-let s:brown = "905532"
-let s:aqua =  "3AFFDB"
-let s:blue = "689FB6"
-let s:monokai_blue = "66D9EF"
-let s:monokai_green = "A6E22E"
-let s:darkBlue = "44788E"
-let s:purple = "834F79"
-let s:lightPurple = "834F79"
-let s:red = "AE403F"
-let s:beige = "F5C06F"
-let s:yellow = "F09F17"
-let s:orange = "D4843E"
-let s:darkOrange = "F16529"
-let s:pink = "F92672"
-let s:salmon = "EE6E73"
-let s:green = "8FAA54"
-let s:lightGreen = "31B53E"
-let s:white = "FFFFFF"
-let s:rspec_red = 'FE405F'
-let s:git_orange = 'F54D27'
-let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
-let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
-let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
-let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
-let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
-"let g:NERDTreeExactMatchHighlightColor =
-"     \{ '.gitignore': 's:rspec_red'
-"    \} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
-"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
+
+"  vim_javascript
+"  --------------
+let g:javascript_conceal_arrow_function       = "⇒"
 
 " ----------------------------
 " END OF PLUGIN CONFIGURATIONS
@@ -473,8 +510,9 @@ if has("nvim")
 endif
 
 " -----------
-" SET OPTIONS
+" SET_OPTIONS
 " -----------
+set runtimepath+=$DOTFILES/vimsnips
 set nowrap
 set nocursorline
 set encoding=utf8
@@ -516,7 +554,7 @@ setlocal omnifunc=javacomplete#Complete
 setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " -------------
-" COLOR SCHEME
+" COLOR_SCHEME
 " -------------
 colorscheme monokai
 " put this in the monokai plugin's monokai.vim file

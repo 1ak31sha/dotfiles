@@ -18,6 +18,7 @@ set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Conten
 #set -x JAVA_HOME       /usr/bin/java
 set -x GEM_PATH        ~/.gem
 set -x GEM_HOME        ~/.gem
+set -x PATH $PATH      /usr/local/bin
 
 source $DOTFILES/.sharedrc
 
