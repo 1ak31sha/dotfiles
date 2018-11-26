@@ -1,5 +1,7 @@
 "~_~_~_~_~_~_~_~_~_~_~"
+"                     "
 "        VIMRC        "
+"        -----        "
 "~_~_~_~_~_~_~_~_~_~_~"
 
 "  ~ Table of Contents ~
@@ -39,8 +41,8 @@
 " ABREVIATIONS
 " --
 
-iabbrev div <div>
-iabbrev dv </div>
+" iabbrev div <div>
+" iabbrev" dv </div>
 
 " -----------
 " MAPPINGS
@@ -98,7 +100,7 @@ nmap <Leader>h :sp<CR><C-w><Down>
 "    <leader>m
 "    <leader>n
 "    <leader>o
-"    <leader>p
+"nmap <leader>p :PrettierCli <--config ./.prettierrc>
 nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
 nmap <Leader>s :w<CR>
@@ -187,7 +189,6 @@ Plug 'vim-ruby/vim-ruby'
 " Syntax
 " ------
 Plug 'junegunn/vim-emoji'
-Plug 'w0rp/ale'
 Plug 'vim-scripts/groovy.vim'
 Plug 'mxw/vim-jsx'
 Plug 'dag/vim-fish'
@@ -201,6 +202,7 @@ Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
 
 " Linting
 " ------
+Plug 'w0rp/ale'
 "Plug 'vim-syntastic/syntastic'
 Plug 'jvenant/vim-java-imports'
 Plug 'prettier/vim-prettier'
@@ -434,6 +436,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " Prettier
 " --------
+
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#semi = 'false'
 " print semicolons
 " Prettier default: true
 " print spaces between brackets
@@ -444,7 +449,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " none|es5|all
 " Prettier default: none
 " let g:prettier#config#trailing_comma = 'all'
-"let g:prettier#config#semi = 'false'
 "let g:prettier#config#bracket_spacing = 'true'
 
 " UltiSnips

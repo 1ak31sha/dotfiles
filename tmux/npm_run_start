@@ -1,0 +1,5 @@
+selectp -t 0 # select the first (0) pane
+splitw -v -p 20 -c "#{pane_current_path}"
+send-keys -t 1 "npm run start" Enter
+
+

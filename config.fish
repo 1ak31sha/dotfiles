@@ -9,6 +9,8 @@ fish_vi_key_bindings
 set -x DOTFILES        ~/workspace/dotfiles
 #set -x PYENV_ROOT       $HOME/.pyenv
 set -x ANDROID_HOME    $HOME/Library/Android/sdk
+set -x NVM_DIR         $HOME/.nvm
+
 set -x PATH $PATH      $ANDROID_HOME/tools
 set -x PATH $PATH      $ANDROID_HOME/tools/bin
 set -x PATH $PATH      $ANDROID_HOME/platform-tools
@@ -21,6 +23,8 @@ set -x GEM_HOME        ~/.gem
 set -x PATH $PATH      /usr/local/bin
 
 source $DOTFILES/.sharedrc
+#source $NVM_DIR/nvm.sh
+#source $NVM_DIR/bash_completion
 
 #todo
 function gclone
