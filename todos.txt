@@ -1,3 +1,5 @@
+- [ ] line split function, 80 chrs max
+- [ ] https://stackoverflow.com/questions/28396256/nerdtree-live-preview-like-sublime-sidebar
 - [ ] install newer python plugins and debug vim image viewer
 - [ ] https://github.com/markdown-it/markdown-it-ins
 - [ ] https://pexpect.readthedocs.io/en/stable/overview.html<Paste>

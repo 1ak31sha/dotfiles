@@ -50,6 +50,7 @@
 
 let mapleader = " "
 
+nmap 1 $
 " CTRL_MAPPINGS
 " -------------
 

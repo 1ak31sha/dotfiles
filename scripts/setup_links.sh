@@ -14,3 +14,4 @@ ln -s ~/workspace/dotfiles/.bashrc ~/.bashrc
 ln -s ~/workspace/dotfiles/.sharedrc ~/.sharedrc
 ln -s ~/workspace/dotfiles/.agignore ~/.agignore
 ln -s ~/workspace/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/workspace/dotfiles/vim_spelling ~/.config/nvim/spell/en.utf-8.add
