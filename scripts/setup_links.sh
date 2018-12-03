@@ -16,3 +16,4 @@ ln -s ~/workspace/dotfiles/.agignore ~/.agignore
 ln -s ~/workspace/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/workspace/dotfiles/vim_spelling ~/.config/nvim/spell/en.utf-8.add
 ln -s ~/workspace/dotfiles/.tmux-powerlinerc ~/.tmux-powerlinerc
+ln -s ~/workspace/dotfiles/tmux/lakeisha_theme.sh ~/installs/tmux-powerline/themes/lakeisha_theme.sh
