@@ -20,6 +20,11 @@ set -x GEM_HOME        ~/.gem
 
 source $DOTFILES/.sharedrc
 
+set cmd uname
+if [ (eval $cmd) = "Linux" ]
+  xmodmap ~/.Xmodmap
+end
+
 #todo
 function gclone
   git clone 'https://github.com/1ak31sha/' + $argv
