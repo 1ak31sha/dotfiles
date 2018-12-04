@@ -2,31 +2,12 @@
 # Lakeisha's Dot Files #
 #####################
 
-# Run these ‘defaults’ commands in terminal # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#
-# defaults write com.apple.finder AppleShowAllFiles YES
-# defaults write com.apple.screencapture location ~/Documents/Screenshots
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#. $DOTFILES/.sharedrc
-  #value=`cat $DOTFILES/value.dat`
-#value=`expr ${value} + 1`
-# show it to the userj
 echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 echo "    <3: Hi Lakeisha! <3    "
 echo "    <3:                   "
 echo "    <3: `date`           " 
 #echo "    <3: #sources: ${value}"#since april 1st 2018
 echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
-
-#if $1="yo" ; then
-#	echo "yay"
-#else
-#	fish
-#fi
-# and save it for next time
-#echo "${value}" > ~/workspace/1ak31sha/value.dat
-######################################################
-
 
 # This will set the terminal to show working directory and git diff dirty status
 [ -z "$PS2" ] && return
@@ -149,8 +130,6 @@ PROMPT_COMMAND='history -a'
 HISTFILESIZE=10000000
 
 ### NOT USED
-#eval "$(rbenv init -)"
-#source ~/.xsh
 #alias sublpackages = 'open ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/'
 #function ga() { gadd && ls; }
 #function k(){ cd ~ "$@" & ls; }
@@ -161,3 +140,7 @@ HISTFILESIZE=10000000
 #export LS_COLORS='di=0;36:'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

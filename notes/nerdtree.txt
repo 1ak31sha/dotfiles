@@ -1,5 +1,0 @@
-Plug 'mxw/vim-jsx'
-
-m - menu
-C-w+l			move to editor
-C-w+w			move to tree

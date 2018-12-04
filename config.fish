@@ -9,28 +9,35 @@ fish_vi_key_bindings
 set -x DOTFILES        ~/workspace/dotfiles
 #set -x PYENV_ROOT       $HOME/.pyenv
 set -x ANDROID_HOME    $HOME/Library/Android/sdk
+set -x NVM_DIR         $HOME/.nvm
+
 set -x PATH $PATH      $ANDROID_HOME/tools
 set -x PATH $PATH      $ANDROID_HOME/tools/bin
 set -x PATH $PATH      $ANDROID_HOME/platform-tools
 set -x EDITOR          nvim
 set -x PATH $PATH      $HOME/.local/bin
 set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
-set -x GEM_PATH        ~/.gem
-set -x GEM_HOME        ~/.gem
-
-source $DOTFILES/.sharedrc
 
 set cmd uname
 if [ (eval $cmd) = "Linux" ]
   xmodmap ~/.Xmodmap
 end
 
+#set -x JAVA_HOME       /usr/bin/java
+set -x GEM_PATH        ~/.gem
+set -x GEM_HOME        ~/.gem
+set -x PATH $PATH      /usr/local/bin
+
+source $DOTFILES/.sharedrc
+#source $NVM_DIR/nvm.sh
+#source $NVM_DIR/bash_completion
+
 #todo
 function gclone
   git clone 'https://github.com/1ak31sha/' + $argv
 end
 
-function  startemu
+function startemu
   ruby $DOTFILES/ruby/emulator.rb
 end
 
@@ -39,11 +46,11 @@ function  givelight
 end
 
 
-function  killemu
+function killemu
   ruby $DOTFILES/ruby/killemu.rb
 end
 
-function  gif
+function gif
   ruby $DOTFILES/ruby/gif.rb
 end
 
@@ -55,10 +62,6 @@ function setup_rn
   sh $DOTFILES/tmux/setup_rn.sh
 end
 
-function awslog
-  sh $DOTFILES/tmux/login.sh
-end
-
 function gitb
   ruby $DOTFILES/git/gitbranch.rb
 end
@@ -66,14 +69,7 @@ end
 function  ecp_runTest
   ruby $DOTFILES/ruby/run_if_more_than_60s.rb $argv
 end
-  #dr alfa  razack 416-519-0744
-#715 pape avenue.
 
-# support pin - 4334
-#function gitclone 
-
-#"git clone https://github.com/1ak31sha/"
-alias gf "git status -s"
 function  ecp_runAll
   gradle clean --info allE2ETests -Dkarate.env=preprod -Dkarate.properties=https://39u3st4qhj.execute-api.us-east-1.amazonaws.com/e2e -PtestProfile=a-corporate-preprod -PprojectName=ecpregistry -PtopicARN=a204121-control-ecpmeta-e2e-use1 -PRegistryQueue=a204121-registryqueue-ecpmeta-e2e-use1 -Ptestprefix=foo -PSSM_PASSWORD_PARAMETER=a204121-kms-ecpmeta-registry -PBUCKETNAME=a204121-content-ecpmeta-e2e-use1 -PTABLENAME=a204121-s3indextable-ecpmeta-e2e-use1 -Dcucumber.options="--tags @Graph"
 end
@@ -84,14 +80,21 @@ function debug_ecp
 end
 
 function cloud-login
-  cloud-tool-fr login --username MGMT\\m6064854 --password GHfjdksla\;%4321
+  set todays_date (date "+%d%m%y")
+  set passw (cat $DOTFILES/passwords/tr_cld)
+  cloud-tool-fr login --username MGMT\\m6064854 --password "$passw$todays_date"
 end
+
 function cld
-  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password 'GHfjdksla;101018'
+  set todays_date (date "+%d%m%y")
+  set passw (cat $DOTFILES/passwords/tr_cld)
+  cloud-tool  -vvv --region us-east-1 --profile=a-corporate-prepod login --username MGMT\\m6064854 --password "$passw$todays_date"
 end
 
 function cld2
-  cloud-tool login --username MGMT\\m6064854 --password 'GHfjdksla;101018'
+  set todays_date (date "+%d%m%y")
+  set passw (cat $DOTFILES/passwords/tr_cld)
+  cloud-tool login --username MGMT\\m6064854 --password "$passw$todays_date"
 end
 
 #Clean Environment variables - dupes (run in bash - this is bash syntax)

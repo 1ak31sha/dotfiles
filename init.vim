@@ -1,23 +1,48 @@
-" `p  PLUGINS
-" `c  PLUGIN CONFIGURATIONS
-" `f  FUNCTIONS
-" `s  SET OPTIONS
-" `y  PYTHON
-" `m  MAPPINGS
-
-
-
-"~_~_~_~_~_~_~_~_~_~_~"   ^  ^
-"        VIMRC        "
 "~_~_~_~_~_~_~_~_~_~_~"
+"                     "
+"        VIMRC        "
+"        -----        "
+"~_~_~_~_~_~_~_~_~_~_~"
+
+"  ~ Table of Contents ~
+" -----------------------
 "
-set runtimepath+=$DOTFILES/vimsnips
+" Use <Shift>* on a word to follow it.
+"
+" MAPPINGS
+" ..CTRL_MAPPINGS
+" ..LEADER_MAPPINGS
+" AUTOCMD
+" SET_OPTIONS
+" JAVA
+" COLOR_SCHEME
+" PLUGINS
+" PLUGIN_CONFIGURATIONS
+" ..AG
+" ..ALE
+" ..CTRL-P
+" ..DevIcons
+" ..Deoplete
+" ..FZF_config
+" ..Git_Gutter
+" ..Lightline
+" ..Nerd_Tree
+" ..Neosnippet
+" ..Prettier
+" ..UltiSnips
+" ..vim_javascript
+" FUNCTIONS
+" TERMINAL_MODE
+"
+" ~------------------~ "
+
+
 " --
 " ABREVIATIONS
 " --
 
-iabbrev div <div>
-iabbrev dv </div>
+" iabbrev div <div>
+" iabbrev" dv </div>
 
 " -----------
 " MAPPINGS
@@ -25,7 +50,8 @@ iabbrev dv </div>
 
 let mapleader = " "
 
-" CTRL MAPPINGS
+nmap 1 $
+" CTRL_MAPPINGS
 " -------------
 
 " <C-a> // reserved by tmux prefix
@@ -35,11 +61,11 @@ nmap <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 " <C-e> scroll without moving cursor
 " <C-f>
 " <C-g>
-" <C-h>
+nmap <S-h> zH
 " <C-i
 " <C-j
 " <C-k
-" <C-l
+nmap <S-l> zL
 " <C-m>
 " <C-n> multiple cursors
 " <C-o>
@@ -57,7 +83,7 @@ nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nmap <C-/> call Smart_commenting()<CR>
 
 
-" LEADER MAPPINGS
+" LEADER_MAPPINGS
 " ---------------
 
 nmap <leader>a :Ag<space>
@@ -76,7 +102,7 @@ nmap <Leader>h :sp<CR><C-w><Down>
 "    <leader>m
 "    <leader>n
 "    <leader>o
-"    <leader>p
+"nmap <leader>p :PrettierCli <--config ./.prettierrc>
 nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
 nmap <Leader>s :w<CR>
@@ -112,18 +138,19 @@ nmap <leader>{        viwS{<CR>
 
 
 " VISUAL
-" ------
-xnoremap K :move '<-2<CR>gv=gv
-xnoremap J :move '>+1<CR>gv=gv
-xnoremap <Leader>d y`>p
-vnoremap <C-c> "*y
 vnoremap <C-c>        "*y
 xnoremap <Leader>d    y`>p
+xnoremap J            :move '>+1<CR>gv=gv
+xnoremap K            :move '<-2<CR>gv=gv
 vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
-vmap <C-\>            di/*<CR><CR>*/<esc>kp
+vmap <C-\>            di/*<CR>*/<CR><esc>kkp
+"vmap <C-j>            :call Block_comment()<CR>
 
 " INSERT MODE
 " -----------
+
+
+
 "inoremap <ctrl> <esc>
 " type an opening brace and it auto does the closing, putting you inside the braces
 "imap ( ()<C-[>i
@@ -148,14 +175,21 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'mhartington/oceanic-next'
-"Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'mkitt/tabline.vim'
 "Plug 'NovaDev94/lightline-onedark'
+"Plug 'https://github.com/gko/vim-coloresque'
+Plug 'https://github.com/ap/vim-css-color'
+
+" Ruby
+" ----
+Plug 'vim-ruby/vim-ruby'
 
 " Syntax
-"Plug 'w0rp/ale'
+" ------
+Plug 'junegunn/vim-emoji'
 Plug 'vim-scripts/groovy.vim'
 Plug 'mxw/vim-jsx'
 Plug 'dag/vim-fish'
@@ -163,30 +197,38 @@ Plug 'darthmall/vim-vue'
 Plug 'tpope/vim-cucumber'
 Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+"Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
 
-"Linting
+" Linting
+" ------
+Plug 'w0rp/ale'
+"Plug 'vim-syntastic/syntastic'
 Plug 'jvenant/vim-java-imports'
 Plug 'prettier/vim-prettier'
 
 " Navigation
+" ----------
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'benmills/vimux'
 Plug 'ervandew/supertab'
 
-"Git
+" Git
+" ---
 Plug 'tpope/vim-fugitive'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Tools
+" -----
 Plug 'rking/ag.vim'   " silver searcher
 Plug 'lambdalisue/suda.vim' " get sudo on the file
 Plug 'terryma/vim-smooth-scroll'
+Plug 'ashisha/image.vim'
 
 " Text maniulation
+" ----------------
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 "Plug 'honza/vim-snippets'
@@ -216,20 +258,17 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "
 " ----------------------
-" PLUGIN CONFIGURATIONS
+" PLUGIN_CONFIGURATIONS
 " ----------------------
 
 " AG - the silver surfer
 " ----------------------
 let g:ag_working_path_mode="r"
 
-" Airline
-" --------
-let g:airline_powerline_fonts = 1
-
-" ALE "
+" ALE
 " -----
 let b:ale_linters = ['eslint']
+let b:ale_fixers = ['prettier', 'eslint']
 
 " ----------------------
 " Autoformat
@@ -263,7 +302,7 @@ let g:webdevicons_gui_glyph_fix = 1
 "  \ 'jspc#omni'
 "\]
 
-" FZF
+" FZF_config
 " ---
 let g:fzf_layout = { 'up': '~40%' }
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
@@ -285,13 +324,26 @@ let g:fzf_colors =
 " - down / up / left / right
 "    let g:fzf_layout = { 'down': '~40%' }
 
+" Git_Gutter
+"-----------
+"let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+"let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+"let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+"let g:gitgutter_sign_modified_removed = emoji#for('collision')
+"set completefunc=emoji#complete
+
 " Lightline
 " ---------
 "let g:lightline = {
 "  \   'colorscheme': 'onedark'
 "  \}
+let g:lightline = {
+      \ 'enable': {
+      \   'tabline': 0
+      \ }
+      \ }
 
-" Nerd Tree
+" Nerd_Tree
 " ---------
 nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
@@ -299,6 +351,59 @@ let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='t'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "autocmd vimenter * NERDTree "// Open the tree by default
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:monokai_blue = "66D9EF"
+let s:monokai_green = "A6E22E"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "F92672"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+" Vim-nerdtree-syntax-highlight
+let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
+let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
+let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
+let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
+let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
+" -----------------------------
+"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
+"let g:NERDTreeExactMatchHighlightColor =
+"     \{ '.gitignore': 's:rspec_red'
+"    \} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 " Neomake
 " ---------
@@ -332,6 +437,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " Prettier
 " --------
+
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#semi = 'false'
 " print semicolons
 " Prettier default: true
 " print spaces between brackets
@@ -342,7 +450,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " none|es5|all
 " Prettier default: none
 " let g:prettier#config#trailing_comma = 'all'
-"let g:prettier#config#semi = 'false'
 "let g:prettier#config#bracket_spacing = 'true'
 
 " UltiSnips
@@ -359,59 +466,10 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsSnippetDirectories=["$DOTFILES/vimsnips", "UltiSnips"]
 "let g:UltiSnipsExpandTrigger="<tab>"
 
-" Vim-nerdtree-syntax-highlight
-" -----------------------------
-"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
-let g:NERDTreeLimitedSyntax = 1
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-let s:brown = "905532"
-let s:aqua =  "3AFFDB"
-let s:blue = "689FB6"
-let s:monokai_blue = "66D9EF"
-let s:monokai_green = "A6E22E"
-let s:darkBlue = "44788E"
-let s:purple = "834F79"
-let s:lightPurple = "834F79"
-let s:red = "AE403F"
-let s:beige = "F5C06F"
-let s:yellow = "F09F17"
-let s:orange = "D4843E"
-let s:darkOrange = "F16529"
-let s:pink = "F92672"
-let s:salmon = "EE6E73"
-let s:green = "8FAA54"
-let s:lightGreen = "31B53E"
-let s:white = "FFFFFF"
-let s:rspec_red = 'FE405F'
-let s:git_orange = 'F54D27'
-let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
-let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
-let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
-let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
-let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
-"let g:NERDTreeExactMatchHighlightColor =
-"     \{ '.gitignore': 's:rspec_red'
-"    \} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
-"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
+
+"  vim_javascript
+"  --------------
+let g:javascript_conceal_arrow_function       = "⇒"
 
 " ----------------------------
 " END OF PLUGIN CONFIGURATIONS
@@ -420,10 +478,28 @@ let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
 " ---------
 " AUTOCMD
 " ---------
-"autocmd! BufWritePost,BufEnter * Neomake
-autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
 " Jump to the main window.
 autocmd VimEnter * wincmd p
+"au Bufread,BufNewFile *.feature set filetype=gherkin
+"au! Syntax gherkin source ~/.vim/syntax/cucumber.vim
+
+autocmd FileType * setlocal formatoptions=jql
+autocmd Filetype ruby setlocal tabstop=2
+autocmd Filetype rb setlocal tabstop=2
+autocmd Filetype json setlocal tabstop=2
+autocmd Filetype * setlocal tabstop=2
+autocmd FileType java set tags=~/.tags
+autocmd FileType markdown set spell spelllang=en_us
+
+" I like relative numbering when in normal mode.
+autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 relativenumber modifiable
+
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
+
+"autocmd! BufWritePost,BufEnter * Neomake
+autocmd BufNewFile,BufRead *.sharedrc   set syntax=perl
+au BufNewFile,BufRead *.ejs set filetype=html
 "au Bufread,BufNewFile *.feature set filetype=gherkin
 "au! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
@@ -433,7 +509,9 @@ autocmd VimEnter * wincmd p
 "    au FileType javascript setlocal foldmethod=syntax
 "  augroup END
 
-
+" -------------
+" TERMINAL_MODE
+"--------------
 "filetype plugin indent on
 if has("nvim")
   " Make escape work in the Neovim terminal.
@@ -445,16 +523,12 @@ if has("nvim")
   tnoremap <C-k> <C-\><C-N><C-w>k
   tnoremap <C-l> <C-\><C-N><C-w>l
 
-  " I like relative numbering when in normal mode.
-  autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 relativenumber modifiable
-
-  " Prefer Neovim terminal insert mode to normal mode.
-  autocmd BufEnter term://* startinsert
 endif
 
 " -----------
-" SET OPTIONS
+" SET_OPTIONS
 " -----------
+set runtimepath+=$DOTFILES/vimsnips
 set nowrap
 set nocursorline
 set encoding=utf8
@@ -465,7 +539,7 @@ set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
 set number
 set relativenumber
 set shiftwidth=2
-set expandtab
+set expandtab "puts spaces for tabs
 set autoread                    "Reload files changed outside vim
 set path+=**
 set wildmenu
@@ -474,8 +548,10 @@ set gdefault
 set statusline+=%F
 set showtabline=2
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
-
+set conceallevel=0
 set termguicolors
+set cuc cul"
+
 
 autocmd FileType * setlocal formatoptions=jql
 autocmd Filetype ruby setlocal tabstop=2
@@ -494,7 +570,7 @@ setlocal omnifunc=javacomplete#Complete
 setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " -------------
-" COLOR SCHEME
+" COLOR_SCHEME
 " -------------
 colorscheme monokai
 " put this in the monokai plugin's monokai.vim file
@@ -552,6 +628,25 @@ function! Cycle_colors() abort
   let next_color = schemes[j]
   execute ("colorscheme " . next_color)
   echo next_color
+endfunction
+
+function! s:get_visual_selection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+
+
+function! Block_comment() abort
+  call feedkeys("dO\/*\<esc>pi*\\")
 endfunction
 
 function! Smart_commenting() abort

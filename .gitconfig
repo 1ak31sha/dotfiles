@@ -17,5 +17,5 @@
 [mergetool]
   path = nvim
 [commit]
-  template = $DOTFILES/git/commit_template
+  template = "~/workspace/dotfiles/git/commit_template"
   #git config --global -e
