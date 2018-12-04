@@ -13,4 +13,5 @@ defaults delete com.apple.dock persistent-others
 sudo xcode-select --install
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write NSGlobalDomain KeyRepeat -int 1
-
+defaults write com.google.Chrome NSQuitAlwaysKeepsWindows -bool false
+defaults write com.apple.Safari NSQuitAlwaysKeepsWindows -bool false
