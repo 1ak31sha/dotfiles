@@ -80,7 +80,7 @@ nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " <C-x
 " <C-y> scroll up without moving cursor
 " <C-z> quit without asking
-nmap <C-/> call Smart_commenting()<CR>
+nmap <C-/> :call Smart_commenting()<CR>
 
 
 " LEADER_MAPPINGS
@@ -119,7 +119,7 @@ nmap <leader>4 4gt
 nmap <leader>5 5gt
 nmap <leader>6 6gt
 nmap <leader>7 7gt
-"nmap <leader>8 smart commenting
+nmap <leader>8 :call Smart_commenting()<CR>
 nmap <silent>     <Leader>9 :call Cycle_colors()<CR>
 
 nmap <Leader>m1       :mksession! $DOTFILES/learning.vim<CR>
@@ -143,8 +143,8 @@ xnoremap J            :move '>+1<CR>gv=gv
 xnoremap K            :move '<-2<CR>gv=gv
 vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
 vmap <C-\>            di/*<CR>*/<CR><esc>kkp
+vmap <C-s>            :call Split_Long_Lines_Max_80()<CR>
 "vmap <C-j>            :call Block_comment()<CR>
-
 " INSERT MODE
 " -----------
 
@@ -549,6 +549,8 @@ set showtabline=2
 set conceallevel=0
 set termguicolors
 set cuc cul"
+" the length to be used for the gq command that splits lines
+set textwidth=80
 
 
 
@@ -638,6 +640,12 @@ endfunction
 
 function! Block_comment() abort
   call feedkeys("dO\/*\<esc>pi*\\")
+endfunction
+
+" not needed anymore after discovering gq. leave it here incase i want something custom
+function! Split_Long_Lines_Max_80() abort
+  let curr_line = getline('.')
+echo curr_line[80]
 endfunction
 
 function! Smart_commenting() abort
