@@ -108,7 +108,8 @@ nmap <Leader>s :w<CR>
 nmap <Leader>t :tabnew<CR>
 "    <leader>u
 nmap <Leader>v :vsp<CR><C-w><Right>
-"    <leader>w
+" gets you sudo access to a file without having to exit vim. promts for password
+nmap <leader>w  :w suda://%<CR>
 "    <leader>x
 nmap <leader>y :YAMLFormat<CR>
 nmap <Leader>z :call Zap()<CR>
