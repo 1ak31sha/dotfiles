@@ -1,3 +1,6 @@
+- [ ]  move static prop types to bottom script
+- [ ] workbox service worker
+- [ ] https://github.com/szw/vim-tags -- upgrade from exuberant to universal
 - [ ] add block comment function for visually selected lines of html
 - [ ] https://stackoverflow.com/questions/28396256/nerdtree-live-preview-like-sublime-sidebar
 - [ ] install newer python plugins and debug vim image viewer

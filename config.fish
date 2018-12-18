@@ -21,6 +21,7 @@ set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Conten
 set -x GEM_PATH        ~/.gem
 set -x GEM_HOME        ~/.gem
 set -x PATH $PATH      /usr/local/bin
+set -x RAINBARF        ~/.rainbarf.conf rainbarf
 
 source $DOTFILES/.sharedrc
 #source $NVM_DIR/nvm.sh

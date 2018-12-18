@@ -48,6 +48,34 @@
 " MAPPINGS
 " -----------
 
+"a - insert to the right
+"b - back a work
+"c - 
+"d - delete
+"e - end of a word
+"f - find
+"gg - go to beginning
+"G - go to end
+"h - left
+"i - insert left
+"j - down
+"k - up
+"l - right
+"o - insert below
+"O - insert above
+"p
+"q - 
+"r 
+"s replace and insert
+"t
+"u
+"v - visual mode
+"w - a word ( no /-^...)
+"W - blackspace delimited word
+"x - delete char
+"y - yank
+"zz - quit?
+
 let mapleader = " "
 
 nmap 1 $
@@ -99,6 +127,9 @@ nmap <Leader>h :sp<CR><C-w><Down>
 "    <leader>k
 "    <leader>l
 "    <leader>m
+nmap <leader>m :call DisplayTag()<CR>
+nmap <leader>o :call DisplayGivenTag()<CR>
+nnoremap <leader>n :call RebuildTags()<CR>
 "    <leader>n
 "    <leader>o
 "nmap <leader>p :PrettierCli <--config ./.prettierrc>
@@ -109,11 +140,11 @@ nmap <Leader>t :tabnew<CR>
 "    <leader>u
 nmap <Leader>v :vsp<CR><C-w><Right>
 " gets you sudo access to a file without having to exit vim. promts for password
-nmap <leader>w  :w suda://%<CR>
-"    <leader>x
+"nmap <leader>w  :f<space>
+nmap <leader>x  :w suda://%<CR>
 nmap <leader>y :YAMLFormat<CR>
 nmap <Leader>z :call Zap()<CR>
-nmap <leader>1 1gt
+nmap <leader>1 :tabn 1<CR>
 nmap <leader>2 2gt
 nmap <leader>3 3gt
 nmap <leader>4 4gt
@@ -227,6 +258,8 @@ Plug 'rking/ag.vim'   " silver searcher
 Plug 'lambdalisue/suda.vim' " get sudo on the file
 Plug 'terryma/vim-smooth-scroll'
 Plug 'ashisha/image.vim'
+"Plug 'https://github.com/szw/vim-tags'
+Plug 'webastien/vim-ctags'
 
 " Text maniulation
 " ----------------
@@ -268,8 +301,14 @@ let g:ag_working_path_mode="r"
 
 " ALE
 " -----
-let b:ale_linters = ['eslint']
+"let g:ale_linters = ['eslint']
+"let b:ale_linters = ['eslint']
 let b:ale_fixers = ['prettier', 'eslint']
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/packages/eslint-config/eslintrc.json'
+"let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/.eslintrc.js'
 
 " ----------------------
 " Autoformat
