@@ -11,7 +11,7 @@ everything i need to setup my dotfiles and a new computer in general
   * [Python](#python)
   * [Neovim](#nvim)
   * [Sublime Text](#sublime)
-
+  * [Font](#font)
 
 ## Getting started:
 
@@ -116,6 +116,12 @@ https://github.com/mrmartineau/SetiUI-Icons-Sublime
 TODO
 
 
+## Font
+
+Fira code
+
+I use the nerd font version, fura code which also supports dev-icons
+install the font and enable ligatures in iterm2 preferences
 
 
 

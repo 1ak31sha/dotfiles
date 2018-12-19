@@ -23,14 +23,14 @@ alias test11983="mvn clean verify -pl acceptance-tests-common,ui-acceptance-test
 
 # Git
 # source ~/git-completion.bash
+#alias ="ruby ~/workspace/1ak31sha/git/gitbranch.rb"
+# alias ga='git add . && git status -s'
 alias gs='git status -s'
 alias gc='git commit'
 alias gcan='git commit --amend --no-edit'
 alias gf='git fetch'
 alias gfii='git fetch integration:integration'
 alias gd='git difftool'
-#alias ="ruby ~/workspace/1ak31sha/git/gitbranch.rb"
-# alias ga='git add . && git status -s'
 alias gco='git checkout'
 alias gl='git log --oneline --decorate --graph'
 alias gla='git log --oneline --decorate --all --graph'

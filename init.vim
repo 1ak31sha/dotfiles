@@ -1,3 +1,5 @@
+
+
 "~_~_~_~_~_~_~_~_~_~_~"
 "                     "
 "        VIMRC        "
@@ -509,7 +511,11 @@ let g:UltiSnipsEditSplit="vertical"
 
 "  vim_javascript
 "  --------------
-let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_arrow_function = "≠"
+"let g:javascript_conceal_arrow_function = "⇒"
+
+"enable this if using above settings. i use fira font ligatures instead now
+"set conceallevel=1
 
 " ----------------------------
 " END OF PLUGIN CONFIGURATIONS
@@ -586,7 +592,8 @@ set gdefault
 set statusline+=%F
 set showtabline=2
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
-set conceallevel=0
+let g:javascript_plugin_jsdoc = 1
+set conceallevel=1
 set termguicolors
 set cuc cul"
 " the length to be used for the gq command that splits lines
@@ -608,6 +615,11 @@ setlocal completefunc=javacomplete#CompleteParamsInfo
 colorscheme monokai
 " put this in the monokai plugin's monokai.vim file
 "call s:h("TabLineSel",    { "bg": s:orange})
+
+" needed this when using conceal characters
+"autocmd ColorScheme * highlight Conceal guibg=None
+"syntax match Entity "===" conceal cchar=⟺
+"syntax match Entity "===" conceal cchar=p
 
 syntax enable
 
