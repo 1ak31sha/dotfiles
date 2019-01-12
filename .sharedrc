@@ -121,7 +121,7 @@ alias ga='git add . ;and git status -s'
 alias gco='git checkout'
 alias gl='git log --oneline --decorate --graph'
 alias gla='git log --oneline --decorate --all --graph'
-alias gb='git branch'
+#alias gb='git branch'
 alias gcop='git checkout -'
 
 

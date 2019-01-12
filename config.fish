@@ -57,7 +57,7 @@ function setup_rn
   sh $DOTFILES/tmux/setup_rn.sh
 end
 
-function gitb
+function gb
   ruby $DOTFILES/git/gitbranch.rb
 end
 
