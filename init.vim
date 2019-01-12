@@ -170,9 +170,9 @@ nmap <leader>(        viwS(<CR>
 nmap <leader>[        viwS[<CR>
 nmap <leader>{        viwS{<CR>
 
-
 " VISUAL
 vnoremap <C-c>        "*y
+vnoremap <C-x>        "*d
 xnoremap <Leader>d    y`>p
 xnoremap J            :move '>+1<CR>gv=gv
 xnoremap K            :move '<-2<CR>gv=gv
