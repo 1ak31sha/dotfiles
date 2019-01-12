@@ -1,3 +1,4 @@
+- [ ] type into multiple termials at once with tmux
 - [ ]  move static prop types to bottom script
 - [ ] workbox service worker
 - [ ] https://github.com/szw/vim-tags -- upgrade from exuberant to universal
