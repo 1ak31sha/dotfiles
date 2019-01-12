@@ -136,6 +136,9 @@ nnoremap <leader>n :call RebuildTags()<CR>
 "    <leader>n
 "    <leader>o
 "nmap <leader>p :PrettierCli <--config ./.prettierrc>
+"nmap <leader>p :PrettierCli <q-args> '--trailing-comma all"
+nmap <leader>p :Prettier<CR>
+"nmap <Leader>py <Plug>(Prettier)
 nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
 nmap <Leader>s :w<CR>
@@ -518,9 +521,14 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " Prettier
 " --------
-
+"--trailing-comma all --tab-width 2 --no-semi false
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'false'
+" none|es5|all
+" Prettier default: none
+let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#tab_width = 2
+let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 " print semicolons
 " Prettier default: true
 " print spaces between brackets
