@@ -759,6 +759,8 @@ function! Smart_commenting() abort
         \ 'perl': '#',
         \ 'vue': '//',
         \ 'java': '//',
+        \ 'yaml': '#',
+        \ 'cpp': '//',
         \   }
   echo commentDict
   let curr_line = getline('.')
