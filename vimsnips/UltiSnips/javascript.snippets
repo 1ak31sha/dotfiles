@@ -29,5 +29,27 @@ snippet type "export default const x='x'" b
 export default const $1 = "$1"
 endsnippet
 
+snippet i "import x from 'x'" b
+import $1 from '$2'
+endsnippet
+
+snippet rc "react class component" b 
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
+class $1 extends Component{
+
+	render(){
+		return(
+			<div>
+
+			</div>
+		)
+	}
+}
+
+export default $1
+endsnippet
+
 
 
