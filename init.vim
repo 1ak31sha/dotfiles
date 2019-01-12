@@ -640,7 +640,7 @@ set statusline+=%F
 set showtabline=2
 "supposed to tunoff auto-comment, but this actually happens in the after-directory
 let g:javascript_plugin_jsdoc = 1
-set conceallevel=1
+set conceallevel=0
 set termguicolors
 set cuc cul"
 " the length to be used for the gq command that splits lines
