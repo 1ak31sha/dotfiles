@@ -23,9 +23,9 @@ TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SE
 
 if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-"weather 37 255" \
+"weather 105 255" \
 #"date 235 169" \
-"battery 235 1" \
+"battery 232 1" \
 #"rainbarf --tmux --width 40 --no-battery 0 ${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR}" \
 "now_playing 234 37" \
 #"lan_ip 235 141" \
