@@ -183,6 +183,7 @@ vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
 vmap <C-\>            di/*<CR>*/<CR><esc>kkp
 vmap <C-s>            :call Split_Long_Lines_Max_80()<CR>
 "vmap <C-j>            :call Block_comment()<CR>
+vmap <Leader>< <Esc>:call VisualHTMLTagWrap()<CR>
 " INSERT MODE
 " -----------
 
@@ -272,6 +273,8 @@ Plug 'webastien/vim-ctags'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
+Plug 'othree/xml.vim'
+"Plug 'jasonwoodland/vim-html-closer' -> only works on html files, no jsx
 "Plug 'honza/vim-snippets'
 "Plug 'Shougo/neosnippet.vim'
 "Plug 'Shougo/neosnippet-snippets'
@@ -332,7 +335,7 @@ let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/packages/eslint-conf
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 "
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx, *.js'
 
 " filenames like *.xml, *.xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
@@ -342,7 +345,7 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
 "
-let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_filetypes = 'html,xhtml,phtml,js'
 
 " filetypes like xml, xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
@@ -356,11 +359,11 @@ let g:closetag_emptyTags_caseSensitive = 1
 
 " Shortcut for closing tags, default is '>'
 "
-let g:closetag_shortcut = '>'
+let g:closetag_shortcut = '<leader>>'
 
 " Add > at current position without closing the current tag, default is ''
 "
-"let g:closetag_close_shortcut = '<leader>>'
+let g:closetag_close_shortcut = '>'
 
 
 " CTRL-P
@@ -683,6 +686,21 @@ function! SetGMark(mark, filename, line_nr)
   let l:mybuf = bufnr(a:filename, 1)
   call setpos("'".a:mark, [l:mybuf, a:line_nr, 1, 0])
 endf
+
+function! VisualHTMLTagWrap()
+  let tag = input("Tag to wrap block: ")
+  if len(tag) > 0
+    normal `>
+    if &selection == 'exclusive'
+      exe "normal i</".tag.">"
+    else
+      exe "normal a</".tag.">"
+    endif
+    normal `<
+    exe "normal i<".tag.">"
+    normal `<
+  endif
+endfunction
 
 call SetGMark('A', '~/file.txt', 10)
 

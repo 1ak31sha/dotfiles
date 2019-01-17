@@ -20,6 +20,8 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <C-w>	init.vim	/^xmap <C-w>     <Plug>(neosnippet_expand_target)$/;"	m
 <C-x>	init.vim	/^vnoremap <C-x>        "*d$/;"	m
 <Leader>9	init.vim	/^nmap <silent>     <Leader>9 :call Cycle_colors()<CR>$/;"	m
+<Leader><	init.vim	/^vmap <Leader>< <Esc>:call VisualHTMLTagWrap()<CR>$/;"	m
+<Leader>>	init.vim	/^vmap <Leader>> <Esc>:call VisualHTMLTagWrap()<CR>$/;"	m
 <Leader>c	init.vim	/^nmap <Leader>c :call Cycle_numbering()<CR>$/;"	m
 <Leader>d	init.vim	/^nmap <Leader>d <S-v>yp$/;"	m
 <Leader>d	init.vim	/^xnoremap <Leader>d    y`>p$/;"	m
@@ -77,6 +79,7 @@ NERDTreeShowHidden	init.vim	/^let NERDTreeShowHidden=1$/;"	v
 SetGMark	init.vim	/^function! SetGMark(mark, filename, line_nr)$/;"	f
 Smart_commenting	init.vim	/^function! Smart_commenting() abort$/;"	f
 Split_Long_Lines_Max_80	init.vim	/^function! Split_Long_Lines_Max_80() abort$/;"	f
+VisualHTMLTagWrap	init.vim	/^function! VisualHTMLTagWrap()$/;"	f
 WatchForChanges	init.vim	/^command! -bang WatchForChanges                  :call WatchForChanges(@%,  {'toggle': 1, 'autore/;"	c
 WatchForChanges	init.vim	/^function! WatchForChanges(bufname, ...)$/;"	f
 WatchForChangesAllFile	init.vim	/^command! -bang WatchForChangesAllFile           :call WatchForChanges('*', {'toggle': 1, 'autore/;"	c
@@ -108,10 +111,16 @@ g:WebDevIconsUnicodeDecorateFolderNodes	init.vim	/^let g:WebDevIconsUnicodeDecor
 g:ag_working_path_mode	init.vim	/^let g:ag_working_path_mode="r"$/;"	v
 g:ale_javascript_eslint_options	init.vim	/^let g:ale_javascript_eslint_options='-c ~\/workspace\/emcm-ui\/packages\/eslint-config\/eslintrc/;"	v
 g:ale_linters	init.vim	/^let g:ale_linters = {$/;"	v
+g:closetag_close_shortcut	init.vim	/^let g:closetag_close_shortcut = '<leader>>'$/;"	v
+g:closetag_close_shortcut	init.vim	/^let g:closetag_close_shortcut = '>'$/;"	v
 g:closetag_emptyTags_caseSensitive	init.vim	/^let g:closetag_emptyTags_caseSensitive = 1$/;"	v
 g:closetag_filenames	init.vim	/^let g:closetag_filenames = '*.html,*.xhtml,*.phtml'$/;"	v
 g:closetag_filenames	init.vim	/^let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'$/;"	v
+g:closetag_filenames	init.vim	/^let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx, *.js'$/;"	v
 g:closetag_filetypes	init.vim	/^let g:closetag_filetypes = 'html,xhtml,phtml'$/;"	v
+g:closetag_filetypes	init.vim	/^let g:closetag_filetypes = 'html,xhtml,phtml,js'$/;"	v
+g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = ''$/;"	v
+g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = '<leader>>'$/;"	v
 g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = '>'$/;"	v
 g:closetag_xhtml_filenames	init.vim	/^let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'$/;"	v
 g:closetag_xhtml_filetypes	init.vim	/^let g:closetag_xhtml_filetypes = 'xhtml,jsx'$/;"	v
