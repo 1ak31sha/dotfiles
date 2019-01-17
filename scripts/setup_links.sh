@@ -19,3 +19,6 @@ ln -s ~/workspace/dotfiles/.tmux-powerlinerc ~/.tmux-powerlinerc
 ln -s ~/workspace/dotfiles/tmux/lakeisha_theme.sh ~/installs/tmux-powerline/themes/lakeisha_theme.sh
 ln -s ~/workspace/dotfiles/.rainbarf.conf ~/.rainbarf.conf
 ln -s ~/workspace/dotfiles/.prettierrc.yaml ~/.prettierrc.yaml
+ln -s ~/workspace/dotfiles/git/ssh_config ~/.ssh/config
+ln -sf ~/workspace/dotfiles/monokai.vim ~/.config/nvim/plugged/vim-monokai/colors
+
