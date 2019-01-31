@@ -1,5 +1,4 @@
 
-
 "~_~_~_~_~_~_~_~_~_~_~"
 "                     "
 "        VIMRC        "
@@ -141,7 +140,8 @@ nmap <leader>p :Prettier<CR>
 "nmap <Leader>py <Plug>(Prettier)
 nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
-nmap <Leader>s :w<CR>
+nmap <leader>s :call SavePrint()<CR>
+
 nmap <Leader>t :tabnew<CR>
 "    <leader>u
 nmap <Leader>v :vsp<CR><C-w><Right>
@@ -765,6 +765,9 @@ function! Split_Long_Lines_Max_80() abort
 echo curr_line[80]
 endfunction
 
+function! SavePrint() abort
+  call feedkeys(":w\<CR>:echo strftime(\"%Y-%m-%d %a %T\")\<CR>")
+endfunction
 function! Smart_commenting() abort
   let commentDict= {
         \ 'javascript': '//',
