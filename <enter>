@@ -1,3 +1,4 @@
+  
 
 "~_~_~_~_~_~_~_~_~_~_~"
 "                     "
@@ -140,6 +141,7 @@ nmap <leader>p :Prettier<CR>
 "nmap <Leader>py <Plug>(Prettier)
 nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
+"nmap <Leader>s :w echo r!date<CR>
 nmap <leader>s :call SavePrint()<CR>
 
 nmap <Leader>t :tabnew<CR>
@@ -437,26 +439,11 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='t'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-"let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']
-
 "autocmd vimenter * NERDTree "// Open the tree by default
-"let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
-let g:NERDTreeHighlightCursorline = 0
-
-"let g:NERDTreeDisableFileExtensionHighlight = 1
-"let g:NERDTreeDisableExactMatchHighlight = 1
-"let g:NERDTreeDisablePatternMatchHighlight = 1
-"let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-"let g:NERDTreeSyntaxEnabledExtensions = ['css', 'less', 'js']
-
-"let g:NERDTreeDisableExactMatchHighlight = 1
-"let g:NERDTreeDisablePatternMatchHighlight = 1
-
-
 let s:brown = "905532"
 let s:aqua =  "3AFFDB"
 let s:blue = "689FB6"
@@ -470,36 +457,24 @@ let s:beige = "F5C06F"
 let s:yellow = "F09F17"
 let s:orange = "D4843E"
 let s:darkOrange = "F16529"
-let g:pink = "f92672"
+let s:pink = "F92672"
 let s:salmon = "EE6E73"
 let s:green = "8FAA54"
 let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
-let s:white = "FFFFFF"
 " Vim-nerdtree-syntax-highlight
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['react.jsx'] = g:pink
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
 let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
 let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
 let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
 let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
 let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = g:pink
+let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink
 let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
-let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreePatternMatchHighlightColor = {}
-
-let g:NERDTreePatternMatchHighlightColor['.*stories\.js$'] = g:pink
-let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.js$'] = s:salmon
-let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['test.js'] = s:monokai_blue
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['.stories.js'] = s:lightPurple
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['.rehydrator.js'] = s:lightPurple
 " -----------------------------
 "Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
 "let g:NERDTreeExactMatchHighlightColor =
@@ -793,7 +768,8 @@ echo curr_line[80]
 endfunction
 
 function! SavePrint() abort
-  call feedkeys(":w\<CR>:echo 'Lakeisha saved <3 ' . strftime(\"%Y-%m-%d %a %T\")\<CR>")
+  call feedkeys(":w<enter>")
+  echo strftime("%Y-%m-%d %a %I:%M %p")
 endfunction
 function! Smart_commenting() abort
   let commentDict= {

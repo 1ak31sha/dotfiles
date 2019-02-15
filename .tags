@@ -21,7 +21,6 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <C-x>	init.vim	/^vnoremap <C-x>        "*d$/;"	m
 <Leader>9	init.vim	/^nmap <silent>     <Leader>9 :call Cycle_colors()<CR>$/;"	m
 <Leader><	init.vim	/^vmap <Leader>< <Esc>:call VisualHTMLTagWrap()<CR>$/;"	m
-<Leader>>	init.vim	/^vmap <Leader>> <Esc>:call VisualHTMLTagWrap()<CR>$/;"	m
 <Leader>c	init.vim	/^nmap <Leader>c :call Cycle_numbering()<CR>$/;"	m
 <Leader>d	init.vim	/^nmap <Leader>d <S-v>yp$/;"	m
 <Leader>d	init.vim	/^xnoremap <Leader>d    y`>p$/;"	m
@@ -29,10 +28,8 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <Leader>html	init.vim	/^nmap <Leader>html :-1read $DOTFILES\/testhtml.html<CR>1jf>a$/;"	m
 <Leader>l1	init.vim	/^nmap <Leader>l1       :source $DOTFILES\/learning.vim<CR>$/;"	m
 <Leader>m1	init.vim	/^nmap <Leader>m1       :mksession! $DOTFILES\/learning.vim<CR>$/;"	m
-<Leader>py	init.vim	/^nmap <Leader>py <Plug>(Prettier)$/;"	m
 <Leader>q	init.vim	/^nmap <Leader>q :q<CR>$/;"	m
 <Leader>r	init.vim	/^nmap <Leader>r :source $DOTFILES\/init.vim<CR>$/;"	m
-<Leader>s	init.vim	/^nmap <Leader>s :w<CR>$/;"	m
 <Leader>t	init.vim	/^nmap <Leader>t :tabnew<CR>$/;"	m
 <Leader>v	init.vim	/^nmap <Leader>v :vsp<CR><C-w><Right>$/;"	m
 <Leader>z	init.vim	/^nmap <Leader>z :call Zap()<CR>$/;"	m
@@ -59,11 +56,9 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <leader>m	init.vim	/^nmap <leader>m :call DisplayTag()<CR>$/;"	m
 <leader>n	init.vim	/^nnoremap <leader>n :call RebuildTags()<CR>$/;"	m
 <leader>o	init.vim	/^nmap <leader>o :call DisplayGivenTag()<CR>$/;"	m
-<leader>p	init.vim	/^nmap <leader>p :Prettier$/;"	m
 <leader>p	init.vim	/^nmap <leader>p :Prettier<CR>$/;"	m
-<leader>p	init.vim	/^nmap <leader>p :PrettierCli <q-args> "--trailing-comma all"$/;"	m
-<leader>p	init.vim	/^nmap <leader>p :PrettierCli <q-args> --trailing-comma all$/;"	m
 <leader>pi	init.vim	/^nmap <leader>pi   :PlugInstall<CR>$/;"	m
+<leader>s	init.vim	/^nmap <leader>s :call SavePrint()<CR>$/;"	m
 <leader>x	init.vim	/^nmap <leader>x  :w suda:\/\/%<CR>$/;"	m
 <leader>y	init.vim	/^nmap <leader>y :YAMLFormat<CR>$/;"	m
 <leader>{	init.vim	/^nmap <leader>{        viwS{<CR>$/;"	m
@@ -76,6 +71,7 @@ Multiple_cursors_after	init.vim	/^function! Multiple_cursors_after()$/;"	f
 Multiple_cursors_before	init.vim	/^function! Multiple_cursors_before()$/;"	f
 NERDTreeMapOpenInTab	init.vim	/^let NERDTreeMapOpenInTab='t'$/;"	v
 NERDTreeShowHidden	init.vim	/^let NERDTreeShowHidden=1$/;"	v
+SavePrint	init.vim	/^function! SavePrint() abort$/;"	f
 SetGMark	init.vim	/^function! SetGMark(mark, filename, line_nr)$/;"	f
 Smart_commenting	init.vim	/^function! Smart_commenting() abort$/;"	f
 Split_Long_Lines_Max_80	init.vim	/^function! Split_Long_Lines_Max_80() abort$/;"	f
@@ -87,21 +83,41 @@ WatchForChangesWhileInThisBuffer	init.vim	/^command! -bang WatchForChangesWhileI
 Zap	init.vim	/^function! Zap() abort$/;"	f
 autoreadargs	init.vim	/^let autoreadargs={'autoread':1}$/;"	v
 b:ale_fixers	init.vim	/^let b:ale_fixers = ['prettier', 'eslint']$/;"	v
+colors_name	monokai.vim	/^let colors_name = "monokai"$/;"	v
 g:DevIconsEnableFoldersOpenClose	init.vim	/^let g:DevIconsEnableFoldersOpenClose = 1$/;"	v
+g:NERDTreeDisableExactMatchHighlight	init.vim	/^let g:NERDTreeDisableExactMatchHighlight = 1$/;"	v
+g:NERDTreeDisablePatternMatchHighlight	init.vim	/^let g:NERDTreeDisablePatternMatchHighlight = 1$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange$/;"	v
+g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = g:pink$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue$/;"	v
+g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['js'] = g:pink$/;"	v
+g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['js'] = s:pink$/;"	v
+g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['react.jsx'] = g:pink$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red$/;"	v
+g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['test.js'] = s:monokai_blue$/;"	v
 g:NERDTreeExactMatchHighlightFullName	init.vim	/^let g:NERDTreeExactMatchHighlightFullName = 1$/;"	v
 g:NERDTreeFileExtensionHighlightFullName	init.vim	/^let g:NERDTreeFileExtensionHighlightFullName = 1$/;"	v
-g:NERDTreeLimitedSyntax	init.vim	/^let g:NERDTreeLimitedSyntax = 1$/;"	v
+g:NERDTreeHighlightCursorline	init.vim	/^let g:NERDTreeHighlightCursorline = 0$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor = {}$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*\\.js$'] = g:pink$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*\\.js$'] = s:pink$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = g:pink$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = g:salmon$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = s:salmon$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrator\\.js$'] = s:salmon$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*stories\\.js$'] = g:pink$/;"	v
 g:NERDTreePatternMatchHighlightFullName	init.vim	/^let g:NERDTreePatternMatchHighlightFullName = 1$/;"	v
+g:NERDTreeSyntaxDisableDefaultExtensions	init.vim	/^let g:NERDTreeSyntaxDisableDefaultExtensions = 1$/;"	v
+g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['css', 'less', 'js']$/;"	v
+g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['css', 'less']$/;"	v
+g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']$/;"	v
 g:UltiSnipsEditSplit	init.vim	/^let g:UltiSnipsEditSplit="vertical"$/;"	v
 g:UltiSnipsExpandTrigger	init.vim	/^let g:UltiSnipsExpandTrigger='<tab>'$/;"	v
 g:UltiSnipsJumpBackwardTrigger	init.vim	/^let g:UltiSnipsJumpBackwardTrigger="<leader>k"$/;"	v
@@ -111,17 +127,11 @@ g:WebDevIconsUnicodeDecorateFolderNodes	init.vim	/^let g:WebDevIconsUnicodeDecor
 g:ag_working_path_mode	init.vim	/^let g:ag_working_path_mode="r"$/;"	v
 g:ale_javascript_eslint_options	init.vim	/^let g:ale_javascript_eslint_options='-c ~\/workspace\/emcm-ui\/packages\/eslint-config\/eslintrc/;"	v
 g:ale_linters	init.vim	/^let g:ale_linters = {$/;"	v
-g:closetag_close_shortcut	init.vim	/^let g:closetag_close_shortcut = '<leader>>'$/;"	v
 g:closetag_close_shortcut	init.vim	/^let g:closetag_close_shortcut = '>'$/;"	v
 g:closetag_emptyTags_caseSensitive	init.vim	/^let g:closetag_emptyTags_caseSensitive = 1$/;"	v
-g:closetag_filenames	init.vim	/^let g:closetag_filenames = '*.html,*.xhtml,*.phtml'$/;"	v
-g:closetag_filenames	init.vim	/^let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'$/;"	v
 g:closetag_filenames	init.vim	/^let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx, *.js'$/;"	v
-g:closetag_filetypes	init.vim	/^let g:closetag_filetypes = 'html,xhtml,phtml'$/;"	v
 g:closetag_filetypes	init.vim	/^let g:closetag_filetypes = 'html,xhtml,phtml,js'$/;"	v
-g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = ''$/;"	v
 g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = '<leader>>'$/;"	v
-g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = '>'$/;"	v
 g:closetag_xhtml_filenames	init.vim	/^let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'$/;"	v
 g:closetag_xhtml_filetypes	init.vim	/^let g:closetag_xhtml_filetypes = 'xhtml,jsx'$/;"	v
 g:ctrlp_show_hidden	init.vim	/^let g:ctrlp_show_hidden = 1$/;"	v
@@ -134,35 +144,60 @@ g:gitgutter_sign_modified_removed	init.vim	/^let g:gitgutter_sign_modified_remov
 g:gitgutter_sign_removed	init.vim	/^let g:gitgutter_sign_removed = emoji#for('small_red_triangle')$/;"	v
 g:javascript_plugin_jsdoc	init.vim	/^let g:javascript_plugin_jsdoc = 1$/;"	v
 g:lightline	init.vim	/^let g:lightline = {$/;"	v
+g:monokai_gui_italic	monokai.vim	/^    let g:monokai_gui_italic = 1$/;"	v
+g:monokai_term_italic	monokai.vim	/^    let g:monokai_term_italic = 0$/;"	v
+g:monokai_termcolors	monokai.vim	/^let g:monokai_termcolors = 256 " does not support 16 color term right now.$/;"	v
 g:neosnippet#disable_runtime_snippets	init.vim	/^let g:neosnippet#disable_runtime_snippets = {$/;"	v
 g:neosnippet#snippets_directory	init.vim	/^let g:neosnippet#snippets_directory='$DOTFILES\/neosnips\/'$/;"	v
+g:pink	init.vim	/^let g:pink = "f92672"$/;"	v
 g:prettier#config#bracket_spacing	init.vim	/^let g:prettier#config#bracket_spacing = 'true'$/;"	v
-g:prettier#config#indent_width	init.vim	/^let g:prettier#config#indent_width = '2'$/;"	v
 g:prettier#config#semi	init.vim	/^let g:prettier#config#semi = 'false'$/;"	v
 g:prettier#config#tab_width	init.vim	/^let g:prettier#config#tab_width = 2$/;"	v
 g:prettier#config#trailing_comma	init.vim	/^let g:prettier#config#trailing_comma = 'all'$/;"	v
 g:prettier#exec_cmd_path	init.vim	/^let g:prettier#exec_cmd_path = "\/usr\/local\/bin\/prettier"$/;"	v
-g:prettier#exec_cmd_path	init.vim	/^let g:prettier#exec_cmd_path = "prettier"$/;"	v
 g:webdevicons_gui_glyph_fix	init.vim	/^let g:webdevicons_gui_glyph_fix = 1$/;"	v
 mapleader	init.vim	/^let mapleader = " "$/;"	v
+s:addbg	monokai.vim	/^let s:addbg       = { "gui": "#5f875f", "cterm": "65" }$/;"	v
+s:addfg	monokai.vim	/^let s:addfg       = { "gui": "#d7ffaf", "cterm": "193" }$/;"	v
 s:aqua	init.vim	/^let s:aqua =  "3AFFDB"$/;"	v
+s:aqua	monokai.vim	/^let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }$/;"	v
 s:beige	init.vim	/^let s:beige = "F5C06F"$/;"	v
+s:black	monokai.vim	/^let s:black       = { "gui": "#272822", "cterm": "234" }$/;"	v
 s:blue	init.vim	/^let s:blue = "689FB6"$/;"	v
 s:brown	init.vim	/^let s:brown = "905532"$/;"	v
+s:changebg	monokai.vim	/^let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }$/;"	v
+s:changefg	monokai.vim	/^let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }$/;"	v
 s:darkBlue	init.vim	/^let s:darkBlue = "44788E"$/;"	v
 s:darkOrange	init.vim	/^let s:darkOrange = "F16529"$/;"	v
+s:darkblack	monokai.vim	/^let s:darkblack   = { "gui": "#211F1C", "cterm": "233" }$/;"	v
+s:darkgrey	monokai.vim	/^let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }$/;"	v
+s:darkred	monokai.vim	/^let s:darkred     = { "gui": "#5f0000", "cterm": "52" }$/;"	v
+s:delbg	monokai.vim	/^let s:delbg       = { "gui": "#f75f5f", "cterm": "167" }$/;"	v
 s:get_visual_selection	init.vim	/^function! s:get_visual_selection()$/;"	f
 s:git_orange	init.vim	/^let s:git_orange = 'F54D27'$/;"	v
 s:green	init.vim	/^let s:green = "8FAA54"$/;"	v
+s:green	monokai.vim	/^let s:green       = { "gui": "#A6E22D", "cterm": "148" }$/;"	v
+s:grey	monokai.vim	/^let s:grey        = { "gui": "#8F908A", "cterm": "243" }$/;"	v
+s:h	monokai.vim	/^function! s:h(group, style)$/;"	f
 s:lightGreen	init.vim	/^let s:lightGreen = "31B53E"$/;"	v
 s:lightPurple	init.vim	/^let s:lightPurple = "834F79"$/;"	v
+s:lightblack	monokai.vim	/^let s:lightblack  = { "gui": "#2D2E27", "cterm": "235" }$/;"	v
+s:lightblack2	monokai.vim	/^let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }$/;"	v
+s:lightgrey	monokai.vim	/^let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }$/;"	v
 s:monokai_blue	init.vim	/^let s:monokai_blue = "66D9EF"$/;"	v
 s:monokai_green	init.vim	/^let s:monokai_green = "A6E22E"$/;"	v
 s:orange	init.vim	/^let s:orange = "D4843E"$/;"	v
-s:pink	init.vim	/^let s:pink = "F92672"$/;"	v
+s:orange	monokai.vim	/^let s:orange      = { "gui": "#FD9720", "cterm": "208" }$/;"	v
+s:pink	init.vim	/^let s:pink = "f92672"$/;"	v
+s:pink	monokai.vim	/^let s:pink        = { "gui": "#F92772", "cterm": "197" }$/;"	v
 s:purple	init.vim	/^let s:purple = "834F79"$/;"	v
+s:purple	monokai.vim	/^let s:purple      = { "gui": "#ae81ff", "cterm": "141" }$/;"	v
 s:red	init.vim	/^let s:red = "AE403F"$/;"	v
+s:red	monokai.vim	/^let s:red         = { "gui": "#e73c50", "cterm": "196" }$/;"	v
 s:rspec_red	init.vim	/^let s:rspec_red = 'FE405F'$/;"	v
 s:salmon	init.vim	/^let s:salmon = "EE6E73"$/;"	v
+s:warmgrey	monokai.vim	/^let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }$/;"	v
 s:white	init.vim	/^let s:white = "FFFFFF"$/;"	v
+s:white	monokai.vim	/^let s:white       = { "gui": "#E8E8E3", "cterm": "252" }$/;"	v
 s:yellow	init.vim	/^let s:yellow = "F09F17"$/;"	v
+s:yellow	monokai.vim	/^let s:yellow      = { "gui": "#E6DB74", "cterm": "186" }$/;"	v
