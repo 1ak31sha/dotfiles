@@ -173,6 +173,7 @@ nmap <leader>(        viwS(<CR>
 nmap <leader>[        viwS[<CR>
 nmap <leader>{        viwS{<CR>
 
+
 " VISUAL
 vnoremap <C-c>        "*y
 vnoremap <C-x>        "*d
@@ -483,6 +484,7 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
 let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
 let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
+let g:NERDTreeExactMatchHighlightColor['.md'] = s:rspec_red
 let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
 let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
 let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
@@ -660,6 +662,7 @@ set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
 set number
 set relativenumber
 set shiftwidth=2
+set tabstop=2
 set expandtab "puts spaces for tabs
 set autoread                    "Reload files changed outside vim
 set path+=**

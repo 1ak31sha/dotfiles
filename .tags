@@ -84,6 +84,9 @@ Zap	init.vim	/^function! Zap() abort$/;"	f
 autoreadargs	init.vim	/^let autoreadargs={'autoread':1}$/;"	v
 b:ale_fixers	init.vim	/^let b:ale_fixers = ['prettier', 'eslint']$/;"	v
 colors_name	monokai.vim	/^let colors_name = "monokai"$/;"	v
+exec_sub_regexp	nerdtreeSyntaxHighlight.vim	/^  let exec_sub_regexp = substitute(sub_regexp, '\\$$', '\\\\*$', '')$/;"	v
+folder_icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let folder_icon_identifier = 'nerdtreeExactMatchFolderIcon_'.key$/;"	v
+folder_identifier	nerdtreeSyntaxHighlight.vim	/^  let folder_identifier = 'nerdtreeExactMatchFolder_'.key$/;"	v
 g:DevIconsEnableFoldersOpenClose	init.vim	/^let g:DevIconsEnableFoldersOpenClose = 1$/;"	v
 g:NERDTreeDisableExactMatchHighlight	init.vim	/^let g:NERDTreeDisableExactMatchHighlight = 1$/;"	v
 g:NERDTreeDisablePatternMatchHighlight	init.vim	/^let g:NERDTreeDisablePatternMatchHighlight = 1$/;"	v
@@ -93,6 +96,7 @@ g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightC
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange$/;"	v
+g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.md'] = s:rspec_red$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = g:pink$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = s:pink$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue$/;"	v
@@ -102,7 +106,11 @@ g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightC
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['react.jsx'] = g:pink$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red$/;"	v
 g:NERDTreeExactMatchHighlightColor	init.vim	/^let g:NERDTreeExactMatchHighlightColor['test.js'] = s:monokai_blue$/;"	v
+g:NERDTreeExactMatchHighlightColor	nerdtreeSyntaxHighlight.vim	/^    let g:NERDTreeExactMatchHighlightColor[key] = val$/;"	v
+g:NERDTreeExactMatchHighlightColor	nerdtreeSyntaxHighlight.vim	/^  let g:NERDTreeExactMatchHighlightColor = {}$/;"	v
 g:NERDTreeExactMatchHighlightFullName	init.vim	/^let g:NERDTreeExactMatchHighlightFullName = 1$/;"	v
+g:NERDTreeExtensionHighlightColor	nerdtreeSyntaxHighlight.vim	/^    let g:NERDTreeExtensionHighlightColor[key] = val$/;"	v
+g:NERDTreeExtensionHighlightColor	nerdtreeSyntaxHighlight.vim	/^  let g:NERDTreeExtensionHighlightColor = {}$/;"	v
 g:NERDTreeFileExtensionHighlightFullName	init.vim	/^let g:NERDTreeFileExtensionHighlightFullName = 1$/;"	v
 g:NERDTreeHighlightCursorline	init.vim	/^let g:NERDTreeHighlightCursorline = 0$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor = {}$/;"	v
@@ -113,11 +121,14 @@ g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighli
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrator\\.js$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*stories\\.js$'] = g:pink$/;"	v
+g:NERDTreePatternMatchHighlightColor	nerdtreeSyntaxHighlight.vim	/^    let g:NERDTreePatternMatchHighlightColor[key] = val$/;"	v
+g:NERDTreePatternMatchHighlightColor	nerdtreeSyntaxHighlight.vim	/^  let g:NERDTreePatternMatchHighlightColor = {}$/;"	v
 g:NERDTreePatternMatchHighlightFullName	init.vim	/^let g:NERDTreePatternMatchHighlightFullName = 1$/;"	v
 g:NERDTreeSyntaxDisableDefaultExtensions	init.vim	/^let g:NERDTreeSyntaxDisableDefaultExtensions = 1$/;"	v
 g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['css', 'less', 'js']$/;"	v
 g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['css', 'less']$/;"	v
 g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']$/;"	v
+g:NERDTreeSyntaxEnabledExtensions	nerdtreeSyntaxHighlight.vim	/^  let g:NERDTreeSyntaxEnabledExtensions = []$/;"	v
 g:UltiSnipsEditSplit	init.vim	/^let g:UltiSnipsEditSplit="vertical"$/;"	v
 g:UltiSnipsExpandTrigger	init.vim	/^let g:UltiSnipsExpandTrigger='<tab>'$/;"	v
 g:UltiSnipsJumpBackwardTrigger	init.vim	/^let g:UltiSnipsJumpBackwardTrigger="<leader>k"$/;"	v
@@ -156,31 +167,61 @@ g:prettier#config#tab_width	init.vim	/^let g:prettier#config#tab_width = 2$/;"	v
 g:prettier#config#trailing_comma	init.vim	/^let g:prettier#config#trailing_comma = 'all'$/;"	v
 g:prettier#exec_cmd_path	init.vim	/^let g:prettier#exec_cmd_path = "\/usr\/local\/bin\/prettier"$/;"	v
 g:webdevicons_gui_glyph_fix	init.vim	/^let g:webdevicons_gui_glyph_fix = 1$/;"	v
+icon	nerdtreeSyntaxHighlight.vim	/^    let icon = g:WebDevIconsUnicodeDecorateFileNodesExactSymbols[key]$/;"	v
+icon	nerdtreeSyntaxHighlight.vim	/^    let icon = g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols[key]$/;"	v
+icon	nerdtreeSyntaxHighlight.vim	/^    let icon = g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols[key]$/;"	v
+icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let icon_identifier = 'nerdtreeExactMatchIcon_'.key$/;"	v
+icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let icon_identifier = 'nerdtreeFileExtensionIcon_'.key$/;"	v
+icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let icon_identifier = 'nerdtreePatternMatchIcon_'.suffix$/;"	v
+label_identifier	nerdtreeSyntaxHighlight.vim	/^  let label_identifier = 'nerdtreeExactMatchLabel_'.key$/;"	v
+label_identifier	nerdtreeSyntaxHighlight.vim	/^  let label_identifier = 'nerdtreeFileExtensionLabel_'.key$/;"	v
+label_identifier	nerdtreeSyntaxHighlight.vim	/^  let label_identifier = 'nerdtreePatternMatchLabel_'.suffix$/;"	v
 mapleader	init.vim	/^let mapleader = " "$/;"	v
+regexp	nerdtreeSyntaxHighlight.vim	/^  let regexp = '\\v'.s:characters.'+\\.'.substitute(key, '\\W', '\\\\\\0', 'g')$/;"	v
+s:X	nerdtreeSyntaxHighlight.vim	/^fun! s:X(group, fg, bg, attr)$/;"	f
 s:addbg	monokai.vim	/^let s:addbg       = { "gui": "#5f875f", "cterm": "65" }$/;"	v
 s:addfg	monokai.vim	/^let s:addfg       = { "gui": "#d7ffaf", "cterm": "193" }$/;"	v
 s:aqua	init.vim	/^let s:aqua =  "3AFFDB"$/;"	v
 s:aqua	monokai.vim	/^let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }$/;"	v
+s:aqua	nerdtreeSyntaxHighlight.vim	/^let s:aqua =  "3AFFDB"$/;"	v
 s:beige	init.vim	/^let s:beige = "F5C06F"$/;"	v
+s:beige	nerdtreeSyntaxHighlight.vim	/^let s:beige = "F5C06F"$/;"	v
 s:black	monokai.vim	/^let s:black       = { "gui": "#272822", "cterm": "234" }$/;"	v
 s:blue	init.vim	/^let s:blue = "689FB6"$/;"	v
+s:blue	nerdtreeSyntaxHighlight.vim	/^let s:blue = "689FB6"$/;"	v
 s:brown	init.vim	/^let s:brown = "905532"$/;"	v
+s:brown	nerdtreeSyntaxHighlight.vim	/^let s:brown = "905532"$/;"	v
 s:changebg	monokai.vim	/^let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }$/;"	v
 s:changefg	monokai.vim	/^let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }$/;"	v
+s:characters	nerdtreeSyntaxHighlight.vim	/^let s:characters = '[a-zA-Z0-9_\\#\\-\\+\\*\\%\\!\\~\\(\\)\\{\\}\\&\\.\\$\\@]'$/;"	v
+s:chars_double_lashes	nerdtreeSyntaxHighlight.vim	/^let s:chars_double_lashes = substitute(s:characters, '\\\\', '\\\\\\\\', 'g')$/;"	v
+s:colour	nerdtreeSyntaxHighlight.vim	/^fun! s:colour(r, g, b)$/;"	f
 s:darkBlue	init.vim	/^let s:darkBlue = "44788E"$/;"	v
+s:darkBlue	nerdtreeSyntaxHighlight.vim	/^let s:darkBlue = "44788E"$/;"	v
 s:darkOrange	init.vim	/^let s:darkOrange = "F16529"$/;"	v
+s:darkOrange	nerdtreeSyntaxHighlight.vim	/^let s:darkOrange = "F16529"$/;"	v
 s:darkblack	monokai.vim	/^let s:darkblack   = { "gui": "#211F1C", "cterm": "233" }$/;"	v
 s:darkgrey	monokai.vim	/^let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }$/;"	v
 s:darkred	monokai.vim	/^let s:darkred     = { "gui": "#5f0000", "cterm": "52" }$/;"	v
 s:delbg	monokai.vim	/^let s:delbg       = { "gui": "#f75f5f", "cterm": "167" }$/;"	v
+s:enabled_extensions	nerdtreeSyntaxHighlight.vim	/^let s:enabled_extensions = [$/;"	v
+s:file_extension_colors	nerdtreeSyntaxHighlight.vim	/^let s:file_extension_colors = {$/;"	v
+s:file_node_exact_matches	nerdtreeSyntaxHighlight.vim	/^let s:file_node_exact_matches = {$/;"	v
+s:file_node_pattern_matches	nerdtreeSyntaxHighlight.vim	/^let s:file_node_pattern_matches = {$/;"	v
 s:get_visual_selection	init.vim	/^function! s:get_visual_selection()$/;"	f
 s:git_orange	init.vim	/^let s:git_orange = 'F54D27'$/;"	v
 s:green	init.vim	/^let s:green = "8FAA54"$/;"	v
 s:green	monokai.vim	/^let s:green       = { "gui": "#A6E22D", "cterm": "148" }$/;"	v
+s:green	nerdtreeSyntaxHighlight.vim	/^let s:green = "8FAA54"$/;"	v
 s:grey	monokai.vim	/^let s:grey        = { "gui": "#8F908A", "cterm": "243" }$/;"	v
+s:grey_colour	nerdtreeSyntaxHighlight.vim	/^fun! s:grey_colour(n)$/;"	f
+s:grey_level	nerdtreeSyntaxHighlight.vim	/^fun! s:grey_level(n)$/;"	f
+s:grey_number	nerdtreeSyntaxHighlight.vim	/^fun! s:grey_number(x)$/;"	f
 s:h	monokai.vim	/^function! s:h(group, style)$/;"	f
 s:lightGreen	init.vim	/^let s:lightGreen = "31B53E"$/;"	v
+s:lightGreen	nerdtreeSyntaxHighlight.vim	/^let s:lightGreen = "31B53E"$/;"	v
 s:lightPurple	init.vim	/^let s:lightPurple = "834F79"$/;"	v
+s:lightPurple	nerdtreeSyntaxHighlight.vim	/^let s:lightPurple = "834F79"$/;"	v
 s:lightblack	monokai.vim	/^let s:lightblack  = { "gui": "#2D2E27", "cterm": "235" }$/;"	v
 s:lightblack2	monokai.vim	/^let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }$/;"	v
 s:lightgrey	monokai.vim	/^let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }$/;"	v
@@ -188,16 +229,30 @@ s:monokai_blue	init.vim	/^let s:monokai_blue = "66D9EF"$/;"	v
 s:monokai_green	init.vim	/^let s:monokai_green = "A6E22E"$/;"	v
 s:orange	init.vim	/^let s:orange = "D4843E"$/;"	v
 s:orange	monokai.vim	/^let s:orange      = { "gui": "#FD9720", "cterm": "208" }$/;"	v
+s:orange	nerdtreeSyntaxHighlight.vim	/^let s:orange = "D4843E"$/;"	v
 s:pink	init.vim	/^let s:pink = "f92672"$/;"	v
 s:pink	monokai.vim	/^let s:pink        = { "gui": "#F92772", "cterm": "197" }$/;"	v
+s:pink	nerdtreeSyntaxHighlight.vim	/^let s:pink = "CB6F6F"$/;"	v
 s:purple	init.vim	/^let s:purple = "834F79"$/;"	v
 s:purple	monokai.vim	/^let s:purple      = { "gui": "#ae81ff", "cterm": "141" }$/;"	v
+s:purple	nerdtreeSyntaxHighlight.vim	/^let s:purple = "834F79"$/;"	v
 s:red	init.vim	/^let s:red = "AE403F"$/;"	v
 s:red	monokai.vim	/^let s:red         = { "gui": "#e73c50", "cterm": "196" }$/;"	v
+s:red	nerdtreeSyntaxHighlight.vim	/^let s:red = "AE403F"$/;"	v
+s:rgb	nerdtreeSyntaxHighlight.vim	/^fun! s:rgb(rgb)$/;"	f
+s:rgb_colour	nerdtreeSyntaxHighlight.vim	/^fun! s:rgb_colour(x, y, z)$/;"	f
+s:rgb_level	nerdtreeSyntaxHighlight.vim	/^fun! s:rgb_level(n)$/;"	f
+s:rgb_number	nerdtreeSyntaxHighlight.vim	/^fun! s:rgb_number(x)$/;"	f
 s:rspec_red	init.vim	/^let s:rspec_red = 'FE405F'$/;"	v
+s:rspec_red	nerdtreeSyntaxHighlight.vim	/^let s:rspec_red = 'FE405F'$/;"	v
 s:salmon	init.vim	/^let s:salmon = "EE6E73"$/;"	v
+s:salmon	nerdtreeSyntaxHighlight.vim	/^let s:salmon = "EE6E73"$/;"	v
 s:warmgrey	monokai.vim	/^let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }$/;"	v
 s:white	init.vim	/^let s:white = "FFFFFF"$/;"	v
 s:white	monokai.vim	/^let s:white       = { "gui": "#E8E8E3", "cterm": "252" }$/;"	v
+s:white	nerdtreeSyntaxHighlight.vim	/^let s:white = "FFFFFF"$/;"	v
 s:yellow	init.vim	/^let s:yellow = "F09F17"$/;"	v
 s:yellow	monokai.vim	/^let s:yellow      = { "gui": "#E6DB74", "cterm": "186" }$/;"	v
+s:yellow	nerdtreeSyntaxHighlight.vim	/^let s:yellow = "F09F17"$/;"	v
+sub_regexp	nerdtreeSyntaxHighlight.vim	/^  let sub_regexp = substitute(key, '\\v\\\\@<!\\.', s:chars_double_lashes, 'g')$/;"	v
+suffix	nerdtreeSyntaxHighlight.vim	/^  let suffix = substitute(key, '\\W', '', 'g')$/;"	v

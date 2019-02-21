@@ -21,4 +21,6 @@ ln -s ~/workspace/dotfiles/.rainbarf.conf ~/.rainbarf.conf
 ln -s ~/workspace/dotfiles/.prettierrc.yaml ~/.prettierrc.yaml
 ln -s ~/workspace/dotfiles/git/ssh_config ~/.ssh/config
 ln -sf ~/workspace/dotfiles/monokai.vim ~/.config/nvim/plugged/vim-monokai/colors
+ln -sf ~/workspace/dotfiles/nerdtreeSyntaxHighlight.vim ~/.config/nvim/plugged/vim-nerdtree-syntax-highlight/after/syntax/nerdtree.vim
+
 
