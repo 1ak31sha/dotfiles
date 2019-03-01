@@ -227,6 +227,10 @@ let s:white = "FFFFFF"
 
 " lakeisha's colors
 let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+let s:monokai_blue = "66D9EF"
+let s:monokai_green = "A6E22E"
+
 
 
 let s:file_extension_colors = {
@@ -239,8 +243,8 @@ let s:file_extension_colors = {
   \ 'ejs'      : s:yellow,
   \ 'css'      : s:blue,
   \ 'less'     : s:darkBlue,
-  \ 'md'       : s:rspec_red,
-  \ 'markdown' : s:rspec_red,
+  \ 'md'       : s:monokai_green,
+  \ 'markdown' : s:monokai_green,
   \ 'json'     : s:beige,
   \ 'js'       : s:lightPurple,
   \ 'jsx'      : s:blue,
@@ -253,7 +257,7 @@ let s:file_extension_colors = {
   \ 'coffee'   : s:brown,
   \ 'mustache' : s:orange,
   \ 'hbs'      : s:orange,
-  \ 'conf'     : s:white,
+  \ 'conf'     : s:monokai_blue,
   \ 'ini'      : s:white,
   \ 'yml'      : s:white,
   \ 'bat'      : s:white,
@@ -275,7 +279,7 @@ let s:file_extension_colors = {
   \ 'lua'      : s:purple,
   \ 'java'     : s:purple,
   \ 'sh'       : s:lightPurple,
-  \ 'fish'     : s:green,
+  \ 'fish'     : s:monokai_green,
   \ 'ml'       : s:yellow,
   \ 'mli'      : s:yellow,
   \ 'diff'     : s:white,
@@ -325,8 +329,8 @@ let s:file_node_exact_matches = {
   \ '.ds_store'                        : s:white,
   \ '.gitconfig'                       : s:white,
   \ '.gitignore'                       : s:white,
-  \ '.bashrc'                          : s:white,
-  \ '.bashprofile'                     : s:white,
+  \ '.bashrc'                          : s:salmon,
+  \ '.bashprofile'                     : s:salmon,
   \ 'favicon.ico'                      : s:yellow,
   \ 'license'                          : s:white,
   \ 'node_modules'                     : s:green,

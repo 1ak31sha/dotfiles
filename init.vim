@@ -143,7 +143,7 @@ nmap <Leader>r :source $DOTFILES/init.vim<CR>
 nmap <leader>s :call SavePrint()<CR>
 
 nmap <Leader>t :tabnew<CR>
-"    <leader>u
+nmap    <leader>u :call ReloadKeepingSpot2()<CR>
 nmap <Leader>v :vsp<CR><C-w><Right>
 " gets you sudo access to a file without having to exit vim. promts for password
 "nmap <leader>w  :f<space>
@@ -175,16 +175,19 @@ nmap <leader>{        viwS{<CR>
 
 
 " VISUAL
-vnoremap <C-c>        "*y
-vnoremap <C-x>        "*d
-xnoremap <Leader>d    y`>p
-xnoremap J            :move '>+1<CR>gv=gv
-xnoremap K            :move '<-2<CR>gv=gv
-vnoremap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
+xmap <Leader>d    y`>p
+vmap <Leader>< <Esc>:call VisualHTMLTagWrap()<CR>
+
+vmap <C-c>        "*y
+vmap <C-x>        "*d
+vmap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
 vmap <C-\>            di/*<CR>*/<CR><esc>kkp
 vmap <C-s>            :call Split_Long_Lines_Max_80()<CR>
-"vmap <C-j>            :call Block_comment()<CR>
-vmap <Leader>< <Esc>:call VisualHTMLTagWrap()<CR>
+
+xmap <S-j>            :move '>+1<CR>gv=gv
+xmap <S-k>            :move '<-2<CR>gv=gv
+vmap <S-o>            di{/*<CR>*/}<CR><esc>kkp
+
 " INSERT MODE
 " -----------
 
@@ -314,10 +317,12 @@ let g:ag_working_path_mode="r"
 " -----
 "let g:ale_linters = ['eslint']
 "let b:ale_linters = ['eslint']
-let b:ale_fixers = ['prettier', 'eslint']
+let b:ale_fixers = ['prettier', 'eslint', 'stylelint']
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'css': ['stylelint'],
 \}
+" let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/packages/eslint-config/eslintrc.json'
 "let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/.eslintrc.js'
 
@@ -437,6 +442,11 @@ nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='t'
+let NERDTreeMinimalUI = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeDirArrows = 1
+
+" close vim if the last buffer open is just a nerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 "let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']
@@ -461,8 +471,6 @@ let g:NERDTreeHighlightCursorline = 0
 let s:brown = "905532"
 let s:aqua =  "3AFFDB"
 let s:blue = "689FB6"
-let s:monokai_blue = "66D9EF"
-let s:monokai_green = "A6E22E"
 let s:darkBlue = "44788E"
 let s:purple = "834F79"
 let s:lightPurple = "834F79"
@@ -475,51 +483,31 @@ let g:pink = "f92672"
 let s:salmon = "EE6E73"
 let s:green = "8FAA54"
 let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
-let s:white = "FFFFFF"
+let s:monokai_blue = "66D9EF"
+let s:monokai_green = "A6E22E"
+let s:monokai_red = "F92672"
+let s:monokai_pumpkinSpice = "FD971F"
 " Vim-nerdtree-syntax-highlight
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 "let g:NERDTreeExactMatchHighlightColor['react.jsx'] = g:pink
-let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
-let g:NERDTreeExactMatchHighlightColor['.gitconfig'] = s:git_orange
-let g:NERDTreeExactMatchHighlightColor['.agignore'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['.md'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['tags'] = s:rspec_red
-let g:NERDTreeExactMatchHighlightColor['.bashrc'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.bash_profile'] = s:monokai_green
-let g:NERDTreeExactMatchHighlightColor['.tmux.conf'] = g:pink
-let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor = {}
 
 let g:NERDTreePatternMatchHighlightColor['.*stories\.js$'] = g:pink
 let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.js$'] = s:salmon
+let g:NERDTreePatternMatchHighlightColor['.*ignore$'] = s:git_orange
+let g:NERDTreePatternMatchHighlightColor['.*rc*$'] = s:salmon
+let g:NERDTreePatternMatchHighlightColor['.prettierrc\.yaml$'] = s:salmon
+let g:NERDTreePatternMatchHighlightColor['.bash_profile$'] = s:salmon
+let g:NERDTreePatternMatchHighlightColor['.gitconfig$'] = s:git_orange
+let g:NERDTreePatternMatchHighlightColor['.*\.conf$'] = s:monokai_blue
+let g:NERDTreePatternMatchHighlightColor['vim_spelling$'] = s:green
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['test.js'] = s:monokai_blue
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['.stories.js'] = s:lightPurple
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['.rehydrator.js'] = s:lightPurple
-" -----------------------------
-"Disable uncommon file extensions highlighting (this is a good idea if you are experiencing lag when scrolling. Find more about lag on next session.)
-"let g:NERDTreeExactMatchHighlightColor =
-"     \{ '.gitignore': 's:rspec_red'
-"    \} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:aqua "
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-""let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExactMatchHighlightColor['config.fish'] = s:salmon "
-"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
-"let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
-"let g:NERDTreePatternMatchHighlightColor['.tmux.conf'] = s:rspec_red " sets the color for files ending with _spec.rb
 
 " Neomake
 " ---------
@@ -712,6 +700,15 @@ autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@<!$/
 " ---------
 " FUNCTIONS
 " ---------
+
+" todo
+function! ReloadKeepingSpot2() abort
+    let curr_line = getline('.')
+    source $DOTFILES/init.vim
+  "call feedkeys(":source $DOTFILES/init.vim")
+  call feedkeys(curr_line . "j")
+endf
+
 function! SetGMark(mark, filename, line_nr)
   let l:mybuf = bufnr(a:filename, 1)
   call setpos("'".a:mark, [l:mybuf, a:line_nr, 1, 0])
@@ -831,7 +828,7 @@ function! Smart_commenting() abort
         call feedkeys("xj")
       endfor
     else
-      call feedkeys("I" . commentChar . "\<esc>j")
+      call feedkeys("I" . commentChar . "\<space>\<esc>j")
     endif
   else
     echo "filetype '" . &filetype . "' is not configured"
