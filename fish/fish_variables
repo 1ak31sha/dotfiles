@@ -15,7 +15,7 @@ SETUVAR fish_color_error:FFB86C
 SETUVAR fish_color_escape:bryellow\x1e\x2d\x2dbold
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
-SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrgreen
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:bryellow
 SETUVAR fish_color_param:FF79C6

@@ -28,6 +28,7 @@
 " ..FZF_config
 " ..Git_Gutter
 " ..Lightline
+" ..LocalRC
 " ..Nerd_Tree
 " ..Neosnippet
 " ..Prettier
@@ -50,14 +51,19 @@
 " MAPPINGS
 " -----------
 
+" Here are the vim defaults for reference
+
 "a - insert to the right
 "b - back a work
-"c - 
+"c - change
 "d - delete
 "e - end of a word
 "f - find
 "gg - go to beginning
 "G - go to end
+"g= - check spelling
+"gz - add to dictionary
+"gq - wrap text
 "h - left
 "i - insert left
 "j - down
@@ -65,12 +71,14 @@
 "l - right
 "o - insert below
 "O - insert above
-"p
-"q - 
-"r 
-"s replace and insert
-"t
-"u
+"p - paste
+"q - recording
+"r - replace
+"s - replace and insert
+"t - Till. similar to find
+"u - undo. :red[o] for redo
+"U - undo all changes on a line - overrideen
+nmap U :redo<CR>
 "v - visual mode
 "w - a word ( no /-^...)
 "W - blackspace delimited word
@@ -78,8 +86,12 @@
 "y - yank
 "zz - quit?
 
+" this is the spacebar
 let mapleader = " "
 
+" mapping : to ; would require changing all mappings in this vimrc that use :, hence i just did one
+" way for now
+nmap ; :
 nmap 1 $
 " CTRL_MAPPINGS
 " -------------
@@ -239,7 +251,7 @@ Plug 'dag/vim-fish'
 Plug 'darthmall/vim-vue'
 Plug 'tpope/vim-cucumber'
 Plug 'artur-shaik/vim-javacomplete2'
-"Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+"Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } // not used, see deoplete below
 "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
@@ -271,6 +283,9 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'ashisha/image.vim'
 "Plug 'https://github.com/szw/vim-tags'
 Plug 'webastien/vim-ctags'
+Plug 'thinca/vim-localrc'
+Plug 'tpope/vim-projectionist'
+Plug 'chrisbra/csv.vim'
 
 " Text maniulation
 " ----------------
@@ -278,6 +293,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'othree/xml.vim'
+
+" gC in normal mode, <C-g>c in insert mode
+Plug 'tpope/vim-capslock'
 "Plug 'jasonwoodland/vim-html-closer' -> only works on html files, no jsx
 "Plug 'honza/vim-snippets'
 "Plug 'Shougo/neosnippet.vim'
@@ -323,8 +341,9 @@ let g:ale_linters = {
 \   'css': ['stylelint'],
 \}
 " let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
-let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/packages/eslint-config/eslintrc.json'
-"let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/.eslintrc.js'
+" autocmd BufRead,BufNewFile ~/workspace/emcm-ui/* setlocal
+" let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/packages/eslint-config/eslintrc.json'
+" let g:ale_javascript_eslint_options='-c ~/workspace/emcm-ui/.eslintrc.js'
 
 " ----------------------
 " Autoformat
@@ -394,6 +413,19 @@ let g:webdevicons_gui_glyph_fix = 1
 "  \ 'tern#Complete',
 "  \ 'jspc#omni'
 "\]
+" Use smartcase.
+call deoplete#custom#option('smart_case', v:true)
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+" <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function() abort
+  " return deoplete#close_popup() . "\<CR>"
+" endfunction
+
 
 " FZF_config
 " ---
@@ -435,6 +467,9 @@ let g:lightline = {
       \   'tabline': 0
       \ }
       \ }
+
+"LocalRC
+let g:localrc_filename = '.vimrc'
 
 " Nerd_Tree
 " ---------
@@ -648,18 +683,24 @@ set noswapfile
 set nopaste
 set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
 set number
-set relativenumber
+
+" didnt use it often to jump, and line numbers ended up being more useful when debugging
+"set relativenumber
 set shiftwidth=2
 set tabstop=2
-set expandtab "puts spaces for tabs
+
+"puts spaces for tabs
+set expandtab
 set autoread                    "Reload files changed outside vim
 set path+=**
 set wildmenu
 set gdefault
-" Status line
+
+" status line
 set statusline+=%F
 set showtabline=2
-"supposed to tunoff auto-comment, but this actually happens in the after-directory
+
+" supposed to tunoff auto-comment, but this actually happens in the after-directory
 let g:javascript_plugin_jsdoc = 1
 set conceallevel=0
 set termguicolors
@@ -667,6 +708,8 @@ set cuc cul"
 " the length to be used for the gq command that splits lines
 set textwidth=80
 
+" no highlight on search
+set nohlsearch
 
 
 syntax on
@@ -700,6 +743,21 @@ autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@<!$/
 " ---------
 " FUNCTIONS
 " ---------
+
+function! InvertArgs()
+    " Get the arguments of the current line (remove the spaces)
+    let args=substitute(matchstr(getline('.'), '(\zs.*\ze)'), '\s', '', 'g')
+
+    " Split the arguments as a list and reverse the list
+    let argsList=split(args, ',')
+    call reverse(argsList)
+
+    " Join the reversed list with a comma and a space separing the arguments
+    let invertedArgs=join(argsList, ', ')
+
+    " Remove the old arguments and put the new list
+    execute "normal! 0f(ci(" . invertedArgs
+  endfunction
 
 " todo
 function! ReloadKeepingSpot2() abort
@@ -746,8 +804,8 @@ endfunction
 function! Cycle_numbering() abort
   if exists('+relativenumber')
     execute {
-          \ '00': 'set relativenumber   | set number',
-          \ '01': 'set norelativenumber | set number',
+					\ '00': 'set norelativenumber | set number',
+          \ '01': 'set relativenumber   | set number',
           \ '10': 'set norelativenumber | set nonumber',
           \ '11': 'set norelativenumber | set number' }[&number . &relativenumber]
   else

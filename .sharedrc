@@ -1,5 +1,6 @@
 #stty -ixon
 
+set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 # macos only
 alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
 
@@ -36,6 +37,7 @@ alias gl='git log --oneline --decorate --graph'
 alias gla='git log --oneline --decorate --all --graph'
 alias gcop='git checkout @{-1}'
 alias gbd='ruby $DOTFILES/git/gitdelete.rb'
+alias gwip=' git add .; git commit -am \'wip\' --no-verify'
 
 
 # alias latest="git checkout integration / 

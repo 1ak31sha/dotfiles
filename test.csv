@@ -1,0 +1,8 @@
+Rent
+Month, Item, Paid?
+January, Rent, Yes
+January, Util, Yes
+Feb, Util, no
+Feb, Rent, yes
+March, Rent, yes
+MArch, Util, no

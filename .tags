@@ -7,12 +7,16 @@
 !_TAG_PROGRAM_VERSION	0.0.0	/16eccf0/
 $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'$/;"	v
 1	init.vim	/^nmap 1 \$$/;"	m
+:	init.vim	/^nnoremap : ;$/;"	m
+;	init.vim	/^nmap ; :$/;"	m
+;	init.vim	/^nnoremap ; :$/;"	m
 <C-/>	init.vim	/^nmap <C-\/> :call Smart_commenting()<CR>$/;"	m
 <C-/>	init.vim	/^vmap <C-\/>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
 <C-\\>	init.vim	/^vmap <C-\\>            di\/*<CR>*\/<CR><esc>kkp$/;"	m
 <C-b>	init.vim	/^nnoremap <C-b> :NERDTreeToggle<CR>$/;"	m
 <C-c>	init.vim	/^vmap <C-c>        "*y$/;"	m
 <C-c>	init.vim	/^vnoremap <C-c>        "*y$/;"	m
+<C-h>	init.vim	/^inoremap <expr><C-h> deoplete#smart_close_popup()."\\<C-h>"$/;"	m
 <C-j>	init.vim	/^vmap <C-j>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
 <C-o>	init.vim	/^vmap <C-o>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
 <C-p>	init.vim	/^nmap <C-p> :FZF<CR>$/;"	m
@@ -95,6 +99,8 @@ SavePrint	init.vim	/^function! SavePrint() abort$/;"	f
 SetGMark	init.vim	/^function! SetGMark(mark, filename, line_nr)$/;"	f
 Smart_commenting	init.vim	/^function! Smart_commenting() abort$/;"	f
 Split_Long_Lines_Max_80	init.vim	/^function! Split_Long_Lines_Max_80() abort$/;"	f
+U	init.vim	/^nmap U :redo$/;"	m
+U	init.vim	/^nmap U :redo<CR>$/;"	m
 VisualHTMLTagWrap	init.vim	/^function! VisualHTMLTagWrap()$/;"	f
 WatchForChanges	init.vim	/^command! -bang WatchForChanges                  :call WatchForChanges(@%,  {'toggle': 1, 'autore/;"	c
 WatchForChanges	init.vim	/^function! WatchForChanges(bufname, ...)$/;"	f
@@ -172,6 +178,7 @@ g:UltiSnipsJumpForwardTrigger	init.vim	/^let g:UltiSnipsJumpForwardTrigger="<lea
 g:UltiSnipsUsePythonVersion	init.vim	/^let g:UltiSnipsUsePythonVersion = 3$/;"	v
 g:WebDevIconsUnicodeDecorateFolderNodes	init.vim	/^let g:WebDevIconsUnicodeDecorateFolderNodes = 1$/;"	v
 g:ag_working_path_mode	init.vim	/^let g:ag_working_path_mode="r"$/;"	v
+g:ale_javascript_eslint_options	init.vim	/^let g:ale_javascript_eslint_options='-c ~\/workspace\/emcm-ui\/.eslintrc.js'$/;"	v
 g:ale_javascript_eslint_options	init.vim	/^let g:ale_javascript_eslint_options='-c ~\/workspace\/emcm-ui\/packages\/eslint-config\/eslintrc/;"	v
 g:ale_linters	init.vim	/^let g:ale_linters = {$/;"	v
 g:closetag_close_shortcut	init.vim	/^let g:closetag_close_shortcut = '>'$/;"	v
@@ -191,6 +198,7 @@ g:gitgutter_sign_modified_removed	init.vim	/^let g:gitgutter_sign_modified_remov
 g:gitgutter_sign_removed	init.vim	/^let g:gitgutter_sign_removed = emoji#for('small_red_triangle')$/;"	v
 g:javascript_plugin_jsdoc	init.vim	/^let g:javascript_plugin_jsdoc = 1$/;"	v
 g:lightline	init.vim	/^let g:lightline = {$/;"	v
+g:localrc_filename	init.vim	/^let g:localrc_filename = '.vimrc'$/;"	v
 g:monokai_gui_italic	monokai.vim	/^    let g:monokai_gui_italic = 1$/;"	v
 g:monokai_term_italic	monokai.vim	/^    let g:monokai_term_italic = 0$/;"	v
 g:monokai_termcolors	monokai.vim	/^let g:monokai_termcolors = 256 " does not support 16 color term right now.$/;"	v

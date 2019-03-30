@@ -10,6 +10,7 @@ set -x DOTFILES        ~/workspace/dotfiles
 #set -x PYENV_ROOT       $HOME/.pyenv
 set -x ANDROID_HOME    $HOME/Library/Android/sdk
 set -x NVM_DIR         $HOME/.nvm
+set -x NODE_OPTIONS    --max_old_space_size=128192
 
 set -x PATH $PATH      $ANDROID_HOME/tools
 set -x PATH $PATH      $ANDROID_HOME/tools/bin
