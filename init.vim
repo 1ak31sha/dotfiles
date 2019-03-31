@@ -286,6 +286,7 @@ Plug 'webastien/vim-ctags'
 Plug 'thinca/vim-localrc'
 Plug 'tpope/vim-projectionist'
 Plug 'chrisbra/csv.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Text maniulation
 " ----------------
@@ -451,6 +452,7 @@ let g:fzf_colors =
 
 " Git_Gutter
 "-----------
+set updatetime=100
 let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
