@@ -314,7 +314,7 @@ let s:file_extension_colors = {
   \ 'ai'       : s:darkOrange,
   \ 'psd'      : s:darkBlue,
   \ 'psb'      : s:darkBlue,
-  \ 'ts'       : s:blue,
+  \ 'ts'       : s:purple,
   \ 'jl'       : s:purple
 \}
 

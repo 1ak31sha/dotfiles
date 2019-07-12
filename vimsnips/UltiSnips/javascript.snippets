@@ -1,3 +1,13 @@
+snippet functional "functional component" b
+function $1({ $2 }) {
+	$0
+  return (
+    <div className="">
+      <div>{$2}</div>
+    </div>
+  )
+}
+endsnippet
 snippet fn "arrow function" b
 $1 = ($2) => {
   $3

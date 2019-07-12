@@ -19,10 +19,11 @@ set -x EDITOR          nvim
 set -x PATH $PATH      $HOME/.local/bin
 set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
 #set -x JAVA_HOME       /usr/bin/java
-set -x GEM_PATH        ~/.gem
-set -x GEM_HOME        ~/.gem
+set -x GEM_PATH $PATH       ~/.gem
+set -x GEM_HOME $PATH       ~/.gem
 set -x PATH $PATH      /usr/local/bin
 set -x RAINBARF        ~/.rainbarf.conf rainbarf
+set -x SHELL /bin/bash
 
 source $DOTFILES/.sharedrc
 #source $NVM_DIR/nvm.sh

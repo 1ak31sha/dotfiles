@@ -1,4 +1,3 @@
-
 "~_~_~_~_~_~_~_~_~_~_~"
 "                     "
 "        VIMRC        "
@@ -107,6 +106,8 @@ nmap <S-h> zH
 " <C-i
 " <C-j
 " <C-k
+nmap <S-k> :call moveAndInsert(0)<CR>
+nmap <S-j> :call moveAndInsert(1)<CR>
 nmap <S-l> zL
 " <C-m>
 " <C-n> multiple cursors
@@ -114,7 +115,7 @@ nmap <S-l> zL
 nmap <C-p> :FZF<CR>
 " <C-q> nerdTree focus
 " <C-r> redo
-" <C-s>
+nmap <C-s> :PresentingStart<CR>
 " <C-t>
 nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " <C-v
@@ -129,7 +130,7 @@ nmap <C-/> :call Smart_commenting()<CR>
 " ---------------
 
 nmap <leader>a :Ag<space>
-"    <leader>b
+nmap <leader>b :A<CR>
 nmap <Leader>c :call Cycle_numbering()<CR>
 nmap <Leader>d <S-v>yp
 "    <leader>e
@@ -221,7 +222,8 @@ vmap <S-o>            di{/*<CR>*/}<CR><esc>kkp
 " PLUGINS
 " -------
 call plug#begin('~/.config/nvim/plugged')
-
+" Plug 'mattn/vim-starwars'
+Plug 'lzh9102/presenting.vim'
 " Color Schemes
 " -------------
 Plug 'altercation/solarized'
@@ -230,10 +232,13 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'mhartington/oceanic-next'
-Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+Plug 'Addisonbean/Vim-Xcode-Theme'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'mkitt/tabline.vim'
+
+Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+" Plug 'rbong/vim-crystalline'
 "Plug 'NovaDev94/lightline-onedark'
 "Plug 'https://github.com/gko/vim-coloresque'
 Plug 'https://github.com/ap/vim-css-color'
@@ -255,6 +260,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
+Plug 'leafgarland/typescript-vim'
 
 " Linting
 " ------
@@ -287,6 +293,7 @@ Plug 'thinca/vim-localrc'
 Plug 'tpope/vim-projectionist'
 Plug 'chrisbra/csv.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/DrawIt'
 
 " Text maniulation
 " ----------------
@@ -322,11 +329,57 @@ Plug 'carlitux/deoplete-ternjs' , { 'do': 'npm install -g tern' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ryanoasis/vim-devicons'
+
+
+"https://github.com/andymass/vim-matchup/
 call plug#end()
 "
 " ----------------------
 " PLUGIN_CONFIGURATIONS
 " ----------------------
+
+" Crystalline
+function! StatusLine(current, width)
+  let l:s = ''
+
+  if a:current
+    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+  else
+    let l:s .= '%#CrystallineInactive#'
+  endif
+  let l:s .= ' %f%h%w%m%r '
+  if a:current
+    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+  endif
+
+  let l:s .= '%='
+  if a:current
+    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+    let l:s .= crystalline#left_mode_sep('')
+  endif
+  if a:width > 80
+    let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+  else
+    let l:s .= ' '
+  endif
+
+  return l:s
+endfunction
+
+function! TabLine()
+  let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_enable_sep = 1
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'onedark'
+
+set showtabline=2
+set guioptions-=e
+set laststatus=2
+
 
 " AG - the silver surfer
 " ----------------------
@@ -534,7 +587,6 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor = {}
-
 let g:NERDTreePatternMatchHighlightColor['.*stories\.js$'] = g:pink
 let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.js$'] = s:salmon
 let g:NERDTreePatternMatchHighlightColor['.*ignore$'] = s:git_orange
@@ -544,6 +596,9 @@ let g:NERDTreePatternMatchHighlightColor['.bash_profile$'] = s:salmon
 let g:NERDTreePatternMatchHighlightColor['.gitconfig$'] = s:git_orange
 let g:NERDTreePatternMatchHighlightColor['.*\.conf$'] = s:monokai_blue
 let g:NERDTreePatternMatchHighlightColor['vim_spelling$'] = s:green
+let g:NERDTreePatternMatchHighlightColor['.*component\.ts*$'] = s:monokai_green
+let g:NERDTreePatternMatchHighlightColor['.*spec\.ts*$'] = s:rspec_red
+let g:NERDTreePatternMatchHighlightColor['.*module\.ts*$'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 
 " Neomake
@@ -818,7 +873,7 @@ endfunction
 
 " Cycle through relativenumber + number, number (only), and no numbering.
 function! Cycle_colors() abort
-  let schemes = ['monokai', 'dracula', 'solarized', 'onedark', 'OceanicNext' ]
+  let schemes = ['monokai', 'dracula', 'solarized', 'onedark', 'OceanicNext', 'xcode' ]
   let cur_scheme = eval("g:colors_name")
   let i = index(schemes,cur_scheme)
   let j = (i+1)%len(schemes)
@@ -891,7 +946,7 @@ function! Smart_commenting() abort
       call feedkeys("I" . commentChar . "\<space>\<esc>j")
     endif
   else
-    echo "filetype '" . &filetype . "' is not configured"
+    echo "\"filetype '" . &filetype . "' is not configured\" -- Lakeisha"
   endif
 endfunction
 
