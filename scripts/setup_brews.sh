@@ -1,4 +1,5 @@
 #!/bin/bash
+brew install hub
 brew install fish
 brew install fzy
 brew install ag

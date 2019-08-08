@@ -742,11 +742,12 @@ set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
 set number
 
 " didnt use it often to jump, and line numbers ended up being more useful when debugging
-"set relativenumber
+" set relativenumber
 set shiftwidth=2
 set tabstop=2
 
-"puts spaces for tabs
+" puts spaces for tabs
+" sometimes it loses this setting...haven't figured out how but you can manually :setexpand and then :retab
 set expandtab
 set autoread                    "Reload files changed outside vim
 set path+=**
@@ -861,7 +862,7 @@ endfunction
 function! Cycle_numbering() abort
   if exists('+relativenumber')
     execute {
-					\ '00': 'set norelativenumber | set number',
+          \ '00': 'set norelativenumber | set number',
           \ '01': 'set relativenumber   | set number',
           \ '10': 'set norelativenumber | set nonumber',
           \ '11': 'set norelativenumber | set number' }[&number . &relativenumber]
