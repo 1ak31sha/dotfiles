@@ -261,6 +261,8 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
 Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+
 
 " Linting
 " ------
@@ -959,6 +961,8 @@ function! Zap() abort
   let @/=l:search
   nohlsearch
   call setpos('.', l:pos)
+  call feedkeys(":set expandtab\<CR>")
+  call feedkeys(":retab\<CR>")
 endfunction
 "let g:neomake_javascript_jscs_maker = {
 "    \ 'exe': 'jscs',

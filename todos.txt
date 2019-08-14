@@ -1,3 +1,4 @@
+- [ ] https://www.vimfromscratch.com/articles/setting-up-vim-for-typescript
 - [ ] make a code pair version where vim defaults not overriden
 - [ ] more ideas. fish key bindings! https://github.com/Parth/dotfiles
 - [ ] type into multiple termials at once with tmux
