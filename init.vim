@@ -32,6 +32,7 @@
 " ..Neosnippet
 " ..Prettier
 " ..UltiSnips
+" ..vim_emoji
 " ..vim_javascript
 " FUNCTIONS
 " TERMINAL_MODE
@@ -44,7 +45,6 @@
 " --
 
 " iabbrev div <div>
-" iabbrev" dv </div>
 
 " -----------
 " MAPPINGS
@@ -91,7 +91,7 @@ let mapleader = " "
 " mapping : to ; would require changing all mappings in this vimrc that use :, hence i just did one
 " way for now
 nmap ; :
-nmap 1 $
+"nmap 1 $
 " CTRL_MAPPINGS
 " -------------
 
@@ -133,7 +133,7 @@ nmap <leader>a :Ag<space>
 nmap <leader>b :A<CR>
 nmap <Leader>c :call Cycle_numbering()<CR>
 nmap <Leader>d <S-v>yp
-"    <leader>e
+nmap <leader>e :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 nmap <leader>f :NERDTreeFind<CR>
 "    <leader>g
 nmap <Leader>h :sp<CR><C-w><Down>
@@ -394,6 +394,7 @@ let g:ag_working_path_mode="r"
 let b:ale_fixers = ['prettier', 'eslint', 'stylelint']
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tsserver'],
 \   'css': ['stylelint'],
 \}
 " let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
@@ -670,6 +671,14 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsExpandTrigger="<tab>"
 
 
+"  vim_emoji
+"" ---------
+set completefunc=emoji#complete
+" for e in emoji#list()
+  " call append(line('$'), printf('%s (%s)', emoji#for(e), e))
+" endfor
+
+
 "  vim_javascript
 "  --------------
 "let g:javascript_conceal_arrow_function = "≠"
@@ -778,7 +787,9 @@ syntax on
 " JAVA
 " ----
 setlocal omnifunc=javacomplete#Complete
-setlocal completefunc=javacomplete#CompleteParamsInfo
+
+" disabling cuase...i dont really use java anymore and only one completefunc can be assigned.
+"setlocal completefunc=javacomplete#CompleteParamsInfo
 
 " -------------
 " COLOR_SCHEME

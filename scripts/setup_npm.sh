@@ -3,5 +3,6 @@ npm install -g react
 npm install -g react-native
 npm install -g nodemon
 npm install -g yo
+yarn global add tslint typescript
 
 # etc

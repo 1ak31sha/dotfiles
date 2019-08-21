@@ -23,6 +23,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <C-q>	init.vim	/^nnoremap <C-q> :NERDTreeFocus<CR>$/;"	m
 <C-r>	init.vim	/^vmap <C-r>        "hy:%s\/<C-r>h\/\/gc<left><left><left>$/;"	m
 <C-r>	init.vim	/^vnoremap <C-r>        "hy:%s\/<C-r>h\/\/gc<left><left><left>$/;"	m
+<C-s>	init.vim	/^nmap <C-s> :PresentingStart<CR>$/;"	m
 <C-s>	init.vim	/^vmap <C-s>            :call Split_Long_Lines_Max_80()<CR>$/;"	m
 <C-w>	init.vim	/^imap <C-w>     <Plug>(neosnippet_expand_or_jump)$/;"	m
 <C-w>	init.vim	/^smap <C-w>     <Plug>(neosnippet_expand_or_jump)$/;"	m
@@ -45,9 +46,11 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <Leader>v	init.vim	/^nmap <Leader>v :vsp<CR><C-w><Right>$/;"	m
 <Leader>z	init.vim	/^nmap <Leader>z :call Zap()<CR>$/;"	m
 <S-h>	init.vim	/^nmap <S-h> zH$/;"	m
+<S-j>	init.vim	/^nmap <S-j> :call moveAndInsert(1)<CR>$/;"	m
 <S-j>	init.vim	/^vmap <S-j>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
 <S-j>	init.vim	/^xmap <S-j>            :move '>+1<CR>gv=gv$/;"	m
 <S-j>	init.vim	/^xnoremap <S-j>            :move '>+1<CR>gv=gv$/;"	m
+<S-k>	init.vim	/^nmap <S-k> :call moveAndInsert(0)<CR>$/;"	m
 <S-k>	init.vim	/^xmap <S-k>            :move '<-2<CR>gv=gv$/;"	m
 <S-l>	init.vim	/^nmap <S-l> zL$/;"	m
 <S-o>	init.vim	/^vmap <S-o>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
@@ -67,6 +70,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <leader>8	init.vim	/^nmap <leader>8 :call Smart_commenting()<CR>$/;"	m
 <leader>[	init.vim	/^nmap <leader>[        viwS[<CR>$/;"	m
 <leader>a	init.vim	/^nmap <leader>a :Ag<space>$/;"	m
+<leader>b	init.vim	/^nmap <leader>b :A<CR>$/;"	m
 <leader>ch	init.vim	/^nmap <leader>ch   :checkhealth<CR>$/;"	m
 <leader>f	init.vim	/^nmap <leader>f :NERDTreeFind<CR>$/;"	m
 <leader>m	init.vim	/^nmap <leader>m :call DisplayTag()<CR>$/;"	m
@@ -83,6 +87,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 Block_comment	init.vim	/^function! Block_comment() abort$/;"	f
 Cycle_colors	init.vim	/^function! Cycle_colors() abort$/;"	f
 Cycle_numbering	init.vim	/^function! Cycle_numbering() abort$/;"	f
+InvertArgs	init.vim	/^function! InvertArgs()$/;"	f
 J	init.vim	/^xnoremap J            :move '>+1<CR>gv=gv$/;"	m
 K	init.vim	/^xnoremap K            :move '<-2<CR>gv=gv$/;"	m
 Multiple_cursors_after	init.vim	/^function! Multiple_cursors_after()$/;"	f
@@ -99,6 +104,8 @@ SavePrint	init.vim	/^function! SavePrint() abort$/;"	f
 SetGMark	init.vim	/^function! SetGMark(mark, filename, line_nr)$/;"	f
 Smart_commenting	init.vim	/^function! Smart_commenting() abort$/;"	f
 Split_Long_Lines_Max_80	init.vim	/^function! Split_Long_Lines_Max_80() abort$/;"	f
+StatusLine	init.vim	/^function! StatusLine(current, width)$/;"	f
+TabLine	init.vim	/^function! TabLine()$/;"	f
 U	init.vim	/^nmap U :redo$/;"	m
 U	init.vim	/^nmap U :redo<CR>$/;"	m
 VisualHTMLTagWrap	init.vim	/^function! VisualHTMLTagWrap()$/;"	f
@@ -146,14 +153,17 @@ g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighli
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*\\.js$'] = g:pink$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*\\.js$'] = s:pink$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*bash*$'] = s:salmon$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*component\\.ts*$'] = s:monokai_green$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*ignore$'] = s:git_orange$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*ignore$'] = s:red$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*ignore$'] = s:rspec_red$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*module\\.ts*$'] = s:monokai_blue$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rc*$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = g:pink$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = g:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrator\\.js$'] = s:salmon$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*spec\\.ts*$'] = s:rspec_red$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*stories\\.js$'] = g:pink$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.bash_profile$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.gitconfig$'] = s:git_orange$/;"	v
@@ -188,6 +198,10 @@ g:closetag_filetypes	init.vim	/^let g:closetag_filetypes = 'html,xhtml,phtml,js'
 g:closetag_shortcut	init.vim	/^let g:closetag_shortcut = '<leader>>'$/;"	v
 g:closetag_xhtml_filenames	init.vim	/^let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'$/;"	v
 g:closetag_xhtml_filetypes	init.vim	/^let g:closetag_xhtml_filetypes = 'xhtml,jsx'$/;"	v
+g:crystalline_enable_sep	init.vim	/^let g:crystalline_enable_sep = 1$/;"	v
+g:crystalline_statusline_fn	init.vim	/^let g:crystalline_statusline_fn = 'StatusLine'$/;"	v
+g:crystalline_tabline_fn	init.vim	/^let g:crystalline_tabline_fn = 'TabLine'$/;"	v
+g:crystalline_theme	init.vim	/^let g:crystalline_theme = 'onedark'$/;"	v
 g:ctrlp_show_hidden	init.vim	/^let g:ctrlp_show_hidden = 1$/;"	v
 g:deoplete#enable_at_startup	init.vim	/^let g:deoplete#enable_at_startup = 1$/;"	v
 g:fzf_colors	init.vim	/^let g:fzf_colors =$/;"	v

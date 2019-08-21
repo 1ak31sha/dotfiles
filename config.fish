@@ -123,3 +123,67 @@ function edit_command_buffer --description 'Edit the command buffer in an extern
     commandline -C $p
     command rm $f
 end
+
+
+
+
+
+
+
+
+
+## other stuff happens first, like setting some color variables and things that are irrelevant
+#  # to this discussion.
+#
+#  # get the current dir nicely ... replace $HOME with "~"
+#  set -l realhome ~
+#  set -l dir (string replace -r '^'"$realhome"'($|/)' '~$1' $PWD)
+#
+#  # start with the "full" directory
+#  set -l pl1 "[$USER] $dir"
+#
+#  # try to get the current branch
+#  set -l git_branch (git rev-parse --abbrev-ref HEAD 2> /dev/null)
+#
+#  if test "$git_branch" != ""
+#    # we have a branch, so let's add that in
+#    set pl1 "$pl1 ($git_branch)"
+#  end
+#
+#  # get the length
+#  set -l pl1_len (string length $pl1)
+#
+#  if test $pl1_len -gt $COLUMNS
+#    # too long, use the shortened version of dir instead
+#    set dir (prompt_pwd)
+#  end
+#
+#  # we can now build common pieces of the prompt, but because we need to 
+#  # choose colors based on state, we have to reevaluate some things
+#  set -l prompt_line_1 '\n%s[%s] %s%s%s'
+#  set -l prompt_line_1_args "$user_color" $USER "$color_blue" "$dir" "$color_normal"
+#  set -l prompt_line_2 '%s->%s '
+#  set -l prompt_line_2_args "$shell_status_color" "$color_normal"
+#
+#  if test "$git_branch" != ""
+#    # start by assuming the working dir is dirty
+#    set -l git_status_color $color_red
+#
+#    git status | grep clean > /dev/null
+#    if test $status -eq 0
+#      # Oh, no changes, so let's use green for the git branch
+#      set git_status_color $color_green
+#    end
+#
+#    set -l git_prompt '%s(%s)%s'
+#    set -l git_prompt_args "$git_status_color" "$git_branch" "$color_normal"
+#    set prompt_line_1 "$prompt_line_1 $git_prompt"
+#    set prompt_line_1_args $prompt_line_1_args $git_prompt_args
+#  end
+#
+#  # All together now ...
+#  set -l prompt_string "$prompt_line_1\n$prompt_line_2"
+#  set -l prompt_args $prompt_line_1_args $prompt_line_2_args
+#
+#  printf $prompt_string $prompt_args
+
