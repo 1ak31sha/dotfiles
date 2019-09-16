@@ -256,12 +256,27 @@ Plug 'dag/vim-fish'
 Plug 'darthmall/vim-vue'
 Plug 'tpope/vim-cucumber'
 Plug 'artur-shaik/vim-javacomplete2'
-"Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } // not used, see deoplete below
+" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+"// not used, see deoplete below
 "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript'
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+
+" Typescript :(
+" -------------
+" Plug 'leafgarland/typescript-vim'
+" Plug 'ianks/vim-tsx'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
+
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+"https://github.com/mhartington/nvim-typescript/issues/139
+" cd /Users/mark/.cache/vimfiles/repos/github.com/mhartington/nvim-typescript
+" cd .conf/nvim/nvim-typescript
+"nvm use system
+"install.sh
+
+" Plug 'Shougo/denite.nvim'
 
 
 " Linting
@@ -464,7 +479,7 @@ let g:webdevicons_gui_glyph_fix = 1
 " ---------
 " Deoplete
 " ---------
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 "let g:deoplete#omni#functions = {}
 "let g:deoplete#omni#functions.javascript = [
 "  \ 'tern#Complete',
@@ -592,6 +607,8 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor = {}
 let g:NERDTreePatternMatchHighlightColor['.*stories\.js$'] = g:pink
 let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.js$'] = s:salmon
+let g:NERDTreePatternMatchHighlightColor['.*stories\.tsx$'] = g:pink
+let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.tsx$'] = s:salmon
 let g:NERDTreePatternMatchHighlightColor['.*ignore$'] = s:git_orange
 let g:NERDTreePatternMatchHighlightColor['.*rc*$'] = s:salmon
 let g:NERDTreePatternMatchHighlightColor['.prettierrc\.yaml$'] = s:salmon
@@ -927,7 +944,9 @@ endfunction
 function! Smart_commenting() abort
   let commentDict= {
         \ 'javascript': '//',
+        \ 'typescript': '//',
         \ 'javascript.jsx': '//',
+        \ 'typescript.tsx': '//',
         \ 'vim': '"',
         \ 'tmux': '#',
         \ 'fish': '#',
@@ -962,6 +981,11 @@ function! Smart_commenting() abort
   else
     echo "\"filetype '" . &filetype . "' is not configured\" -- Lakeisha"
   endif
+endfunction
+
+function! SetMarkForVIMRC() abort
+ let l:name=
+
 endfunction
 
 " Zap trailing whitespace.
