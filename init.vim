@@ -714,6 +714,11 @@ set completefunc=emoji#complete
 " Jump to the main window.
 autocmd VimEnter * wincmd p
 
+" NERDTreeFind command would not work until nerdtree was opened once, so i open
+" and close it upon opening vim
+autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTreeToggle
+
 autocmd FileType * setlocal formatoptions=jql
 autocmd Filetype ruby setlocal tabstop=2
 autocmd Filetype rb setlocal tabstop=2
