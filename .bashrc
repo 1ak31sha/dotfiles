@@ -5,7 +5,7 @@
 echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 echo "    <3: Hi Lakeisha! <3    "
 echo "    <3:                   "
-echo "    <3: `date`           " 
+echo "    <3: `date`           "
 #echo "    <3: #sources: ${value}"#since april 1st 2018
 echo "    <3: ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
 
@@ -51,8 +51,8 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 #Web
 alias port='lsof -n -i4TCP:'
 

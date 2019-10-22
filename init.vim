@@ -60,6 +60,7 @@
 "f - find
 "gg - go to beginning
 "G - go to end
+"ge - go backward to end of the word
 "g= - check spelling
 "gz - add to dictionary
 "gq - wrap text
@@ -203,7 +204,11 @@ vmap <S-o>            di{/*<CR>*/}<CR><esc>kkp
 
 " INSERT MODE
 " -----------
-
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+" https://vim.fandom.com/wiki/Automatically_append_closing_characters
 
 
 "inoremap <ctrl> <esc>
@@ -259,7 +264,9 @@ Plug 'artur-shaik/vim-javacomplete2'
 " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 "// not used, see deoplete below
 "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
 
 " Typescript :(

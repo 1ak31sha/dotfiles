@@ -3,6 +3,11 @@ HostName github.com
 User git
 IdentityFile ~/.ssh/personal-id_rsa
 
+Host a.github.com
+HostName github.com/tr
+User git
+IdentityFile ~/.ssh/personal-id_rsa
+
 Host b.github.com
 HostName github.com
 User git
