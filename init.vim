@@ -208,6 +208,7 @@ inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
 inoremap {}     {}
+nmap <C-m> :call UltiSnips#JumpForwards
 " https://vim.fandom.com/wiki/Automatically_append_closing_characters
 
 
