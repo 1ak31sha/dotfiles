@@ -71,35 +71,9 @@ alias port='lsof -n -i4TCP:'
 alias rnios='react-native run-ios --simulator="iPhone 7"'
 alias ra='react-native run-android'
 
-
 # based on https://developer.atlassian.com/blog/2015/01/a-better-pull-request/#comment-1811819137
 # $1 is the merge target, $2 the source
 # alias md="!f() { git merge-tree $(git merge-base $1 $2) $1 $2 | colordiff | less -RF; }; f"
-
-# #This directory
-# alias kdot='cd ~/workspace/kdotFiles'
-
-# # Shortcuts
-
-# #vim
-# alias vims='cat ~/workspace/kdotFiles/vim_shortcuts.txt'
-# #sublime
-# alias subl='sublime'
-# alias ss='cat ~/workspace/kdotFiles/sublime_shortcuts.txt'
-# alias ijs='cat ~/workspace/kdotfiles/intelliJ_shortcuts.txt'
-# #rails
-# alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
-
-#alias lines='find . -name '*.php' | xargs wc -l'
-
-#Random
-
-# alias ..='cd ..'
-# alias ls='ls -FGlAhp'
-# function cdd(){ cd "$@" && ls; }
-# alias cd='cdd'
-
-
 
 # alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 # alias memHogsTop='top -l 1 -o rsize | head -20'
@@ -145,3 +119,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
+
+fish

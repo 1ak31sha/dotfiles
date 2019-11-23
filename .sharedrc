@@ -74,14 +74,10 @@ alias dot='cd ~/workspace/1ak31sha'
 
 # Shortcuts
 
-#vim
-alias vims='cat ~/workspace/kdotFiles/vim_shortcuts.txt'
 #sublime
 alias subl='sublime'
 alias ss='cat ~/workspace/1ak31sha/sublime_shortcuts.txt'
 alias ijs='cat ~/workspace/1ak31sha/intelliJ_shortcuts.txt'
-#rails
-alias rs='cat ~/workspace/kdotFiles/rails_shortcuts.txt'
 
 alias ..='cd ..'
 alias ls='ls -FGlAhp'
@@ -113,8 +109,6 @@ alias srcfish='source ~/.config/fish/config.fish'
 alias srctmux='tmux source-file ~/.tmux.conf'
 
 alias debug='git checkout debug -- ui-acceptance-tests/src/test/java/com/thomsonreuters/grc/accelus/wc1/ui/setup/UISetup.java'
-
-alias tmuxs='cat ~/workspace/kdotfiles/tmux_shortcuts.txt'
 
 alias gs='git status -s'
 alias gf='git fetch'

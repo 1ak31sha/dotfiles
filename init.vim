@@ -64,6 +64,7 @@
 "g= - check spelling
 "gz - add to dictionary
 "gq - wrap text
+"gJ - join lines - tranform block of lines into one line
 "h - left
 "i - insert left
 "j - down
@@ -248,6 +249,14 @@ Plug 'itchyny/lightline.vim' " -Configurability. You can create your own compone
 "Plug 'NovaDev94/lightline-onedark'
 "Plug 'https://github.com/gko/vim-coloresque'
 Plug 'https://github.com/ap/vim-css-color'
+
+
+" Java
+" ----
+Plug 'vim-scripts/yavdb'
+Plug 'vmarquez/jvdb'
+"help vebugger-configuration
+Plug 'idanarye/vim-vebugger'
 
 " Ruby
 " ----

@@ -22,6 +22,8 @@ set -x JAVA_HOME       /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Conten
 set -x GEM_PATH $PATH       ~/.gem
 set -x GEM_HOME $PATH       ~/.gem
 set -x PATH $PATH      /usr/local/bin
+set -x gimp $PATH      /Applications/GIMP-2.10.app/Contents/MacOS/gimp
+set -x gimp $PATH      /Applications/GIMP-2.10.app/Contents/MacOS/
 set -x RAINBARF        ~/.rainbarf.conf rainbarf
 set -x SHELL /bin/bash
 
