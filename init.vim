@@ -61,7 +61,7 @@ nmap <C-/> call Smart_commenting()<CR>
 " ---------------
 
 nmap <leader>a :Ag<space>
-"    <leader>b
+nmap    <leader>b <C-v>
 nmap <Leader>c :call Cycle_numbering()<CR>
 nmap <Leader>d <S-v>yp
 "    <leader>e
