@@ -65,6 +65,7 @@
 "gz - add to dictionary
 "gq - wrap text
 "gJ - join lines - tranform block of lines into one line
+"g_ - like $ but doesnt select the newline
 "h - left
 "i - insert left
 "j - down

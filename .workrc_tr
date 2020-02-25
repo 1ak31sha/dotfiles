@@ -1,0 +1,23 @@
+export BUNDLE_VERSION="sandbox"
+export PUBLIC_PATH="${BUNDLE_PRODUCTION_PUBLIC_PATH}${BUNDLE_VERSION}/";
+export APTTUS_ORG_ID=${APTTUS_ORG_ID_QA}
+export APTTUS_ENV=${APTTUS_ENV_QA}
+# yarn bundle
+
+
+    #if you want to test locally, you can make, you can try the following:
+cd ./packages/bundle-emcm
+export BUNDLE_VERSION="sandbox"
+export PUBLIC_PATH=http://localhost:8080/dist
+export APTTUS_ORG_ID=00D550000000joI
+export APTTUS_ENV=https://dxppoc.tr-corporate-nonprod.aws-int.thomsonreuters.com/ecomm
+#yarn bundle
+#npx http-server ./
+#    then in AEM, change the bundle config to point at localhost:8080 and /dist
+#i changed it to this and it worked
+#
+#export PUBLIC_PATH=http://localhost:8080/dist/
+
+
+
+

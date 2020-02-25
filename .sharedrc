@@ -4,6 +4,7 @@ set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
 
 alias fa="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
+alias fuckapple="uptime"
 
 alias runner="ruby ~/workspace/1ak31sha/ruby/rest.rb"
 
