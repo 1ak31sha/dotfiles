@@ -17,6 +17,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <C-c>	init.vim	/^vmap <C-c>        "*y$/;"	m
 <C-c>	init.vim	/^vnoremap <C-c>        "*y$/;"	m
 <C-h>	init.vim	/^inoremap <expr><C-h> deoplete#smart_close_popup()."\\<C-h>"$/;"	m
+<C-i>	init.vim	/^nmap <C-i> :A<CR>$/;"	m
 <C-j>	init.vim	/^vmap <C-j>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
 <C-o>	init.vim	/^vmap <C-o>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
 <C-p>	init.vim	/^nmap <C-p> :FZF<CR>$/;"	m
@@ -72,6 +73,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <leader>a	init.vim	/^nmap <leader>a :Ag<space>$/;"	m
 <leader>b	init.vim	/^nmap <leader>b :A<CR>$/;"	m
 <leader>ch	init.vim	/^nmap <leader>ch   :checkhealth<CR>$/;"	m
+<leader>e	init.vim	/^nmap <leader>e :%s\/:\\([^:]\\+\\):\/\\=emoji#for(submatch(1), submatch(0))\/g<CR>$/;"	m
 <leader>f	init.vim	/^nmap <leader>f :NERDTreeFind<CR>$/;"	m
 <leader>m	init.vim	/^nmap <leader>m :call DisplayTag()<CR>$/;"	m
 <leader>n	init.vim	/^nnoremap <leader>n :call RebuildTags()<CR>$/;"	m
@@ -102,6 +104,7 @@ ReloadKeepingSpot	init.vim	/^function! ReloadKeepingSpot()$/;"	f
 ReloadKeepingSpot2	init.vim	/^function! ReloadKeepingSpot2() abort$/;"	f
 SavePrint	init.vim	/^function! SavePrint() abort$/;"	f
 SetGMark	init.vim	/^function! SetGMark(mark, filename, line_nr)$/;"	f
+SetMarkForVIMRC	init.vim	/^function! SetMarkForVIMRC() abort$/;"	f
 Smart_commenting	init.vim	/^function! Smart_commenting() abort$/;"	f
 Split_Long_Lines_Max_80	init.vim	/^function! Split_Long_Lines_Max_80() abort$/;"	f
 StatusLine	init.vim	/^function! StatusLine(current, width)$/;"	f
@@ -163,8 +166,10 @@ g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighli
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = g:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrated\\.js$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrator\\.js$'] = s:salmon$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*rehydrator\\.tsx$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*spec\\.ts*$'] = s:rspec_red$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*stories\\.js$'] = g:pink$/;"	v
+g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.*stories\\.tsx$'] = g:pink$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.bash_profile$'] = s:salmon$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.gitconfig$'] = s:git_orange$/;"	v
 g:NERDTreePatternMatchHighlightColor	init.vim	/^let g:NERDTreePatternMatchHighlightColor['.gitconfig$'] = s:lightPurple$/;"	v

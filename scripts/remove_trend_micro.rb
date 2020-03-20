@@ -29,5 +29,5 @@
 `sudo rm -f /Library/Application\ Support/TrendMicro/TmccMac/TmLoginMgr.app/Contents/MacOS/TmLoginMgr`
 `sudo rm -rf /Library/Application\ Support/TrendMicro/`
 #`kill $(ps aux | grep 'TrendMicro' | awk '{print $2}')`
-
+# it was not deleting the /Library/Application Support/TrendMicro directory because the process was still running.
 

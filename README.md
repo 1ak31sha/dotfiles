@@ -28,7 +28,7 @@ Run a the setup_links script to build symlinks for config files
 chmod 777 setup/
 ./setup_links
 ```
-## Brew 
+## Brew
 <a id="brew"></a>
 install brew:
 ```
@@ -39,10 +39,10 @@ then run the `setup_brews.sh` to install softwares
 ```
 pip install requests urllib3 pyOpenSSL --force --upgrade
 
- 👍 58 😄 1 🎉 2 ❤️ 4  
- ``` 
+ 👍 58 😄 1 🎉 2 ❤️ 4
+ ```
 
-## Fish 
+## Fish
 <a id="fish"></a>
 set fish to default:
 ```
@@ -60,9 +60,26 @@ chsh -s `which fish`
 ```
 log out and in
 
+### oh my fish
+make sure to set this in .gitconfig
+```
+  autocrlf = false
+```
+
+then run this to get `omf`
+```bash
+curl -L https://get.oh-my.fish | fish
+```
+
+then install this plugin to style the terminal
+```bash
+omf install bobthefish
+```
+
+
 ## Karabiner-Elements <a id="karabiner"></a>
 ```
-brew install cmake 
+brew install cmake
 ```
 if compiler not found,  `xcode-select --reset`
 - install boost

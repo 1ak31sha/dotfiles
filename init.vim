@@ -19,6 +19,7 @@
 " PLUGINS
 " PLUGIN_CONFIGURATIONS
 " ..AG
+" ..ANYFOLD
 " ..ALE
 " ..Closetag
 " ..CTRL-P
@@ -95,23 +96,25 @@ let mapleader = " "
 " way for now
 nmap ; :
 "nmap 1 $
-" CTRL_MAPPINGS
+
+
+" NORMAL MODE CTRL_MAPPINGS
 " -------------
 
 " <C-a> // reserved by tmux prefix
 " <C-b> // toggle nerdTree
 " <C-c> copy to os clipboard
-nmap <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" nmap <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 " <C-e> scroll without moving cursor
 " <C-f>
 " <C-g>
-nmap <S-h> zH
-" <C-i
+" <C-h> - reserved for Karabiner elements <-
+" <C-j> - reserved for Karabiner elements <down arrow>
+" <C-k> - reserved for Karabiner elements ^
+" <C-l> - reserved for Karabiner elements ->
+nmap <C-i> :A<CR>
 " <C-j
 " <C-k
-nmap <S-k> :call moveAndInsert(0)<CR>
-nmap <S-j> :call moveAndInsert(1)<CR>
-nmap <S-l> zL
 " <C-m>
 " <C-n> multiple cursors
 " <C-o>
@@ -120,7 +123,7 @@ nmap <C-p> :FZF<CR>
 " <C-r> redo
 nmap <C-s> :PresentingStart<CR>
 " <C-t>
-nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " <C-v
 " <C-w> with arrow key -> move buffers
 " <C-x
@@ -190,10 +193,10 @@ nmap <leader>[        viwS[<CR>
 nmap <leader>{        viwS{<CR>
 
 
-" VISUAL
+
+" VISUALl CTRL MAPPINGS
 xmap <Leader>d    y`>p
 vmap <Leader>< <Esc>:call VisualHTMLTagWrap()<CR>
-
 vmap <C-c>        "*y
 vmap <C-x>        "*d
 vmap <C-r>        "hy:%s/<C-r>h//gc<left><left><left>
@@ -203,19 +206,28 @@ vmap <C-s>            :call Split_Long_Lines_Max_80()<CR>
 xmap <S-j>            :move '>+1<CR>gv=gv
 xmap <S-k>            :move '<-2<CR>gv=gv
 vmap <S-o>            di{/*<CR>*/}<CR><esc>kkp
+nmap <S-h> zH
+nmap <S-k> :call moveAndInsert(0)<CR>
+nmap <S-j> :call moveAndInsert(1)<CR>
+nmap <S-l> zL
 
 " INSERT MODE
 " -----------
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-nmap <C-m> :call UltiSnips#JumpForwards
+
+""" TESTING auto piars***
+" inoremap {      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O
+" inoremap {{     {
+" inoremap {}     {}
+" nmap <C-m> :call UltiSnips#JumpForwards
+
+
 " https://vim.fandom.com/wiki/Automatically_append_closing_characters
 
 
 "inoremap <ctrl> <esc>
-" type an opening brace and it auto does the closing, putting you inside the braces
+" type an opening brace and it auto does the closing, putting you inside the
+" braces
 "imap ( ()<C-[>i
 
 " COMMAND MODE
@@ -232,6 +244,7 @@ nmap <C-m> :call UltiSnips#JumpForwards
 call plug#begin('~/.config/nvim/plugged')
 " Plug 'mattn/vim-starwars'
 Plug 'lzh9102/presenting.vim'
+Plug 'mhinz/vim-startify'
 " Color Schemes
 " -------------
 Plug 'altercation/solarized'
@@ -245,7 +258,10 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'mkitt/tabline.vim'
 
-Plug 'itchyny/lightline.vim' " -Configurability. You can create your own component and easily add to the statusline and the tabline. Orthogonality. The plugin does not rely on the implementation of other plugins. Such plugin crossing settings should be configured by users.
+Plug 'itchyny/lightline.vim' " -Configurability. You can create your own
+" component and easily add to the statusline and the tabline. Orthogonality. The
+" plugin does not rely on the implementation of other plugins. Such plugin
+" crossing settings should be configured by users.  Plug 'itchyny/vim-gitbranch'
 " Plug 'rbong/vim-crystalline'
 "Plug 'NovaDev94/lightline-onedark'
 "Plug 'https://github.com/gko/vim-coloresque'
@@ -279,6 +295,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'othree/yajs.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
+Plug 'jiangmiao/auto-pairs'
 
 " Typescript :(
 " -------------
@@ -318,9 +335,11 @@ Plug 'tpope/vim-fugitive'
 
 " Tools
 " -----
+" Plug 'pseewald/vim-anyfold'
 Plug 'rking/ag.vim'   " silver searcher
 Plug 'lambdalisue/suda.vim' " get sudo on the file
-Plug 'terryma/vim-smooth-scroll'
+" Plug 'terryma/vim-smooth-scroll'
+Plug 'psliwka/vim-smoothie'
 Plug 'ashisha/image.vim'
 "Plug 'https://github.com/szw/vim-tags'
 Plug 'webastien/vim-ctags'
@@ -336,6 +355,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'othree/xml.vim'
+Plug 'adelarsq/vim-matchit'
 
 " gC in normal mode, <C-g>c in insert mode
 Plug 'tpope/vim-capslock'
@@ -419,6 +439,18 @@ set laststatus=2
 " AG - the silver surfer
 " ----------------------
 let g:ag_working_path_mode="r"
+
+" ANYFOLD
+" -------
+filetype plugin indent on " required
+" autocmd Filetype * AnyFoldActivate               " activate for all filetypes
+" or
+" autocmd Filetype <your-filetype> AnyFoldActivate " activate for a specific filetype
+
+set foldlevel=0  " close all folds
+" or
+" set foldlevel=99 " Open all folds<Paste>
+
 
 " ALE
 " -----
@@ -550,14 +582,29 @@ set completefunc=emoji#complete
 
 " Lightline
 " ---------
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ 'component': {
+      \   'helloworld': 'Hello, world!'
+      \ },
+      \ }
 "let g:lightline = {
 "  \   'colorscheme': 'onedark'
 "  \}
-let g:lightline = {
-      \ 'enable': {
-      \   'tabline': 0
-      \ }
-      \ }
+" let g:lightline = {
+      " \ 'enable': {
+      " \   'tabline': 0
+      " \ },
+      " \ 'component_function': {
+      " \   'gitbranch': 'gitbranch#name'
+      " \ },
+      " \ }
 
 "LocalRC
 let g:localrc_filename = '.vimrc'

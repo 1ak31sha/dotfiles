@@ -120,4 +120,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
-fish
+#fish
