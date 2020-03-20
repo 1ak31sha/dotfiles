@@ -1,21 +1,30 @@
-[url "https://"]
-  insteadOf = git://
-[user]
-  name = lakeisha-pogrzeba
-  email = lakeisha.pogrzeba@gmail.com
+# This is Git's per-user configuration file.
+
 [core]
-  excludesfile = /Users/u6064854/.gitignore_global
   editor = 'nvim'
-[difftool]
-  prompt = true
-[difftool "nvimdiff"]
-  cmd = "nvim -d -u $DOTFILES/init.vim \"$LOCAL\" \"$REMOTE\""
+  filemode = false
+  autocrlf = false
+[commit]
+  template = $DOTFILES/git/commit_template
+[credential]
+  helper = osxkeychain
 [diff]
   tool = nvimdiff
+[difftool]
+  prompt = true
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d -u $DOTFILES/init.vim \"$LOCAL\" \"$REMOTE\""
 [merge]
   tool = nvimdiff
 [mergetool]
   path = nvim
-[commit]
-  template = "~/workspace/dotfiles/git/commit_template"
-  #git config --global -e
+[user]
+  email = lakeisha.pogrzeba@gmail.com
+  name = 1ak31sha
+# Please adapt and uncomment the following lines:
+# name = U6064854
+# email = u6064854@u6064854-tpm-a.ten.thomsonreuters.com
+#git config --global -e
+
+
