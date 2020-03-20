@@ -6,6 +6,10 @@
 function fish_vi_cursor; end
 fish_vi_key_bindings
 
+
+abbr -a -g gco git checkout
+
+
 set -x DOTFILES        ~/workspace/dotfiles
 #set -x PYENV_ROOT       $HOME/.pyenv
 set -x ANDROID_HOME    $HOME/Library/Android/sdk
