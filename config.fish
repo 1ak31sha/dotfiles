@@ -8,6 +8,10 @@ fish_vi_key_bindings
 
 
 abbr -a -g gco git checkout
+abbr -a -g gl git log --oneline --decorate --graph
+abbr -a -g ga git add . ;and git status -s
+abbr -a -g gcan git commit --amend --no-edit
+abbr -a -g gcop git checkout -
 
 
 set -x DOTFILES        ~/workspace/dotfiles

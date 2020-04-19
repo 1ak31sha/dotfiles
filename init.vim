@@ -295,14 +295,18 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'othree/yajs.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
-Plug 'jiangmiao/auto-pairs'
+
+" Plug 'jiangmiao/auto-pairs' - not bad but ended up being annoying when trying
+" to add brackets at the end, it would not insert becuase it think i want to
+" jump out
+Plug 'tpope/vim-commentary'
 
 " Typescript :(
 " -------------
 " Plug 'leafgarland/typescript-vim'
 " Plug 'ianks/vim-tsx'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
+" Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 "https://github.com/mhartington/nvim-typescript/issues/139
@@ -613,6 +617,7 @@ let g:localrc_filename = '.vimrc'
 " ---------
 nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
+" nnoremap <C-b> :NERDTreeToggle %<CR>    <- try to make new tabs not in a new directory root. didnt work
 let NERDTreeShowHidden=1
 let NERDTreeMapOpenInTab='t'
 let NERDTreeMinimalUI = 1
@@ -621,6 +626,10 @@ let NERDTreeDirArrows = 1
 
 " close vim if the last buffer open is just a nerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" try to keep new tabs with main directory root. didnt work
+" autocmd BufEnter * lcd %:p:h
+
 "let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 "let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']
 
