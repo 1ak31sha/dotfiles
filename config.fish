@@ -8,8 +8,10 @@ fish_vi_key_bindings
 
 
 abbr -a -g gco git checkout
+abbr -a -g gc 'git commit -m\''
 abbr -a -g gl git log --oneline --decorate --graph
-abbr -a -g ga git add . ;and git status -s
+
+abbr -a -g ga 'git add . ; git status -s'
 abbr -a -g gcan git commit --amend --no-edit
 abbr -a -g gcop git checkout -
 
@@ -39,7 +41,6 @@ source $DOTFILES/.sharedrc
 #source $NVM_DIR/nvm.sh
 #source $NVM_DIR/bash_completion
 
-#todo
 function gclone
   git clone 'https://github.com/1ak31sha/' + $argv
 end
