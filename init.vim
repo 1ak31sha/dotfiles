@@ -135,13 +135,26 @@ nmap <C-/> :call Smart_commenting()<CR>
 " LEADER_MAPPINGS
 " ---------------
 
+" search for text in project ysing Ag
 nmap <leader>a :Ag<space>
+
+" goto the alternate file - tpope projectionist
 nmap <leader>b :A<CR>
+
+" cycles the line number settings
 nmap <Leader>c :call Cycle_numbering()<CR>
+
+" duplicate the current line
 nmap <Leader>d <S-v>yp
+
+" replace :emojis: with actual emoji
 nmap <leader>e :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
+
+" locates current file in NERDTree browser
 nmap <leader>f :NERDTreeFind<CR>
-"    <leader>g
+
+" used to Close Ag buffers
+nmap <leader>g <C-w>j:q<CR>
 nmap <Leader>h :sp<CR><C-w><Down>
 "    <leader>i
 "    <leader>j
@@ -331,6 +344,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'benmills/vimux'
 Plug 'ervandew/supertab'
+Plug 'airblade/vim-rooter'
 
 " Git
 " ---
@@ -578,10 +592,10 @@ let g:fzf_colors =
 " Git_Gutter
 "-----------
 set updatetime=100
-let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-let g:gitgutter_sign_modified_removed = emoji#for('collision')
+let g:gitgutter_sign_added = emoji#for('hatching_chick')
+let g:gitgutter_sign_modified = emoji#for('nail_care')
+let g:gitgutter_sign_removed = emoji#for('broken_heart')
+let g:gitgutter_sign_modified_removed = emoji#for('broken_heart')
 set completefunc=emoji#complete
 
 " Lightline
@@ -840,6 +854,7 @@ endif
 " -----------
 set runtimepath+=$DOTFILES/vimsnips
 set nowrap
+set fileformat=unix
 set nocursorline
 set encoding=utf8
 set nocp   " 'compatible' is not set
@@ -1083,6 +1098,9 @@ endfunction
 "    \ 'args': ['--no-color', '--preset', 'airbnb', '--reporter', 'inline', '--esnext'],
 "    \ 'errorformat': '%f: line %l\, col %c\, %m',
 "    \ }
+
+" this was used a tr to override eslint config location
+" let g:ale_javascript_eslint_options='-c ./packages/eslint-config/eslintrc.json'
 
 "let g:neomake_javascript_enabled_makers = ['eslint']
 "let g:neomake_javascript_enabled_makers = ['jscs']
