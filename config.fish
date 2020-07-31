@@ -14,6 +14,11 @@ abbr -a -g gl git log --oneline --decorate --graph
 abbr -a -g ga 'git add . ; git status -s'
 abbr -a -g gcan git commit --amend --no-edit
 abbr -a -g gcop git checkout -
+#git log --shortstat --author="1ak31sha" | grep -E "fil(e|es) changed" | awk '{f
+# iles+=$1; inserted+=$4; deleted+=$6} END {print "files changed: ", files, "line
+# s inserted: ", inserted, "lines deleted: ", deleted }'
+# files changed:  196 lines inserted:  43865 lines deleted:  43633
+
 
 
 set -x DOTFILES        ~/workspace/dotfiles
@@ -198,3 +203,6 @@ end
 #
 #  printf $prompt_string $prompt_args
 
+
+set -x YVM_DIR /Users/u6064854/.yvm
+[ -r $YVM_DIR/yvm.fish ]; and source $YVM_DIR/yvm.fish

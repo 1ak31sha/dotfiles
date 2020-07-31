@@ -121,3 +121,6 @@ export NVM_DIR="$HOME/.nvm"
 if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
 #fish
+
+export YVM_DIR=/Users/u6064854/.yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh

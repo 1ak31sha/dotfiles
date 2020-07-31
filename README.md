@@ -104,8 +104,15 @@ sudo chown $(whoami):admin /usr/local/Frameworks
 or
 ```
 sudo chown -R $(whoami) $(brew --prefix)/*
-
 ```
+
+may have to re-install python2...gotta love python. there is a bug that says homebrew cant find python@2. install using ref to github commit:
+```
+brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/86a44a0a552c673a05f11018459c9f5faae3b
+ecc/Formula/python@2.rb
+```
+
+if deoplete was already setup, youll have to unintsall that and reinstall (Plug Clean, Plug Install)
 
 ## Neovim <a id="nvim"></a>
 run `PlugInstall` from command mode
