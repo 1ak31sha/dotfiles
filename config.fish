@@ -14,7 +14,10 @@ abbr -a -g gl git log --oneline --decorate --graph
 abbr -a -g ga 'git add . ; git status -s'
 abbr -a -g gcan git commit --amend --no-edit
 abbr -a -g gcop git checkout -
-#git log --shortstat --author="1ak31sha" | grep -E "fil(e|es) changed" | awk '{f
+# doesnt work due to '' evaluates in fish
+# abbr -a -g gdui git diff -- . ":(exclude)config/componentData.js"
+
+# git log --shortstat --author="1ak31sha" | grep -E "fil(e|es) changed" | awk '{f
 # iles+=$1; inserted+=$4; deleted+=$6} END {print "files changed: ", files, "line
 # s inserted: ", inserted, "lines deleted: ", deleted }'
 # files changed:  196 lines inserted:  43865 lines deleted:  43633
@@ -174,7 +177,7 @@ end
 #    set dir (prompt_pwd)
 #  end
 #
-#  # we can now build common pieces of the prompt, but because we need to 
+#  # we can now build common pieces of the prompt, but because we need to
 #  # choose colors based on state, we have to reevaluate some things
 #  set -l prompt_line_1 '\n%s[%s] %s%s%s'
 #  set -l prompt_line_1_args "$user_color" $USER "$color_blue" "$dir" "$color_normal"

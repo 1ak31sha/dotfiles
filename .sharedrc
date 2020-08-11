@@ -40,6 +40,8 @@ alias gbd='ruby $DOTFILES/git/gitdelete.rb'
 alias gwip=' git add .; git commit -am \'wip\' --no-verify'
 alias gfiles='git diff-tree --no-commit-id --name-only -r'
 alias gun='git reset'
+alias gdui='git diff -- . \':(exclude)config/componentData.js\''
+
 
 # alias latest="git checkout integration / 
 # git pull grc integration /
