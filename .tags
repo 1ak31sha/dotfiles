@@ -16,6 +16,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <C-b>	init.vim	/^nnoremap <C-b> :NERDTreeToggle<CR>$/;"	m
 <C-c>	init.vim	/^vmap <C-c>        "*y$/;"	m
 <C-c>	init.vim	/^vnoremap <C-c>        "*y$/;"	m
+<C-f>	init.vim	/^nmap <C-f> viw<C-c>:Ag <CR>$/;"	m
 <C-h>	init.vim	/^inoremap <expr><C-h> deoplete#smart_close_popup()."\\<C-h>"$/;"	m
 <C-i>	init.vim	/^nmap <C-i> :A<CR>$/;"	m
 <C-j>	init.vim	/^vmap <C-j>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
@@ -25,7 +26,9 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <C-r>	init.vim	/^vmap <C-r>        "hy:%s\/<C-r>h\/\/gc<left><left><left>$/;"	m
 <C-r>	init.vim	/^vnoremap <C-r>        "hy:%s\/<C-r>h\/\/gc<left><left><left>$/;"	m
 <C-s>	init.vim	/^nmap <C-s> :PresentingStart<CR>$/;"	m
+<C-s>	init.vim	/^nmap <silent> <C-s> <Plug>(coc-range-select)$/;"	m
 <C-s>	init.vim	/^vmap <C-s>            :call Split_Long_Lines_Max_80()<CR>$/;"	m
+<C-s>	init.vim	/^xmap <silent> <C-s> <Plug>(coc-range-select)$/;"	m
 <C-w>	init.vim	/^imap <C-w>     <Plug>(neosnippet_expand_or_jump)$/;"	m
 <C-w>	init.vim	/^smap <C-w>     <Plug>(neosnippet_expand_or_jump)$/;"	m
 <C-w>	init.vim	/^xmap <C-w>     <Plug>(neosnippet_expand_target)$/;"	m
@@ -46,6 +49,7 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <Leader>t	init.vim	/^nmap <Leader>t :tabnew<CR>$/;"	m
 <Leader>v	init.vim	/^nmap <Leader>v :vsp<CR><C-w><Right>$/;"	m
 <Leader>z	init.vim	/^nmap <Leader>z :call Zap()<CR>$/;"	m
+<S-TAB>	init.vim	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
 <S-h>	init.vim	/^nmap <S-h> zH$/;"	m
 <S-j>	init.vim	/^nmap <S-j> :call moveAndInsert(1)<CR>$/;"	m
 <S-j>	init.vim	/^vmap <S-j>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
@@ -55,9 +59,14 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <S-k>	init.vim	/^xmap <S-k>            :move '<-2<CR>gv=gv$/;"	m
 <S-l>	init.vim	/^nmap <S-l> zL$/;"	m
 <S-o>	init.vim	/^vmap <S-o>            di{\/*<CR>*\/}<CR><esc>kkp$/;"	m
+<TAB>	init.vim	/^inoremap <silent><expr> <TAB>$/;"	m
 <TAB>	init.vim	/^smap <expr><TAB> neosnippet#expandable_or_jumpable() ?$/;"	m
+<c-@>	init.vim	/^  inoremap <silent><expr> <c-@> coc#refresh()$/;"	m
 <c-d>	init.vim	/^nmap <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>$/;"	m
+<c-space>	init.vim	/^  inoremap <silent><expr> <c-space> coc#refresh()$/;"	m
 <c-u>	init.vim	/^nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>$/;"	m
+<cr>	init.vim	/^  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\\<C-y>" : "\\<C-g>u\\<CR>"$/;"	m
+<cr>	init.vim	/^  inoremap <expr> <cr> pumvisible() ? "\\<C-y>" : "\\<C-g>u\\<CR>"$/;"	m
 <leader>"	init.vim	/^nmap <leader>"        viwS"<CR>$/;"	m
 <leader>'	init.vim	/^nmap <leader>'        viwS'<CR>$/;"	m
 <leader>(	init.vim	/^nmap <leader>(        viwS(<CR>$/;"	m
@@ -71,15 +80,19 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 <leader>8	init.vim	/^nmap <leader>8 :call Smart_commenting()<CR>$/;"	m
 <leader>[	init.vim	/^nmap <leader>[        viwS[<CR>$/;"	m
 <leader>a	init.vim	/^nmap <leader>a :Ag<space>$/;"	m
+<leader>ac	init.vim	/^nmap <leader>ac  <Plug>(coc-codeaction)$/;"	m
 <leader>b	init.vim	/^nmap <leader>b :A<CR>$/;"	m
 <leader>ch	init.vim	/^nmap <leader>ch   :checkhealth<CR>$/;"	m
 <leader>e	init.vim	/^nmap <leader>e :%s\/:\\([^:]\\+\\):\/\\=emoji#for(submatch(1), submatch(0))\/g<CR>$/;"	m
 <leader>f	init.vim	/^nmap <leader>f :NERDTreeFind<CR>$/;"	m
+<leader>g	init.vim	/^nmap <leader>g <C-w>j:q<CR>$/;"	m
 <leader>m	init.vim	/^nmap <leader>m :call DisplayTag()<CR>$/;"	m
 <leader>n	init.vim	/^nnoremap <leader>n :call RebuildTags()<CR>$/;"	m
 <leader>o	init.vim	/^nmap <leader>o :call DisplayGivenTag()<CR>$/;"	m
 <leader>p	init.vim	/^nmap <leader>p :Prettier<CR>$/;"	m
 <leader>pi	init.vim	/^nmap <leader>pi   :PlugInstall<CR>$/;"	m
+<leader>qf	init.vim	/^nmap <leader>qf  <Plug>(coc-fix-current)$/;"	m
+<leader>rn	init.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
 <leader>s	init.vim	/^nmap <leader>s :call SavePrint()<CR>$/;"	m
 <leader>u	init.vim	/^nmap    <leader>u :call ReloadKeepingSpot()<CR>$/;"	m
 <leader>u	init.vim	/^nmap    <leader>u :call ReloadKeepingSpot2()<CR>$/;"	m
@@ -89,8 +102,11 @@ $FZF_DEFAULT_COMMAND	init.vim	/^let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore
 Block_comment	init.vim	/^function! Block_comment() abort$/;"	f
 Cycle_colors	init.vim	/^function! Cycle_colors() abort$/;"	f
 Cycle_numbering	init.vim	/^function! Cycle_numbering() abort$/;"	f
+Fold	init.vim	/^command! -nargs=? Fold :call     CocAction('fold', <f-args>)$/;"	c
+Format	init.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
 InvertArgs	init.vim	/^function! InvertArgs()$/;"	f
 J	init.vim	/^xnoremap J            :move '>+1<CR>gv=gv$/;"	m
+K	init.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	init.vim	/^xnoremap K            :move '<-2<CR>gv=gv$/;"	m
 Multiple_cursors_after	init.vim	/^function! Multiple_cursors_after()$/;"	f
 Multiple_cursors_before	init.vim	/^function! Multiple_cursors_before()$/;"	f
@@ -99,6 +115,7 @@ NERDTreeMapOpenInTab	init.vim	/^let NERDTreeMapOpenInTab='t'$/;"	v
 NERDTreeMinimalUI	init.vim	/^let NERDTreeMinimalUI = 1$/;"	v
 NERDTreeQuitOnOpen	init.vim	/^let NERDTreeQuitOnOpen = 1$/;"	v
 NERDTreeShowHidden	init.vim	/^let NERDTreeShowHidden=1$/;"	v
+OR	init.vim	/^command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')$/;"	c
 ReloadKeepingSpot	init.vim	/^function! ReloadKeepingSpot() abort$/;"	f
 ReloadKeepingSpot	init.vim	/^function! ReloadKeepingSpot()$/;"	f
 ReloadKeepingSpot2	init.vim	/^function! ReloadKeepingSpot2() abort$/;"	f
@@ -117,6 +134,12 @@ WatchForChanges	init.vim	/^function! WatchForChanges(bufname, ...)$/;"	f
 WatchForChangesAllFile	init.vim	/^command! -bang WatchForChangesAllFile           :call WatchForChanges('*', {'toggle': 1, 'autore/;"	c
 WatchForChangesWhileInThisBuffer	init.vim	/^command! -bang WatchForChangesWhileInThisBuffer :call WatchForChanges(@%,  {'toggle': 1, 'autore/;"	c
 Zap	init.vim	/^function! Zap() abort$/;"	f
+[g	init.vim	/^nmap <silent> [g <Plug>(coc-diagnostic-prev)$/;"	m
+]g	init.vim	/^nmap <silent> ]g <Plug>(coc-diagnostic-next)$/;"	m
+ac	init.vim	/^omap ac <Plug>(coc-classobj-a)$/;"	m
+ac	init.vim	/^xmap ac <Plug>(coc-classobj-a)$/;"	m
+af	init.vim	/^omap af <Plug>(coc-funcobj-a)$/;"	m
+af	init.vim	/^xmap af <Plug>(coc-funcobj-a)$/;"	m
 autoreadargs	init.vim	/^let autoreadargs={'autoread':1}$/;"	v
 b:ale_fixers	init.vim	/^let b:ale_fixers = ['prettier', 'eslint', 'stylelint']$/;"	v
 b:ale_fixers	init.vim	/^let b:ale_fixers = ['prettier', 'eslint']$/;"	v
@@ -186,6 +209,7 @@ g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensio
 g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['css', 'less']$/;"	v
 g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']$/;"	v
 g:NERDTreeSyntaxEnabledExtensions	nerdtreeSyntaxHighlight.vim	/^  let g:NERDTreeSyntaxEnabledExtensions = []$/;"	v
+g:NERDTreeWinSize	init.vim	/^let g:NERDTreeWinSize = 200$/;"	v
 g:UltiSnipsEditSplit	init.vim	/^let g:UltiSnipsEditSplit="vertical"$/;"	v
 g:UltiSnipsExpandTrigger	init.vim	/^let g:UltiSnipsExpandTrigger='<tab>'$/;"	v
 g:UltiSnipsJumpBackwardTrigger	init.vim	/^let g:UltiSnipsJumpBackwardTrigger="<leader>k"$/;"	v
@@ -211,9 +235,13 @@ g:ctrlp_show_hidden	init.vim	/^let g:ctrlp_show_hidden = 1$/;"	v
 g:deoplete#enable_at_startup	init.vim	/^let g:deoplete#enable_at_startup = 1$/;"	v
 g:fzf_colors	init.vim	/^let g:fzf_colors =$/;"	v
 g:fzf_layout	init.vim	/^let g:fzf_layout = { 'up': '~40%' }$/;"	v
+g:gitgutter_sign_added	init.vim	/^let g:gitgutter_sign_added = emoji#for('hatching_chick')$/;"	v
 g:gitgutter_sign_added	init.vim	/^let g:gitgutter_sign_added = emoji#for('small_blue_diamond')$/;"	v
+g:gitgutter_sign_modified	init.vim	/^let g:gitgutter_sign_modified = emoji#for('nail_care')$/;"	v
 g:gitgutter_sign_modified	init.vim	/^let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')$/;"	v
+g:gitgutter_sign_modified_removed	init.vim	/^let g:gitgutter_sign_modified_removed = emoji#for('broken_heart')$/;"	v
 g:gitgutter_sign_modified_removed	init.vim	/^let g:gitgutter_sign_modified_removed = emoji#for('collision')$/;"	v
+g:gitgutter_sign_removed	init.vim	/^let g:gitgutter_sign_removed = emoji#for('broken_heart')$/;"	v
 g:gitgutter_sign_removed	init.vim	/^let g:gitgutter_sign_removed = emoji#for('small_red_triangle')$/;"	v
 g:javascript_plugin_jsdoc	init.vim	/^let g:javascript_plugin_jsdoc = 1$/;"	v
 g:lightline	init.vim	/^let g:lightline = {$/;"	v
@@ -230,16 +258,25 @@ g:prettier#config#tab_width	init.vim	/^let g:prettier#config#tab_width = 2$/;"	v
 g:prettier#config#trailing_comma	init.vim	/^let g:prettier#config#trailing_comma = 'all'$/;"	v
 g:prettier#exec_cmd_path	init.vim	/^let g:prettier#exec_cmd_path = "\/usr\/local\/bin\/prettier"$/;"	v
 g:webdevicons_gui_glyph_fix	init.vim	/^let g:webdevicons_gui_glyph_fix = 1$/;"	v
+gd	init.vim	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
+gi	init.vim	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
+gr	init.vim	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
+gy	init.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
+ic	init.vim	/^omap ic <Plug>(coc-classobj-i)$/;"	m
+ic	init.vim	/^xmap ic <Plug>(coc-classobj-i)$/;"	m
 icon	nerdtreeSyntaxHighlight.vim	/^    let icon = g:WebDevIconsUnicodeDecorateFileNodesExactSymbols[key]$/;"	v
 icon	nerdtreeSyntaxHighlight.vim	/^    let icon = g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols[key]$/;"	v
 icon	nerdtreeSyntaxHighlight.vim	/^    let icon = g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols[key]$/;"	v
 icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let icon_identifier = 'nerdtreeExactMatchIcon_'.key$/;"	v
 icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let icon_identifier = 'nerdtreeFileExtensionIcon_'.key$/;"	v
 icon_identifier	nerdtreeSyntaxHighlight.vim	/^  let icon_identifier = 'nerdtreePatternMatchIcon_'.suffix$/;"	v
+if	init.vim	/^omap if <Plug>(coc-funcobj-i)$/;"	m
+if	init.vim	/^xmap if <Plug>(coc-funcobj-i)$/;"	m
 label_identifier	nerdtreeSyntaxHighlight.vim	/^  let label_identifier = 'nerdtreeExactMatchLabel_'.key$/;"	v
 label_identifier	nerdtreeSyntaxHighlight.vim	/^  let label_identifier = 'nerdtreeFileExtensionLabel_'.key$/;"	v
 label_identifier	nerdtreeSyntaxHighlight.vim	/^  let label_identifier = 'nerdtreePatternMatchLabel_'.suffix$/;"	v
 mapleader	init.vim	/^let mapleader = " "$/;"	v
+mygroup	init.vim	/^augroup mygroup$/;"	a
 regexp	nerdtreeSyntaxHighlight.vim	/^  let regexp = '\\v'.s:characters.'+\\.'.substitute(key, '\\W', '\\\\\\0', 'g')$/;"	v
 s:X	nerdtreeSyntaxHighlight.vim	/^fun! s:X(group, fg, bg, attr)$/;"	f
 s:addbg	monokai.vim	/^let s:addbg       = { "gui": "#5f875f", "cterm": "65" }$/;"	v
@@ -258,6 +295,7 @@ s:changebg	monokai.vim	/^let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
 s:changefg	monokai.vim	/^let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }$/;"	v
 s:characters	nerdtreeSyntaxHighlight.vim	/^let s:characters = '[a-zA-Z0-9_\\#\\-\\+\\*\\%\\!\\~\\(\\)\\{\\}\\&\\.\\$\\@]'$/;"	v
 s:chars_double_lashes	nerdtreeSyntaxHighlight.vim	/^let s:chars_double_lashes = substitute(s:characters, '\\\\', '\\\\\\\\', 'g')$/;"	v
+s:check_back_space	init.vim	/^function! s:check_back_space() abort$/;"	f
 s:colour	nerdtreeSyntaxHighlight.vim	/^fun! s:colour(r, g, b)$/;"	f
 s:darkBlue	init.vim	/^let s:darkBlue = "44788E"$/;"	v
 s:darkBlue	nerdtreeSyntaxHighlight.vim	/^let s:darkBlue = "44788E"$/;"	v
@@ -315,6 +353,7 @@ s:rspec_red	init.vim	/^let s:rspec_red = 'FE405F'$/;"	v
 s:rspec_red	nerdtreeSyntaxHighlight.vim	/^let s:rspec_red = 'FE405F'$/;"	v
 s:salmon	init.vim	/^let s:salmon = "EE6E73"$/;"	v
 s:salmon	nerdtreeSyntaxHighlight.vim	/^let s:salmon = "EE6E73"$/;"	v
+s:show_documentation	init.vim	/^function! s:show_documentation()$/;"	f
 s:warmgrey	monokai.vim	/^let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }$/;"	v
 s:white	init.vim	/^let s:white = "FFFFFF"$/;"	v
 s:white	monokai.vim	/^let s:white       = { "gui": "#E8E8E3", "cterm": "252" }$/;"	v

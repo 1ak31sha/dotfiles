@@ -43,7 +43,8 @@ set -x PATH $PATH      /usr/local/bin
 set -x gimp $PATH      /Applications/GIMP-2.10.app/Contents/MacOS/gimp
 set -x gimp $PATH      /Applications/GIMP-2.10.app/Contents/MacOS/
 set -x RAINBARF        ~/.rainbarf.conf rainbarf
-# set -x SHELL /bin/bash
+
+set -x SHELL /bin/bash
 
 source $DOTFILES/.sharedrc
 #source $NVM_DIR/nvm.sh
