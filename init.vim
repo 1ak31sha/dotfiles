@@ -115,19 +115,19 @@ nmap <C-f> viw<C-c>:Ag <CR>
 nmap <C-i> :A<CR>
 " <C-j
 " <C-k
-" <C-m>
+nmap <C-m> :mks! $DOTFILES/rooster.vim<CR>
 " <C-n> multiple cursors
-" <C-o>
+" <C-o> goes to letter
 nmap <C-p> :FZF<CR>
 " <C-q> nerdTree focus
-" <C-r> redo
+" <C-r> red
 
 nmap <C-s> :PresentingStart<CR>
 " <C-t>
 " nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " <C-v
 " <C-w> with arrow key -> move buffers
-" <C-x
+nmap <C-x> :source $DOTFILES/rooster.vim<CR>
 " <C-y> scroll up without moving cursor
 " <C-z> quit without asking
 nmap <C-/> :call Smart_commenting()<CR>
@@ -421,6 +421,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
    Plug 'darthmall/vim-vue'
    Plug 'tpope/vim-cucumber'
    Plug 'artur-shaik/vim-javacomplete2'
+   Plug 'elzr/vim-json'
 "   " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 "   "// not used, see deoplete below
 "   "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }

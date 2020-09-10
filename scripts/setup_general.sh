@@ -2,6 +2,8 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 fisher add FabioAntunes/fish-nvm
 
 fisher add edc/bass
+omf install spacefish
+
 
 
 # oh ya

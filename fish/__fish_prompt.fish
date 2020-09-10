@@ -1,5 +1,5 @@
 function fish_prompt --description 'Write out the prompt'
-	set -l last_status $status
+  set -l last_status $status
 
     if not set -q __fish_git_prompt_show_informative_status
         set -g __fish_git_prompt_show_informative_status 1
@@ -89,6 +89,7 @@ function fish_prompt --description 'Write out the prompt'
 
     echo -n "$suffix "
 
+    echo ('node -v')
     set_color normal
 end
 
