@@ -193,11 +193,11 @@ nmap <leader>7 7gt
 nmap <leader>8 :call Smart_commenting()<CR>
 nmap <silent>     <Leader>9 :call Cycle_colors()<CR>
 
-nmap <Leader>m1       :mksession! $DOTFILES/learning.vim<CR>
-nmap <Leader>l1       :source $DOTFILES/learning.vim<CR>
-nmap <leader>pi   :PlugInstall<CR>
-nmap <leader>ch   :checkhealth<CR>
-nmap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
+" nmap <Leader>m1       :mksession! $DOTFILES/learning.vim<CR>
+" nmap <Leader>l1       :source $DOTFILES/learning.vim<CR>
+" nmap <leader>pi   :PlugInstall<CR>
+" nmap <leader>ch   :checkhealth<CR>
+" nmap <Leader>html :-1read $DOTFILES/testhtml.html<CR>1jf>a
 
 " surround
 nmap <leader>'        viwS'<CR>
@@ -268,7 +268,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 "xmap <leader>f  <Plug>(coc-format-selected)
@@ -287,9 +287,9 @@ augroup end
 " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+" nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+" nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -470,7 +470,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "   " conflicting with coc
 "   "Plug 'ervandew/supertab'
    Plug 'airblade/vim-rooter'
-"
+
 "   " Git
 "   " ---
    Plug 'tpope/vim-fugitive'
@@ -492,7 +492,6 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
    Plug 'tpope/vim-projectionist'
    Plug 'chrisbra/csv.vim'
    Plug 'airblade/vim-gitgutter'
-   Plug 'vim-scripts/DrawIt'
 "
 "   " Text maniulation
 "   " ----------------
@@ -537,6 +536,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "  NOT USING
 "  ---------
 
+"Plug 'vim-scripts/DrawIt' -> causes 1 sec delay on leader binding
 "Plug 'Shougo/neosnippet.vim'
 "Plug 'Shougo/neosnippet-snippets'
 

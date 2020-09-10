@@ -210,6 +210,7 @@ g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensio
 g:NERDTreeSyntaxEnabledExtensions	init.vim	/^let g:NERDTreeSyntaxEnabledExtensions = ['js', 'jsx']$/;"	v
 g:NERDTreeSyntaxEnabledExtensions	nerdtreeSyntaxHighlight.vim	/^  let g:NERDTreeSyntaxEnabledExtensions = []$/;"	v
 g:NERDTreeWinSize	init.vim	/^let g:NERDTreeWinSize = 200$/;"	v
+g:NERDTreeWinSize	init.vim	/^let g:NERDTreeWinSize = 80$/;"	v
 g:UltiSnipsEditSplit	init.vim	/^let g:UltiSnipsEditSplit="vertical"$/;"	v
 g:UltiSnipsExpandTrigger	init.vim	/^let g:UltiSnipsExpandTrigger='<tab>'$/;"	v
 g:UltiSnipsJumpBackwardTrigger	init.vim	/^let g:UltiSnipsJumpBackwardTrigger="<leader>k"$/;"	v
