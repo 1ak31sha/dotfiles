@@ -1,12 +1,20 @@
-snippet functional "functional component" b
-function $1({ $2 }) {
-	$0
+snippet fc "functional component" b
+import React from "react";
+
+const $1 = ({
+  $2,
+}) => {
+	useEffect(()=> {
+		console.log('use effect')
+	})
   return (
     <div className="">
       <div>{$2}</div>
     </div>
   )
 }
+
+export { $1 }
 endsnippet
 snippet fn "arrow function" b
 $1 = ($2) => {

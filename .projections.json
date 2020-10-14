@@ -1,17 +1,16 @@
-    {
-      "init.vim": {
-        "alternate": "config.fish",
-        "type": "source"
-      },
-      "config.fish": {
-        "alternate": ".tmux.conf",
-        "type": "source"
-      },
-      ".tmux.conf": {
-        "alternate": ".sharedrc"
-      },
-      ".sharedrc": {
-        "alternate": "init.vim"
-      }
-    }
-
+{
+  "init.vim": {
+    "alternate": "config.fish",
+    "type": "source"
+  },
+  "config.fish": {
+    "alternate": ".tmux.conf",
+    "type": "source"
+  },
+  ".tmux.conf": {
+    "alternate": ".sharedrc"
+  },
+  ".sharedrc": {
+    "alternate": "init.vim"
+  }
+}

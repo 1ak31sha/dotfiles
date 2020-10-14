@@ -6,3 +6,4 @@ packages/components
 lib
 packages/bundle-ue
 yarn.lock
+__snapshots__

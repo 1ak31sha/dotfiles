@@ -1,0 +1,74 @@
+snippet trcolors "paste color vars" A
+  --color-tr-orange-dark-shade-40: rgb(153, 53, 0); /* =#993500 */
+  --color-tr-orange-dark-shade-20: rgb(204, 71, 0); /* =#cc4700 */
+  --color-tr-orange-dark: rgb(255, 89, 0); /* =#ff5900 */
+  --color-tr-orange: rgb(255, 128, 0); /* =#ff8000 */
+  --color-tr-orange-light: rgb(255, 178, 0); /* =#ffb200 */
+  --color-tr-green-light: rgb(119, 162, 45); /* =#77a22d */
+  --color-tr-green-dark: rgb(56, 124, 43); /* =#387c2b */
+  --color-tr-blue-light: rgb(0, 153, 196); /* =#0099c4 */
+  --color-tr-blue-dark: rgb(0, 93, 162); /* =#005da2 */
+  --color-tr-blue-darker: rgb(0, 70, 123); /* =#00467b */
+  --color-tr-purple-light: rgb(110, 58, 183); /* =#6e3ab7 */
+  --color-tr-purple-dark: rgb(98, 31, 149); /* =#621f95 */
+  --color-tr-red-light: rgb(220, 10, 10); /* =#dc0a0a */
+  --color-tr-red-dark-shade-40: rgb(132, 6, 6); /* =#840606 */
+
+  /* Grayscale */
+
+  --color-tr-gray-darkest-shade-20: rgb(30, 30, 30); /* =#1e1e1e */
+  --color-tr-gray-darkest: rgb(38, 38, 38); /* =#262626 */
+  --color-tr-gray-dark: rgb(77, 77, 77); /* =#4d4d4d */
+  --color-tr-gray-medium: rgb(102, 102, 102); /* =#666666 */
+  --color-tr-gray: rgb(136, 136, 136); /* =#888 */
+  --color-tr-gray-light: rgb(175, 175, 175); /* =#afafaf */
+  --color-tr-gray-muted: rgb(208, 208, 208); /* =#d0d0d0 */
+  --color-tr-gray-lighter: rgb(234, 234, 234); /* =#eaeaea */
+  --color-tr-gray-lightest: rgb(244, 244, 244); /* =#f4f4f4 */
+  --color-tr-white: rgb(255, 255, 255); /* =#fff */
+}
+
+endsnippet
+snippet trcss "export const x='x'" b
+@import "../../vendor/styles/dcl-ui-vars.css";
+
+.UserList-reactTable caption {
+  border-bottom: 2px solid var(--color-tr-gray-light);
+  margin-bottom: var(--space-s);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-black);
+  text-align: left;
+}
+
+endsnippet
+
+@import "../../vendor/styles/dcl-ui-vars.css";
+
+.UserList-reactTable caption {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-black);
+  text-align: left;
+}
+
+.UserList-tableHeadingBorder {
+  border-bottom: 2px solid var(--color-tr-gray-light);
+  margin-bottom: var(--space-s);
+}
+
+.UserList-tableBodyBorder {
+  border-bottom: 2px solid var(--color-tr-gray-light);
+  margin-bottom: var(--space-s);
+}
+
+.UserList-reactTable th {
+  background-color: var(--color-tr-white);
+  border-bottom: 2px solid var(--color-tr-gray-light);
+  text-align: left;
+}
+
+.UserList-reactTable {
+  border-bottom: 2px solid var(--color-tr-gray-light);
+  border-spacing: 0;
+  margin-bottom: var(--space-s);
+}
+

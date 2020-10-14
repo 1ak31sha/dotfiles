@@ -51,6 +51,7 @@ alias fishrc="nvim ~/.bashrc"
 alias srcbash="source ~/.bashrc"
 alias sharedrc="nvim ~/workspace/1ak31sha/.sharedrc"
 
+alias pr "~/workspace/dotfiles/scripts/pullrequest.sh"
 
 alias unit_mcrv="grunt test --module=test/view/MediaCheck/MediaCheckResultsView"
 alias unit_mcrc="grunt test --module=test/control/MediaCheckResultsController.js"

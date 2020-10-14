@@ -54,7 +54,7 @@
 " Here are the vim defaults for reference
 
 "a - insert to the right
-"b - back a work
+"b - back a word
 "c - change
 "d - delete
 "e - end of a word
@@ -62,6 +62,7 @@
 "gg - go to beginning
 "G - go to end
 "ge - go backward to end of the word
+"go - (NERDTree) open file but keep focus in NERDTree
 "g= - check spelling
 "gz - add to dictionary
 "gq - wrap text
@@ -109,12 +110,10 @@ nmap ; :
 nmap <C-f> viw<C-c>:Ag <CR>
 " <C-g>
 " <C-h> - reserved for Karabiner elements <-
+nmap <C-i> :A<CR>
 " <C-j> - reserved for Karabiner elements <down arrow>
 " <C-k> - reserved for Karabiner elements ^
 " <C-l> - reserved for Karabiner elements ->
-nmap <C-i> :A<CR>
-" <C-j
-" <C-k
 nmap <C-m> :mks! $DOTFILES/rooster.vim<CR>
 " <C-n> multiple cursors
 " <C-o> goes to letter
@@ -125,7 +124,7 @@ nmap <C-p> :FZF<CR>
 nmap <C-s> :PresentingStart<CR>
 " <C-t>
 " nmap <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-" <C-v
+" <C-v> -> visual block mode
 " <C-w> with arrow key -> move buffers
 nmap <C-x> :source $DOTFILES/rooster.vim<CR>
 " <C-y> scroll up without moving cursor
@@ -158,7 +157,8 @@ nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>g <C-w>j:q<CR>
 nmap <Leader>h :sp<CR><C-w><Down>
 "    <leader>i
-"    <leader>j
+" echos the file path releative to working directory
+nmap    <leader>j :echo @%<CR>
 "    <leader>k
 "    <leader>l
 "    <leader>m
@@ -996,7 +996,9 @@ endif
 " -----------
 " SET_OPTIONS
 " -----------
-
+"set $RC ~/workspace/dotfiles/init.vim
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+set backspace=indent,eol,start
 set timeoutlen=1000
 
 set ttimeoutlen=0
@@ -1006,7 +1008,7 @@ set nowrap
 set fileformat=unix
 set nocursorline
 set encoding=utf8
-set nocp   " 'compatible' is not set
+set nocp   " 'compatible' is not set. dont need vi compatibility, use vi improved
 set noswapfile
 set nopaste
 set guicursor=n-v-c-sm:block,i-ci-ve:ver55,r-cr-o:hor20
