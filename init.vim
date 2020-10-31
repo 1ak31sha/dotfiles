@@ -73,6 +73,19 @@
 "j - down
 "k - up
 "l - right
+" nnoremap n j
+" nnoremap e k
+" nnoremap i l
+
+" nnoremap j n
+" nnoremap k e
+" " i insert becomes qwerty u
+" nnoremap l i
+
+
+
+
+
 "o - insert below
 "O - insert above
 "p - paste
@@ -109,6 +122,7 @@ nmap ; :
 " <C-e> scroll without moving cursor
 nmap <C-f> viw<C-c>:Ag <CR>
 " <C-g>
+
 " <C-h> - reserved for Karabiner elements <-
 nmap <C-i> :A<CR>
 " <C-j> - reserved for Karabiner elements <down arrow>
@@ -169,7 +183,7 @@ nnoremap <leader>n :call RebuildTags()<CR>
 "    <leader>o
 "nmap <leader>p :PrettierCli <--config ./.prettierrc>
 "nmap <leader>p :PrettierCli <q-args> '--trailing-comma all"
-nmap <leader>p :Prettier<CR>
+"nmap <leader>p :PrettierCli --write .<CR>
 "nmap <Leader>py <Plug>(Prettier)
 nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
@@ -373,7 +387,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'mhinz/vim-startify'
-
+Plug 'easymotion/vim-easymotion'
 " Code Pairing
 " ------------
 Plug 'FredKSchott/CoVim'
@@ -390,6 +404,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 
 
   Plug 'vim-scripts/AfterColors.vim'
+
    Plug 'mkitt/tabline.vim'
 "
    Plug 'itchyny/lightline.vim' " -Configurability. You can create your own
@@ -401,6 +416,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
    Plug 'https://github.com/ap/vim-css-color'
 "
 "
+
 "   " Java
 "   " ----
    Plug 'vim-scripts/yavdb'
@@ -886,13 +902,13 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " Prettier
 " --------
 "--trailing-comma all --tab-width 2 --no-semi false
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#semi = 'false'
+"let g:prettier#config#bracket_spacing = 'true'
+"let g:prettier#config#semi = 'false'
 " none|es5|all
 " Prettier default: none
-let g:prettier#config#trailing_comma = 'all'
-let g:prettier#config#tab_width = 2
-let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
+" let g:prettier#config#trailing_comma = 'all'
+"let g:prettier#config#tab_width = 2
+" let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 " print semicolons
 " Prettier default: true
 " print spaces between brackets
