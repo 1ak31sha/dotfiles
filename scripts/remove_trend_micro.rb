@@ -31,3 +31,6 @@
 #`kill $(ps aux | grep 'TrendMicro' | awk '{print $2}')`
 # it was not deleting the /Library/Application Support/TrendMicro directory because the process was still running.
 
+# boot into recovery mode (cmd+R) the crsutil disable. then you can use command below
+# sudo jamf -removeFramework
+

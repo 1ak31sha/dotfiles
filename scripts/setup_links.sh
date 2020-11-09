@@ -8,7 +8,7 @@ mkdir ~/.config/nvim
 mkdir ~/.config/fish
 ln -s ~/workspace/dotfiles/config.fish ~/.config/fish/config.fish
 ln -s ~/workspace/dotfiles/fish/fish_variables ~/.config/fish/fish_variables
-ln -s ~/workspace/dotfiles/fish/fish/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+#ln -s ~/workspace/dotfiles/fish/fish/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 ln -s ~/workspace/dotfiles/init.vim ~/.config/nvim/init.vim
 ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/workspace/dotfiles/.bash_profile ~/.bash_profile

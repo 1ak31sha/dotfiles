@@ -78,6 +78,16 @@ omf install bobthefish
 
 
 ## Karabiner-Elements <a id="karabiner"></a>
+
+as of today(nov 2020) i find that karabiner became much easier to install!
+just download the dmg and follow the wizard.
+The rules to import after are:
+ Vi Style Arrows
+Change caps_lock key (rev 4)
+Change caps_lock to control if pressed with other keys, to escape if pressed alone.
+
+### old instructions
+
 ```
 brew install cmake
 ```
@@ -112,6 +122,7 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/86a44a0a55
 ecc/Formula/python@2.rb
 ```
 
+### old instructions (not using deoplete anymore)
 if deoplete was already setup, youll have to unintsall that and reinstall (Plug Clean, Plug Install)
 
 ## Neovim <a id="nvim"></a>
@@ -137,8 +148,16 @@ https://github.com/mrmartineau/SetiUI-Icons-Sublime
 
 ## NeoVim
 
-TODO
+### install vim plug
+```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
 
+### install python provider for neovim
+```
+pip3 install pynvim
+```
 
 ## Font
 

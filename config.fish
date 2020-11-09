@@ -210,3 +210,6 @@ end
 
 set -x YVM_DIR /Users/u6064854/.yvm
 [ -r $YVM_DIR/yvm.fish ]; and source $YVM_DIR/yvm.fish
+# [ -s "$NVM_DIR/nvm.sh" ]; and source  "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ]; and source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

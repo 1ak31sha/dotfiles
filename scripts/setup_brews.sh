@@ -13,3 +13,5 @@ brew install reattach-to-user-namespace
 brew install grip
 brew install awscli
 brew install graphviz
+brew install yarn
+brew install tmux-mem-cpu-load
