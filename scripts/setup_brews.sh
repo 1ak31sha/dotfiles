@@ -15,3 +15,4 @@ brew install awscli
 brew install graphviz
 brew install yarn
 brew install tmux-mem-cpu-load
+brew install starship

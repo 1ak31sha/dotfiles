@@ -1,9 +1,17 @@
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 fisher add jorgebucaran/nvm.fish
 fisher add FabioAntunes/fish-nvm
-
 fisher add edc/bass
-omf install spacefish
+
+# this didnt work. using this now |> curl -s https://raw.githubusercontent.com/tophat/yvm/v2.4.3/scripts/install.sh | INSTALL_VERSION="v2.4.3" bash
+#fisher add cideM/fish-yvm
+
+curl -s https://raw.githubusercontent.com/tophat/yvm/v2.4.3/scripts/install.sh | INSTALL_VERSION="v2.4.3" bash
+
+
+
+# using starship instead
+#omf install spacefish
 
 
 

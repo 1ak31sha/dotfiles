@@ -124,3 +124,8 @@ HISTFILESIZE=10000000
 
 export YVM_DIR=/Users/u6064854/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+export YVM_DIR=/usr/local/opt/yvm
+
+export YVM_DIR=/Users/lakeishapogrzeba/.yvm
+[ -r $YVM_DIR/yvm.sh ] && source $YVM_DIR/yvm.sh

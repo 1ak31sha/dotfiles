@@ -7,3 +7,4 @@ lib
 packages/bundle-ue
 yarn.lock
 __snapshots__
+CHANGELOG.md

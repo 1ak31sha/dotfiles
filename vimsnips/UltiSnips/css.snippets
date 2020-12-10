@@ -1,3 +1,46 @@
+snippet trsizes "paste tr scheme vals" A
+  --font-size-scale-base-unitless: 12;
+  --font-size-xxxs-unitless: 14;
+  --font-size-xxs-unitless: 16;
+  --font-size-xs-unitless: 18;
+  --font-size-s-unitless: 21;
+  --font-size-m-unitless: 24;
+  --font-size-l-unitless: 28;
+  --font-size-xl-unitless: 36;
+  --font-size-xxl-unitless: 42;
+  --font-size-xxxl-unitless: 63;
+  --font-size-xxxxl-unitless: 72;
+
+  /* Descriptive font sizes
+     ======================================================================== */
+
+  --font-size-xxxs: calc(1rem * var(--font-size-xxxs-unitless) / 16);
+  --font-size-xxs: calc(1rem * var(--font-size-xxs-unitless) / 16);
+  --font-size-xs: calc(1rem * var(--font-size-xs-unitless) / 16);
+  --font-size-s: calc(1rem * var(--font-size-s-unitless) / 16);
+  --font-size-m: calc(1rem * var(--font-size-m-unitless) / 16);
+  --font-size-l: calc(1rem * var(--font-size-l-unitless) / 16);
+  --font-size-xl: calc(1rem * var(--font-size-xl-unitless) / 16);
+  --font-size-xxl: calc(1rem * var(--font-size-xxl-unitless) / 16);
+  --font-size-xxxl: calc(1rem * var(--font-size-xxxl-unitless) / 16);
+  --font-size-xxxxl: calc(1rem * var(--font-size-xxxxl-unitless) / 16);
+
+	  --space-xxxxxs-unitless: 1;
+  --space-xxxxs-unitless: 2;
+  --space-xxxs-unitless: 3;
+  --space-xxs-unitless: 6;
+  --space-xms-unitless: 9;
+  --space-xmms-unitless: 11;
+  --space-xs-unitless: 12;
+  --space-s-unitless: 18;
+  --space-m-unitless: 24;
+  --space-l-unitless: 36;
+  --space-xl-unitless: 48;
+  --space-xxl-unitless: 72;
+  --space-xxxl-unitless: 96;
+
+endsnippet
+
 snippet trcolors "paste color vars" A
   --color-tr-orange-dark-shade-40: rgb(153, 53, 0); /* =#993500 */
   --color-tr-orange-dark-shade-20: rgb(204, 71, 0); /* =#cc4700 */

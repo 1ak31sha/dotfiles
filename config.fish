@@ -213,3 +213,9 @@ set -x YVM_DIR /Users/u6064854/.yvm
 # [ -s "$NVM_DIR/nvm.sh" ]; and source  "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ]; and source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+starship init fish | source
+
+set -x YVM_DIR /usr/local/opt/yvm
+
+set -x YVM_DIR /Users/lakeishapogrzeba/.yvm
+. $YVM_DIR/yvm.fish

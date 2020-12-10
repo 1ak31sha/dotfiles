@@ -40,6 +40,10 @@
 "
 " ~------------------~ "
 
+" NOTES
+"
+" the jsx plugins pangloss/maxmellon have introduced some lag in moving the cursor by holding j or k. but it gives indentation, so it may be worth it. trying it out for now
+
 
 " --
 " ABREVIATIONS
@@ -68,6 +72,15 @@
 "gq - wrap text
 "gJ - join lines - tranform block of lines into one line
 "g_ - like $ but doesnt select the newline
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+" gl for 'look' for references
+nmap <silent> gl <Plug>(coc-references)
+" Symbol renaming.
+ nmap <silent>gr <Plug>(coc-rename)
+
+
 "h - left
 "i - insert left
 "j - down
@@ -159,7 +172,9 @@ nmap <Leader>h :sp<CR><C-w><Down>
 "    <leader>i
 " echos the file path releative to working directory
 nmap    <leader>j :echo @%<CR>
-"    <leader>k
+
+" k for Kill tags. deletes tag and its closing tag
+nmap    <leader>k vat<Esc>`<df>`>F<df>
 "    <leader>l
 "    <leader>m
 nmap <leader>m :call DisplayTag()<CR>
@@ -258,17 +273,11 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-" nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 "xmap <leader>f  <Plug>(coc-format-selected)
@@ -343,6 +352,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " INSERT MODE
 " -----------
 
+inoremap <C-d> <Del>
 """ TESTING auto piars***
 " inoremap {      {}<Left>
 " inoremap {<CR>  {<CR>}<Esc>O
@@ -425,7 +435,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "   " ------
    Plug 'junegunn/vim-emoji'
    Plug 'vim-scripts/groovy.vim'
-   Plug 'mxw/vim-jsx'
+
    Plug 'dag/vim-fish'
    Plug 'darthmall/vim-vue'
    Plug 'tpope/vim-cucumber'
@@ -434,7 +444,6 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "   " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 "   "// not used, see deoplete below
 "   "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-"   " Plug 'pangloss/vim-javascript'
 
     " this plugin has performance issues
    "Plug 'othree/yajs.vim'
@@ -451,6 +460,15 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "   " Plug 'leafgarland/typescript-vim'
 "   " Plug 'ianks/vim-tsx'
    Plug 'HerringtonDarkholme/yats.vim'
+
+   " these two plugins introduced some lag
+   Plug 'pangloss/vim-javascript'
+   "Plug 'maxmellon/vim-jsx-pretty'
+      " Plug 'mxw/vim-jsx' |> opting for pangloss & maxmellon's plugins as the indentation works
+
+
+
+
 "   " Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 "
 "   " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -546,6 +564,7 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "  NOT USING
 "  ---------
 
+" Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'typescriptreact', 'typescript']} |> didnt work :(
 "Plug 'vim-scripts/DrawIt' -> causes 1 sec delay on leader binding
 "Plug 'Shougo/neosnippet.vim'
 "Plug 'Shougo/neosnippet-snippets'
@@ -608,6 +627,7 @@ set laststatus=2
 
 " AG - the silver surfer
 " ----------------------
+"let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
 
 " ANYFOLD
@@ -652,7 +672,7 @@ let g:ale_linters = {
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 "
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx, *.js'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx, *.js, *.ts, *.tsx'
 
 " filenames like *.xml, *.xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
@@ -662,7 +682,7 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
 "
-let g:closetag_filetypes = 'html,xhtml,phtml,js'
+let g:closetag_filetypes = 'html,xhtml,phtml,js,ts,tsx,jsx'
 
 " filetypes like xml, xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
@@ -861,6 +881,29 @@ let g:NERDTreePatternMatchHighlightColor['.*component\.ts*$'] = s:monokai_green
 let g:NERDTreePatternMatchHighlightColor['.*spec\.ts*$'] = s:rspec_red
 let g:NERDTreePatternMatchHighlightColor['.*module\.ts*$'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+
+" NerdTreeGitPlugin
+" TODO
+let g:NERDTreeGitStatusUseNerdFonts = 0
+" let g:gitgutter_sign_added = emoji#for('hatching_chick')
+" let g:gitgutter_sign_modified = emoji#for('nail_care')
+" let g:gitgutter_sign_removed = emoji#for('broken_heart')
+" let g:gitgutter_sign_modified_removed = emoji#for('broken_heart')
+
+" '✗'
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :emoji#for('nail_care'),
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :emoji#for('hatching_chick'),
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :emoji#for('poop'),
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
 
 " Neomake
 " ---------
