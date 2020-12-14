@@ -24,5 +24,24 @@ ln -s ~/workspace/dotfiles/.prettierrc.yaml ~/.prettierrc.yaml
 ln -s ~/workspace/dotfiles/git/ssh_config ~/.ssh/config
 ln -sf ~/workspace/dotfiles/monokai.vim ~/.config/nvim/plugged/vim-monokai/colors
 ln -sf ~/workspace/dotfiles/nerdtreeSyntaxHighlight.vim ~/.config/nvim/plugged/vim-nerdtree-syntax-highlight/after/syntax/nerdtree.vim
+ln -sf ~/.config/nvim/UltiSnips/javascript.snippets ~/workspace/dotfiles/UltiSnips/javascript.snippets
+ln -sf ~/.config/nvim/UltiSnips/javascriptreact.snippets ~/workspace/dotfiles/UltiSnips/javascriptreact.snippets
+ln -sf ~/.config/nvim/UltiSnips/css.snippets ~/workspace/dotfiles/UltiSnips/css.snippets
+ln -sf ~/.config/nvim/UltiSnips/markdown.snippets ~/workspace/dotfiles/UltiSnips/markdown.snippets
+ln -sf ~/.config/nvim/UltiSnips/typescript.snippets ~/workspace/dotfiles/UltiSnips/typescript.snippets
+ln -sf ~/.config/nvim/UltiSnips/java.snippets ~/workspace/dotfiles/UltiSnips/java.snippets
+RESULT=$?
+if [ $RESULT -eq 0 ]; then
+  echo success
+else
+  echo failed
+fi
+ln -sf ~/.config/nvim/UltiSnips/javajksnippets ~/workspace/dotfiles/UltiSnips/javajksnippets
+RESULT=$?
+if [ $RESULT -eq 0 ]; then
+  echo success
+else
+  echo failed
+fi
 
 

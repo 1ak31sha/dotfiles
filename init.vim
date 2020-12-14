@@ -520,7 +520,7 @@ nmap <C-i> :A<CR>
 " <C-j> - reserved for Karabiner elements <down arrow>
 " <C-k> - reserved for Karabiner elements ^
 " <C-l> - reserved for Karabiner elements ->
-nmap <C-m> :mks! $DOTFILES/rooster.vim<CR>
+nmap <C-m> :mks! $DOTFILES/saveSession.vim<CR>
 " <C-n> multiple cursors
 " <C-o> goes to letter
 nmap <C-p> :FZF<CR>
@@ -583,9 +583,13 @@ nmap <Leader>q :q<CR>
 nmap <Leader>r :source $DOTFILES/init.vim<CR>
 nmap <leader>s :call SavePrint()<CR>
 
-nmap <Leader>t :tabnew<CR>
+nmap <Leader>t :FloatermNew<CR>
+nmap <Leader>v :FloatermToggl<CR>
+" nmap <Leader>t :tabnew<CR>
+" nmap <Leader>v :vsp<CR><C-w><Right>
+
+
 nmap    <leader>u :call ReloadKeepingSpot2()<CR>
-nmap <Leader>v :vsp<CR><C-w><Right>
 " gets you sudo access to a file without having to exit vim. promts for password
 "nmap <leader>w  :f<space>
 nmap <leader>x  :w suda://%<CR>
@@ -787,6 +791,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'mhinz/vim-startify'
+
+" Terminal
+" --------
+Plug 'voldikss/vim-floaterm'
 
 " Code Pairing
 " ------------
@@ -1401,6 +1409,11 @@ hi DevIconMagenta    ctermfg=5     guifg=#ae81ff
 hi DevIconCyan       ctermfg=6     guifg=#E6DB74
 hi DevIconWhite      ctermfg=7     guifg=#F92772
 
+" Terminal
+" -----------
+
+let g:floaterm_shell = "fish"
+
 
 
 " UltiSnips
@@ -1408,7 +1421,7 @@ hi DevIconWhite      ctermfg=7     guifg=#F92772
 let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger="<leader-j>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader>k"
 let g:UltiSnipsEditSplit="vertical"
 " DONT USE THIS DIRECTORY CONFIG - doesnt work
