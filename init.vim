@@ -1,14 +1,6 @@
-"~_~_~_~_~_~_~_~_~_~_~"
-"                     "
-"        VIMRC        "
-"        -----        "
-"~_~_~_~_~_~_~_~_~_~_~"
+" LEGEND
+" ------
 
-"  ~ Table of Contents ~
-" -----------------------
-"
-" Use <Shift>* on a word to follow it.
-"
 " MAPPINGS
 " ..CTRL_MAPPINGS
 " ..LEADER_MAPPINGS
@@ -32,17 +24,418 @@
 " ..Nerd_Tree
 " ..Neosnippet
 " ..Prettier
+" ..RltvNmbr
 " ..UltiSnips
 " ..vim_emoji
 " ..vim_javascript
 " FUNCTIONS
 " TERMINAL_MODE
-"
-" ~------------------~ "
 
 " NOTES
 "
 " the jsx plugins pangloss/maxmellon have introduced some lag in moving the cursor by holding j or k. but it gives indentation, so it may be worth it. trying it out for now
+
+
+" CHEATSHEET
+" Start hacking
+" let name = "John"
+" echo "Hello, " . name
+" You can either put this in a script (script.vim) and run it (:source script.vim), or you can type the commands individually in normal mode as :let and :echo.
+
+" Learn by example
+" function! SuperTab()
+"   let l:part = strpart(getline('.'),col('.')-2,1)
+"   if (l:part =~ '^\W\?$')
+"       return "\<Tab>"
+"   else
+"       return "\<C-n>"
+"   endif
+" endfunction
+
+" imap <Tab> <C-R>=SuperTab()<CR>
+" Here’s another example with functions, variables and mapping.
+
+" #Variables
+" Defining
+" let var = "hello"
+" Variable prefixes
+" let g:ack_options = '-s -H'    " g: global
+" let s:ack_program = 'ack'      " s: local (to script)
+" let l:foo = 'bar'              " l: local (to function)
+" The s: prefix is also available in function names. See :help local-variables
+
+" Other prefixes
+" let w:foo = 'bar'    " w: window
+" let b:state = 'on'   " b: buffer
+" let t:state = 'off'  " t: tab
+" echo v:var           " v: vim special
+" let @/ = ''          " @  register (this clears last search pattern)
+" echo $PATH           " $  env
+" Vim options
+" echo 'tabstop is ' . &tabstop
+" if &insertmode
+" echo &g:option
+" echo &l:option
+" Prefix Vim options with &
+
+" Operators
+" a + b             " numbers only!
+" 'hello ' . name   " concat
+" let var -= 2
+" let var += 5
+" let var .= 'string'   " concat
+" #Strings
+" Strings
+" let str = "String"
+" let str = "String with \n newline"
+
+" let literal = 'literal, no \ escaping'
+" let literal = 'that''s enough'  " double '' => '
+
+" echo "result = " . re   " concatenation
+" Also see :help literal-string and :help expr-quote. See: Strings
+
+" String functions
+" strlen(str)    " length
+" len(str)       " same
+" strchars(str)  " character length
+
+" split("one two three")       "=> ['one', 'two', 'three']
+" split("one.two.three", '.')  "=> ['one', 'two', 'three']
+
+" join(['a', 'b'], ',')  "=> 'a,b'
+
+" tolower('Hello')
+" toupper('Hello')
+" Also see :help functions See: String functions
+
+" #Functions
+" Functions
+" " prefix with s: for local script-only functions
+" function! s:Initialize(cmd, args)
+"   " a: prefix for arguments
+"   echo "Command: " . a:cmd
+
+"   return true
+" endfunction
+" See: Functions
+
+" Namespacing
+" function! myplugin#hello()
+" Calling functions
+" call s:Initialize()
+" call s:Initialize("hello")
+" Consuming return values
+" echo "Result: " . s:Initialize()
+" Abortable
+" function! myfunction() abort
+" endfunction
+" Aborts when an error occurs.
+
+" Var arguments
+" function! infect(...)
+"   echo a:0    "=> 2
+"   echo a:1    "=> jake
+"   echo a:2    "=> bella
+
+"   for s in a:000  " a list
+"     echon ' ' . s
+"   endfor
+" endfunction
+
+" infect('jake', 'bella')
+" See :help function-argument. See: Var arguments
+
+" #Loops
+" for s in list
+"   echo s
+"   continue  " jump to start of loop
+"   break     " breaks out of a loop
+" endfor
+" while x < 5
+" endwhile
+" #Custom commands
+" Custom commands
+" command! Save :set fo=want tw=80 nowrap
+" Custom commands start with uppercase letters. The ! redefines a command if it already exists.
+
+" Commands calling functions
+" command! Save call <SID>foo()
+" function! s:foo()
+"   ...
+" endfunction
+" Commands with arguments
+" command! -nargs=? Save call script#foo(<args>)
+" -nargs=0  0 arguments, default
+" -nargs=1  1 argument, includes spaces
+" -nargs=?  0 or 1 argument
+" -nargs=*  0+ arguments, space separated
+" -nargs=+  1+ arguments, space reparated
+" #Flow
+" Conditionals
+" let char = getchar()
+" if char == "\<LeftMouse>"
+"   " ...
+" elseif char == "\<RightMouse>"
+"   " ...
+" else
+"   " ...
+" endif
+" Truthiness
+" if 1 | echo "true"  | endif
+" if 0 | echo "false" | endif
+" if 1       "=> 1 (true)
+" if 0       "=> 0 (false)
+" if "1"     "=> 1 (true)
+" if "456"   "=> 1 (true)
+" if "xfz"   "=> 0 (false)
+" No booleans. 0 is false, 1 is true. See: Truthiness
+
+" Operators
+" if 3 > 2
+" if a && b
+" if (a && b) || (c && d)
+" if !c
+" See :help expression-syntax. See: Operators
+
+" Strings
+" if name ==# 'John'     " case-sensitive
+" if name ==? 'John'     " case-insensitive
+" if name == 'John'      " depends on :set ignorecase
+
+" " also: is#, is?, >=#, >=?, and so on
+" Identity operators
+" a is b
+" a isnot b
+" Checks if it’s the same instance object.
+
+" Regexp matches
+" "hello" =~ 'xx*'
+" "hello" !~ 'xx*'
+" "hello" =~ '\v<\d+>'
+" \v enables “extended” regex mode which allows word boundary (<>), +, and more.
+
+" Single line
+" if empty(a:path) | return [] | endif
+" a ? b : c
+" Use | to join lines together.
+
+" Boolean logic
+" if g:use_dispatch && s:has_dispatch
+"   ···
+" endif
+" #Lists
+" Lists
+" let mylist = [1, two, 3, "four"]
+
+" let first = mylist[0]
+" let last  = mylist[-1]
+
+" " Suppresses errors
+" let second = get(mylist, 1)
+" let second = get(mylist, 1, "NONE")
+" Functions
+" len(mylist)
+" empty(mylist)
+
+" sort(list)
+" let sortedlist = sort(copy(list))
+
+" split('hello there world', ' ')
+" Concatenation
+" let longlist = mylist + [5, 6]
+" let mylist += [7, 8]
+" Sublists
+" let shortlist = mylist[2:-1]
+" let shortlist = mylist[2:]     " same
+
+" let shortlist = mylist[2:2]    " one item
+" Push
+" let alist = [1, 2, 3]
+" let alist = add(alist, 4)
+" Map
+" call map(files, "bufname(v:val)")  " use v:val for value
+" call filter(files, 'v:val != ""')
+" #Dictionaries
+" Dictionaries
+" let colors = {
+"   \ "apple": "red",
+"   \ "banana": "yellow"
+" }
+
+" echo colors["a"]
+" echo get(colors, "apple")   " suppress error
+" See :help dict
+
+" Using dictionaries
+" remove(colors, "apple")
+" " :help E715
+" if has_key(dict, 'foo')
+" if empty(dict)
+" keys(dict)
+" len(dict)
+" max(dict)
+" min(dict)
+" count(dict, 'x')
+" string(dict)
+" map(dict, '<>> " . v:val')
+" Iteration
+" for key in keys(mydict)
+"   echo key . ': ' . mydict(key)
+" endfor
+" Prefixes
+" keys(s:)
+" Prefixes (s:, g:, l:, etc) are actually dictionaries.
+
+" Extending
+" " Extending with more
+" let extend(s:fruits, { ... })
+" #Casting
+" str2float("2.3")
+" str2nr("3")
+" float2nr("3.14")
+" #Numbers
+" Numbers
+" let int = 1000
+" let int = 0xff
+" let int = 0755   " octal
+" See :help Number. See: Numbers
+
+" Floats
+" let fl = 100.1
+" let fl = 5.4e4
+" See :help Float
+
+" Arithmetic
+" 3 / 2     "=> 1, integer division
+" 3 / 2.0   "=> 1.5
+" 3 * 2.0   "=> 6.0
+" Math functions
+" sqrt(100)
+" floor(3.5)
+" ceil(3.3)
+" abs(-3.4)
+
+" sin() cos() tan()
+" sinh() cosh() tanh()
+" asin() acos() atan()
+" #Vim-isms
+" Execute a command
+" execute "vsplit"
+" execute "e " . fnameescape(filename)
+" Runs an ex command you typically run with :. Also see :help execute. See: Execute a command
+
+" Running keystrokes
+" normal G
+" normal! G   " skips key mappings
+
+" execute "normal! gg/foo\<cr>dd"
+" Use :normal to execute keystrokes as if you’re typing them in normal mode. Combine with :execute for special keystrokes. See: Running keystrokes
+
+" Getting filenames
+" echo expand("%")      " path/file.txt
+" echo expand("%:t")    " file.txt
+" echo expand("%:p:h")  " /home/you/path/file.txt
+" echo expand("%:r")    " path/file
+" echo expand("%:e")    " txt
+" See :help expand
+
+" Silencing
+" silent g/Aap/p
+" Suppresses output. See :help silent
+
+" Echo
+" echoerr 'oh it failed'
+" echomsg 'hello there'
+" echo 'hello'
+
+" echohl WarningMsg | echomsg "=> " . a:msg | echohl None
+" Settings
+" set number
+" set nonumber
+" set number!     " toggle
+" set numberwidth=5
+" set guioptions+=e
+" Prompts
+" let result = confirm("Sure?")
+" execute "confirm q"
+" Built-ins
+" has("feature")  " :h feature-list
+" executable("python")
+" globpath(&rtp, "syntax/c.vim")
+
+" exists("$ENV")
+" exists(":command")
+" exists("variable")
+" exists("+option")
+" exists("g:...")
+" #Mapping
+" Mapping commands
+" nmap
+" vmap
+" imap
+" xmap
+" nnoremap
+" vnoremap
+" inoremap
+" xnoremap
+" ...
+" Explanation
+" [nvixso](nore)map
+"  │       └ don't recurse
+"  │
+"  └ normal, visual, insert,
+"    eX mode, select, operator-pending
+" Arguments
+" <buffer>  only in current buffer
+" <silent>  no echo
+" <nowait>
+" #Syntax
+" Highlights
+" hi Comment
+"   term=bold,underline
+"   gui=bold
+"   ctermfg=4
+"   guifg=#80a0ff
+" Filetype detection
+" augroup filetypedetect
+"   au! BufNewFile,BufRead *.json setf javascript
+" augroup END
+
+" au Filetype markdown setlocal spell
+" Conceal
+" set conceallevel=2
+" syn match newLine "<br>" conceal cchar=}
+" hi newLine guifg=green
+" Region conceal
+" syn region inBold concealends matchgroup=bTag start="<b>" end="</b>"
+" hi inBold gui=bold
+" hi bTag guifg=blue
+" Syntax
+" syn match :name ":regex" :flags
+
+" syn region Comment  start="/\*"  end="\*/"
+" syn region String   start=+"+    end=+"+   skip=+\\"+
+
+" syn cluster :name contains=:n1,:n2,:n3...
+
+" flags:
+"   keepend
+"   oneline
+"   nextgroup=
+"   contains=
+"   contained
+
+" hi def link markdownH1 htmlH1
+" Include guards
+" if exists('g:loaded_myplugin')
+"   finish
+" endif
+
+" " ...
+
+" let g:loaded_myplugin = 1
+
 
 
 " --
@@ -279,6 +672,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
+
+
 " Formatting selected code.
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
@@ -395,9 +790,7 @@ Plug 'mhinz/vim-startify'
 
 " Code Pairing
 " ------------
-Plug 'FredKSchott/CoVim'
-" alternative to coVim i still need to try
-"https://github.com/Floobits/floobits-vim
+Plug 'FredKSchott/CoVim' " alternative to coVim i still need to try https://github.com/Floobits/floobits-vim
 
 " Color Schemes
 " -------------
@@ -406,70 +799,128 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'Addisonbean/Vim-Xcode-Theme'
+Plug 'vim-scripts/AfterColors.vim'
+Plug 'https://github.com/ap/vim-css-color'
+Plug 'her/synicons.vim'
+
+" StatusLine
+" ----------
+"Plug 'mkitt/tabline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'darthmall/vim-vue'
+Plug 'elzr/vim-json'
 
 
-  Plug 'vim-scripts/AfterColors.vim'
-   Plug 'mkitt/tabline.vim'
-"
-   Plug 'itchyny/lightline.vim' " -Configurability. You can create your own
-"   " component and easily add to the statusline and the tabline. Orthogonality. The
-"   " plugin does not rely on the implementation of other plugins. Such plugin
-"   " crossing settings should be configured by users.  Plug 'itchyny/vim-gitbranch'
-"   " Plug 'rbong/vim-crystalline'
-"   "Plug 'https://github.com/gko/vim-coloresque'
-   Plug 'https://github.com/ap/vim-css-color'
-"
-"
-"   " Java
-"   " ----
-   Plug 'vim-scripts/yavdb'
-   Plug 'vmarquez/jvdb'
-"   "help vebugger-configuration
-   Plug 'idanarye/vim-vebugger'
-"
-"   " Ruby
-"   " ----
-   Plug 'vim-ruby/vim-ruby'
-"
-"   " Syntax
-"   " ------
-   Plug 'junegunn/vim-emoji'
-   Plug 'vim-scripts/groovy.vim'
+" Typescript :(
+" -------------
+":CocInstall coc-json coc-tsserver
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'HerringtonDarkholme/yats.vim' " takes care of Javascript also
 
-   Plug 'dag/vim-fish'
-   Plug 'darthmall/vim-vue'
-   Plug 'tpope/vim-cucumber'
-   Plug 'artur-shaik/vim-javacomplete2'
-   Plug 'elzr/vim-json'
-"   " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-"   "// not used, see deoplete below
-"   "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Ruby
+" ----
+Plug 'vim-ruby/vim-ruby'
 
-    " this plugin has performance issues
-   "Plug 'othree/yajs.vim'
-   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-   Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
-"
-"   " Plug 'jiangmiao/auto-pairs' - not bad but ended up being annoying when trying
-"   " to add brackets at the end, it would not insert becuase it think i want to
-"   " jump out
-   Plug 'tpope/vim-commentary'
-"
-"   " Typescript :(
-"   " -------------
-"   " Plug 'leafgarland/typescript-vim'
-"   " Plug 'ianks/vim-tsx'
-   Plug 'HerringtonDarkholme/yats.vim'
+" Java
+" ----
+Plug 'vim-scripts/yavdb'
+Plug 'vmarquez/jvdb'
+Plug 'idanarye/vim-vebugger' "help vebugger-configuration
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'vim-scripts/groovy.vim'
+Plug 'tpope/vim-cucumber'
+Plug 'jvenant/vim-java-imports'
 
-   " these two plugins introduced some lag
-   Plug 'pangloss/vim-javascript'
-   "Plug 'maxmellon/vim-jsx-pretty'
-      " Plug 'mxw/vim-jsx' |> opting for pangloss & maxmellon's plugins as the indentation works
+" Syntax
+" ------
+Plug 'junegunn/vim-emoji'
+Plug 'dag/vim-fish'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'tarekbecker/vim-yaml-formatter'  " pip3 install pyyaml
 
 
+" Linting
+" ------
+Plug 'w0rp/ale'
+
+ " Git
+ " ---
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Tools
+" -----
+Plug 'adelarsq/vim-matchit'
+Plug 'airblade/vim-rooter'
+Plug 'alvan/vim-closetag'
+Plug 'ashisha/image.vim'
+Plug 'benmills/vimux'
+Plug 'chrisbra/csv.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'itchyny/lightline.vim' " -Configurability. You can create your own
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'lambdalisue/suda.vim' " get sudo on the file
+Plug 'othree/xml.vim'
+Plug 'prettier/vim-prettier'
+Plug 'psliwka/vim-smoothie'
+Plug 'rking/ag.vim'   " silver searcher
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'thinca/vim-localrc'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/RltvNmbr.vim'
+Plug 'webastien/vim-ctags'
+
+" Snippets
+" --------
+Plug 'SirVer/ultisnips'
+
+" Icons - must be last
+" -----
+Plug 'ryanoasis/vim-devicons'
+
+"  ---------
+"  NOT USING
+"  ---------
+
+ " conflicting with coc
+ "Plug 'ervandew/supertab'
 
 
-"   " Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
+"   " gC in normal mode, <C-g>c in insert mode
+    " i never use it since vim has U. so disabling for now
+"   "Plug 'tpope/vim-capslock'
+"   "Plug 'jasonwoodland/vim-html-closer' -> only works on html files, no jsx
+"   "Plug 'honza/vim-snippets'
+"   "Plug 'Shougo/neosnippet.vim'
+"   "Plug 'Shougo/neosnippet-snippets'
+
+"Plug 'https://github.com/szw/vim-tags'
+
+" Plug 'honza/vim-snippets'
+
+
+
+"   " Plug 'pseewald/vim-anyfold'
+
+ "Plug 'vim-syntastic/syntastic'
+
+
+"TS
+" Plug 'leafgarland/typescript-vim'
+" Plug 'ianks/vim-tsx'
+" these two plugins introduced some lag
+"Plug 'pangloss/vim-javascript'
+"Plug 'maxmellon/vim-jsx-pretty'
+   " Plug 'mxw/vim-jsx' |> opting for pangloss & maxmellon's plugins as the indentation works
+   "   " Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 "
 "   " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 "   "https://github.com/mhartington/nvim-typescript/issues/139
@@ -479,64 +930,31 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 "   "install.sh
 "
 "   " Plug 'Shougo/denite.nvim'
-"
-"
-"   " Linting
-"   " ------
-   Plug 'w0rp/ale'
-"   "Plug 'vim-syntastic/syntastic'
-   Plug 'jvenant/vim-java-imports'
-   Plug 'prettier/vim-prettier'
-"
-"   " Navigation
-"   " ----------
-"   Plug 'christoomey/vim-tmux-navigator'
-   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"   Plug 'benmills/vimux'
-"
-"   " conflicting with coc
-"   "Plug 'ervandew/supertab'
-   Plug 'airblade/vim-rooter'
 
-"   " Git
-"   " ---
-   Plug 'tpope/vim-fugitive'
-   Plug 'Xuyuanp/nerdtree-git-plugin'
+
+
+
 "
-"   " Tools
-"   " -----
-"   " Plug 'pseewald/vim-anyfold'
-"   ":CocInstall coc-json coc-tsserver
-   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   Plug 'rking/ag.vim'   " silver searcher
-   Plug 'lambdalisue/suda.vim' " get sudo on the file
-"   " Plug 'terryma/vim-smooth-scroll'
-   Plug 'psliwka/vim-smoothie'
-   Plug 'ashisha/image.vim'
-"   "Plug 'https://github.com/szw/vim-tags'
-   Plug 'webastien/vim-ctags'
-   Plug 'thinca/vim-localrc'
-   Plug 'tpope/vim-projectionist'
-   Plug 'chrisbra/csv.vim'
-   Plug 'airblade/vim-gitgutter'
-"
-"   " Text maniulation
-"   " ----------------
-   Plug 'terryma/vim-multiple-cursors'
-   Plug 'tpope/vim-surround'
-   Plug 'alvan/vim-closetag'
-   Plug 'othree/xml.vim'
-   Plug 'adelarsq/vim-matchit'
-"
-"   " gC in normal mode, <C-g>c in insert mode
-    " i never use it since vim has U. so disabling for now
-"   "Plug 'tpope/vim-capslock'
-"   "Plug 'jasonwoodland/vim-html-closer' -> only works on html files, no jsx
-"   "Plug 'honza/vim-snippets'
-"   "Plug 'Shougo/neosnippet.vim'
-"   "Plug 'Shougo/neosnippet-snippets'
-"
+"   " Plug 'jiangmiao/auto-pairs' - not bad but ended up being annoying when trying
+"   " to add brackets at the end, it would not insert becuase it think i want to
+"   " jump out
+
+
+ " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+ "// not used, see deoplete below
+ "Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+
+"   " component and easily add to the statusline and the tabline. Orthogonality. The
+"   " plugin does not rely on the implementation of other plugins. Such plugin
+"   " crossing settings should be configured by users.  Plug 'itchyny/vim-gitbranch'
+"   " Plug 'rbong/vim-crystalline'
+"   "Plug 'https://github.com/gko/vim-coloresque'
+
+
+"   " Plug 'terryma/vim-smooth-scroll' |> prefer smoothie
+
+
 "   " :help deoplete-options
 "   if has('nvim')
 "     "conflicting with coc
@@ -554,15 +972,10 @@ Plug 'Addisonbean/Vim-Xcode-Theme'
 
 "   " this tern didnt seem to work
 "   " Plug 'ternjs/tern_for_vim'
-"
-   Plug 'SirVer/ultisnips'
-   Plug 'honza/vim-snippets'
-   Plug 'ryanoasis/vim-devicons'
-"
-"
-"  ---------
-"  NOT USING
-"  ---------
+
+
+    " this plugin has performance issues
+   "Plug 'othree/yajs.vim'
 
 " Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'typescriptreact', 'typescript']} |> didnt work :(
 "Plug 'vim-scripts/DrawIt' -> causes 1 sec delay on leader binding
@@ -629,6 +1042,14 @@ set laststatus=2
 " ----------------------
 "let g:ag_prg="ag --vimgrep --smart-case"
 let g:ag_working_path_mode="r"
+
+" AIRLINE
+" -----------
+" " adding to vim-airline's tabline
+" let g:webdevicons_enable_airline_tabline = 1
+" " adding to vim-airline's statusline
+" let g:webdevicons_enable_airline_statusline = 1
+
 
 " ANYFOLD
 " -------
@@ -706,15 +1127,21 @@ let g:closetag_close_shortcut = '>'
 " CTRL-P
 "--------
 let g:ctrlp_show_hidden = 1
+let g:webdevicons_enable_ctrlp = 1
 
 " ---------
 " DevIcons
 " ---------
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+ " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+" :let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol='x'
 
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:webdevicons_gui_glyph_fix = 1
+ " let g:DevIconsEnableFoldersOpenClose = 1
+" let g:webdevicons_gui_glyph_fix = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" let g:webdevicons_enable_denite = 1
 
 " ---------
 " Deoplete
@@ -766,6 +1193,7 @@ let g:fzf_colors =
 set updatetime=100
 let g:gitgutter_sign_added = emoji#for('hatching_chick')
 let g:gitgutter_sign_modified = emoji#for('nail_care')
+" let g:gitgutter_sign_modified = emoji#for('nail_care')
 let g:gitgutter_sign_removed = emoji#for('broken_heart')
 let g:gitgutter_sign_modified_removed = emoji#for('broken_heart')
 set completefunc=emoji#complete
@@ -821,9 +1249,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 "autocmd vimenter * NERDTree "// Open the tree by default
 "let g:NERDTreeLimitedSyntax = 1
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
+
+" let g:NERDTreeFileExtensionHighlightFullName = 1
+" let g:NERDTreeExactMatchHighlightFullName = 1
+" let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeWinSize = 80
 
@@ -866,7 +1295,7 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['Dockerfile'] = s:monokai_blue
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor = {}
-let g:NERDTreePatternMatchHighlightColor['.*stories\.js$'] = g:pink
+let g:NERDTreePatternMatchHighlightColor['.vim$'] = g:pink
 let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.js$'] = s:salmon
 let g:NERDTreePatternMatchHighlightColor['.*stories\.tsx$'] = g:pink
 let g:NERDTreePatternMatchHighlightColor['.*rehydrator\.tsx$'] = s:salmon
@@ -884,21 +1313,21 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 
 " NerdTreeGitPlugin
 " TODO
-let g:NERDTreeGitStatusUseNerdFonts = 0
+" let g:NERDTreeGitStatusUseNerdFonts = 0
 " let g:gitgutter_sign_added = emoji#for('hatching_chick')
 " let g:gitgutter_sign_modified = emoji#for('nail_care')
 " let g:gitgutter_sign_removed = emoji#for('broken_heart')
 " let g:gitgutter_sign_modified_removed = emoji#for('broken_heart')
-
 " '✗'
+      " \ 'Modified'  :emoji#for('nail_care'),
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :emoji#for('nail_care'),
+      \ 'Modified'  :'*',
                 \ 'Staged'    :'✚',
-                \ 'Untracked' :emoji#for('hatching_chick'),
+                \ 'Untracked' :'?',
                 \ 'Renamed'   :'➜',
                 \ 'Unmerged'  :'═',
                 \ 'Deleted'   :'✖',
-                \ 'Dirty'     :emoji#for('poop'),
+                \ 'Dirty'     :'x',
                 \ 'Ignored'   :'☒',
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
@@ -957,6 +1386,23 @@ let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 " let g:prettier#config#trailing_comma = 'all'
 "let g:prettier#config#bracket_spacing = 'true'
 
+" RltvNmbt
+" --------
+ "autocmd VimEnter * RltvNmbr
+
+ " Synicons
+
+" This must be set in the plugged/after/synicons.vim
+hi DevIconRed        ctermfg=1     guifg=#800000
+hi DevIconGreen      ctermfg=2     guifg=#A6E22D
+hi DevIconYellow     ctermfg=3     guifg=#FD9720
+hi DevIconBlue       ctermfg=4     guifg=#66d9ef
+hi DevIconMagenta    ctermfg=5     guifg=#ae81ff
+hi DevIconCyan       ctermfg=6     guifg=#E6DB74
+hi DevIconWhite      ctermfg=7     guifg=#F92772
+
+
+
 " UltiSnips
 " -----------
 let g:UltiSnipsUsePythonVersion = 3
@@ -971,6 +1417,9 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsSnippetDirectories=["$DOTFILES/vimsnips", "UltiSnips"]
 "let g:UltiSnipsExpandTrigger="<tab>"
 
+" R;tvNmbr
+
+"call RltvNmbr#RltvNmbrCtrl(1)
 
 "  vim_emoji
 "" ---------
@@ -1053,13 +1502,16 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 set backspace=indent,eol,start
 set timeoutlen=1000
 
+" defaults to terminal font
+  " set guifont=FiraCode\ Nerd\ Font\ 11
+
 set ttimeoutlen=0
 
 set runtimepath+=$DOTFILES/vimsnips
 set nowrap
 set fileformat=unix
 set nocursorline
-set encoding=utf8
+set encoding=UTF-8
 set nocp   " 'compatible' is not set. dont need vi compatibility, use vi improved
 set noswapfile
 set nopaste
@@ -1085,7 +1537,7 @@ set showtabline=2
 
 " supposed to tunoff auto-comment, but this actually happens in the after-directory
 let g:javascript_plugin_jsdoc = 1
-set conceallevel=0
+set conceallevel=3
 set termguicolors
 set cuc cul"
 " the length to be used for the gq command that splits lines
@@ -1543,3 +1995,24 @@ endfunction
 let autoreadargs={'autoread':1}
 execute WatchForChanges("*",autoreadargs)
 
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
+
+
+" not using
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+
+" hi DevIconRed        ctermfg=1     guifg=#800000
+" hi DevIconGreen      ctermfg=2     guifg=#008000
+" hi DevIconYellow     ctermfg=3     guifg=#808000
+" hi DevIconBlue       ctermfg=4     guifg=#FFFFFF
+" hi DevIconMagenta    ctermfg=5     guifg=#800080
+" hi DevIconCyan       ctermfg=6     guifg=#FFFFFF
+" hi DevIconWhite      ctermfg=7     guifg=#FFFFFF
+highlight! link NERDTreeFlags NERDTreeDir
+" :hi Directory guifg=#FF0000 ctermfg=red

@@ -1,0 +1,5 @@
+#Todo 
+# read list of pr branches and go to the next pr, stashing changes
+
+
+git branch

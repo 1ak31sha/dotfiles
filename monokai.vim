@@ -99,6 +99,7 @@ let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
 " ------------
 
 " editor
+call s:h("DevIconBlue",        { "fg": s:aqua,      "bg": s:black })
 call s:h("Normal",        { "fg": s:white,      "bg": s:black })
 call s:h("ColorColumn",   {                     "bg": s:lightblack })
 call s:h("Cursor",        { "fg": s:black,      "bg": s:white })
@@ -318,3 +319,6 @@ call s:h("cStructure",                  { "fg": s:pink })
 call s:h("cStorageClass",               { "fg": s:pink })
 call s:h("cInclude",                    { "fg": s:green })
 call s:h("cDefine",                     { "fg": s:green })
+
+
+call s:h("DevIconBlue",                     { "ctermfg": 6, "guifg": s:green })
