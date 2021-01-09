@@ -520,7 +520,7 @@ nmap <C-i> :A<CR>
 " <C-j> - reserved for Karabiner elements <down arrow>
 " <C-k> - reserved for Karabiner elements ^
 " <C-l> - reserved for Karabiner elements ->
-nmap <C-m> :mks! $DOTFILES/saveSession.vim<CR>
+" nmap <C-m> :mks! $DOTFILES/saveSession.vim<CR>
 " <C-n> multiple cursors
 " <C-o> goes to letter
 nmap <C-p> :FZF<CR>
@@ -790,6 +790,10 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+
+"TODO https://github.com/vifm/neovim-vifm
+"TODO https://github.com/jreybert/vimagit
+
 Plug 'mhinz/vim-startify'
 
 " Terminal
@@ -814,8 +818,12 @@ Plug 'her/synicons.vim'
 " StatusLine
 " ----------
 "Plug 'mkitt/tabline.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim' 'doesnt load on startup. Piece of crap. call lightline#enable or open new file to make it load. battery component didnt work with it
+
+ Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
+Plug 'lambdalisue/battery.vim'
+Plug 'lambdalisue/wifi.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
@@ -866,11 +874,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'adelarsq/vim-matchit'
 Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag'
-Plug 'ashisha/image.vim'
+" Plug 'ashisha/image.vim'
 Plug 'benmills/vimux'
 Plug 'chrisbra/csv.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'itchyny/lightline.vim' " -Configurability. You can create your own
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lambdalisue/suda.vim' " get sudo on the file
 Plug 'othree/xml.vim'
@@ -1057,6 +1064,12 @@ let g:ag_working_path_mode="r"
 " let g:webdevicons_enable_airline_tabline = 1
 " " adding to vim-airline's statusline
 " let g:webdevicons_enable_airline_statusline = 1
+" let g:airline_extensions = []
+let g:airline_section_b = '%{airline#util#wrap(airline#extensions#hunks#get_hunks(),100)} %{airline#util#wrap(airline#extensions#branch#get_head(),80)} %{battery#component()} %{wifi#component()}'
+
+  let g:airline_powerline_fonts = 1
+  " call airline#parts#define_function('foo', 'battery#component')
+  " let g:airline_section_y = airline#section#create_right(['ffenc','foo'])
 
 
 " ANYFOLD
@@ -1075,11 +1088,12 @@ set foldlevel=0  " close all folds
 " -----
 "let g:ale_linters = ['eslint']
 "let b:ale_linters = ['eslint']
-let b:ale_fixers = ['prettier', 'eslint', 'stylelint']
+let b:ale_fixers = ['prettier', 'eslint', 'stylelint', 'HTMLHint', 'alex']
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['tsserver'],
 \   'css': ['stylelint'],
+\   'html': ['htmlhint'],
 \}
 " let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 " autocmd BufRead,BufNewFile ~/workspace/emcm-ui/* setlocal
@@ -1208,18 +1222,44 @@ set completefunc=emoji#complete
 
 " Lightline
 " ---------
+set laststatus=2
 let g:lightline = {
+      \ 'colorscheme': 'wombat',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'battery': 'battery#component',
       \ },
       \ 'component': {
-      \   'helloworld': 'Hello, world!'
+      \   'battery': 'battery#component',
+      \   'charvaluehex': '0x%B',
       \ },
       \ }
+" let g:lightline = {
+" \ 'colorscheme': 'wombat',
+" \ 'component_function': {
+" \   'battery': 'battery#component',
+" \ },
+" \ },
+"       \ 'component_function': {
+"       \ 'battery': 'battery#component',
+
+" let g:lightline = {
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \ 'battery': 'battery#component',
+"       \ 'gitbranch': 'gitbranch#name'
+"       \ },
+"       \ 'component': {
+"       \   'helloworld': 'Hello, world!'
+"       \ },
+"       \ }
 "let g:lightline = {
 "  \   'colorscheme': 'onedark'
 "  \}
