@@ -817,7 +817,7 @@ Plug 'her/synicons.vim'
 
 " StatusLine
 " ----------
-"Plug 'mkitt/tabline.vim'
+Plug 'mkitt/tabline.vim'
 " Plug 'itchyny/lightline.vim' 'doesnt load on startup. Piece of crap. call lightline#enable or open new file to make it load. battery component didnt work with it
 
  Plug 'vim-airline/vim-airline'
